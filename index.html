@@ -1,1 +1,332 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Learning Hub</title>
+
+<style>
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background: #f7f8fc;
+  color: #182033;
+}
+
+header {
+  background: white;
+  padding: 32px 20px;
+  text-align: center;
+  border-bottom: 1px solid #e7e9ef;
+}
+
+header h1 {
+  margin: 0;
+  font-size: 32px;
+}
+
+header p {
+  margin: 8px 0 0;
+  color: #7b8497;
+}
+
+.container {
+  max-width: 900px;
+  margin: 35px auto;
+  padding: 0 20px 50px;
+}
+
+.children {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.child {
+  background: white;
+  border-radius: 24px;
+  padding: 28px;
+  box-shadow: 0 8px 30px rgba(0,0,0,.06);
+  cursor: pointer;
+  transition: .2s;
+}
+
+.child:hover {
+  transform: translateY(-3px);
+}
+
+.avatar {
+  font-size: 50px;
+}
+
+.child h2 {
+  margin: 12px 0 5px;
+}
+
+.grade {
+  color: #81899a;
+  margin-bottom: 20px;
+}
+
+.open {
+  background: #3679df;
+  color: white;
+  border: none;
+  border-radius: 12px;
+  padding: 13px 18px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.dashboard {
+  display: none;
+}
+
+.back {
+  background: none;
+  border: none;
+  font-weight: bold;
+  cursor: pointer;
+  margin-bottom: 20px;
+  color: #536079;
+}
+
+.student-title {
+  margin-bottom: 25px;
+}
+
+.subject {
+  background: white;
+  border-radius: 20px;
+  padding: 22px;
+  margin-bottom: 16px;
+  box-shadow: 0 5px 20px rgba(0,0,0,.04);
+}
+
+.subject h3 {
+  margin: 0 0 15px;
+  font-size: 20px;
+}
+
+.test {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+  border-top: 1px solid #edf0f5;
+  padding: 15px 0;
+}
+
+.test:first-of-type {
+  border-top: 0;
+}
+
+.test-name {
+  font-weight: bold;
+}
+
+.test-description {
+  font-size: 13px;
+  color: #858da0;
+  margin-top: 4px;
+}
+
+.start {
+  display: inline-block;
+  text-decoration: none;
+  background: #3679df;
+  color: white;
+  padding: 10px 17px;
+  border-radius: 10px;
+  font-weight: bold;
+  white-space: nowrap;
+}
+
+.empty {
+  color: #9aa1b0;
+  font-size: 14px;
+}
+
+@media (max-width: 650px) {
+  .children {
+    grid-template-columns: 1fr;
+  }
+
+  header h1 {
+    font-size: 27px;
+  }
+
+  .test {
+    align-items: flex-start;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <h1>✨ Learning Hub ✨</h1>
+  <p>Choose your dashboard</p>
+</header>
+
+<div class="container">
+
+  <!-- HOME -->
+  <div id="home">
+
+    <div class="children">
+
+      <div class="child" onclick="openDashboard('ivy')">
+        <div class="avatar">👧🏼</div>
+        <h2>Ivy-Rose</h2>
+        <div class="grade">Grade 2</div>
+        <button class="open">OPEN DASHBOARD →</button>
+      </div>
+
+      <div class="child" onclick="openDashboard('charlotte')">
+        <div class="avatar">👧🏻</div>
+        <h2>Charlotte</h2>
+        <div class="grade">Grade 1</div>
+        <button class="open">OPEN DASHBOARD →</button>
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- IVY DASHBOARD -->
+  <div id="ivy" class="dashboard">
+
+    <button class="back" onclick="goHome()">← BACK</button>
+
+    <div class="student-title">
+      <h1>👧🏼 Ivy-Rose</h1>
+      <p>Grade 2</p>
+    </div>
+
+
+    <div class="subject">
+      <h3>📖 English</h3>
+
+      <div class="test">
+        <div>
+          <div class="test-name">Spelling Test #1</div>
+          <div class="test-description">
+            Words 1–10 • Listen & spell
+          </div>
+        </div>
+
+        <a class="start" href="ivy-english-spelling-01.html">
+          START
+        </a>
+      </div>
+
+    </div>
+
+
+    <div class="subject">
+      <h3>🔢 Maths</h3>
+      <div class="empty">No tests yet.</div>
+    </div>
+
+
+    <div class="subject">
+      <h3>🔬 Science</h3>
+      <div class="empty">No tests yet.</div>
+    </div>
+
+
+    <div class="subject">
+      <h3>🌍 Geography</h3>
+      <div class="empty">No tests yet.</div>
+    </div>
+
+
+    <div class="subject">
+      <h3>🇫🇷 French</h3>
+      <div class="empty">No tests yet.</div>
+    </div>
+
+  </div>
+
+
+
+  <!-- CHARLOTTE DASHBOARD -->
+  <div id="charlotte" class="dashboard">
+
+    <button class="back" onclick="goHome()">← BACK</button>
+
+    <div class="student-title">
+      <h1>👧🏻 Charlotte</h1>
+      <p>Grade 1</p>
+    </div>
+
+
+    <div class="subject">
+      <h3>📖 English</h3>
+      <div class="empty">No tests yet.</div>
+    </div>
+
+
+    <div class="subject">
+      <h3>🔢 Maths</h3>
+      <div class="empty">No tests yet.</div>
+    </div>
+
+
+    <div class="subject">
+      <h3>🔬 Science</h3>
+      <div class="empty">No tests yet.</div>
+    </div>
+
+
+    <div class="subject">
+      <h3>🌍 Geography</h3>
+      <div class="empty">No tests yet.</div>
+    </div>
+
+
+    <div class="subject">
+      <h3>🇫🇷 French</h3>
+      <div class="empty">No tests yet.</div>
+    </div>
+
+  </div>
+
+</div>
+
+
+<script>
+
+function openDashboard(child) {
+
+  document.getElementById("home").style.display = "none";
+
+  document.getElementById("ivy").style.display = "none";
+  document.getElementById("charlotte").style.display = "none";
+
+  document.getElementById(child).style.display = "block";
+
+  window.scrollTo(0,0);
+}
+
+
+function goHome() {
+
+  document.getElementById("ivy").style.display = "none";
+  document.getElementById("charlotte").style.display = "none";
+
+  document.getElementById("home").style.display = "block";
+
+  window.scrollTo(0,0);
+}
+
+</script>
+
+</body>
+</html>
