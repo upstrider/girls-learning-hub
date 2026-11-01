@@ -1,11 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Mum's Control Panel • Girls Learning Hub</title>
+<meta
+  name="viewport"
+  content="width=device-width, initial-scale=1.0"
+>
+
+<title>
+  Mum's Control Panel • Girls Learning Hub
+</title>
+
 
 <style>
 
@@ -14,354 +22,1224 @@
 }
 
 body {
+
   margin: 0;
-  font-family: Arial, Helvetica, sans-serif;
+
+  font-family:
+    Arial,
+    Helvetica,
+    sans-serif;
+
   background:
-    radial-gradient(circle at 8% 8%, #fff0f7 0, transparent 24%),
-    radial-gradient(circle at 92% 10%, #eaf5ff 0, transparent 26%),
-    radial-gradient(circle at 50% 100%, #fff7d9 0, transparent 30%),
+    radial-gradient(
+      circle at 8% 8%,
+      #fff0f7 0,
+      transparent 24%
+    ),
+    radial-gradient(
+      circle at 92% 10%,
+      #eaf5ff 0,
+      transparent 26%
+    ),
+    radial-gradient(
+      circle at 50% 100%,
+      #fff7d9 0,
+      transparent 30%
+    ),
     #f8f9fd;
+
   color: #172033;
+
   min-height: 100vh;
 }
 
+
 .topbar {
+
   max-width: 1050px;
+
   margin: auto;
-  padding: 25px 20px 5px;
+
+  padding:
+    25px
+    20px
+    5px;
 }
 
+
 .back-link {
+
   text-decoration: none;
+
   color: #6f788c;
+
   font-size: 14px;
+
   font-weight: 900;
 }
 
+
 .wrapper {
+
   max-width: 1050px;
+
   margin: auto;
-  padding: 15px 20px 70px;
+
+  padding:
+    15px
+    20px
+    70px;
 }
 
 
-/* HEADER */
+/* =========================================
+   HEADER
+   ========================================= */
 
 .header {
+
   text-align: center;
-  margin: 25px auto 35px;
+
+  margin:
+    25px
+    auto
+    35px;
 }
 
+
 .header-icon {
+
   font-size: 58px;
+
   margin-bottom: 5px;
 }
 
+
 .eyebrow {
+
   color: #8b77b7;
+
   font-size: 13px;
+
   font-weight: 900;
+
   text-transform: uppercase;
+
   letter-spacing: 1.2px;
 }
 
+
 .header h1 {
+
   font-size: 40px;
-  margin: 8px 0 8px;
+
+  margin:
+    8px
+    0
+    8px;
 }
 
+
 .header p {
-  margin: 0 auto;
+
+  margin:
+    0
+    auto;
+
   max-width: 620px;
+
   color: #7d879b;
+
   font-size: 17px;
+
   line-height: 1.5;
+
   font-weight: 700;
 }
 
 
-/* DATE CARD */
+/* =========================================
+   DATE CARD
+   ========================================= */
 
 .date-card {
+
   max-width: 700px;
-  margin: 0 auto 28px;
+
+  margin:
+    0
+    auto
+    28px;
+
   background: white;
+
   border-radius: 24px;
-  padding: 20px 25px;
-  box-shadow: 0 12px 35px rgba(42,55,90,.08);
+
+  padding:
+    20px
+    25px;
+
+  box-shadow:
+    0 12px 35px
+    rgba(
+      42,
+      55,
+      90,
+      .08
+    );
+
   text-align: center;
 }
 
+
 .date-label {
+
   color: #8b94a6;
+
   font-size: 12px;
+
   font-weight: 900;
+
   letter-spacing: 1px;
+
   text-transform: uppercase;
 }
 
+
 .date-value {
+
   margin-top: 6px;
+
   font-size: 22px;
+
   font-weight: 900;
 }
 
 
-/* CHILD GRID */
+/* =========================================
+   CHILD GRID
+   ========================================= */
 
 .children-grid {
+
   display: grid;
-  grid-template-columns: 1fr 1fr;
+
+  grid-template-columns:
+    1fr 1fr;
+
   gap: 25px;
 }
 
+
 .child-card {
-  background: rgba(255,255,255,.97);
+
+  background:
+    rgba(
+      255,
+      255,
+      255,
+      .97
+    );
+
   border-radius: 30px;
+
   padding: 28px;
-  box-shadow: 0 16px 45px rgba(42,55,90,.10);
+
+  box-shadow:
+    0 16px 45px
+    rgba(
+      42,
+      55,
+      90,
+      .10
+    );
 }
 
+
 .child-header {
+
   text-align: center;
+
   margin-bottom: 25px;
 }
 
+
 .child-avatar {
+
   width: 72px;
+
   height: 72px;
+
   margin: auto;
+
   border-radius: 50%;
+
   display: flex;
+
   align-items: center;
+
   justify-content: center;
+
   font-size: 38px;
 }
+
 
 .ivy-avatar {
   background: #ffe5f0;
 }
 
+
 .charlotte-avatar {
   background: #e5f2ff;
 }
 
+
 .child-header h2 {
-  margin: 10px 0 3px;
+
+  margin:
+    10px
+    0
+    3px;
+
   font-size: 27px;
 }
 
+
 .grade {
+
   color: #8b94a6;
+
   font-weight: 800;
+
   font-size: 14px;
 }
 
 
-/* SUBJECT */
+/* =========================================
+   SUBJECT
+   ========================================= */
 
 .subject {
   margin-top: 22px;
 }
 
+
 .subject-title {
+
   font-size: 13px;
+
   font-weight: 900;
+
   text-transform: uppercase;
+
   letter-spacing: 1px;
+
   color: #8b77b7;
+
   margin-bottom: 10px;
 }
 
 
-/* EXERCISE OPTION */
+/* =========================================
+   EXERCISE OPTION
+   ========================================= */
 
 .exercise-option {
+
   display: flex;
+
   align-items: center;
+
   gap: 14px;
-  border: 2px solid #edf0f6;
+
+  border:
+    2px solid
+    #edf0f6;
+
   border-radius: 18px;
+
   padding: 15px;
+
   margin-bottom: 10px;
+
   cursor: pointer;
+
   transition: .2s ease;
+
   background: #fff;
 }
 
+
 .exercise-option:hover {
+
   border-color: #c9b7ea;
-  transform: translateY(-1px);
+
+  transform:
+    translateY(-1px);
 }
 
+
 .exercise-option.selected {
+
   border-color: #8d67d5;
+
   background: #f8f3ff;
 }
 
+
 .exercise-option input {
+
   width: 21px;
+
   height: 21px;
+
   accent-color: #7c5ac7;
+
   flex-shrink: 0;
 }
 
+
 .exercise-icon {
+
   font-size: 27px;
+
   flex-shrink: 0;
 }
+
 
 .exercise-info {
   flex: 1;
 }
 
+
 .exercise-name {
+
   font-weight: 900;
+
   font-size: 15px;
+
   line-height: 1.3;
 }
 
+
 .exercise-topic {
+
   margin-top: 3px;
+
   color: #9098a8;
+
   font-size: 12px;
+
   font-weight: 700;
 }
 
 
-/* EMPTY FUTURE AREA */
-
 .future-note {
-  border: 2px dashed #e3e7ef;
+
+  border:
+    2px dashed
+    #e3e7ef;
+
   border-radius: 17px;
+
   padding: 14px;
+
   color: #a0a7b4;
+
   text-align: center;
+
   font-size: 12px;
+
   font-weight: 800;
+
   margin-top: 12px;
 }
 
 
-/* SUMMARY */
+/* =========================================
+   ASSIGNMENT SUMMARY
+   ========================================= */
 
 .summary-card {
+
   max-width: 700px;
-  margin: 30px auto 0;
+
+  margin:
+    30px
+    auto
+    0;
+
   background: white;
+
   border-radius: 25px;
+
   padding: 24px;
-  box-shadow: 0 12px 35px rgba(42,55,90,.08);
+
+  box-shadow:
+    0 12px 35px
+    rgba(
+      42,
+      55,
+      90,
+      .08
+    );
 }
 
+
 .summary-title {
+
   text-align: center;
+
   font-weight: 900;
+
   font-size: 18px;
+
   margin-bottom: 16px;
 }
 
+
 .summary-grid {
+
   display: grid;
-  grid-template-columns: 1fr 1fr;
+
+  grid-template-columns:
+    1fr 1fr;
+
   gap: 12px;
 }
 
+
 .summary-box {
+
   border-radius: 18px;
+
   padding: 15px;
+
   text-align: center;
 }
+
 
 .ivy-summary {
   background: #fff1f6;
 }
 
+
 .charlotte-summary {
   background: #eef6ff;
 }
 
+
 .summary-number {
+
   font-size: 30px;
+
   font-weight: 900;
 }
 
+
 .summary-name {
+
   font-size: 12px;
+
   color: #7c8598;
+
   font-weight: 900;
+
   text-transform: uppercase;
 }
 
 
-/* SAVE */
+/* =========================================
+   SAVE
+   ========================================= */
 
 .save-area {
+
   text-align: center;
+
   margin-top: 28px;
 }
 
+
 .save-button {
+
   border: none;
-  background: linear-gradient(135deg, #6e72e8, #a257d5);
+
+  background:
+    linear-gradient(
+      135deg,
+      #6e72e8,
+      #a257d5
+    );
+
   color: white;
-  padding: 17px 35px;
+
+  padding:
+    17px
+    35px;
+
   border-radius: 18px;
+
   font-size: 16px;
+
   font-weight: 900;
+
   cursor: pointer;
-  box-shadow: 0 10px 25px rgba(100,80,200,.24);
+
+  box-shadow:
+    0 10px 25px
+    rgba(
+      100,
+      80,
+      200,
+      .24
+    );
 }
+
 
 .save-button:hover {
-  transform: translateY(-1px);
+
+  transform:
+    translateY(-1px);
 }
 
+
 .save-button:disabled {
+
   opacity: .55;
+
   cursor: default;
+
   transform: none;
 }
 
+
 .status {
+
   min-height: 30px;
+
   margin-top: 15px;
+
   font-weight: 900;
+
   font-size: 14px;
 }
+
 
 .status-saving {
   color: #7a6a9d;
 }
 
+
 .status-success {
   color: #168653;
 }
+
 
 .status-error {
   color: #d84c67;
 }
 
 
-/* MOBILE */
+/* =========================================
+   TRACKING SECTION
+   ========================================= */
+
+.tracking-section {
+
+  margin-top: 55px;
+}
+
+
+.tracking-heading {
+
+  text-align: center;
+
+  margin-bottom: 25px;
+}
+
+
+.tracking-heading .eyebrow {
+
+  color: #6d7b95;
+}
+
+
+.tracking-heading h2 {
+
+  margin:
+    7px
+    0
+    6px;
+
+  font-size: 32px;
+}
+
+
+.tracking-heading p {
+
+  margin: 0;
+
+  color: #8a93a5;
+
+  font-weight: 700;
+
+  line-height: 1.5;
+}
+
+
+.tracking-grid {
+
+  display: grid;
+
+  grid-template-columns:
+    1fr 1fr;
+
+  gap: 25px;
+}
+
+
+.tracking-card {
+
+  background: white;
+
+  border-radius: 30px;
+
+  padding: 27px;
+
+  box-shadow:
+    0 16px 45px
+    rgba(
+      42,
+      55,
+      90,
+      .10
+    );
+}
+
+
+.tracking-child {
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 14px;
+
+  padding-bottom: 20px;
+
+  border-bottom:
+    1px solid
+    #edf0f5;
+}
+
+
+.tracking-avatar {
+
+  width: 58px;
+
+  height: 58px;
+
+  border-radius: 50%;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  font-size: 30px;
+
+  flex-shrink: 0;
+}
+
+
+.tracking-child-name {
+
+  font-size: 22px;
+
+  font-weight: 900;
+}
+
+
+.tracking-child-grade {
+
+  color: #929aab;
+
+  font-size: 12px;
+
+  font-weight: 800;
+
+  margin-top: 3px;
+}
+
+
+.progress-summary {
+
+  margin:
+    20px
+    0;
+
+  padding: 18px;
+
+  border-radius: 20px;
+}
+
+
+.ivy-progress {
+  background: #fff3f7;
+}
+
+
+.charlotte-progress {
+  background: #f0f7ff;
+}
+
+
+.progress-big {
+
+  font-size: 28px;
+
+  font-weight: 900;
+}
+
+
+.progress-small {
+
+  margin-top: 5px;
+
+  color: #7d8799;
+
+  font-size: 13px;
+
+  font-weight: 800;
+}
+
+
+.progress-track-parent {
+
+  height: 10px;
+
+  margin-top: 13px;
+
+  background:
+    rgba(
+      255,
+      255,
+      255,
+      .85
+    );
+
+  border-radius: 999px;
+
+  overflow: hidden;
+}
+
+
+.progress-fill-parent {
+
+  height: 100%;
+
+  width: 0%;
+
+  border-radius: 999px;
+
+  transition:
+    width .4s ease;
+}
+
+
+.ivy-fill {
+
+  background:
+    linear-gradient(
+      90deg,
+      #ef8fb8,
+      #c46ae5
+    );
+}
+
+
+.charlotte-fill {
+
+  background:
+    linear-gradient(
+      90deg,
+      #72b8ff,
+      #7379e8
+    );
+}
+
+
+/* =========================================
+   ASSIGNED STATUS
+   ========================================= */
+
+.assigned-title {
+
+  margin:
+    22px
+    0
+    10px;
+
+  font-size: 12px;
+
+  font-weight: 900;
+
+  color: #7d8798;
+
+  text-transform: uppercase;
+
+  letter-spacing: 1px;
+}
+
+
+.assignment-status {
+
+  border:
+    1px solid
+    #e9edf4;
+
+  border-radius: 17px;
+
+  padding: 14px;
+
+  margin-bottom: 9px;
+
+  background: #fff;
+}
+
+
+.assignment-status.completed {
+
+  border-color: #ccebdc;
+
+  background: #f3fcf7;
+}
+
+
+.assignment-status.waiting {
+
+  background: #fafbfc;
+}
+
+
+.assignment-status-top {
+
+  display: flex;
+
+  justify-content: space-between;
+
+  align-items: flex-start;
+
+  gap: 10px;
+}
+
+
+.assignment-status-name {
+
+  font-size: 14px;
+
+  font-weight: 900;
+
+  line-height: 1.35;
+}
+
+
+.assignment-status-topic {
+
+  margin-top: 3px;
+
+  color: #929aaa;
+
+  font-size: 11px;
+
+  font-weight: 700;
+}
+
+
+.status-badge {
+
+  flex-shrink: 0;
+
+  border-radius: 999px;
+
+  padding:
+    6px
+    9px;
+
+  font-size: 10px;
+
+  font-weight: 900;
+
+  white-space: nowrap;
+}
+
+
+.badge-completed {
+
+  background: #daf5e6;
+
+  color: #157b50;
+}
+
+
+.badge-waiting {
+
+  background: #eef1f5;
+
+  color: #788293;
+}
+
+
+.assignment-score {
+
+  margin-top: 10px;
+
+  display: flex;
+
+  flex-wrap: wrap;
+
+  gap: 7px;
+}
+
+
+.score-pill {
+
+  display: inline-block;
+
+  border-radius: 999px;
+
+  padding:
+    6px
+    10px;
+
+  background: #eef4ff;
+
+  color: #3975d9;
+
+  font-size: 11px;
+
+  font-weight: 900;
+}
+
+
+.pass-pill {
+
+  background: #e5f8ee;
+
+  color: #158253;
+}
+
+
+.practice-pill {
+
+  background: #fff0f3;
+
+  color: #d94d69;
+}
+
+
+/* =========================================
+   ATTEMPTS
+   ========================================= */
+
+.attempts-title {
+
+  margin:
+    25px
+    0
+    10px;
+
+  font-size: 12px;
+
+  font-weight: 900;
+
+  color: #7d8798;
+
+  text-transform: uppercase;
+
+  letter-spacing: 1px;
+}
+
+
+.attempt-card {
+
+  padding:
+    13px
+    0;
+
+  border-bottom:
+    1px solid
+    #edf0f4;
+}
+
+
+.attempt-card:last-child {
+  border-bottom: none;
+}
+
+
+.attempt-name {
+
+  font-size: 14px;
+
+  font-weight: 900;
+}
+
+
+.attempt-meta {
+
+  margin-top: 5px;
+
+  color: #8d96a8;
+
+  font-size: 11px;
+
+  font-weight: 700;
+
+  line-height: 1.5;
+}
+
+
+.attempt-score {
+
+  margin-top: 7px;
+
+  font-size: 17px;
+
+  font-weight: 900;
+}
+
+
+.attempt-pass {
+  color: #168653;
+}
+
+
+.attempt-practice {
+  color: #d75a70;
+}
+
+
+.empty-results {
+
+  border:
+    2px dashed
+    #e5e9f0;
+
+  border-radius: 17px;
+
+  padding: 18px;
+
+  text-align: center;
+
+  color: #9aa2b1;
+
+  font-size: 12px;
+
+  font-weight: 800;
+
+  line-height: 1.5;
+}
+
+
+.tracking-loading {
+
+  text-align: center;
+
+  padding: 20px;
+
+  color: #8993a5;
+
+  font-size: 13px;
+
+  font-weight: 900;
+}
+
+
+.refresh-area {
+
+  text-align: center;
+
+  margin-top: 25px;
+}
+
+
+.refresh-button {
+
+  border:
+    2px solid
+    #e4e8f0;
+
+  background: white;
+
+  color: #526078;
+
+  border-radius: 15px;
+
+  padding:
+    12px
+    19px;
+
+  font-size: 13px;
+
+  font-weight: 900;
+
+  cursor: pointer;
+}
+
+
+.refresh-button:hover {
+  background: #f8f9fc;
+}
+
+
+/* =========================================
+   MOBILE
+   ========================================= */
 
 @media (max-width: 760px) {
 
-  .children-grid {
-    grid-template-columns: 1fr;
+  .children-grid,
+  .tracking-grid {
+
+    grid-template-columns:
+      1fr;
+
   }
+
+
+  .summary-grid {
+
+    grid-template-columns:
+      1fr 1fr;
+
+  }
+
 
   .header h1 {
     font-size: 31px;
   }
 
-  .child-card {
+
+  .tracking-heading h2 {
+    font-size: 27px;
+  }
+
+
+  .child-card,
+  .tracking-card {
     padding: 22px;
   }
 
+
   .wrapper {
+
     padding-left: 12px;
+
     padding-right: 12px;
+
   }
 
 }
@@ -369,6 +1247,7 @@ body {
 </style>
 
 </head>
+
 
 
 <body>
@@ -386,8 +1265,13 @@ body {
 </div>
 
 
+
 <div class="wrapper">
 
+
+  <!-- =========================================
+       HEADER
+       ========================================= -->
 
   <div class="header">
 
@@ -405,12 +1289,16 @@ body {
 
     <p>
       Choose what Ivy-Rose and Charlotte need to complete today.
-      Their assignments will appear on their learning hub on any device.
+      Their assignments and completed results stay connected across devices.
     </p>
 
   </div>
 
 
+
+  <!-- =========================================
+       DATE
+       ========================================= -->
 
   <div class="date-card">
 
@@ -429,12 +1317,14 @@ body {
 
 
 
+  <!-- =========================================
+       ASSIGNMENTS
+       ========================================= -->
+
   <div class="children-grid">
 
 
-    <!-- =========================================
-         IVY-ROSE
-         ========================================= -->
+    <!-- IVY -->
 
     <div class="child-card">
 
@@ -545,9 +1435,7 @@ body {
 
 
 
-    <!-- =========================================
-         CHARLOTTE
-         ========================================= -->
+    <!-- CHARLOTTE -->
 
     <div class="child-card">
 
@@ -619,13 +1507,12 @@ body {
 
     </div>
 
-
   </div>
 
 
 
   <!-- =========================================
-       SUMMARY
+       ASSIGNMENT SUMMARY
        ========================================= -->
 
   <div class="summary-card">
@@ -673,6 +1560,10 @@ body {
 
 
 
+  <!-- =========================================
+       SAVE
+       ========================================= -->
+
   <div class="save-area">
 
     <button
@@ -691,6 +1582,222 @@ body {
   </div>
 
 
+
+  <!-- =========================================
+       TRACKING
+       ========================================= -->
+
+  <section class="tracking-section">
+
+
+    <div class="tracking-heading">
+
+      <div class="eyebrow">
+        Live Tracking
+      </div>
+
+      <h2>
+        📊 Today's Progress
+      </h2>
+
+      <p>
+        See what the girls have completed and every test attempt recorded today.
+      </p>
+
+    </div>
+
+
+
+    <div class="tracking-grid">
+
+
+      <!-- IVY TRACKING -->
+
+      <div class="tracking-card">
+
+        <div class="tracking-child">
+
+          <div class="tracking-avatar ivy-avatar">
+            🌸
+          </div>
+
+          <div>
+
+            <div class="tracking-child-name">
+              Ivy-Rose
+            </div>
+
+            <div class="tracking-child-grade">
+              Grade 2 • Today's results
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <div
+          id="ivyProgressSummary"
+          class="progress-summary ivy-progress"
+        >
+
+          <div
+            id="ivyProgressBig"
+            class="progress-big"
+          >
+            0 / 0
+          </div>
+
+          <div
+            id="ivyProgressSmall"
+            class="progress-small"
+          >
+            assignments completed
+          </div>
+
+          <div class="progress-track-parent">
+
+            <div
+              id="ivyProgressFill"
+              class="progress-fill-parent ivy-fill"
+            ></div>
+
+          </div>
+
+        </div>
+
+
+        <div class="assigned-title">
+          Today's Assignments
+        </div>
+
+        <div id="ivyAssignedStatus">
+
+          <div class="tracking-loading">
+            Loading...
+          </div>
+
+        </div>
+
+
+        <div class="attempts-title">
+          Today's Attempts
+        </div>
+
+        <div id="ivyAttempts">
+
+          <div class="tracking-loading">
+            Loading...
+          </div>
+
+        </div>
+
+      </div>
+
+
+
+      <!-- CHARLOTTE TRACKING -->
+
+      <div class="tracking-card">
+
+        <div class="tracking-child">
+
+          <div class="tracking-avatar charlotte-avatar">
+            🌈
+          </div>
+
+          <div>
+
+            <div class="tracking-child-name">
+              Charlotte
+            </div>
+
+            <div class="tracking-child-grade">
+              Grade 1 • Today's results
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <div
+          id="charlotteProgressSummary"
+          class="progress-summary charlotte-progress"
+        >
+
+          <div
+            id="charlotteProgressBig"
+            class="progress-big"
+          >
+            0 / 0
+          </div>
+
+          <div
+            id="charlotteProgressSmall"
+            class="progress-small"
+          >
+            assignments completed
+          </div>
+
+          <div class="progress-track-parent">
+
+            <div
+              id="charlotteProgressFill"
+              class="progress-fill-parent charlotte-fill"
+            ></div>
+
+          </div>
+
+        </div>
+
+
+        <div class="assigned-title">
+          Today's Assignments
+        </div>
+
+        <div id="charlotteAssignedStatus">
+
+          <div class="tracking-loading">
+            Loading...
+          </div>
+
+        </div>
+
+
+        <div class="attempts-title">
+          Today's Attempts
+        </div>
+
+        <div id="charlotteAttempts">
+
+          <div class="tracking-loading">
+            Loading...
+          </div>
+
+        </div>
+
+      </div>
+
+
+    </div>
+
+
+    <div class="refresh-area">
+
+      <button
+        class="refresh-button"
+        onclick="refreshTracking()"
+      >
+        ↻ REFRESH RESULTS
+      </button>
+
+    </div>
+
+
+  </section>
+
+
 </div>
 
 
@@ -699,8 +1806,9 @@ body {
 
 
 /* =========================================
-   FIREBASE
+   FIREBASE IMPORTS
    ========================================= */
+
 
 import {
   initializeApp
@@ -708,12 +1816,26 @@ import {
 
 
 import {
+
   getFirestore,
+
   doc,
+
   getDoc,
-  setDoc
+
+  setDoc,
+
+  collection,
+
+  getDocs
+
 } from "https://www.gstatic.com/firebasejs/12.5.0/firebase-firestore.js";
 
+
+
+/* =========================================
+   FIREBASE CONFIG
+   ========================================= */
 
 
 const firebaseConfig = {
@@ -739,6 +1861,7 @@ const firebaseConfig = {
 };
 
 
+
 const app =
   initializeApp(
     firebaseConfig
@@ -756,19 +1879,18 @@ const db =
    DATE
    ========================================= */
 
-function getLocalDateKey() {
 
-  const now =
-    new Date();
-
+function getLocalDateKey(
+  date = new Date()
+) {
 
   const year =
-    now.getFullYear();
+    date.getFullYear();
 
 
   const month =
     String(
-      now.getMonth() + 1
+      date.getMonth() + 1
     ).padStart(
       2,
       "0"
@@ -777,34 +1899,51 @@ function getLocalDateKey() {
 
   const day =
     String(
-      now.getDate()
+      date.getDate()
     ).padStart(
       2,
       "0"
     );
 
 
-  return `${year}-${month}-${day}`;
+  return (
+    `${year}-${month}-${day}`
+  );
 
 }
+
 
 
 const todayKey =
   getLocalDateKey();
 
 
+
 const todayPretty =
   new Intl.DateTimeFormat(
+
     "en-GB",
+
     {
-      weekday: "long",
-      day: "numeric",
-      month: "long",
-      year: "numeric"
+
+      weekday:
+        "long",
+
+      day:
+        "numeric",
+
+      month:
+        "long",
+
+      year:
+        "numeric"
+
     }
+
   ).format(
     new Date()
   );
+
 
 
 document.getElementById(
@@ -815,8 +1954,9 @@ document.getElementById(
 
 
 /* =========================================
-   CHECKBOX DESIGN
+   CHECKBOXES
    ========================================= */
+
 
 const checkboxes =
   document.querySelectorAll(
@@ -824,31 +1964,47 @@ const checkboxes =
   );
 
 
+
 checkboxes.forEach(
-  function(checkbox) {
+
+  function(
+    checkbox
+  ) {
+
 
     checkbox.addEventListener(
+
       "change",
+
       function() {
 
+
         updateSelectedDesign();
+
 
         updateCounts();
 
       }
+
     );
 
   }
+
 );
 
 
 
 function updateSelectedDesign() {
 
+
   document.querySelectorAll(
     ".exercise-option"
   ).forEach(
-    function(option) {
+
+    function(
+      option
+    ) {
+
 
       const checkbox =
         option.querySelector(
@@ -861,13 +2017,14 @@ function updateSelectedDesign() {
         checkbox.checked
       ) {
 
+
         option.classList.add(
           "selected"
         );
 
-      }
 
-      else {
+      } else {
+
 
         option.classList.remove(
           "selected"
@@ -876,6 +2033,7 @@ function updateSelectedDesign() {
       }
 
     }
+
   );
 
 }
@@ -884,40 +2042,52 @@ function updateSelectedDesign() {
 
 function updateCounts() {
 
-  let ivyCount = 0;
 
-  let charlotteCount = 0;
+  let ivyCount =
+    0;
+
+
+  let charlotteCount =
+    0;
 
 
   checkboxes.forEach(
-    function(checkbox) {
+
+    function(
+      checkbox
+    ) {
+
 
       if (
-        checkbox.checked
+        !checkbox.checked
       ) {
 
-        if (
-          checkbox.dataset.child ===
-          "ivy"
-        ) {
+        return;
 
-          ivyCount++;
-
-        }
+      }
 
 
-        if (
-          checkbox.dataset.child ===
-          "charlotte"
-        ) {
+      if (
+        checkbox.dataset.child ===
+        "ivy"
+      ) {
 
-          charlotteCount++;
+        ivyCount++;
 
-        }
+      }
+
+
+      if (
+        checkbox.dataset.child ===
+        "charlotte"
+      ) {
+
+        charlotteCount++;
 
       }
 
     }
+
   );
 
 
@@ -937,12 +2107,14 @@ function updateCounts() {
 
 
 /* =========================================
-   CREATE ASSIGNMENT OBJECT
+   ASSIGNMENT OBJECT
    ========================================= */
+
 
 function checkboxToAssignment(
   checkbox
 ) {
+
 
   return {
 
@@ -974,10 +2146,61 @@ function checkboxToAssignment(
 
 
 /* =========================================
-   LOAD TODAY'S EXISTING ASSIGNMENTS
+   LOAD ASSIGNMENTS
    ========================================= */
 
+
+async function getAssignmentsForChild(
+  child
+) {
+
+
+  const reference =
+    doc(
+      db,
+      "assignments",
+      `${todayKey}-${child}`
+    );
+
+
+  const snapshot =
+    await getDoc(
+      reference
+    );
+
+
+  if (
+    !snapshot.exists()
+  ) {
+
+    return [];
+
+  }
+
+
+  const data =
+    snapshot.data();
+
+
+  if (
+    !Array.isArray(
+      data.exercises
+    )
+  ) {
+
+    return [];
+
+  }
+
+
+  return data.exercises;
+
+}
+
+
+
 async function loadAssignments() {
+
 
   const status =
     document.getElementById(
@@ -996,100 +2219,44 @@ async function loadAssignments() {
   try {
 
 
-    const ivyReference =
-      doc(
-        db,
-        "assignments",
-        `${todayKey}-ivy`
-      );
-
-
-    const charlotteReference =
-      doc(
-        db,
-        "assignments",
-        `${todayKey}-charlotte`
-      );
-
-
     const [
-      ivySnapshot,
-      charlotteSnapshot
+      ivyExercises,
+      charlotteExercises
     ] =
       await Promise.all([
-        getDoc(
-          ivyReference
+
+        getAssignmentsForChild(
+          "ivy"
         ),
-        getDoc(
-          charlotteReference
+
+        getAssignmentsForChild(
+          "charlotte"
         )
+
       ]);
 
 
-    let selectedIds =
-      [];
+    const selectedIds = [
 
+      ...ivyExercises.map(
+        exercise =>
+          exercise.id
+      ),
 
-    if (
-      ivySnapshot.exists()
-    ) {
+      ...charlotteExercises.map(
+        exercise =>
+          exercise.id
+      )
 
-      const ivyData =
-        ivySnapshot.data();
-
-
-      if (
-        Array.isArray(
-          ivyData.exercises
-        )
-      ) {
-
-        selectedIds.push(
-          ...ivyData.exercises.map(
-            function(exercise) {
-
-              return exercise.id;
-
-            }
-          )
-        );
-
-      }
-
-    }
-
-
-    if (
-      charlotteSnapshot.exists()
-    ) {
-
-      const charlotteData =
-        charlotteSnapshot.data();
-
-
-      if (
-        Array.isArray(
-          charlotteData.exercises
-        )
-      ) {
-
-        selectedIds.push(
-          ...charlotteData.exercises.map(
-            function(exercise) {
-
-              return exercise.id;
-
-            }
-          )
-        );
-
-      }
-
-    }
+    ];
 
 
     checkboxes.forEach(
-      function(checkbox) {
+
+      function(
+        checkbox
+      ) {
+
 
         checkbox.checked =
           selectedIds.includes(
@@ -1097,10 +2264,12 @@ async function loadAssignments() {
           );
 
       }
+
     );
 
 
     updateSelectedDesign();
+
 
     updateCounts();
 
@@ -1108,9 +2277,22 @@ async function loadAssignments() {
     status.textContent =
       "";
 
-  }
 
-  catch (error) {
+    return {
+
+      ivy:
+        ivyExercises,
+
+      charlotte:
+        charlotteExercises
+
+    };
+
+
+  } catch (
+    error
+  ) {
+
 
     console.error(
       error
@@ -1124,6 +2306,15 @@ async function loadAssignments() {
     status.textContent =
       "Could not load assignments. Check the Firebase connection.";
 
+
+    return {
+
+      ivy: [],
+
+      charlotte: []
+
+    };
+
   }
 
 }
@@ -1131,11 +2322,13 @@ async function loadAssignments() {
 
 
 /* =========================================
-   SAVE TODAY'S ASSIGNMENTS
+   SAVE ASSIGNMENTS
    ========================================= */
+
 
 window.saveAssignments =
 async function() {
+
 
   const saveButton =
     document.getElementById(
@@ -1173,7 +2366,11 @@ async function() {
 
 
     checkboxes.forEach(
-      function(checkbox) {
+
+      function(
+        checkbox
+      ) {
+
 
         if (
           !checkbox.checked
@@ -1214,6 +2411,7 @@ async function() {
         }
 
       }
+
     );
 
 
@@ -1222,11 +2420,13 @@ async function() {
 
 
       setDoc(
+
         doc(
           db,
           "assignments",
           `${todayKey}-ivy`
         ),
+
         {
 
           child:
@@ -1242,18 +2442,22 @@ async function() {
             ivyExercises,
 
           updatedAt:
-            new Date().toISOString()
+            new Date()
+              .toISOString()
 
         }
+
       ),
 
 
       setDoc(
+
         doc(
           db,
           "assignments",
           `${todayKey}-charlotte`
         ),
+
         {
 
           child:
@@ -1269,9 +2473,11 @@ async function() {
             charlotteExercises,
 
           updatedAt:
-            new Date().toISOString()
+            new Date()
+              .toISOString()
 
         }
+
       )
 
 
@@ -1286,20 +2492,26 @@ async function() {
       "✓ Today's assignments have been saved!";
 
 
+    await loadTracking();
+
+
     setTimeout(
+
       function() {
 
         status.textContent =
           "";
 
       },
+
       4000
+
     );
 
 
-  }
-
-  catch (error) {
+  } catch (
+    error
+  ) {
 
 
     console.error(
@@ -1315,16 +2527,1087 @@ async function() {
       "Something went wrong. The assignments were not saved.";
 
 
-  }
-
-  finally {
+  } finally {
 
 
     saveButton.disabled =
       false;
 
+  }
+
+};
+
+
+
+/* =========================================
+   RESULT HELPERS
+   ========================================= */
+
+
+function getResultChildId(
+  result
+) {
+
+
+  if (
+    result.childId
+  ) {
+
+    return String(
+      result.childId
+    ).toLowerCase();
 
   }
+
+
+  const child =
+    String(
+      result.child || ""
+    ).toLowerCase();
+
+
+  if (
+    child.includes(
+      "ivy"
+    )
+  ) {
+
+    return "ivy";
+
+  }
+
+
+  if (
+    child.includes(
+      "charlotte"
+    )
+  ) {
+
+    return "charlotte";
+
+  }
+
+
+  return "";
+
+}
+
+
+
+function getResultDateKey(
+  result
+) {
+
+
+  if (
+    result.date
+  ) {
+
+    return result.date;
+
+  }
+
+
+  if (
+    !result.timestamp
+  ) {
+
+    return "";
+
+  }
+
+
+  const date =
+    new Date(
+      result.timestamp
+    );
+
+
+  if (
+    Number.isNaN(
+      date.getTime()
+    )
+  ) {
+
+    return "";
+
+  }
+
+
+  return getLocalDateKey(
+    date
+  );
+
+}
+
+
+
+function formatTime(
+  timestamp
+) {
+
+
+  if (
+    !timestamp
+  ) {
+
+    return "";
+
+  }
+
+
+  const date =
+    new Date(
+      timestamp
+    );
+
+
+  if (
+    Number.isNaN(
+      date.getTime()
+    )
+  ) {
+
+    return "";
+
+  }
+
+
+  return new Intl.DateTimeFormat(
+
+    "en-GB",
+
+    {
+
+      hour:
+        "numeric",
+
+      minute:
+        "2-digit"
+
+    }
+
+  ).format(
+    date
+  );
+
+}
+
+
+
+/* =========================================
+   LOAD RESULTS
+   ========================================= */
+
+
+async function getTodayResults() {
+
+
+  const snapshot =
+    await getDocs(
+      collection(
+        db,
+        "results"
+      )
+    );
+
+
+  const results =
+    [];
+
+
+  snapshot.forEach(
+
+    function(
+      documentSnapshot
+    ) {
+
+
+      const result =
+        documentSnapshot.data();
+
+
+      result.firebaseId =
+        documentSnapshot.id;
+
+
+      if (
+        getResultDateKey(
+          result
+        ) ===
+        todayKey
+      ) {
+
+        results.push(
+          result
+        );
+
+      }
+
+    }
+
+  );
+
+
+  results.sort(
+
+    function(
+      a,
+      b
+    ) {
+
+
+      return (
+        new Date(
+          b.timestamp || 0
+        ).getTime()
+        -
+        new Date(
+          a.timestamp || 0
+        ).getTime()
+      );
+
+    }
+
+  );
+
+
+  return results;
+
+}
+
+
+
+/* =========================================
+   BEST RESULT FOR ASSIGNMENT
+   ========================================= */
+
+
+function getBestResultForExercise(
+  exerciseId,
+  results
+) {
+
+
+  const matching =
+    results.filter(
+
+      function(
+        result
+      ) {
+
+        return (
+          result.exerciseId ===
+          exerciseId
+        );
+
+      }
+
+    );
+
+
+  if (
+    matching.length === 0
+  ) {
+
+    return null;
+
+  }
+
+
+  matching.sort(
+
+    function(
+      a,
+      b
+    ) {
+
+
+      const scoreA =
+        Number(
+          a.percentage || 0
+        );
+
+
+      const scoreB =
+        Number(
+          b.percentage || 0
+        );
+
+
+      if (
+        scoreB !==
+        scoreA
+      ) {
+
+        return (
+          scoreB -
+          scoreA
+        );
+
+      }
+
+
+      return (
+        new Date(
+          b.timestamp || 0
+        ).getTime()
+        -
+        new Date(
+          a.timestamp || 0
+        ).getTime()
+      );
+
+    }
+
+  );
+
+
+  return matching[0];
+
+}
+
+
+
+/* =========================================
+   RENDER ASSIGNED EXERCISES
+   ========================================= */
+
+
+function renderAssignedExercises(
+
+  child,
+  assignments,
+  results
+
+) {
+
+
+  const container =
+    document.getElementById(
+      `${child}AssignedStatus`
+    );
+
+
+  if (
+    assignments.length === 0
+  ) {
+
+
+    container.innerHTML = `
+
+      <div class="empty-results">
+
+        No assignments selected for today.
+
+      </div>
+
+    `;
+
+
+    return 0;
+
+  }
+
+
+  let completed =
+    0;
+
+
+  container.innerHTML =
+    assignments.map(
+
+      function(
+        assignment
+      ) {
+
+
+        const best =
+          getBestResultForExercise(
+            assignment.id,
+            results
+          );
+
+
+        if (best) {
+
+          completed++;
+
+        }
+
+
+        if (!best) {
+
+
+          return `
+
+            <div class="assignment-status waiting">
+
+              <div class="assignment-status-top">
+
+                <div>
+
+                  <div class="assignment-status-name">
+                    ${escapeHtml(
+                      assignment.exercise
+                    )}
+                  </div>
+
+                  <div class="assignment-status-topic">
+                    ${escapeHtml(
+                      assignment.subject
+                    )}
+                    •
+                    ${escapeHtml(
+                      assignment.topic
+                    )}
+                  </div>
+
+                </div>
+
+                <div class="status-badge badge-waiting">
+                  ⏳ NOT DONE
+                </div>
+
+              </div>
+
+            </div>
+
+          `;
+
+        }
+
+
+        const passed =
+          best.passed === true;
+
+
+        return `
+
+          <div class="assignment-status completed">
+
+            <div class="assignment-status-top">
+
+              <div>
+
+                <div class="assignment-status-name">
+                  ${escapeHtml(
+                    assignment.exercise
+                  )}
+                </div>
+
+                <div class="assignment-status-topic">
+                  ${escapeHtml(
+                    assignment.subject
+                  )}
+                  •
+                  ${escapeHtml(
+                    assignment.topic
+                  )}
+                </div>
+
+              </div>
+
+              <div class="status-badge badge-completed">
+                ✓ COMPLETED
+              </div>
+
+            </div>
+
+
+            <div class="assignment-score">
+
+              <span class="score-pill">
+
+                ${Number(
+                  best.score || 0
+                )}
+                /
+                ${Number(
+                  best.total || 0
+                )}
+
+              </span>
+
+
+              <span class="score-pill">
+
+                ${Number(
+                  best.percentage || 0
+                )}%
+
+              </span>
+
+
+              <span class="score-pill ${
+                passed
+                  ? "pass-pill"
+                  : "practice-pill"
+              }">
+
+                ${
+                  passed
+                    ? "✓ PASSED"
+                    : "PRACTISE"
+                }
+
+              </span>
+
+
+              ${
+                best.timestamp
+                  ? `
+
+                    <span class="score-pill">
+                      🕒 ${formatTime(
+                        best.timestamp
+                      )}
+                    </span>
+
+                  `
+                  : ""
+              }
+
+            </div>
+
+          </div>
+
+        `;
+
+      }
+
+    ).join(
+      ""
+    );
+
+
+  return completed;
+
+}
+
+
+
+/* =========================================
+   RENDER ATTEMPTS
+   ========================================= */
+
+
+function renderAttempts(
+
+  child,
+  results
+
+) {
+
+
+  const container =
+    document.getElementById(
+      `${child}Attempts`
+    );
+
+
+  if (
+    results.length === 0
+  ) {
+
+
+    container.innerHTML = `
+
+      <div class="empty-results">
+
+        No completed tests recorded today yet.
+
+      </div>
+
+    `;
+
+
+    return;
+
+  }
+
+
+  container.innerHTML =
+    results.map(
+
+      function(
+        result
+      ) {
+
+
+        const passed =
+          result.passed === true;
+
+
+        const exerciseName =
+          result.exercise ||
+          result.exerciseId ||
+          "Exercise";
+
+
+        return `
+
+          <div class="attempt-card">
+
+            <div class="attempt-name">
+
+              ${escapeHtml(
+                exerciseName
+              )}
+
+            </div>
+
+
+            <div class="attempt-meta">
+
+              ${escapeHtml(
+                result.subject ||
+                ""
+              )}
+
+              ${
+                result.topic
+                  ? ` • ${escapeHtml(
+                      result.topic
+                    )}`
+                  : ""
+              }
+
+              ${
+                result.timestamp
+                  ? ` • ${formatTime(
+                      result.timestamp
+                    )}`
+                  : ""
+              }
+
+            </div>
+
+
+            <div
+              class="attempt-score ${
+                passed
+                  ? "attempt-pass"
+                  : "attempt-practice"
+              }"
+            >
+
+              ${Number(
+                result.score || 0
+              )}
+              /
+              ${Number(
+                result.total || 0
+              )}
+
+              •
+
+              ${Number(
+                result.percentage || 0
+              )}%
+
+              ${
+                passed
+                  ? " • ✓ PASSED"
+                  : " • PRACTISE"
+              }
+
+            </div>
+
+          </div>
+
+        `;
+
+      }
+
+    ).join(
+      ""
+    );
+
+}
+
+
+
+/* =========================================
+   PROGRESS SUMMARY
+   ========================================= */
+
+
+function renderProgressSummary(
+
+  child,
+  completed,
+  total
+
+) {
+
+
+  const big =
+    document.getElementById(
+      `${child}ProgressBig`
+    );
+
+
+  const small =
+    document.getElementById(
+      `${child}ProgressSmall`
+    );
+
+
+  const fill =
+    document.getElementById(
+      `${child}ProgressFill`
+    );
+
+
+  big.textContent =
+    `${completed} / ${total}`;
+
+
+  if (
+    total === 0
+  ) {
+
+
+    small.textContent =
+      "no assignments selected today";
+
+
+    fill.style.width =
+      "0%";
+
+
+    return;
+
+  }
+
+
+  if (
+    completed === total
+  ) {
+
+
+    small.textContent =
+      "🎉 all today's assignments completed!";
+
+
+  } else {
+
+
+    const remaining =
+      total -
+      completed;
+
+
+    small.textContent =
+      `${remaining} assignment${
+        remaining === 1
+          ? ""
+          : "s"
+      } still to complete`;
+
+  }
+
+
+  const percentage =
+    Math.round(
+      (
+        completed /
+        total
+      ) *
+      100
+    );
+
+
+  fill.style.width =
+    `${percentage}%`;
+
+}
+
+
+
+/* =========================================
+   ESCAPE HTML
+   ========================================= */
+
+
+function escapeHtml(
+  value
+) {
+
+
+  return String(
+    value || ""
+  )
+
+    .replaceAll(
+      "&",
+      "&amp;"
+    )
+
+    .replaceAll(
+      "<",
+      "&lt;"
+    )
+
+    .replaceAll(
+      ">",
+      "&gt;"
+    )
+
+    .replaceAll(
+      '"',
+      "&quot;"
+    )
+
+    .replaceAll(
+      "'",
+      "&#039;"
+    );
+
+}
+
+
+
+/* =========================================
+   LOAD TRACKING
+   ========================================= */
+
+
+async function loadTracking() {
+
+
+  const ivyAssigned =
+    document.getElementById(
+      "ivyAssignedStatus"
+    );
+
+
+  const charlotteAssigned =
+    document.getElementById(
+      "charlotteAssignedStatus"
+    );
+
+
+  const ivyAttempts =
+    document.getElementById(
+      "ivyAttempts"
+    );
+
+
+  const charlotteAttempts =
+    document.getElementById(
+      "charlotteAttempts"
+    );
+
+
+  ivyAssigned.innerHTML =
+    `<div class="tracking-loading">Loading...</div>`;
+
+
+  charlotteAssigned.innerHTML =
+    `<div class="tracking-loading">Loading...</div>`;
+
+
+  ivyAttempts.innerHTML =
+    `<div class="tracking-loading">Loading...</div>`;
+
+
+  charlotteAttempts.innerHTML =
+    `<div class="tracking-loading">Loading...</div>`;
+
+
+  try {
+
+
+    const [
+
+      ivyAssignments,
+
+      charlotteAssignments,
+
+      allTodayResults
+
+    ] =
+      await Promise.all([
+
+        getAssignmentsForChild(
+          "ivy"
+        ),
+
+        getAssignmentsForChild(
+          "charlotte"
+        ),
+
+        getTodayResults()
+
+      ]);
+
+
+
+    const ivyResults =
+      allTodayResults.filter(
+
+        function(
+          result
+        ) {
+
+          return (
+            getResultChildId(
+              result
+            ) ===
+            "ivy"
+          );
+
+        }
+
+      );
+
+
+
+    const charlotteResults =
+      allTodayResults.filter(
+
+        function(
+          result
+        ) {
+
+          return (
+            getResultChildId(
+              result
+            ) ===
+            "charlotte"
+          );
+
+        }
+
+      );
+
+
+
+    const ivyCompleted =
+      renderAssignedExercises(
+
+        "ivy",
+
+        ivyAssignments,
+
+        ivyResults
+
+      );
+
+
+
+    const charlotteCompleted =
+      renderAssignedExercises(
+
+        "charlotte",
+
+        charlotteAssignments,
+
+        charlotteResults
+
+      );
+
+
+
+    renderProgressSummary(
+
+      "ivy",
+
+      ivyCompleted,
+
+      ivyAssignments.length
+
+    );
+
+
+
+    renderProgressSummary(
+
+      "charlotte",
+
+      charlotteCompleted,
+
+      charlotteAssignments.length
+
+    );
+
+
+
+    renderAttempts(
+
+      "ivy",
+
+      ivyResults
+
+    );
+
+
+
+    renderAttempts(
+
+      "charlotte",
+
+      charlotteResults
+
+    );
+
+
+  } catch (
+    error
+  ) {
+
+
+    console.error(
+      "Could not load tracking:",
+      error
+    );
+
+
+    const errorMessage = `
+
+      <div class="empty-results">
+
+        Could not load tracking right now.
+        Please refresh the page.
+
+      </div>
+
+    `;
+
+
+    ivyAssigned.innerHTML =
+      errorMessage;
+
+
+    charlotteAssigned.innerHTML =
+      errorMessage;
+
+
+    ivyAttempts.innerHTML =
+      errorMessage;
+
+
+    charlotteAttempts.innerHTML =
+      errorMessage;
+
+  }
+
+}
+
+
+
+/* =========================================
+   REFRESH BUTTON
+   ========================================= */
+
+
+window.refreshTracking =
+async function() {
+
+
+  await loadTracking();
 
 };
 
@@ -1334,11 +3617,25 @@ async function() {
    START
    ========================================= */
 
-loadAssignments();
+
+async function startDashboard() {
+
+
+  await loadAssignments();
+
+
+  await loadTracking();
+
+}
+
+
+
+startDashboard();
 
 
 </script>
 
 
 </body>
+
 </html>
