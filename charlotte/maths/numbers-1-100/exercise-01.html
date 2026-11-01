@@ -1,10 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Charlotte • Number Board 1–100</title>
+<head>
+
+<meta charset="UTF-8">
+
+<meta
+  name="viewport"
+  content="width=device-width, initial-scale=1.0"
+>
+
+<title>
+  Charlotte • Number Board 1–100
+</title>
+
 
 <style>
 
@@ -12,146 +21,329 @@
   box-sizing: border-box;
 }
 
+
 body {
+
   margin: 0;
-  font-family: Arial, Helvetica, sans-serif;
+
+  font-family:
+    Arial,
+    Helvetica,
+    sans-serif;
+
   background:
-    radial-gradient(circle at 10% 10%, #fff0f7 0, transparent 25%),
-    radial-gradient(circle at 90% 15%, #eaf5ff 0, transparent 28%),
-    radial-gradient(circle at 50% 100%, #fff8d8 0, transparent 30%),
+    radial-gradient(
+      circle at 10% 10%,
+      #fff0f7 0,
+      transparent 25%
+    ),
+    radial-gradient(
+      circle at 90% 15%,
+      #eaf5ff 0,
+      transparent 28%
+    ),
+    radial-gradient(
+      circle at 50% 100%,
+      #fff8d8 0,
+      transparent 30%
+    ),
     #f8f9fd;
+
   color: #172033;
+
   min-height: 100vh;
+
 }
+
 
 .topbar {
+
   max-width: 900px;
+
   margin: auto;
-  padding: 24px 20px 5px;
+
+  padding:
+    24px
+    20px
+    5px;
+
 }
+
 
 .back {
+
   text-decoration: none;
+
   color: #69738a;
+
   font-size: 14px;
+
   font-weight: 900;
+
 }
+
 
 .wrapper {
+
   max-width: 900px;
+
   margin: auto;
-  padding: 15px 18px 60px;
+
+  padding:
+    15px
+    18px
+    60px;
+
 }
+
 
 .heading {
+
   text-align: center;
+
   margin-bottom: 20px;
+
 }
+
 
 .eyebrow {
+
   font-size: 13px;
+
   font-weight: 900;
+
   color: #8b77b7;
+
   text-transform: uppercase;
+
   letter-spacing: 1px;
+
 }
+
 
 .heading h1 {
-  margin: 7px 0 5px;
+
+  margin:
+    7px
+    0
+    5px;
+
   font-size: 37px;
+
 }
 
+
 .heading p {
+
   margin: 0;
+
   color: #7d879b;
+
   font-weight: 700;
+
 }
 
 
 /* SCORE */
 
 .score-area {
+
   max-width: 700px;
-  margin: 23px auto 18px;
+
+  margin:
+    23px
+    auto
+    18px;
+
   display: flex;
+
   justify-content: space-between;
+
   align-items: center;
+
   gap: 12px;
+
 }
+
 
 .progress-text {
+
   font-weight: 900;
+
   color: #66718a;
+
 }
 
+
 .score-box {
+
   background: white;
-  padding: 10px 16px;
+
+  padding:
+    10px
+    16px;
+
   border-radius: 999px;
+
   font-weight: 900;
-  box-shadow: 0 6px 20px rgba(40,50,80,.08);
+
+  box-shadow:
+    0 6px 20px
+    rgba(
+      40,
+      50,
+      80,
+      .08
+    );
+
 }
 
 
 /* MAIN CARD */
 
 .card {
-  background: rgba(255,255,255,.96);
+
+  background:
+    rgba(
+      255,
+      255,
+      255,
+      .96
+    );
+
   border-radius: 30px;
+
   padding: 28px;
-  box-shadow: 0 16px 45px rgba(42,55,90,.10);
+
+  box-shadow:
+    0 16px 45px
+    rgba(
+      42,
+      55,
+      90,
+      .10
+    );
+
 }
+
 
 .board-title {
+
   text-align: center;
+
   margin-bottom: 21px;
+
 }
+
 
 .rainbow {
+
   font-size: 37px;
+
   margin-bottom: 3px;
+
 }
+
 
 .board-title h2 {
+
   margin: 0;
+
   font-size: 27px;
+
 }
 
+
 .board-title p {
-  margin: 6px 0 0;
+
+  margin:
+    6px
+    0
+    0;
+
   color: #8b94a6;
+
   font-weight: 700;
+
 }
 
 
 /* NUMBER BOARD */
 
 .board {
+
   display: grid;
-  grid-template-columns: repeat(10, 1fr);
+
+  grid-template-columns:
+    repeat(
+      10,
+      1fr
+    );
+
   max-width: 700px;
+
   margin: auto;
-  border: 3px solid #8657c7;
+
+  border:
+    3px solid
+    #8657c7;
+
   border-radius: 18px;
+
   overflow: hidden;
+
 }
 
+
 .cell {
-  aspect-ratio: 1 / 1;
+
+  aspect-ratio:
+    1 / 1;
+
   min-width: 0;
-  border-right: 1px solid rgba(95,70,145,.35);
-  border-bottom: 1px solid rgba(95,70,145,.35);
+
+  border-right:
+    1px solid
+    rgba(
+      95,
+      70,
+      145,
+      .35
+    );
+
+  border-bottom:
+    1px solid
+    rgba(
+      95,
+      70,
+      145,
+      .35
+    );
+
   display: flex;
+
   align-items: center;
+
   justify-content: center;
-  font-size: clamp(14px, 2.5vw, 24px);
+
+  font-size:
+    clamp(
+      14px,
+      2.5vw,
+      24px
+    );
+
   font-weight: 900;
+
   position: relative;
+
 }
+
 
 .cell:nth-child(10n) {
   border-right: none;
 }
+
 
 .row1 {
   background: #ffe4ef;
@@ -197,51 +389,99 @@ body {
 /* INPUT */
 
 .number-input {
+
   width: 82%;
+
   height: 72%;
-  border: 2px dashed #9b78d1;
+
+  border:
+    2px dashed
+    #9b78d1;
+
   border-radius: 9px;
+
   background: white;
+
   text-align: center;
+
   font-size: inherit;
+
   font-weight: 900;
+
   color: #172033;
+
   outline: none;
+
   padding: 0;
+
 }
+
 
 .number-input:focus {
+
   border-style: solid;
+
   border-color: #5d85ea;
-  box-shadow: 0 0 0 3px rgba(93,133,234,.15);
+
+  box-shadow:
+    0 0 0 3px
+    rgba(
+      93,
+      133,
+      234,
+      .15
+    );
+
 }
+
 
 .number-input.correct {
-  border: 2px solid #27a66a;
+
+  border:
+    2px solid
+    #27a66a;
+
   background: #e6faef;
+
   color: #168653;
+
 }
 
+
 .number-input.wrong {
-  border: 2px solid #e85b75;
+
+  border:
+    2px solid
+    #e85b75;
+
   background: #fff0f3;
+
   color: #d94562;
+
 }
 
 
 /* FEEDBACK */
 
 .feedback {
+
   min-height: 55px;
+
   margin-top: 20px;
+
   text-align: center;
+
   font-size: 18px;
+
   font-weight: 900;
+
 }
+
 
 .feedback-good {
   color: #168653;
 }
+
 
 .feedback-try {
   color: #d95370;
@@ -251,96 +491,249 @@ body {
 /* BUTTONS */
 
 .actions {
+
   text-align: center;
+
   margin-top: 6px;
+
 }
 
+
 .check-button {
+
   border: none;
-  background: linear-gradient(135deg, #6e72e8, #a257d5);
+
+  background:
+    linear-gradient(
+      135deg,
+      #6e72e8,
+      #a257d5
+    );
+
   color: white;
-  padding: 16px 30px;
+
+  padding:
+    16px
+    30px;
+
   border-radius: 16px;
+
   font-size: 17px;
+
   font-weight: 900;
+
   cursor: pointer;
-  box-shadow: 0 8px 20px rgba(100,80,200,.22);
+
+  box-shadow:
+    0 8px 20px
+    rgba(
+      100,
+      80,
+      200,
+      .22
+    );
+
 }
 
 
 /* RESULTS */
 
 .result {
+
   display: none;
+
   text-align: center;
+
 }
+
 
 .result-icon {
   font-size: 90px;
 }
 
+
 .result h1 {
+
   font-size: 36px;
-  margin: 10px 0;
+
+  margin:
+    10px
+    0;
+
 }
+
 
 .final-score {
+
   font-size: 55px;
+
   font-weight: 900;
-  margin: 18px 0 5px;
+
+  margin:
+    18px
+    0
+    5px;
+
 }
+
 
 .result-message {
+
   color: #727d92;
+
   font-size: 18px;
+
   line-height: 1.5;
-  margin: 12px auto 25px;
+
+  margin:
+    12px
+    auto
+    25px;
+
   max-width: 520px;
+
 }
+
+
+/* CLOUD STATUS */
+
+.cloud-status {
+
+  display: none;
+
+  max-width: 480px;
+
+  margin:
+    -10px
+    auto
+    22px;
+
+  padding:
+    12px
+    16px;
+
+  border-radius: 14px;
+
+  font-size: 13px;
+
+  font-weight: 900;
+
+}
+
+
+.cloud-saving {
+
+  display: block;
+
+  background: #eef4ff;
+
+  color: #3975d9;
+
+}
+
+
+.cloud-saved {
+
+  display: block;
+
+  background: #eaf9f1;
+
+  color: #168357;
+
+}
+
+
+.cloud-error {
+
+  display: block;
+
+  background: #fff0f3;
+
+  color: #d64d69;
+
+}
+
 
 .result-buttons {
+
   display: flex;
+
   justify-content: center;
+
   gap: 10px;
+
   flex-wrap: wrap;
+
 }
+
 
 .result-button {
+
   border: none;
+
   text-decoration: none;
-  padding: 14px 21px;
+
+  padding:
+    14px
+    21px;
+
   border-radius: 14px;
+
   font-size: 15px;
+
   font-weight: 900;
+
   cursor: pointer;
+
 }
+
 
 .retry {
+
   background: #eef2f8;
+
   color: #27334b;
+
 }
 
+
 .finish {
+
   background: #397be0;
+
   color: white;
+
 }
 
 
 /* CONFETTI */
 
 .confetti {
+
   position: fixed;
+
   top: -30px;
+
   pointer-events: none;
+
   z-index: 9999;
-  animation: fall linear forwards;
+
+  animation:
+    fall linear forwards;
+
 }
+
 
 @keyframes fall {
 
   to {
-    transform: translateY(110vh) rotate(720deg);
+
+    transform:
+      translateY(110vh)
+      rotate(720deg);
+
     opacity: .9;
+
   }
 
 }
@@ -351,37 +744,65 @@ body {
 @media (max-width: 650px) {
 
   .wrapper {
+
     padding-left: 8px;
+
     padding-right: 8px;
+
   }
 
+
   .card {
-    padding: 20px 7px;
+
+    padding:
+      20px
+      7px;
+
     border-radius: 22px;
+
   }
+
 
   .heading h1 {
     font-size: 29px;
   }
 
+
   .board {
+
     border-width: 2px;
+
     border-radius: 12px;
+
   }
+
 
   .cell {
-    font-size: clamp(11px, 4vw, 18px);
+
+    font-size:
+      clamp(
+        11px,
+        4vw,
+        18px
+      );
+
   }
 
+
   .number-input {
+
     width: 90%;
+
     height: 76%;
+
     border-radius: 6px;
+
   }
 
 }
 
 </style>
+
 </head>
 
 
@@ -392,12 +813,13 @@ body {
 
   <a
     class="back"
-    href="../../../index.html#charlotte-maths-numbers"
+    href="../../../index.html#charlotte"
   >
-    ← BACK TO NUMBERS 1–100
+    ← BACK TO TODAY
   </a>
 
 </div>
+
 
 
 <div class="wrapper">
@@ -423,6 +845,7 @@ body {
   </div>
 
 
+
   <div class="score-area">
 
     <div
@@ -437,6 +860,7 @@ body {
     </div>
 
   </div>
+
 
 
   <div class="card">
@@ -526,6 +950,12 @@ body {
   ></div>
 
 
+  <div
+    id="cloudStatus"
+    class="cloud-status"
+  ></div>
+
+
   <div class="result-buttons">
 
     <button
@@ -537,7 +967,7 @@ body {
 
     <a
       class="result-button finish"
-      href="../../../index.html#charlotte-maths-numbers"
+      href="../../../index.html#charlotte"
     >
       FINISH ✓
     </a>
@@ -550,6 +980,7 @@ body {
 </div>
 
 
+
 <script>
 
 
@@ -557,34 +988,49 @@ body {
    SETTINGS
    ====================================== */
 
-const TOTAL_MISSING = 20;
 
-let missingNumbers = [];
+const TOTAL_MISSING =
+  20;
+
+
+let missingNumbers =
+  [];
+
 
 let firstAttemptCorrect =
   new Set();
 
+
 let alreadyAttempted =
   new Set();
+
 
 let completedNumbers =
   new Set();
 
-let score = 0;
+
+let score =
+  0;
+
 
 
 /* ======================================
    CREATE RANDOM MISSING NUMBERS
    ====================================== */
 
+
 function chooseMissingNumbers() {
 
-  const available = [];
+
+  const available =
+    [];
+
 
   /*
-  We keep 1 and 100 visible
-  as useful anchors.
+    Keep 1 and 100 visible
+    as useful anchors.
   */
+
 
   for (
     let number = 2;
@@ -592,26 +1038,33 @@ function chooseMissingNumbers() {
     number++
   ) {
 
-    available.push(number);
+
+    available.push(
+      number
+    );
 
   }
 
 
   /*
-  Shuffle.
+    Shuffle
   */
 
+
   for (
-    let i = available.length - 1;
+    let i =
+      available.length - 1;
     i > 0;
     i--
   ) {
+
 
     const j =
       Math.floor(
         Math.random() *
         (i + 1)
       );
+
 
     [
       available[i],
@@ -627,28 +1080,41 @@ function chooseMissingNumbers() {
 
   missingNumbers =
     available
-      .slice(0, TOTAL_MISSING)
+      .slice(
+        0,
+        TOTAL_MISSING
+      )
       .sort(
-        function(a, b) {
+        function(
+          a,
+          b
+        ) {
+
           return a - b;
+
         }
       );
 
 }
 
 
+
 /* ======================================
    BUILD BOARD
    ====================================== */
 
+
 function buildBoard() {
+
 
   const board =
     document.getElementById(
       "numberBoard"
     );
 
-  board.innerHTML = "";
+
+  board.innerHTML =
+    "";
 
 
   for (
@@ -656,6 +1122,7 @@ function buildBoard() {
     number <= 100;
     number++
   ) {
+
 
     const cell =
       document.createElement(
@@ -679,6 +1146,7 @@ function buildBoard() {
       )
     ) {
 
+
       const input =
         document.createElement(
           "input"
@@ -688,40 +1156,57 @@ function buildBoard() {
       input.type =
         "text";
 
+
       input.inputMode =
         "numeric";
+
 
       input.pattern =
         "[0-9]*";
 
+
       input.maxLength =
         "3";
+
 
       input.className =
         "number-input";
 
+
       input.dataset.answer =
         number;
 
+
       input.setAttribute(
+
         "aria-label",
+
         `Missing number ${number}`
+
       );
 
 
       input.addEventListener(
+
         "keydown",
-        function(event) {
+
+        function(
+          event
+        ) {
+
 
           if (
-            event.key === "Enter"
+            event.key ===
+            "Enter"
           ) {
+
 
             checkBoard();
 
           }
 
         }
+
       );
 
 
@@ -729,9 +1214,9 @@ function buildBoard() {
         input
       );
 
-    }
 
-    else {
+    } else {
+
 
       cell.textContent =
         number;
@@ -748,16 +1233,20 @@ function buildBoard() {
 }
 
 
+
 /* ======================================
    CHECK BOARD
    ====================================== */
 
+
 function checkBoard() {
+
 
   const inputs =
     document.querySelectorAll(
       ".number-input"
     );
+
 
   const feedback =
     document.getElementById(
@@ -770,7 +1259,11 @@ function checkBoard() {
 
 
   inputs.forEach(
-    function(input) {
+
+    function(
+      input
+    ) {
+
 
       const answer =
         Number(
@@ -784,6 +1277,7 @@ function checkBoard() {
         )
       ) {
 
+
         return;
 
       }
@@ -794,13 +1288,16 @@ function checkBoard() {
 
 
       /*
-      Blank answers are not yet
-      counted as attempts.
+        Blank answers are NOT counted
+        as attempts.
       */
 
+
       if (
-        typed === ""
+        typed ===
+        ""
       ) {
+
 
         return;
 
@@ -808,18 +1305,23 @@ function checkBoard() {
 
 
       const typedNumber =
-        Number(typed);
+        Number(
+          typed
+        );
 
 
       if (
-        typedNumber === answer
+        typedNumber ===
+        answer
       ) {
 
+
         /*
-        Score ONLY if Charlotte
-        got this number correct
-        before ever getting it wrong.
+          Score ONLY if Charlotte
+          got this number correct
+          before ever getting it wrong.
         */
+
 
         if (
           !alreadyAttempted.has(
@@ -827,9 +1329,11 @@ function checkBoard() {
           )
         ) {
 
+
           firstAttemptCorrect.add(
             answer
           );
+
 
           score++;
 
@@ -845,24 +1349,28 @@ function checkBoard() {
           "wrong"
         );
 
+
         input.classList.add(
           "correct"
         );
 
+
         input.disabled =
           true;
+
 
         newCorrect =
           true;
 
-      }
 
-      else {
+      } else {
+
 
         /*
-        From now on this number
-        cannot earn a first-try point.
+          From now on this number
+          cannot earn a first-try point.
         */
+
 
         alreadyAttempted.add(
           answer
@@ -873,6 +1381,7 @@ function checkBoard() {
           "correct"
         );
 
+
         input.classList.add(
           "wrong"
         );
@@ -880,6 +1389,7 @@ function checkBoard() {
       }
 
     }
+
   );
 
 
@@ -890,16 +1400,19 @@ function checkBoard() {
 
 
   /*
-  Check if every missing number
-  has eventually been completed.
+    Every missing number must
+    eventually be completed.
   */
+
 
   if (
     completedNumbers.size ===
     TOTAL_MISSING
   ) {
 
+
     finishExercise();
+
 
     return;
 
@@ -921,18 +1434,21 @@ function checkBoard() {
     newCorrect
   ) {
 
+
     feedback.className =
       "feedback feedback-good";
+
 
     feedback.textContent =
       `✨ Great job! ${remaining} left.`;
 
-  }
 
-  else {
+  } else {
+
 
     feedback.className =
       "feedback feedback-try";
+
 
     feedback.textContent =
       "Have another look at the pink boxes and try again 💛";
@@ -942,20 +1458,107 @@ function checkBoard() {
 }
 
 
+
 /* ======================================
-   RECORD EVERY ATTEMPT
+   CREATE COMPLETED ATTEMPT
    ====================================== */
 
-function recordAttempt() {
+
+function createAttempt() {
+
+
+  const percentage =
+    Math.round(
+      (
+        score /
+        TOTAL_MISSING
+      ) *
+      100
+    );
+
+
+  return {
+
+
+    child:
+      "Charlotte",
+
+
+    childId:
+      "charlotte",
+
+
+    grade:
+      "Grade 1",
+
+
+    subject:
+      "Maths",
+
+
+    topic:
+      "Numbers 1–100",
+
+
+    exercise:
+      "Number Board • Exercise 1",
+
+
+    exerciseId:
+      "charlotte-maths-numbers-1-100-exercise-01",
+
+
+    score:
+      score,
+
+
+    total:
+      TOTAL_MISSING,
+
+
+    percentage:
+      percentage,
+
+
+    passed:
+      score >= 16,
+
+
+    completed:
+      true,
+
+
+    timestamp:
+      new Date()
+        .toISOString()
+
+
+  };
+
+}
+
+
+
+/* ======================================
+   SAVE LOCAL ATTEMPT
+   ====================================== */
+
+
+function recordLocalAttempt(
+  attempt
+) {
+
 
   const historyKey =
     "charlotte-learning-history";
 
 
-  let history = [];
+  let history =
+    [];
 
 
   try {
+
 
     history =
       JSON.parse(
@@ -964,51 +1567,16 @@ function recordAttempt() {
         )
       ) || [];
 
+
+  } catch (
+    error
+  ) {
+
+
+    history =
+      [];
+
   }
-
-  catch (error) {
-
-    history = [];
-
-  }
-
-
-  const attempt = {
-
-    child:
-      "Charlotte",
-
-    subject:
-      "Maths",
-
-    topic:
-      "Numbers 1–100",
-
-    exercise:
-      "Number Board • Exercise 1",
-
-    exerciseId:
-      "charlotte-maths-numbers-1-100-exercise-01",
-
-    score:
-      score,
-
-    total:
-      TOTAL_MISSING,
-
-    percentage:
-      Math.round(
-        (
-          score /
-          TOTAL_MISSING
-        ) *
-        100
-      ),
-
-    timestamp:
-      new Date().toISOString()
-
-  };
 
 
   history.push(
@@ -1017,20 +1585,105 @@ function recordAttempt() {
 
 
   localStorage.setItem(
+
     historyKey,
+
     JSON.stringify(
       history
     )
+
   );
 
 }
 
 
+
 /* ======================================
-   SAVE BEST SCORE
+   SAVE TO FIREBASE
    ====================================== */
 
+
+async function recordCloudAttempt(
+  attempt
+) {
+
+
+  const status =
+    document.getElementById(
+      "cloudStatus"
+    );
+
+
+  status.className =
+    "cloud-status cloud-saving";
+
+
+  status.textContent =
+    "☁️ Saving your result...";
+
+
+  try {
+
+
+    if (
+      typeof window.saveResultToFirebase
+      !==
+      "function"
+    ) {
+
+
+      throw new Error(
+        "Firebase is not ready."
+      );
+
+    }
+
+
+    await window
+      .saveResultToFirebase(
+        attempt
+      );
+
+
+    status.className =
+      "cloud-status cloud-saved";
+
+
+    status.textContent =
+      "✓ Result saved!";
+
+
+  } catch (
+    error
+  ) {
+
+
+    console.error(
+      "Firebase result save failed:",
+      error
+    );
+
+
+    status.className =
+      "cloud-status cloud-error";
+
+
+    status.textContent =
+      "Your score is safe on this iPad, but cloud syncing did not work.";
+
+  }
+
+}
+
+
+
+/* ======================================
+   SAVE BEST SCORE LOCALLY
+   ====================================== */
+
+
 function saveProgress() {
+
 
   const key =
     "charlotte-maths-numbers-1-100-exercise-01";
@@ -1042,6 +1695,7 @@ function saveProgress() {
 
   try {
 
+
     previous =
       JSON.parse(
         localStorage.getItem(
@@ -1049,9 +1703,11 @@ function saveProgress() {
         )
       );
 
-  }
 
-  catch (error) {
+  } catch (
+    error
+  ) {
+
 
     previous =
       null;
@@ -1060,12 +1716,17 @@ function saveProgress() {
 
 
   if (
+
     !previous ||
+
     score >
     Number(
-      previous.score || 0
+      previous.score ||
+      0
     )
+
   ) {
+
 
     localStorage.setItem(
 
@@ -1091,13 +1752,30 @@ function saveProgress() {
 }
 
 
+
 /* ======================================
    FINISH
    ====================================== */
 
+
 function finishExercise() {
 
-  recordAttempt();
+
+  /*
+    Create ONE completed attempt.
+    The exact same result is saved
+    locally and to Firebase.
+  */
+
+
+  const attempt =
+    createAttempt();
+
+
+  recordLocalAttempt(
+    attempt
+  );
+
 
   saveProgress();
 
@@ -1120,9 +1798,23 @@ function finishExercise() {
     `${score} / ${TOTAL_MISSING}`;
 
 
+  /*
+    Cloud saving happens after the
+    result screen appears so Charlotte
+    does not have to wait.
+  */
+
+
+  recordCloudAttempt(
+    attempt
+  );
+
+
   if (
-    score === TOTAL_MISSING
+    score ===
+    TOTAL_MISSING
   ) {
+
 
     document.getElementById(
       "resultIcon"
@@ -1150,11 +1842,11 @@ function finishExercise() {
 
     makeConfetti();
 
-  }
 
-  else if (
+  } else if (
     score >= 16
   ) {
+
 
     document.getElementById(
       "resultIcon"
@@ -1182,9 +1874,9 @@ function finishExercise() {
 
     makeConfetti();
 
-  }
 
-  else {
+  } else {
+
 
     document.getElementById(
       "resultIcon"
@@ -1214,24 +1906,33 @@ function finishExercise() {
 }
 
 
+
 /* ======================================
    RESTART
    ====================================== */
 
+
 function restartExercise() {
 
-  missingNumbers = [];
+
+  missingNumbers =
+    [];
+
 
   firstAttemptCorrect =
     new Set();
 
+
   alreadyAttempted =
     new Set();
+
 
   completedNumbers =
     new Set();
 
-  score = 0;
+
+  score =
+    0;
 
 
   document.getElementById(
@@ -1264,26 +1965,49 @@ function restartExercise() {
     "block";
 
 
+  document.getElementById(
+    "cloudStatus"
+  ).className =
+    "cloud-status";
+
+
+  document.getElementById(
+    "cloudStatus"
+  ).textContent =
+    "";
+
+
   chooseMissingNumbers();
+
 
   buildBoard();
 
 }
 
 
+
 /* ======================================
    CONFETTI
    ====================================== */
 
+
 function makeConfetti() {
 
+
   const pieces = [
+
     "⭐",
+
     "✨",
+
     "🌈",
+
     "💖",
+
     "🎉",
+
     "🦄"
+
   ];
 
 
@@ -1292,6 +2016,7 @@ function makeConfetti() {
     i < 40;
     i++
   ) {
+
 
     const confetti =
       document.createElement(
@@ -1350,12 +2075,15 @@ function makeConfetti() {
 
 
     setTimeout(
+
       function() {
 
         confetti.remove();
 
       },
+
       5000
+
     );
 
   }
@@ -1363,15 +2091,114 @@ function makeConfetti() {
 }
 
 
+
 /* ======================================
    START EXERCISE
    ====================================== */
 
+
 chooseMissingNumbers();
+
 
 buildBoard();
 
+
 </script>
 
+
+
+<!-- ======================================
+     FIREBASE CLOUD TRACKING
+     ====================================== -->
+
+
+<script type="module">
+
+
+import {
+  initializeApp
+} from "https://www.gstatic.com/firebasejs/12.5.0/firebase-app.js";
+
+
+import {
+
+  getFirestore,
+
+  collection,
+
+  addDoc
+
+} from "https://www.gstatic.com/firebasejs/12.5.0/firebase-firestore.js";
+
+
+
+const firebaseConfig = {
+
+
+  apiKey:
+    "AIzaSyBri62MSDCTXF9meH_5Jnm8kbZFytoHwXU",
+
+
+  authDomain:
+    "girls-learning-hub.firebaseapp.com",
+
+
+  projectId:
+    "girls-learning-hub",
+
+
+  storageBucket:
+    "girls-learning-hub.firebasestorage.app",
+
+
+  messagingSenderId:
+    "578155016403",
+
+
+  appId:
+    "1:578155016403:web:ffe763fe308574d31fe426"
+
+
+};
+
+
+
+const firebaseApp =
+  initializeApp(
+    firebaseConfig
+  );
+
+
+const db =
+  getFirestore(
+    firebaseApp
+  );
+
+
+
+window.saveResultToFirebase =
+async function(
+  attempt
+) {
+
+
+  await addDoc(
+
+    collection(
+      db,
+      "results"
+    ),
+
+    attempt
+
+  );
+
+};
+
+
+</script>
+
+
 </body>
+
 </html>
