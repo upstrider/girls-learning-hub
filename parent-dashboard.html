@@ -144,16 +144,13 @@ background:linear-gradient(135deg,#ffe3f1,#eee8ff)
 .tab-panel{display:none}
 .tab-panel.active{display:block}
 
-.child-grid,
-.progress-grid{
+.child-grid,.progress-grid{
 display:grid;
 grid-template-columns:repeat(2,minmax(0,1fr));
 gap:22px
 }
 
-.child-card,
-.progress-card,
-.calendar-card{
+.child-card,.progress-card,.calendar-card{
 background:rgba(255,255,255,.96);
 border:1px solid #ececf3;
 border-radius:26px;
@@ -189,10 +186,7 @@ font-size:27px
 .ivy .avatar{background:#ffe2ef}
 .charlotte .avatar{background:#e2f7ff}
 
-.child-title h3{
-margin:0;
-font-size:20px
-}
+.child-title h3{margin:0;font-size:20px}
 
 .child-title p{
 margin:4px 0 0;
@@ -252,20 +246,9 @@ padding:8px 10px;
 white-space:nowrap
 }
 
-.status-badge.done{
-background:#e2f8e8;
-color:#24733c
-}
-
-.status-badge.partial{
-background:#fff1cf;
-color:#8b6110
-}
-
-.status-badge.todo{
-background:#eeeef5;
-color:#77778a
-}
+.status-badge.done{background:#e2f8e8;color:#24733c}
+.status-badge.partial{background:#fff1cf;color:#8b6110}
+.status-badge.todo{background:#eeeef5;color:#77778a}
 
 .reset-button{
 border:0;
@@ -296,11 +279,12 @@ background:linear-gradient(135deg,#ffe1ef,#e6e0ff);
 color:#3c3650
 }
 
+/* SAVE BAR IS HIDDEN UNTIL THERE ARE UNSAVED CHANGES */
 .save-bar{
 position:fixed;
 left:50%;
 bottom:22px;
-transform:translateX(-50%);
+transform:translate(-50%,30px);
 width:min(900px,calc(100% - 28px));
 background:rgba(35,35,50,.96);
 color:white;
@@ -311,7 +295,18 @@ justify-content:space-between;
 align-items:center;
 gap:16px;
 box-shadow:0 20px 60px rgba(20,20,30,.26);
-z-index:80
+z-index:80;
+opacity:0;
+visibility:hidden;
+pointer-events:none;
+transition:opacity .22s ease,transform .22s ease,visibility .22s ease
+}
+
+.save-bar.show{
+opacity:1;
+visibility:visible;
+pointer-events:auto;
+transform:translate(-50%,0)
 }
 
 .save-title{
@@ -339,7 +334,7 @@ font-weight:900
 #status{
 position:fixed;
 right:22px;
-bottom:96px;
+bottom:22px;
 max-width:380px;
 background:#2c2c3b;
 color:white;
@@ -383,10 +378,7 @@ gap:16px;
 margin-bottom:18px
 }
 
-.modal-head h2{
-margin:0;
-font-size:22px
-}
+.modal-head h2{margin:0;font-size:22px}
 
 .modal-head p{
 margin:6px 0 0;
@@ -410,8 +402,7 @@ overflow:hidden;
 margin-bottom:10px
 }
 
-.subject-button,
-.topic-button{
+.subject-button,.topic-button{
 width:100%;
 border:0;
 display:flex;
@@ -489,8 +480,7 @@ font-size:12px;
 font-weight:800
 }
 
-.modal-done,
-.library-save{
+.modal-done,.library-save{
 width:100%;
 border:0;
 border-radius:15px;
@@ -513,10 +503,7 @@ margin-bottom:20px
 
 .calendar-head h3{margin:0}
 
-.calendar-nav{
-display:flex;
-gap:8px
-}
+.calendar-nav{display:flex;gap:8px}
 
 .calendar-nav button{
 border:0;
@@ -554,9 +541,7 @@ opacity:0;
 pointer-events:none
 }
 
-.calendar-day.today{
-border:2px solid #c998d4
-}
+.calendar-day.today{border:2px solid #c998d4}
 
 .day-number{
 font-size:12px;
@@ -574,20 +559,9 @@ margin-top:5px;
 font-weight:900
 }
 
-.day-child.green{
-background:#def6e5;
-color:#267541
-}
-
-.day-child.amber{
-background:#fff0ca;
-color:#8c6517
-}
-
-.day-child.grey{
-background:#eeeef3;
-color:#8a8a98
-}
+.day-child.green{background:#def6e5;color:#267541}
+.day-child.amber{background:#fff0ca;color:#8c6517}
+.day-child.grey{background:#eeeef3;color:#8a8a98}
 
 .day-detail{
 margin-top:20px;
@@ -634,10 +608,7 @@ padding:13px 10px;
 text-align:center
 }
 
-.stat strong{
-display:block;
-font-size:19px
-}
+.stat strong{display:block;font-size:19px}
 
 .stat span{
 color:#9292a1;
@@ -670,9 +641,7 @@ flex-direction:column;
 gap:6px
 }
 
-.library-field.full{
-grid-column:1/-1
-}
+.library-field.full{grid-column:1/-1}
 
 .library-field label{
 font-size:10px;
@@ -680,8 +649,7 @@ font-weight:900;
 color:#7c7c8f
 }
 
-.library-field input,
-.library-field select{
+.library-field input,.library-field select{
 width:100%;
 border:1px solid #dfdfe9;
 border-radius:12px;
@@ -836,10 +804,10 @@ font-weight:900
 
 </main>
 
-<div class="save-bar">
-<div class="save-copy">
+<div id="saveBar" class="save-bar">
+<div>
 <div class="save-title">Today's assignments</div>
-<div id="saveSummary" class="save-summary">No changes</div>
+<div id="saveSummary" class="save-summary">Unsaved changes</div>
 </div>
 <button id="saveButton" class="save-button" onclick="saveAssignments()">SAVE</button>
 </div>
@@ -1104,23 +1072,16 @@ if(result.date)return result.date;
 
 if(result.timestamp){
 const date=new Date(result.timestamp);
-
-if(!Number.isNaN(date.getTime())){
-return dateKey(date);
-}
+if(!Number.isNaN(date.getTime()))return dateKey(date);
 }
 
 return"";
 }
 
 function assignmentsFor(child,key){
-const documentData=allAssignments[assignmentKey(child,key)];
-
-if(!documentData||!Array.isArray(documentData.exercises)){
-return[];
-}
-
-return documentData.exercises;
+const data=allAssignments[assignmentKey(child,key)];
+if(!data||!Array.isArray(data.exercises))return[];
+return data.exercises;
 }
 
 function resultsFor(child,key,exerciseId){
@@ -1133,19 +1094,23 @@ result.exerciseId===exerciseId
 
 function bestResult(results){
 if(!results.length)return null;
-
 return[...results].sort((a,b)=>
 Number(b.percentage||0)-Number(a.percentage||0)
 )[0];
 }
 
 function allCatalogExercises(){
+
 const items=[];
 
 Object.entries(catalog).forEach(([child,childData])=>{
+
 childData.subjects.forEach(subject=>{
+
 subject.topics.forEach(topic=>{
+
 topic.exercises.forEach(exercise=>{
+
 items.push({
 ...exercise,
 child,
@@ -1153,9 +1118,13 @@ childName:childData.name,
 subject:subject.name,
 topic:topic.name
 });
+
 });
+
 });
+
 });
+
 });
 
 return items;
@@ -1168,6 +1137,7 @@ item.child===child&&item.id===id
 }
 
 function addExerciseToCatalog(exercise){
+
 const child=exercise.child;
 
 if(!catalog[child])return;
@@ -1178,6 +1148,7 @@ item.name===exercise.subject
 );
 
 if(!subject){
+
 subject={
 name:exercise.subject,
 icon:"📚",
@@ -1192,6 +1163,7 @@ item.name===exercise.topic
 );
 
 if(!topic){
+
 topic={
 name:exercise.topic,
 icon:"⭐",
@@ -1207,26 +1179,37 @@ name:exercise.name,
 full:exercise.full||`${exercise.topic} • ${exercise.name}`,
 url:exercise.url
 });
+
 }
 
 function removeExerciseFromCatalog(exerciseId){
+
 Object.values(catalog).forEach(child=>{
+
 child.subjects.forEach(subject=>{
+
 subject.topics.forEach(topic=>{
+
 topic.exercises=topic.exercises.filter(exercise=>
 exercise.id!==exerciseId
 );
+
 });
+
 });
+
 });
+
 }
 
 async function loadFirebaseExercises(){
+
 firebaseExercises=[];
 
 const snapshot=await getDocs(collection(db,"exercises"));
 
 snapshot.forEach(item=>{
+
 const exercise={
 ...item.data(),
 id:item.id
@@ -1234,10 +1217,13 @@ id:item.id
 
 firebaseExercises.push(exercise);
 addExerciseToCatalog(exercise);
+
 });
+
 }
 
 async function registerBaseExercises(){
+
 const known=new Set(firebaseExercises.map(item=>item.id));
 
 for(const exercise of allCatalogExercises()){
@@ -1260,38 +1246,49 @@ await setDoc(doc(db,"exercises",exercise.id),data);
 
 firebaseExercises.push(data);
 known.add(exercise.id);
+
 }
+
 }
 
 async function loadAssignments(){
+
 allAssignments={};
 
 const snapshot=await getDocs(collection(db,"assignments"));
 
 snapshot.forEach(item=>{
+
 allAssignments[item.id]={
 ...item.data(),
 __docId:item.id
 };
+
 });
+
 }
 
 async function loadResults(){
+
 allResults=[];
 
 const snapshot=await getDocs(collection(db,"results"));
 
 snapshot.forEach(item=>{
+
 allResults.push({
 ...item.data(),
 __docId:item.id
 });
+
 });
+
 }
 
 async function startMumPortal(){
 
 const status=document.getElementById("status");
+
 status.textContent="Loading Mum's Portal...";
 
 try{
@@ -1321,11 +1318,13 @@ console.error(error);
 status.textContent="⚠️ Mum's Portal could not finish loading.";
 
 }
+
 }
 
 window.showTab=function(tab){
 
 ["today","calendar","progress"].forEach(name=>{
+
 document.getElementById(
 "tab"+name.charAt(0).toUpperCase()+name.slice(1)
 ).classList.toggle("active",name===tab);
@@ -1333,6 +1332,7 @@ document.getElementById(
 document.getElementById(
 "panel"+name.charAt(0).toUpperCase()+name.slice(1)
 ).classList.toggle("active",name===tab);
+
 });
 
 if(tab==="calendar"){
@@ -1343,6 +1343,7 @@ renderDayDetail(todayKey);
 if(tab==="progress"){
 renderMonthlyProgress();
 }
+
 };
 
 function renderToday(){
@@ -1399,18 +1400,23 @@ const scoreText=best
 
 return`
 <div class="assignment">
+
 <div class="assignment-info">
+
 <div class="assignment-name">
 ${escapeHtml(assignment.exercise||assignment.name||assignment.id)}
 </div>
+
 <div class="assignment-meta">
 ${escapeHtml(assignment.subject||"")} • ${escapeHtml(assignment.topic||"")}
 ${needed>1?` • ${needed}× today`:""}
 ${scoreText}
 </div>
+
 </div>
 
 <div class="assignment-actions">
+
 <span class="status-badge ${statusClass}">
 ${statusText}
 </span>
@@ -1429,25 +1435,48 @@ RESET
 `:""}
 
 </div>
+
 </div>
 `;
+
 }).join("");
 
 progress.textContent=`${totalCompleted}/${totalRequired} completed`;
+
 }
 
+/* NEW SAVE BAR LOGIC */
 function updateSaveBar(){
 
+const saveBar=document.getElementById("saveBar");
 const summary=document.getElementById("saveSummary");
 const button=document.getElementById("saveButton");
 
-const ivy=draft.ivy.reduce((total,item)=>total+required(item),0);
-const charlotte=draft.charlotte.reduce((total,item)=>total+required(item),0);
+const ivy=draft.ivy.reduce(
+(total,item)=>total+required(item),
+0
+);
+
+const charlotte=draft.charlotte.reduce(
+(total,item)=>total+required(item),
+0
+);
 
 summary.textContent=
-`Ivy-Rose ${ivy} assignment${ivy===1?"":"s"} • Charlotte ${charlotte} assignment${charlotte===1?"":"s"}${dirty?" • Unsaved changes":""}`;
+`Ivy-Rose ${ivy} assignment${ivy===1?"":"s"} • Charlotte ${charlotte} assignment${charlotte===1?"":"s"} • Unsaved changes`;
 
-button.disabled=!dirty;
+if(dirty){
+
+saveBar.classList.add("show");
+button.disabled=false;
+
+}else{
+
+saveBar.classList.remove("show");
+button.disabled=true;
+
+}
+
 }
 
 window.openAssign=function(child){
@@ -1460,11 +1489,15 @@ document.getElementById("modalTitle").textContent=
 renderAssignModal();
 
 document.getElementById("assignModal").classList.add("open");
+
 };
 
 window.closeAssign=function(){
+
 document.getElementById("assignModal").classList.remove("open");
+
 editingChild=null;
+
 };
 
 function renderAssignModal(){
@@ -1474,7 +1507,8 @@ if(!editingChild)return;
 const child=editingChild;
 const container=document.getElementById("modalContent");
 
-container.innerHTML=catalog[child].subjects.map((subject,subjectIndex)=>{
+container.innerHTML=catalog[child].subjects.map(
+(subject,subjectIndex)=>{
 
 const topicHtml=subject.topics.length
 
@@ -1484,11 +1518,15 @@ const exerciseHtml=topic.exercises.length
 
 ?topic.exercises.map(exercise=>{
 
-const existing=draft[child].find(item=>item.id===exercise.id);
+const existing=draft[child].find(item=>
+item.id===exercise.id
+);
+
 const checked=Boolean(existing);
 const repeat=existing?required(existing):1;
 
 return`
+
 <div class="exercise-row">
 
 <label class="exercise-check">
@@ -1508,13 +1546,14 @@ this
 )"
 >
 
-<span>${escapeHtml(exercise.name)}</span>
+<span>
+${escapeHtml(exercise.name)}
+</span>
 
 </label>
 
 <select
 class="repeat-select"
-data-repeat-for="${escapeAttribute(exercise.id)}"
 onchange="changeRepeat(
 '${escapeAttribute(child)}',
 '${escapeAttribute(exercise.id)}',
@@ -1524,75 +1563,128 @@ ${checked?"":"disabled"}
 >
 
 ${[1,2,3,4,5].map(number=>`
-<option value="${number}" ${repeat===number?"selected":""}>
+
+<option
+value="${number}"
+${repeat===number?"selected":""}
+>
 ${number}× today
 </option>
+
 `).join("")}
 
 </select>
 
 </div>
+
 `;
 
 }).join("")
 
-:`<div class="empty">No exercises registered in this topic yet.</div>`;
+:`
+
+<div class="empty">
+No exercises registered in this topic yet.
+</div>
+
+`;
 
 return`
+
 <div class="topic-box">
 
 <button
 class="topic-button"
-onclick="toggleTopic('topic-${child}-${subjectIndex}-${topicIndex}')"
+onclick="toggleTopic(
+'topic-${child}-${subjectIndex}-${topicIndex}'
+)"
 >
-<span>${topic.icon||"⭐"} ${escapeHtml(topic.name)}</span>
+
+<span>
+${topic.icon||"⭐"}
+${escapeHtml(topic.name)}
+</span>
+
 <span>▾</span>
+
 </button>
 
 <div
 id="topic-${child}-${subjectIndex}-${topicIndex}"
 class="topic-content"
 >
+
 ${exerciseHtml}
+
 </div>
 
 </div>
+
 `;
 
 }).join("")
 
-:`<div class="empty">No topics or exercises registered yet.</div>`;
+:`
+
+<div class="empty">
+No topics or exercises registered yet.
+</div>
+
+`;
 
 return`
+
 <div class="subject-box">
 
 <button
 class="subject-button"
-onclick="toggleSubject('subject-${child}-${subjectIndex}')"
+onclick="toggleSubject(
+'subject-${child}-${subjectIndex}'
+)"
 >
-<span>${subject.icon||"📚"} ${escapeHtml(subject.name)}</span>
+
+<span>
+${subject.icon||"📚"}
+${escapeHtml(subject.name)}
+</span>
+
 <span>▾</span>
+
 </button>
 
 <div
 id="subject-${child}-${subjectIndex}"
 class="subject-content"
 >
+
 ${topicHtml}
+
 </div>
 
 </div>
+
 `;
 
 }).join("");
+
 }
 
 window.toggleSubject=function(id){
-document.getElementById(id)?.classList.toggle("open");
+
+document
+.getElementById(id)
+?.classList
+.toggle("open");
+
 };
 
 window.toggleTopic=function(id){
-document.getElementById(id)?.classList.toggle("open");
+
+document
+.getElementById(id)
+?.classList
+.toggle("open");
+
 };
 
 window.toggleExercise=function(
@@ -1606,7 +1698,10 @@ checked,
 checkbox
 ){
 
-const existingIndex=draft[child].findIndex(item=>item.id===id);
+const existingIndex=
+draft[child].findIndex(
+assignment=>assignment.id===id
+);
 
 if(checked){
 
@@ -1628,25 +1723,28 @@ repeat:1
 }else{
 
 if(existingIndex!==-1){
-draft[child].splice(existingIndex,1);
+
+draft[child].splice(
+existingIndex,
+1
+);
+
 }
 
 }
 
 dirty=true;
 
-/*
-IMPORTANT:
-We DO NOT redraw the whole modal here.
-That means the subject/topic remains open
-while Mum selects several exercises.
-*/
+/* DO NOT REDRAW MODAL.
+   This keeps English → Spelling open
+   while selecting several exercises. */
 
 const row=checkbox?.closest(".exercise-row");
 
 if(row){
 
-const repeatSelect=row.querySelector(".repeat-select");
+const repeatSelect=
+row.querySelector(".repeat-select");
 
 if(repeatSelect){
 
@@ -1661,24 +1759,43 @@ repeatSelect.value="1";
 }
 
 updateSaveBar();
+
 };
 
-window.changeRepeat=function(child,exerciseId,value){
+window.changeRepeat=function(
+child,
+exerciseId,
+value
+){
 
-const assignment=draft[child].find(item=>item.id===exerciseId);
+const assignment=
+draft[child].find(
+item=>item.id===exerciseId
+);
 
 if(!assignment)return;
 
-assignment.repeat=Math.max(1,Math.min(5,Number(value)||1));
+assignment.repeat=
+Math.max(
+1,
+Math.min(
+5,
+Number(value)||1
+)
+);
 
 dirty=true;
+
 updateSaveBar();
+
 };
 
 window.finishAssign=function(){
 
 closeAssign();
+
 renderToday();
+
 updateSaveBar();
 
 };
@@ -1689,41 +1806,79 @@ const button=document.getElementById("saveButton");
 const status=document.getElementById("status");
 
 button.disabled=true;
+
 status.textContent="Saving...";
 
 try{
 
-for(const child of["ivy","charlotte"]){
+for(const child of[
+"ivy",
+"charlotte"
+]){
 
 const data={
+
 child,
-childName:catalog[child].name,
-date:todayKey,
-exercises:draft[child],
-updatedAt:new Date().toISOString()
+
+childName:
+catalog[child].name,
+
+date:
+todayKey,
+
+exercises:
+draft[child],
+
+updatedAt:
+new Date().toISOString()
+
 };
 
 await setDoc(
-doc(db,"assignments",assignmentKey(child,todayKey)),
+
+doc(
+db,
+"assignments",
+assignmentKey(
+child,
+todayKey
+)
+),
+
 data
+
 );
 
-allAssignments[assignmentKey(child,todayKey)]=data;
+allAssignments[
+assignmentKey(
+child,
+todayKey
+)
+]=data;
+
 }
 
+/* SAVE FINISHED SUCCESSFULLY */
 dirty=false;
 
+/* THIS NOW HIDES THE ENTIRE SAVE BAR */
 updateSaveBar();
 
-status.textContent="✓ Today's assignments saved!";
+status.textContent=
+"✓ Today's assignments saved!";
 
 renderToday();
 renderCalendar();
 renderMonthlyProgress();
 
-setTimeout(()=>{
+setTimeout(
+()=>{
+
 status.textContent="";
-},3000);
+
+},
+3000
+);
 
 }catch(error){
 
@@ -1732,46 +1887,77 @@ console.error(error);
 status.textContent=
 "⚠️ Could not save. Check Firestore rules.";
 
-button.disabled=false;
+/* KEEP SAVE BAR VISIBLE IF SAVE FAILED */
+dirty=true;
+updateSaveBar();
+
 }
+
 };
 
-window.resetExercise=async function(child,exerciseId,exerciseName){
+window.resetExercise=async function(
+child,
+exerciseId,
+exerciseName
+){
 
-const matchingResults=resultsFor(child,todayKey,exerciseId);
+const matchingResults=
+resultsFor(
+child,
+todayKey,
+exerciseId
+);
 
 if(!matchingResults.length)return;
 
-const childName=catalog[child]?.name||child;
+const childName=
+catalog[child]?.name||child;
 
-const confirmed=window.confirm(
+const confirmed=
+window.confirm(
 `Reset ${childName}'s ${exerciseName}?\n\nThis will delete ${matchingResults.length} saved attempt${matchingResults.length===1?"":"s"} from today and make the exercise available to do again.`
 );
 
 if(!confirmed)return;
 
-const status=document.getElementById("status");
+const status=
+document.getElementById("status");
 
-status.textContent="Resetting today's result...";
+status.textContent=
+"Resetting today's result...";
 
 try{
 
 for(const result of matchingResults){
 
 if(!result.__docId){
-throw new Error("This result has no Firebase document ID.");
+
+throw new Error(
+"This result has no Firebase document ID."
+);
+
 }
 
 await deleteDoc(
-doc(db,"results",result.__docId)
+
+doc(
+db,
+"results",
+result.__docId
+)
+
 );
+
 }
 
-allResults=allResults.filter(result=>!(
+allResults=
+allResults.filter(
+result=>!(
 resultChild(result)===child&&
 resultDate(result)===todayKey&&
 result.exerciseId===exerciseId
-));
+)
+);
 
 renderToday();
 renderCalendar();
@@ -1781,16 +1967,22 @@ renderMonthlyProgress();
 status.textContent=
 `✓ ${childName}'s ${exerciseName} has been reset.`;
 
-setTimeout(()=>{
+setTimeout(
+()=>{
 status.textContent="";
-},5000);
+},
+5000
+);
 
 }catch(error){
 
 console.error(error);
-status.textContent="⚠️ Could not reset the result.";
+
+status.textContent=
+"⚠️ Could not reset the result.";
 
 }
+
 };
 
 window.openExerciseLibrary=function(){
@@ -1798,28 +1990,45 @@ window.openExerciseLibrary=function(){
 renderExerciseLibraryList();
 
 document
-.getElementById("exerciseLibraryModal")
-.classList.add("open");
+.getElementById(
+"exerciseLibraryModal"
+)
+.classList
+.add("open");
 
 };
 
 window.closeExerciseLibrary=function(){
 
 document
-.getElementById("exerciseLibraryModal")
-.classList.remove("open");
+.getElementById(
+"exerciseLibraryModal"
+)
+.classList
+.remove("open");
 
 };
 
 function renderExerciseLibraryList(){
 
-const container=document.getElementById("libraryExistingList");
+const container=
+document.getElementById(
+"libraryExistingList"
+);
 
-const exercises=allCatalogExercises().sort((a,b)=>{
+const exercises=
+allCatalogExercises()
+.sort(
+(a,b)=>{
 
-const childCompare=a.child.localeCompare(b.child);
+const childCompare=
+a.child.localeCompare(
+b.child
+);
 
-if(childCompare!==0)return childCompare;
+if(childCompare!==0){
+return childCompare;
+}
 
 return a.name.localeCompare(
 b.name,
@@ -1827,149 +2036,276 @@ undefined,
 {numeric:true}
 );
 
-});
+}
+);
 
 if(!exercises.length){
 
 container.innerHTML=`
+
 <div class="empty">
 No exercises registered yet.
 </div>
+
 `;
 
 return;
+
 }
 
-container.innerHTML=exercises.map(exercise=>`
+container.innerHTML=
+exercises.map(
+exercise=>`
 
 <div class="library-item">
 
-<div class="library-item-copy">
+<div>
 
 <strong>
-${escapeHtml(exercise.childName)} •
-${escapeHtml(exercise.subject)} •
-${escapeHtml(exercise.topic)} •
+${escapeHtml(exercise.childName)}
+•
+${escapeHtml(exercise.subject)}
+•
+${escapeHtml(exercise.topic)}
+•
 ${escapeHtml(exercise.name)}
 </strong>
 
-<span>
+<div style="font-size:10px;color:#8d8d9b;margin-top:4px">
 ${escapeHtml(exercise.url)}
-</span>
+</div>
 
 </div>
 
 <button
 class="library-delete"
-onclick="deleteExerciseFromLibrary('${escapeAttribute(exercise.id)}')"
+onclick="deleteExerciseFromLibrary(
+'${escapeAttribute(exercise.id)}'
+)"
 >
 DELETE
 </button>
 
 </div>
 
-`).join("");
+`
+).join("");
 
 }
 
-window.saveExerciseToLibrary=async function(){
+window.saveExerciseToLibrary=
+async function(){
 
-const child=document.getElementById("libraryChild").value;
-const subject=document.getElementById("librarySubject").value;
-const topic=document.getElementById("libraryTopic").value.trim();
-const name=document.getElementById("libraryName").value.trim();
-const url=document.getElementById("libraryUrl").value.trim();
-const id=document.getElementById("libraryId").value.trim();
+const child=
+document.getElementById(
+"libraryChild"
+).value;
 
-const status=document.getElementById("status");
-const button=document.getElementById("librarySaveButton");
+const subject=
+document.getElementById(
+"librarySubject"
+).value;
 
-if(!topic||!name||!url||!id){
+const topic=
+document.getElementById(
+"libraryTopic"
+).value.trim();
 
-status.textContent="⚠️ Complete every exercise field.";
+const name=
+document.getElementById(
+"libraryName"
+).value.trim();
+
+const url=
+document.getElementById(
+"libraryUrl"
+).value.trim();
+
+const id=
+document.getElementById(
+"libraryId"
+).value.trim();
+
+const status=
+document.getElementById(
+"status"
+);
+
+const button=
+document.getElementById(
+"librarySaveButton"
+);
+
+if(
+!topic||
+!name||
+!url||
+!id
+){
+
+status.textContent=
+"⚠️ Complete every exercise field.";
+
 return;
 
 }
 
-if(exerciseExists(child,id)){
+if(
+exerciseExists(
+child,
+id
+)
+){
 
-status.textContent="⚠️ That Exercise ID already exists.";
+status.textContent=
+"⚠️ That Exercise ID already exists.";
+
 return;
 
 }
 
 button.disabled=true;
-status.textContent="Adding exercise...";
+
+status.textContent=
+"Adding exercise...";
 
 const data={
+
 id,
+
 child,
-childName:catalog[child].name,
+
+childName:
+catalog[child].name,
+
 subject,
+
 topic,
+
 name,
-full:`${topic} • ${name}`,
+
+full:
+`${topic} • ${name}`,
+
 url,
-createdAt:new Date().toISOString()
+
+createdAt:
+new Date().toISOString()
+
 };
 
 try{
 
 await setDoc(
-doc(db,"exercises",id),
+
+doc(
+db,
+"exercises",
+id
+),
+
+data
+
+);
+
+firebaseExercises.push(
 data
 );
 
-firebaseExercises.push(data);
-addExerciseToCatalog(data);
+addExerciseToCatalog(
+data
+);
 
-document.getElementById("libraryTopic").value="";
-document.getElementById("libraryName").value="";
-document.getElementById("libraryUrl").value="";
-document.getElementById("libraryId").value="";
+document.getElementById(
+"libraryTopic"
+).value="";
+
+document.getElementById(
+"libraryName"
+).value="";
+
+document.getElementById(
+"libraryUrl"
+).value="";
+
+document.getElementById(
+"libraryId"
+).value="";
 
 renderExerciseLibraryList();
 
-status.textContent=`✓ ${name} added to the Exercise Library.`;
+status.textContent=
+`✓ ${name} added to the Exercise Library.`;
 
-setTimeout(()=>{
+setTimeout(
+()=>{
 status.textContent="";
-},3500);
+},
+3500
+);
 
 }catch(error){
 
 console.error(error);
-status.textContent="⚠️ Could not add exercise.";
+
+status.textContent=
+"⚠️ Could not add exercise.";
 
 }finally{
 
 button.disabled=false;
 
 }
+
 };
 
-window.deleteExerciseFromLibrary=async function(exerciseId){
+window.deleteExerciseFromLibrary=
+async function(
+exerciseId
+){
 
-const confirmed=window.confirm(
+const confirmed=
+window.confirm(
 "Remove this exercise from Mum's Exercise Library?\n\nThis does not delete the HTML exercise file from GitHub."
 );
 
 if(!confirmed)return;
 
-const status=document.getElementById("status");
+const status=
+document.getElementById(
+"status"
+);
 
 try{
 
 await deleteDoc(
-doc(db,"exercises",exerciseId)
+
+doc(
+db,
+"exercises",
+exerciseId
+)
+
 );
 
-firebaseExercises=firebaseExercises.filter(item=>item.id!==exerciseId);
+firebaseExercises=
+firebaseExercises.filter(
+item=>item.id!==exerciseId
+);
 
-removeExerciseFromCatalog(exerciseId);
+removeExerciseFromCatalog(
+exerciseId
+);
 
-draft.ivy=draft.ivy.filter(item=>item.id!==exerciseId);
-draft.charlotte=draft.charlotte.filter(item=>item.id!==exerciseId);
+draft.ivy=
+draft.ivy.filter(
+item=>item.id!==exerciseId
+);
+
+draft.charlotte=
+draft.charlotte.filter(
+item=>item.id!==exerciseId
+);
 
 dirty=true;
 
@@ -1977,50 +2313,79 @@ renderExerciseLibraryList();
 renderToday();
 updateSaveBar();
 
-status.textContent="✓ Exercise removed from library.";
+status.textContent=
+"✓ Exercise removed from library.";
 
-setTimeout(()=>{
+setTimeout(
+()=>{
 status.textContent="";
-},3000);
+},
+3000
+);
 
 }catch(error){
 
 console.error(error);
-status.textContent="⚠️ Could not remove exercise.";
+
+status.textContent=
+"⚠️ Could not remove exercise.";
 
 }
+
 };
 
-window.changeMonth=function(amount){
+window.changeMonth=
+function(amount){
 
 calendarDate.setMonth(
-calendarDate.getMonth()+amount
+calendarDate.getMonth()+
+amount
 );
 
 renderCalendar();
 
 };
 
-window.goCurrentMonth=function(){
+window.goCurrentMonth=
+function(){
 
-calendarDate=new Date();
-calendarDate.setDate(1);
+calendarDate=
+new Date();
+
+calendarDate.setDate(
+1
+);
 
 renderCalendar();
-renderDayDetail(todayKey);
+
+renderDayDetail(
+todayKey
+);
 
 };
 
-function calendarChildSummary(child,key){
+function calendarChildSummary(
+child,
+key
+){
 
-const assignments=assignmentsFor(child,key);
+const assignments=
+assignmentsFor(
+child,
+key
+);
 
-const dayResults=allResults.filter(result=>
+const dayResults=
+allResults.filter(
+result=>
 resultChild(result)===child&&
 resultDate(result)===key
 );
 
-if(!assignments.length&&!dayResults.length){
+if(
+!assignments.length&&
+!dayResults.length
+){
 
 return{
 show:false,
@@ -2033,15 +2398,31 @@ className:"grey"
 let requiredTotal=0;
 let completedTotal=0;
 
-assignments.forEach(assignment=>{
+assignments.forEach(
+assignment=>{
 
-const needed=required(assignment);
-const results=resultsFor(child,key,assignment.id);
+const needed=
+required(
+assignment
+);
+
+const results=
+resultsFor(
+child,
+key,
+assignment.id
+);
 
 requiredTotal+=needed;
-completedTotal+=Math.min(needed,results.length);
 
-});
+completedTotal+=
+Math.min(
+needed,
+results.length
+);
+
+}
+);
 
 if(requiredTotal===0){
 
@@ -2053,11 +2434,15 @@ className:"green"
 
 }
 
-if(completedTotal>=requiredTotal){
+if(
+completedTotal>=
+requiredTotal
+){
 
 return{
 show:true,
-text:`${completedTotal}/${requiredTotal}`,
+text:
+`${completedTotal}/${requiredTotal}`,
 className:"green"
 };
 
@@ -2067,7 +2452,8 @@ if(completedTotal>0){
 
 return{
 show:true,
-text:`${completedTotal}/${requiredTotal}`,
+text:
+`${completedTotal}/${requiredTotal}`,
 className:"amber"
 };
 
@@ -2075,7 +2461,8 @@ className:"amber"
 
 return{
 show:true,
-text:`0/${requiredTotal}`,
+text:
+`0/${requiredTotal}`,
 className:"grey"
 };
 
@@ -2083,50 +2470,111 @@ className:"grey"
 
 function renderCalendar(){
 
-const year=calendarDate.getFullYear();
-const month=calendarDate.getMonth();
+const year=
+calendarDate.getFullYear();
 
-document.getElementById("calendarTitle").textContent=
-calendarDate.toLocaleDateString("en-GB",{
+const month=
+calendarDate.getMonth();
+
+document.getElementById(
+"calendarTitle"
+).textContent=
+calendarDate.toLocaleDateString(
+"en-GB",
+{
 month:"long",
 year:"numeric"
-});
+}
+);
 
-const grid=document.getElementById("calendarGrid");
+const grid=
+document.getElementById(
+"calendarGrid"
+);
 
-const weekdays=["MON","TUE","WED","THU","FRI","SAT","SUN"];
+const weekdays=[
+"MON",
+"TUE",
+"WED",
+"THU",
+"FRI",
+"SAT",
+"SUN"
+];
 
-let html=weekdays.map(day=>`
-<div class="weekday">${day}</div>
-`).join("");
+let html=
+weekdays.map(
+day=>`
+<div class="weekday">
+${day}
+</div>
+`
+).join("");
 
-const firstDay=new Date(year,month,1);
+const firstDay=
+new Date(
+year,
+month,
+1
+);
 
-let startingWeekday=firstDay.getDay();
+let startingWeekday=
+firstDay.getDay();
 
 startingWeekday=
 startingWeekday===0
 ?6
 :startingWeekday-1;
 
-for(let i=0;i<startingWeekday;i++){
+for(
+let i=0;
+i<startingWeekday;
+i++
+){
 
 html+=`
-<div class="calendar-day empty-day"></div>
+<div class="calendar-day empty-day">
+</div>
 `;
 
 }
 
 const daysInMonth=
-new Date(year,month+1,0).getDate();
+new Date(
+year,
+month+1,
+0
+).getDate();
 
-for(let day=1;day<=daysInMonth;day++){
+for(
+let day=1;
+day<=daysInMonth;
+day++
+){
 
-const date=new Date(year,month,day);
-const key=dateKey(date);
+const date=
+new Date(
+year,
+month,
+day
+);
 
-const ivySummary=calendarChildSummary("ivy",key);
-const charlotteSummary=calendarChildSummary("charlotte",key);
+const key=
+dateKey(
+date
+);
+
+const ivySummary=
+calendarChildSummary(
+"ivy",
+key
+);
+
+const charlotteSummary=
+calendarChildSummary(
+"charlotte",
+key
+);
 
 html+=`
 
@@ -2135,20 +2583,36 @@ class="calendar-day${key===todayKey?" today":""}"
 onclick="selectCalendarDay('${key}')"
 >
 
-<div class="day-number">${day}</div>
+<div class="day-number">
+${day}
+</div>
 
 ${ivySummary.show?`
+
 <div class="day-child ${ivySummary.className}">
+
 <span>Ivy</span>
-<span>${ivySummary.text}</span>
+
+<span>
+${ivySummary.text}
+</span>
+
 </div>
+
 `:""}
 
 ${charlotteSummary.show?`
+
 <div class="day-child ${charlotteSummary.className}">
+
 <span>Charlotte</span>
-<span>${charlotteSummary.text}</span>
+
+<span>
+${charlotteSummary.text}
+</span>
+
 </div>
+
 `:""}
 
 </div>
@@ -2157,27 +2621,50 @@ ${charlotteSummary.show?`
 
 }
 
-grid.innerHTML=html;
+grid.innerHTML=
+html;
 
 }
 
-window.selectCalendarDay=function(key){
-renderDayDetail(key);
+window.selectCalendarDay=
+function(key){
+
+renderDayDetail(
+key
+);
+
 };
 
-function renderDayDetail(key){
+function renderDayDetail(
+key
+){
 
-const container=document.getElementById("dayDetail");
+const container=
+document.getElementById(
+"dayDetail"
+);
 
 container.innerHTML=`
 
-<h4>${escapeHtml(prettyDate(key))}</h4>
+<h4>
+${escapeHtml(
+prettyDate(
+key
+)
+)}
+</h4>
 
 <div class="detail-grid">
 
-${renderDayChildDetail("ivy",key)}
+${renderDayChildDetail(
+"ivy",
+key
+)}
 
-${renderDayChildDetail("charlotte",key)}
+${renderDayChildDetail(
+"charlotte",
+key
+)}
 
 </div>
 
@@ -2185,11 +2672,20 @@ ${renderDayChildDetail("charlotte",key)}
 
 }
 
-function renderDayChildDetail(child,key){
+function renderDayChildDetail(
+child,
+key
+){
 
-const assignments=assignmentsFor(child,key);
+const assignments=
+assignmentsFor(
+child,
+key
+);
 
-const childResults=allResults.filter(result=>
+const childResults=
+allResults.filter(
+result=>
 resultChild(result)===child&&
 resultDate(result)===key
 );
@@ -2198,17 +2694,41 @@ let lines="";
 
 if(assignments.length){
 
-lines=assignments.map(assignment=>{
+lines=
+assignments.map(
+assignment=>{
 
-const needed=required(assignment);
-const results=resultsFor(child,key,assignment.id);
-const completed=Math.min(needed,results.length);
-const best=bestResult(results);
+const needed=
+required(
+assignment
+);
 
-let right=`${completed}/${needed}`;
+const results=
+resultsFor(
+child,
+key,
+assignment.id
+);
+
+const completed=
+Math.min(
+needed,
+results.length
+);
+
+const best=
+bestResult(
+results
+);
+
+let right=
+`${completed}/${needed}`;
 
 if(best){
-right+=` • ${best.percentage??0}%`;
+
+right+=
+` • ${best.percentage??0}%`;
+
 }
 
 return`
@@ -2224,39 +2744,55 @@ assignment.id
 </span>
 
 <strong>
-${escapeHtml(right)}
+${escapeHtml(
+right
+)}
 </strong>
 
 </div>
 
 `;
 
-}).join("");
+}
+).join("");
 
-}else if(childResults.length){
+}else if(
+childResults.length
+){
 
-lines=childResults.map(result=>`
+lines=
+childResults.map(
+result=>`
 
 <div class="detail-line">
 
 <span>
-${escapeHtml(result.exercise||result.exerciseId||"Exercise")}
+${escapeHtml(
+result.exercise||
+result.exerciseId||
+"Exercise"
+)}
 </span>
 
 <strong>
-${escapeHtml(`${result.percentage??0}%`)}
+${escapeHtml(
+`${result.percentage??0}%`
+)}
 </strong>
 
 </div>
 
-`).join("");
+`
+).join("");
 
 }else{
 
 lines=`
+
 <div class="empty">
 No work recorded.
 </div>
+
 `;
 
 }
@@ -2267,7 +2803,9 @@ return`
 
 <h5>
 ${catalog[child].avatar}
-${escapeHtml(catalog[child].name)}
+${escapeHtml(
+catalog[child].name
+)}
 </h5>
 
 ${lines}
@@ -2280,106 +2818,188 @@ ${lines}
 
 function renderMonthlyProgress(){
 
-renderMonthlyProgressChild("ivy");
-renderMonthlyProgressChild("charlotte");
+renderMonthlyProgressChild(
+"ivy"
+);
+
+renderMonthlyProgressChild(
+"charlotte"
+);
 
 }
 
-function renderMonthlyProgressChild(child){
+function renderMonthlyProgressChild(
+child
+){
 
-const container=document.getElementById(child+"MonthlyProgress");
+const container=
+document.getElementById(
+child+"MonthlyProgress"
+);
 
-const current=new Date();
-const year=current.getFullYear();
-const month=current.getMonth();
+const current=
+new Date();
 
-const monthResults=allResults.filter(result=>{
+const year=
+current.getFullYear();
 
-if(resultChild(result)!==child)return false;
+const month=
+current.getMonth();
 
-const key=resultDate(result);
+const monthResults=
+allResults.filter(
+result=>{
 
-if(!key)return false;
+if(
+resultChild(result)!==
+child
+){
+return false;
+}
 
-const date=dateFromKey(key);
+const key=
+resultDate(
+result
+);
+
+if(!key){
+return false;
+}
+
+const date=
+dateFromKey(
+key
+);
 
 return(
 date.getFullYear()===year&&
 date.getMonth()===month
 );
 
-});
-
-const uniqueDays=new Set(
-monthResults.map(result=>resultDate(result))
+}
 );
 
-const percentages=monthResults
-.map(result=>Number(result.percentage))
-.filter(Number.isFinite);
+const uniqueDays=
+new Set(
+monthResults.map(
+result=>
+resultDate(
+result
+)
+)
+);
 
-const average=percentages.length
+const percentages=
+monthResults
+.map(
+result=>
+Number(
+result.percentage
+)
+)
+.filter(
+Number.isFinite
+);
+
+const average=
+percentages.length
+
 ?Math.round(
-percentages.reduce((total,value)=>total+value,0)/
+percentages.reduce(
+(total,value)=>
+total+value,
+0
+)/
 percentages.length
 )
+
 :0;
 
-const passed=monthResults.filter(result=>result.passed===true).length;
+const passed=
+monthResults.filter(
+result=>
+result.passed===true
+).length;
 
 const grouped={};
 
-monthResults.forEach(result=>{
+monthResults.forEach(
+result=>{
 
-const id=result.exerciseId||result.exercise||"exercise";
+const id=
+result.exerciseId||
+result.exercise||
+"exercise";
 
 if(!grouped[id]){
 
 grouped[id]={
-name:result.exercise||id,
+
+name:
+result.exercise||
+id,
+
 attempts:0,
+
 best:0,
+
 totalPercent:0
+
 };
 
 }
 
 grouped[id].attempts++;
 
-const percentage=Number(result.percentage||0);
+const percentage=
+Number(
+result.percentage||0
+);
 
-grouped[id].best=Math.max(
+grouped[id].best=
+Math.max(
 grouped[id].best,
 percentage
 );
 
-grouped[id].totalPercent+=percentage;
+grouped[id].totalPercent+=
+percentage;
 
-});
+}
+);
 
-const exerciseRows=Object.values(grouped)
-.sort((a,b)=>
+const exerciseRows=
+Object.values(
+grouped
+)
+.sort(
+(a,b)=>
 a.name.localeCompare(
 b.name,
 undefined,
 {numeric:true}
 )
 )
-.map(exercise=>{
+.map(
+exercise=>{
 
-const exerciseAverage=Math.round(
-exercise.totalPercent/exercise.attempts
+const exerciseAverage=
+Math.round(
+exercise.totalPercent/
+exercise.attempts
 );
 
 return`
 
-<div class="progress-exercise">
+<div style="padding:10px 0;border-bottom:1px solid #efeff4">
 
-<div class="progress-exercise-name">
-${escapeHtml(exercise.name)}
+<div style="font-weight:900;font-size:12px">
+${escapeHtml(
+exercise.name
+)}
 </div>
 
-<div class="progress-exercise-meta">
+<div style="font-size:10px;color:#8d8d9c;margin-top:4px">
 ${exercise.attempts}
 attempt${exercise.attempts===1?"":"s"}
 • Average ${exerciseAverage}%
@@ -2390,53 +3010,85 @@ attempt${exercise.attempts===1?"":"s"}
 
 `;
 
-}).join("");
+}
+).join("");
 
-const monthLabel=current.toLocaleDateString("en-GB",{
+const monthLabel=
+current.toLocaleDateString(
+"en-GB",
+{
 month:"long",
 year:"numeric"
-});
+}
+);
 
 container.innerHTML=`
 
 <h3>
 ${catalog[child].avatar}
-${escapeHtml(catalog[child].name)}
+${escapeHtml(
+catalog[child].name
+)}
 </h3>
 
-<p>${escapeHtml(monthLabel)}</p>
+<p>
+${escapeHtml(
+monthLabel
+)}
+</p>
 
 <div class="stat-grid">
 
 <div class="stat">
-<strong>${monthResults.length}</strong>
-<span>Attempts</span>
+<strong>
+${monthResults.length}
+</strong>
+<span>
+Attempts
+</span>
 </div>
 
 <div class="stat">
-<strong>${average}%</strong>
-<span>Average</span>
+<strong>
+${average}%
+</strong>
+<span>
+Average
+</span>
 </div>
 
 <div class="stat">
-<strong>${uniqueDays.size}</strong>
-<span>Learning Days</span>
+<strong>
+${uniqueDays.size}
+</strong>
+<span>
+Learning Days
+</span>
 </div>
 
 </div>
 
 ${monthResults.length
+
 ?`
+
 <div style="margin-bottom:14px;font-size:11px;color:#88889a;font-weight:800">
-${passed}/${monthResults.length} attempts passed
+${passed}/${monthResults.length}
+attempts passed
 </div>
+
 ${exerciseRows}
+
 `
+
 :`
+
 <div class="empty">
 No completed exercises recorded this month yet.
 </div>
+
 `
+
 }
 
 `;
@@ -2444,46 +3096,76 @@ No completed exercises recorded this month yet.
 }
 
 document
-.getElementById("assignModal")
-.addEventListener("click",function(event){
+.getElementById(
+"assignModal"
+)
+.addEventListener(
+"click",
+function(event){
 
-if(event.target===this){
+if(
+event.target===
+this
+){
+
 closeAssign();
+
 }
 
-});
+}
+);
 
 document
-.getElementById("exerciseLibraryModal")
-.addEventListener("click",function(event){
+.getElementById(
+"exerciseLibraryModal"
+)
+.addEventListener(
+"click",
+function(event){
 
-if(event.target===this){
+if(
+event.target===
+this
+){
+
 closeExerciseLibrary();
+
 }
 
-});
+}
+);
 
-document.addEventListener("keydown",function(event){
+document.addEventListener(
+"keydown",
+function(event){
 
-if(event.key==="Escape"){
+if(
+event.key===
+"Escape"
+){
 
 closeAssign();
 closeExerciseLibrary();
 
 }
 
-});
+}
+);
 
-window.addEventListener("beforeunload",function(event){
+window.addEventListener(
+"beforeunload",
+function(event){
 
 if(!dirty)return;
 
 event.preventDefault();
+
 event.returnValue="";
 
-});
+}
+);
 
-/* OPEN MUM PORTAL DIRECTLY — NO LOGIN */
+/* OPEN DIRECTLY — NO LOGIN */
 startMumPortal();
 
 </script>
