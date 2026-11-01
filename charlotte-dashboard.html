@@ -1,1 +1,1469 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<title>Charlotte • Learning Dashboard</title>
+
+<style>
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background:
+    radial-gradient(circle at 10% 5%, #fff0f6 0, transparent 25%),
+    radial-gradient(circle at 90% 15%, #eaf4ff 0, transparent 27%),
+    radial-gradient(circle at 50% 100%, #fff8dc 0, transparent 30%),
+    #f7f8fc;
+  color: #172033;
+  min-height: 100vh;
+}
+
+.topbar {
+  max-width: 1050px;
+  margin: auto;
+  padding: 26px 22px 0;
+}
+
+.back {
+  color: #66718a;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 900;
+}
+
+.wrapper {
+  max-width: 1050px;
+  margin: auto;
+  padding: 25px 20px 70px;
+}
+
+
+/* HEADER */
+
+.hero {
+  background:
+    linear-gradient(
+      135deg,
+      #ffffff,
+      #fff7fb
+    );
+  border-radius: 30px;
+  padding: 32px;
+  box-shadow:
+    0 15px 45px rgba(42,55,90,.08);
+  margin-bottom: 22px;
+}
+
+.hero-top {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.avatar {
+  width: 75px;
+  height: 75px;
+  border-radius: 24px;
+  background:
+    linear-gradient(
+      135deg,
+      #ffe0ed,
+      #e5e5ff
+    );
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 39px;
+}
+
+.hero h1 {
+  margin: 0 0 5px;
+  font-size: 32px;
+}
+
+.hero p {
+  margin: 0;
+  color: #7b8498;
+  font-weight: 700;
+}
+
+
+/* STATS */
+
+.stats {
+  display: grid;
+  grid-template-columns:
+    repeat(4, 1fr);
+  gap: 14px;
+  margin-top: 28px;
+}
+
+.stat {
+  background: white;
+  border: 1px solid #edf0f6;
+  border-radius: 20px;
+  padding: 19px;
+}
+
+.stat-label {
+  font-size: 12px;
+  font-weight: 900;
+  color: #8992a5;
+  text-transform: uppercase;
+  letter-spacing: .7px;
+  margin-bottom: 8px;
+}
+
+.stat-value {
+  font-size: 28px;
+  font-weight: 900;
+}
+
+.stat-sub {
+  margin-top: 5px;
+  font-size: 12px;
+  color: #9aa2b2;
+}
+
+
+/* SECTIONS */
+
+.section {
+  background: white;
+  border-radius: 27px;
+  padding: 27px;
+  box-shadow:
+    0 12px 35px rgba(42,55,90,.07);
+  margin-bottom: 22px;
+}
+
+.section-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 22px;
+}
+
+.section-heading h2 {
+  margin: 0;
+  font-size: 23px;
+}
+
+.section-heading p {
+  margin: 5px 0 0;
+  color: #8a93a5;
+  font-size: 14px;
+}
+
+
+/* FILTERS */
+
+.filters {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.filter {
+  border: 0;
+  background: #f1f3f8;
+  color: #687186;
+  border-radius: 999px;
+  padding: 9px 14px;
+  font-weight: 900;
+  cursor: pointer;
+}
+
+.filter.active {
+  background: #172033;
+  color: white;
+}
+
+
+/* ATTEMPTS */
+
+.date-group {
+  margin-top: 26px;
+}
+
+.date-title {
+  font-size: 15px;
+  font-weight: 900;
+  margin-bottom: 11px;
+  color: #59647a;
+}
+
+.attempt {
+  display: grid;
+  grid-template-columns:
+    85px 1fr auto;
+  align-items: center;
+  gap: 14px;
+  padding: 15px 4px;
+  border-bottom: 1px solid #eef1f6;
+}
+
+.attempt:last-child {
+  border-bottom: none;
+}
+
+.attempt-time {
+  color: #8992a4;
+  font-weight: 800;
+  font-size: 13px;
+}
+
+.attempt-path {
+  font-size: 13px;
+  color: #8992a4;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.attempt-name {
+  font-size: 16px;
+  font-weight: 900;
+}
+
+.score {
+  min-width: 76px;
+  text-align: center;
+  padding: 9px 12px;
+  border-radius: 13px;
+  font-size: 17px;
+  font-weight: 900;
+}
+
+.score-high {
+  background: #e9f9f1;
+  color: #168457;
+}
+
+.score-medium {
+  background: #fff7df;
+  color: #a16d00;
+}
+
+.score-low {
+  background: #fff0f2;
+  color: #d45269;
+}
+
+
+/* PROGRESS */
+
+.progress-item {
+  padding: 18px 0;
+  border-bottom: 1px solid #eef1f6;
+}
+
+.progress-item:last-child {
+  border-bottom: none;
+}
+
+.progress-top {
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
+  margin-bottom: 12px;
+}
+
+.progress-title {
+  font-weight: 900;
+}
+
+.progress-path {
+  font-size: 12px;
+  color: #929aab;
+  margin-top: 4px;
+}
+
+.progress-best {
+  font-weight: 900;
+  color: #397be0;
+}
+
+.score-history {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 7px;
+}
+
+.history-score {
+  padding: 7px 10px;
+  border-radius: 10px;
+  background: #f1f4f9;
+  font-weight: 900;
+  font-size: 13px;
+}
+
+.arrow {
+  color: #a3aaba;
+  font-weight: 900;
+}
+
+
+/* EMPTY */
+
+.empty {
+  text-align: center;
+  padding: 45px 20px;
+}
+
+.empty-icon {
+  font-size: 55px;
+  margin-bottom: 15px;
+}
+
+.empty h3 {
+  margin: 0 0 8px;
+}
+
+.empty p {
+  margin: 0;
+  color: #8b94a7;
+  line-height: 1.5;
+}
+
+
+/* REFRESH */
+
+.dashboard-actions {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.refresh {
+  border: 0;
+  background: #397be0;
+  color: white;
+  padding: 13px 20px;
+  border-radius: 14px;
+  font-weight: 900;
+  cursor: pointer;
+}
+
+
+/* MOBILE */
+
+@media (max-width: 750px) {
+
+  .stats {
+    grid-template-columns:
+      repeat(2, 1fr);
+  }
+
+  .section-heading {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .attempt {
+    grid-template-columns:
+      60px 1fr auto;
+    gap: 8px;
+  }
+
+}
+
+@media (max-width: 480px) {
+
+  .hero {
+    padding: 24px 19px;
+  }
+
+  .hero h1 {
+    font-size: 27px;
+  }
+
+  .stats {
+    grid-template-columns:
+      1fr 1fr;
+    gap: 9px;
+  }
+
+  .stat {
+    padding: 15px;
+  }
+
+  .stat-value {
+    font-size: 23px;
+  }
+
+  .section {
+    padding: 21px 17px;
+  }
+
+  .attempt {
+    grid-template-columns:
+      1fr auto;
+  }
+
+  .attempt-time {
+    grid-column: 1 / -1;
+  }
+
+}
+
+</style>
+</head>
+
+
+<body>
+
+<div class="topbar">
+
+  <a
+    class="back"
+    href="index.html#charlotte"
+  >
+    ← BACK TO CHARLOTTE
+  </a>
+
+</div>
+
+
+<div class="wrapper">
+
+
+<!-- HEADER -->
+
+<div class="hero">
+
+  <div class="hero-top">
+
+    <div class="avatar">
+      🌷
+    </div>
+
+    <div>
+
+      <h1>
+        Charlotte's Dashboard
+      </h1>
+
+      <p>
+        Grade 1 • Learning Progress
+      </p>
+
+    </div>
+
+  </div>
+
+
+  <div class="stats">
+
+    <div class="stat">
+
+      <div class="stat-label">
+        Today's Tests
+      </div>
+
+      <div
+        id="todayTests"
+        class="stat-value"
+      >
+        0
+      </div>
+
+      <div class="stat-sub">
+        completed today
+      </div>
+
+    </div>
+
+
+    <div class="stat">
+
+      <div class="stat-label">
+        Today's Average
+      </div>
+
+      <div
+        id="todayAverage"
+        class="stat-value"
+      >
+        —
+      </div>
+
+      <div class="stat-sub">
+        first-try accuracy
+      </div>
+
+    </div>
+
+
+    <div class="stat">
+
+      <div class="stat-label">
+        Today's Best
+      </div>
+
+      <div
+        id="todayBest"
+        class="stat-value"
+      >
+        —
+      </div>
+
+      <div class="stat-sub">
+        highest test score
+      </div>
+
+    </div>
+
+
+    <div class="stat">
+
+      <div class="stat-label">
+        All Attempts
+      </div>
+
+      <div
+        id="allAttempts"
+        class="stat-value"
+      >
+        0
+      </div>
+
+      <div class="stat-sub">
+        tests recorded
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+
+
+<!-- TEST HISTORY -->
+
+<div class="section">
+
+  <div class="section-heading">
+
+    <div>
+
+      <h2>
+        📚 Test History
+      </h2>
+
+      <p>
+        Every completed test attempt.
+      </p>
+
+    </div>
+
+
+    <div class="filters">
+
+      <button
+        class="filter active"
+        onclick="changeFilter('all', this)"
+      >
+        All
+      </button>
+
+      <button
+        class="filter"
+        onclick="changeFilter('today', this)"
+      >
+        Today
+      </button>
+
+      <button
+        class="filter"
+        onclick="changeFilter('week', this)"
+      >
+        7 Days
+      </button>
+
+    </div>
+
+  </div>
+
+
+  <div id="history"></div>
+
+</div>
+
+
+
+<!-- PROGRESS -->
+
+<div class="section">
+
+  <div class="section-heading">
+
+    <div>
+
+      <h2>
+        📈 Progress by Exercise
+      </h2>
+
+      <p>
+        See how Charlotte improves when she repeats a test.
+      </p>
+
+    </div>
+
+  </div>
+
+
+  <div id="progress"></div>
+
+</div>
+
+
+
+<div class="dashboard-actions">
+
+  <button
+    class="refresh"
+    onclick="renderDashboard()"
+  >
+    ↻ REFRESH DASHBOARD
+  </button>
+
+</div>
+
+
+</div>
+
+
+<script>
+
+
+/* ======================================
+   SETTINGS
+   ====================================== */
+
+const HISTORY_KEY =
+  "charlotte-learning-history";
+
+let currentFilter =
+  "all";
+
+
+/* ======================================
+   GET HISTORY
+   ====================================== */
+
+function getHistory() {
+
+  try {
+
+    const history =
+      JSON.parse(
+        localStorage.getItem(
+          HISTORY_KEY
+        )
+      );
+
+    if (
+      Array.isArray(history)
+    ) {
+
+      return history;
+
+    }
+
+    return [];
+
+  }
+
+  catch (error) {
+
+    return [];
+
+  }
+
+}
+
+
+/* ======================================
+   DATE HELPERS
+   ====================================== */
+
+function getLocalDateKey(
+  timestamp
+) {
+
+  const date =
+    new Date(timestamp);
+
+  const year =
+    date.getFullYear();
+
+  const month =
+    String(
+      date.getMonth() + 1
+    ).padStart(2, "0");
+
+  const day =
+    String(
+      date.getDate()
+    ).padStart(2, "0");
+
+  return (
+    `${year}-${month}-${day}`
+  );
+
+}
+
+
+function getTodayKey() {
+
+  const now =
+    new Date();
+
+  const year =
+    now.getFullYear();
+
+  const month =
+    String(
+      now.getMonth() + 1
+    ).padStart(2, "0");
+
+  const day =
+    String(
+      now.getDate()
+    ).padStart(2, "0");
+
+  return (
+    `${year}-${month}-${day}`
+  );
+
+}
+
+
+/* ======================================
+   FORMAT DATE
+   ====================================== */
+
+function formatDate(
+  timestamp
+) {
+
+  const date =
+    new Date(timestamp);
+
+  return date.toLocaleDateString(
+    "en-GB",
+    {
+      weekday: "long",
+      day: "numeric",
+      month: "long",
+      year: "numeric"
+    }
+  );
+
+}
+
+
+/* ======================================
+   FORMAT TIME
+   ====================================== */
+
+function formatTime(
+  timestamp
+) {
+
+  const date =
+    new Date(timestamp);
+
+  return date.toLocaleTimeString(
+    "en-GB",
+    {
+      hour: "2-digit",
+      minute: "2-digit"
+    }
+  );
+
+}
+
+
+/* ======================================
+   SCORE COLOUR
+   ====================================== */
+
+function getScoreClass(
+  percentage
+) {
+
+  if (
+    percentage >= 80
+  ) {
+
+    return "score-high";
+
+  }
+
+  if (
+    percentage >= 50
+  ) {
+
+    return "score-medium";
+
+  }
+
+  return "score-low";
+
+}
+
+
+/* ======================================
+   FILTER
+   ====================================== */
+
+function changeFilter(
+  filter,
+  button
+) {
+
+  currentFilter =
+    filter;
+
+  document
+    .querySelectorAll(
+      ".filter"
+    )
+    .forEach(
+      function(item) {
+
+        item.classList.remove(
+          "active"
+        );
+
+      }
+    );
+
+  button.classList.add(
+    "active"
+  );
+
+  renderHistory();
+
+}
+
+
+/* ======================================
+   FILTER HISTORY
+   ====================================== */
+
+function getFilteredHistory(
+  history
+) {
+
+  if (
+    currentFilter === "all"
+  ) {
+
+    return history;
+
+  }
+
+  if (
+    currentFilter === "today"
+  ) {
+
+    const today =
+      getTodayKey();
+
+    return history.filter(
+      function(attempt) {
+
+        return (
+          getLocalDateKey(
+            attempt.timestamp
+          ) === today
+        );
+
+      }
+    );
+
+  }
+
+  if (
+    currentFilter === "week"
+  ) {
+
+    const now =
+      new Date();
+
+    const sevenDaysAgo =
+      new Date();
+
+    sevenDaysAgo.setDate(
+      now.getDate() - 6
+    );
+
+    sevenDaysAgo.setHours(
+      0,
+      0,
+      0,
+      0
+    );
+
+    return history.filter(
+      function(attempt) {
+
+        const attemptDate =
+          new Date(
+            attempt.timestamp
+          );
+
+        return (
+          attemptDate >=
+          sevenDaysAgo
+        );
+
+      }
+    );
+
+  }
+
+  return history;
+
+}
+
+
+/* ======================================
+   TOP STATISTICS
+   ====================================== */
+
+function renderStats() {
+
+  const history =
+    getHistory();
+
+  const today =
+    getTodayKey();
+
+  const todayHistory =
+    history.filter(
+      function(attempt) {
+
+        return (
+          getLocalDateKey(
+            attempt.timestamp
+          ) === today
+        );
+
+      }
+    );
+
+  document.getElementById(
+    "todayTests"
+  ).textContent =
+    todayHistory.length;
+
+  document.getElementById(
+    "allAttempts"
+  ).textContent =
+    history.length;
+
+
+  if (
+    todayHistory.length === 0
+  ) {
+
+    document.getElementById(
+      "todayAverage"
+    ).textContent =
+      "—";
+
+    document.getElementById(
+      "todayBest"
+    ).textContent =
+      "—";
+
+    return;
+
+  }
+
+
+  const totalPercentage =
+    todayHistory.reduce(
+      function(total, attempt) {
+
+        return (
+          total +
+          Number(
+            attempt.percentage || 0
+          )
+        );
+
+      },
+      0
+    );
+
+
+  const average =
+    Math.round(
+      totalPercentage /
+      todayHistory.length
+    );
+
+
+  document.getElementById(
+    "todayAverage"
+  ).textContent =
+    average + "%";
+
+
+  const best =
+    todayHistory.reduce(
+      function(bestAttempt, attempt) {
+
+        const currentPercent =
+          Number(
+            attempt.percentage || 0
+          );
+
+        const bestPercent =
+          Number(
+            bestAttempt.percentage || 0
+          );
+
+        if (
+          currentPercent >
+          bestPercent
+        ) {
+
+          return attempt;
+
+        }
+
+        return bestAttempt;
+
+      },
+      todayHistory[0]
+    );
+
+
+  document.getElementById(
+    "todayBest"
+  ).textContent =
+    `${best.score}/${best.total}`;
+
+}
+
+
+/* ======================================
+   HISTORY
+   ====================================== */
+
+function renderHistory() {
+
+  const container =
+    document.getElementById(
+      "history"
+    );
+
+  let history =
+    getHistory();
+
+  history =
+    getFilteredHistory(
+      history
+    );
+
+  history.sort(
+    function(a, b) {
+
+      return (
+        new Date(b.timestamp) -
+        new Date(a.timestamp)
+      );
+
+    }
+  );
+
+
+  if (
+    history.length === 0
+  ) {
+
+    container.innerHTML = `
+      <div class="empty">
+
+        <div class="empty-icon">
+          📝
+        </div>
+
+        <h3>
+          No test attempts yet
+        </h3>
+
+        <p>
+          When Charlotte completes a test,
+          her score will appear here automatically.
+        </p>
+
+      </div>
+    `;
+
+    return;
+
+  }
+
+
+  const groups = {};
+
+
+  history.forEach(
+    function(attempt) {
+
+      const key =
+        getLocalDateKey(
+          attempt.timestamp
+        );
+
+      if (
+        !groups[key]
+      ) {
+
+        groups[key] = [];
+
+      }
+
+      groups[key].push(
+        attempt
+      );
+
+    }
+  );
+
+
+  let html = "";
+
+
+  Object.keys(groups)
+    .sort()
+    .reverse()
+    .forEach(
+      function(dateKey) {
+
+        const attempts =
+          groups[dateKey];
+
+        html += `
+          <div class="date-group">
+
+            <div class="date-title">
+              ${formatDate(
+                attempts[0].timestamp
+              )}
+            </div>
+        `;
+
+
+        attempts.forEach(
+          function(attempt) {
+
+            const percentage =
+              Number(
+                attempt.percentage || 0
+              );
+
+            const trophy =
+              percentage === 100
+                ? " 🏆"
+                : "";
+
+            html += `
+              <div class="attempt">
+
+                <div class="attempt-time">
+                  ${formatTime(
+                    attempt.timestamp
+                  )}
+                </div>
+
+                <div class="attempt-info">
+
+                  <div class="attempt-path">
+                    ${attempt.subject}
+                    •
+                    ${attempt.topic}
+                  </div>
+
+                  <div class="attempt-name">
+                    ${attempt.exercise}
+                    ${trophy}
+                  </div>
+
+                </div>
+
+                <div
+                  class="
+                    score
+                    ${getScoreClass(
+                      percentage
+                    )}
+                  "
+                >
+                  ${attempt.score}/${attempt.total}
+                </div>
+
+              </div>
+            `;
+
+          }
+        );
+
+        html += `
+          </div>
+        `;
+
+      }
+    );
+
+
+  container.innerHTML =
+    html;
+
+}
+
+
+/* ======================================
+   PROGRESS BY EXERCISE
+   ====================================== */
+
+function renderProgress() {
+
+  const container =
+    document.getElementById(
+      "progress"
+    );
+
+  const history =
+    getHistory();
+
+
+  if (
+    history.length === 0
+  ) {
+
+    container.innerHTML = `
+      <div class="empty">
+
+        <div class="empty-icon">
+          📈
+        </div>
+
+        <h3>
+          Progress will appear here
+        </h3>
+
+        <p>
+          Repeat an exercise and you will
+          be able to see Charlotte's scores
+          improving over time.
+        </p>
+
+      </div>
+    `;
+
+    return;
+
+  }
+
+
+  const exercises = {};
+
+
+  history
+    .slice()
+    .sort(
+      function(a, b) {
+
+        return (
+          new Date(a.timestamp) -
+          new Date(b.timestamp)
+        );
+
+      }
+    )
+    .forEach(
+      function(attempt) {
+
+        const id =
+          attempt.exerciseId ||
+          (
+            attempt.subject +
+            "-" +
+            attempt.topic +
+            "-" +
+            attempt.exercise
+          );
+
+
+        if (
+          !exercises[id]
+        ) {
+
+          exercises[id] = {
+
+            subject:
+              attempt.subject,
+
+            topic:
+              attempt.topic,
+
+            exercise:
+              attempt.exercise,
+
+            attempts: []
+
+          };
+
+        }
+
+
+        exercises[id]
+          .attempts
+          .push(attempt);
+
+      }
+    );
+
+
+  let html = "";
+
+
+  Object.keys(exercises)
+    .forEach(
+      function(id) {
+
+        const item =
+          exercises[id];
+
+        const attempts =
+          item.attempts;
+
+        const best =
+          Math.max.apply(
+            null,
+            attempts.map(
+              function(attempt) {
+
+                return Number(
+                  attempt.percentage ||
+                  0
+                );
+
+              }
+            )
+          );
+
+
+        html += `
+          <div class="progress-item">
+
+            <div class="progress-top">
+
+              <div>
+
+                <div class="progress-title">
+                  ${item.exercise}
+                </div>
+
+                <div class="progress-path">
+                  ${item.subject}
+                  •
+                  ${item.topic}
+                  •
+                  ${attempts.length}
+                  attempt${attempts.length === 1 ? "" : "s"}
+                </div>
+
+              </div>
+
+              <div class="progress-best">
+                Best ${best}%
+              </div>
+
+            </div>
+
+
+            <div class="score-history">
+        `;
+
+
+        attempts.forEach(
+          function(attempt, index) {
+
+            if (
+              index > 0
+            ) {
+
+              html += `
+                <span class="arrow">
+                  →
+                </span>
+              `;
+
+            }
+
+            html += `
+              <span class="history-score">
+                ${attempt.score}/${attempt.total}
+              </span>
+            `;
+
+          }
+        );
+
+
+        html += `
+            </div>
+
+          </div>
+        `;
+
+      }
+    );
+
+
+  container.innerHTML =
+    html;
+
+}
+
+
+/* ======================================
+   RENDER EVERYTHING
+   ====================================== */
+
+function renderDashboard() {
+
+  renderStats();
+
+  renderHistory();
+
+  renderProgress();
+
+}
+
+
+/* LOAD */
+
+renderDashboard();
+
+</script>
+
+</body>
+</html>
