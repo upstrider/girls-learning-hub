@@ -1,1 +1,1386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<title>Charlotte • Number Board 1–100</title>
+
+<style>
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background:
+    radial-gradient(circle at 10% 10%, #fff0f7 0, transparent 25%),
+    radial-gradient(circle at 90% 15%, #eaf5ff 0, transparent 28%),
+    radial-gradient(circle at 50% 100%, #fff8d8 0, transparent 30%),
+    #f8f9fd;
+  color: #172033;
+  min-height: 100vh;
+}
+
+.topbar {
+  max-width: 900px;
+  margin: auto;
+  padding: 24px 20px 5px;
+}
+
+.back {
+  text-decoration: none;
+  color: #69738a;
+  font-size: 14px;
+  font-weight: 900;
+}
+
+.wrapper {
+  max-width: 900px;
+  margin: auto;
+  padding: 15px 18px 60px;
+}
+
+.heading {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.eyebrow {
+  font-size: 13px;
+  font-weight: 900;
+  color: #8b77b7;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.heading h1 {
+  margin: 7px 0 5px;
+  font-size: 37px;
+}
+
+.heading p {
+  margin: 0;
+  color: #7d879b;
+  font-weight: 700;
+}
+
+
+/* SCORE */
+
+.score-area {
+  max-width: 700px;
+  margin: 23px auto 18px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+}
+
+.progress-text {
+  font-weight: 900;
+  color: #66718a;
+}
+
+.score-box {
+  background: white;
+  padding: 10px 16px;
+  border-radius: 999px;
+  font-weight: 900;
+  box-shadow: 0 6px 20px rgba(40,50,80,.08);
+}
+
+
+/* MAIN CARD */
+
+.card {
+  background: rgba(255,255,255,.96);
+  border-radius: 30px;
+  padding: 28px;
+  box-shadow: 0 16px 45px rgba(42,55,90,.10);
+}
+
+.board-title {
+  text-align: center;
+  margin-bottom: 21px;
+}
+
+.rainbow {
+  font-size: 37px;
+  margin-bottom: 3px;
+}
+
+.board-title h2 {
+  margin: 0;
+  font-size: 27px;
+}
+
+.board-title p {
+  margin: 6px 0 0;
+  color: #8b94a6;
+  font-weight: 700;
+}
+
+
+/* NUMBER BOARD */
+
+.board {
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  max-width: 700px;
+  margin: auto;
+  border: 3px solid #8657c7;
+  border-radius: 18px;
+  overflow: hidden;
+}
+
+.cell {
+  aspect-ratio: 1 / 1;
+  min-width: 0;
+  border-right: 1px solid rgba(95,70,145,.35);
+  border-bottom: 1px solid rgba(95,70,145,.35);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: clamp(14px, 2.5vw, 24px);
+  font-weight: 900;
+  position: relative;
+}
+
+.cell:nth-child(10n) {
+  border-right: none;
+}
+
+.row1 {
+  background: #ffe4ef;
+}
+
+.row2 {
+  background: #ffe9dc;
+}
+
+.row3 {
+  background: #fff7bd;
+}
+
+.row4 {
+  background: #f2f8b9;
+}
+
+.row5 {
+  background: #dff7d9;
+}
+
+.row6 {
+  background: #dff5fa;
+}
+
+.row7 {
+  background: #dfeeff;
+}
+
+.row8 {
+  background: #eee4ff;
+}
+
+.row9 {
+  background: #f7dcff;
+}
+
+.row10 {
+  background: #ffe0f0;
+}
+
+
+/* INPUT */
+
+.number-input {
+  width: 82%;
+  height: 72%;
+  border: 2px dashed #9b78d1;
+  border-radius: 9px;
+  background: white;
+  text-align: center;
+  font-size: inherit;
+  font-weight: 900;
+  color: #172033;
+  outline: none;
+  padding: 0;
+}
+
+.number-input:focus {
+  border-style: solid;
+  border-color: #5d85ea;
+  box-shadow: 0 0 0 3px rgba(93,133,234,.15);
+}
+
+.number-input.correct {
+  border: 2px solid #27a66a;
+  background: #e6faef;
+  color: #168653;
+}
+
+.number-input.wrong {
+  border: 2px solid #e85b75;
+  background: #fff0f3;
+  color: #d94562;
+}
+
+
+/* FEEDBACK */
+
+.feedback {
+  min-height: 55px;
+  margin-top: 20px;
+  text-align: center;
+  font-size: 18px;
+  font-weight: 900;
+}
+
+.feedback-good {
+  color: #168653;
+}
+
+.feedback-try {
+  color: #d95370;
+}
+
+
+/* BUTTONS */
+
+.actions {
+  text-align: center;
+  margin-top: 6px;
+}
+
+.check-button {
+  border: none;
+  background: linear-gradient(135deg, #6e72e8, #a257d5);
+  color: white;
+  padding: 16px 30px;
+  border-radius: 16px;
+  font-size: 17px;
+  font-weight: 900;
+  cursor: pointer;
+  box-shadow: 0 8px 20px rgba(100,80,200,.22);
+}
+
+
+/* RESULTS */
+
+.result {
+  display: none;
+  text-align: center;
+}
+
+.result-icon {
+  font-size: 90px;
+}
+
+.result h1 {
+  font-size: 36px;
+  margin: 10px 0;
+}
+
+.final-score {
+  font-size: 55px;
+  font-weight: 900;
+  margin: 18px 0 5px;
+}
+
+.result-message {
+  color: #727d92;
+  font-size: 18px;
+  line-height: 1.5;
+  margin: 12px auto 25px;
+  max-width: 520px;
+}
+
+.result-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.result-button {
+  border: none;
+  text-decoration: none;
+  padding: 14px 21px;
+  border-radius: 14px;
+  font-size: 15px;
+  font-weight: 900;
+  cursor: pointer;
+}
+
+.retry {
+  background: #eef2f8;
+  color: #27334b;
+}
+
+.finish {
+  background: #397be0;
+  color: white;
+}
+
+
+/* CONFETTI */
+
+.confetti {
+  position: fixed;
+  top: -30px;
+  pointer-events: none;
+  z-index: 9999;
+  animation: fall linear forwards;
+}
+
+@keyframes fall {
+
+  to {
+    transform: translateY(110vh) rotate(720deg);
+    opacity: .9;
+  }
+
+}
+
+
+/* MOBILE */
+
+@media (max-width: 650px) {
+
+  .wrapper {
+    padding-left: 8px;
+    padding-right: 8px;
+  }
+
+  .card {
+    padding: 20px 7px;
+    border-radius: 22px;
+  }
+
+  .heading h1 {
+    font-size: 29px;
+  }
+
+  .board {
+    border-width: 2px;
+    border-radius: 12px;
+  }
+
+  .cell {
+    font-size: clamp(11px, 4vw, 18px);
+  }
+
+  .number-input {
+    width: 90%;
+    height: 76%;
+    border-radius: 6px;
+  }
+
+}
+
+</style>
+</head>
+
+
+<body>
+
+
+<div class="topbar">
+
+  <a
+    class="back"
+    href="../../../index.html#charlotte"
+  >
+    ← BACK TO CHARLOTTE
+  </a>
+
+</div>
+
+
+<div class="wrapper">
+
+
+<div id="exerciseScreen">
+
+
+  <div class="heading">
+
+    <div class="eyebrow">
+      Charlotte • Grade 1 • Maths
+    </div>
+
+    <h1>
+      🌈 Number Board 🌈
+    </h1>
+
+    <p>
+      Numbers 1 to 100
+    </p>
+
+  </div>
+
+
+  <div class="score-area">
+
+    <div
+      id="progressText"
+      class="progress-text"
+    >
+      20 missing numbers
+    </div>
+
+    <div class="score-box">
+      ⭐ <span id="score">0</span>/20
+    </div>
+
+  </div>
+
+
+  <div class="card">
+
+    <div class="board-title">
+
+      <div class="rainbow">
+        🌈 ⭐ 🦄 ⭐ 🌈
+      </div>
+
+      <h2>
+        Fill in the missing numbers
+      </h2>
+
+      <p>
+        Look carefully at the number pattern.
+      </p>
+
+    </div>
+
+
+    <div
+      id="numberBoard"
+      class="board"
+    ></div>
+
+
+    <div
+      id="feedback"
+      class="feedback"
+    ></div>
+
+
+    <div class="actions">
+
+      <button
+        class="check-button"
+        onclick="checkBoard()"
+      >
+        CHECK MY NUMBERS ✓
+      </button>
+
+    </div>
+
+  </div>
+
+
+</div>
+
+
+
+<!-- RESULTS -->
+
+<div
+  id="resultScreen"
+  class="card result"
+>
+
+  <div
+    id="resultIcon"
+    class="result-icon"
+  >
+    🏆
+  </div>
+
+  <h1 id="resultTitle">
+    Brilliant!
+  </h1>
+
+  <div
+    id="starsResult"
+    style="font-size:35px;"
+  >
+    ⭐⭐⭐
+  </div>
+
+  <div
+    id="finalScore"
+    class="final-score"
+  >
+    20 / 20
+  </div>
+
+  <div
+    id="resultMessage"
+    class="result-message"
+  ></div>
+
+
+  <div class="result-buttons">
+
+    <button
+      class="result-button retry"
+      onclick="restartExercise()"
+    >
+      ↻ TRY ANOTHER BOARD
+    </button>
+
+    <a
+      class="result-button finish"
+      href="../../../index.html#charlotte"
+    >
+      FINISH ✓
+    </a>
+
+  </div>
+
+</div>
+
+
+</div>
+
+
+<script>
+
+
+/* ======================================
+   SETTINGS
+   ====================================== */
+
+const TOTAL_MISSING = 20;
+
+let missingNumbers = [];
+
+let firstAttemptCorrect =
+  new Set();
+
+let alreadyAttempted =
+  new Set();
+
+let completedNumbers =
+  new Set();
+
+let score = 0;
+
+
+/* ======================================
+   CREATE RANDOM MISSING NUMBERS
+   ====================================== */
+
+function chooseMissingNumbers() {
+
+  const available = [];
+
+  /*
+  We keep 1 and 100 visible
+  as useful anchors.
+  */
+
+  for (
+    let number = 2;
+    number <= 99;
+    number++
+  ) {
+
+    available.push(number);
+
+  }
+
+
+  /*
+  Shuffle.
+  */
+
+  for (
+    let i = available.length - 1;
+    i > 0;
+    i--
+  ) {
+
+    const j =
+      Math.floor(
+        Math.random() *
+        (i + 1)
+      );
+
+    [
+      available[i],
+      available[j]
+    ] =
+    [
+      available[j],
+      available[i]
+    ];
+
+  }
+
+
+  missingNumbers =
+    available
+      .slice(0, TOTAL_MISSING)
+      .sort(
+        function(a, b) {
+          return a - b;
+        }
+      );
+
+}
+
+
+/* ======================================
+   BUILD BOARD
+   ====================================== */
+
+function buildBoard() {
+
+  const board =
+    document.getElementById(
+      "numberBoard"
+    );
+
+  board.innerHTML = "";
+
+
+  for (
+    let number = 1;
+    number <= 100;
+    number++
+  ) {
+
+    const cell =
+      document.createElement(
+        "div"
+      );
+
+
+    const row =
+      Math.ceil(
+        number / 10
+      );
+
+
+    cell.className =
+      `cell row${row}`;
+
+
+    if (
+      missingNumbers.includes(
+        number
+      )
+    ) {
+
+      const input =
+        document.createElement(
+          "input"
+        );
+
+
+      input.type =
+        "text";
+
+      input.inputMode =
+        "numeric";
+
+      input.pattern =
+        "[0-9]*";
+
+      input.maxLength =
+        "3";
+
+      input.className =
+        "number-input";
+
+      input.dataset.answer =
+        number;
+
+      input.setAttribute(
+        "aria-label",
+        `Missing number ${number}`
+      );
+
+
+      input.addEventListener(
+        "keydown",
+        function(event) {
+
+          if (
+            event.key === "Enter"
+          ) {
+
+            checkBoard();
+
+          }
+
+        }
+      );
+
+
+      cell.appendChild(
+        input
+      );
+
+    }
+
+    else {
+
+      cell.textContent =
+        number;
+
+    }
+
+
+    board.appendChild(
+      cell
+    );
+
+  }
+
+}
+
+
+/* ======================================
+   CHECK BOARD
+   ====================================== */
+
+function checkBoard() {
+
+  const inputs =
+    document.querySelectorAll(
+      ".number-input"
+    );
+
+  const feedback =
+    document.getElementById(
+      "feedback"
+    );
+
+
+  let allComplete =
+    true;
+
+  let newCorrect =
+    false;
+
+
+  inputs.forEach(
+    function(input) {
+
+      const answer =
+        Number(
+          input.dataset.answer
+        );
+
+
+      if (
+        completedNumbers.has(
+          answer
+        )
+      ) {
+
+        return;
+
+      }
+
+
+      const typed =
+        input.value.trim();
+
+
+      /*
+      Blank answers are not yet
+      counted as attempts.
+      */
+
+      if (
+        typed === ""
+      ) {
+
+        allComplete =
+          false;
+
+        return;
+
+      }
+
+
+      const typedNumber =
+        Number(typed);
+
+
+      if (
+        typedNumber === answer
+      ) {
+
+        /*
+        Score ONLY if Charlotte
+        got this number correct
+        before ever getting it wrong.
+        */
+
+        if (
+          !alreadyAttempted.has(
+            answer
+          )
+        ) {
+
+          firstAttemptCorrect.add(
+            answer
+          );
+
+          score++;
+
+        }
+
+
+        completedNumbers.add(
+          answer
+        );
+
+
+        input.classList.remove(
+          "wrong"
+        );
+
+        input.classList.add(
+          "correct"
+        );
+
+        input.disabled =
+          true;
+
+        newCorrect =
+          true;
+
+      }
+
+      else {
+
+        /*
+        From now on this number
+        cannot earn a first-try point.
+        */
+
+        alreadyAttempted.add(
+          answer
+        );
+
+
+        input.classList.remove(
+          "correct"
+        );
+
+        input.classList.add(
+          "wrong"
+        );
+
+
+        allComplete =
+          false;
+
+      }
+
+    }
+  );
+
+
+  document.getElementById(
+    "score"
+  ).textContent =
+    score;
+
+
+  /*
+  Check if every missing number
+  has eventually been completed.
+  */
+
+  if (
+    completedNumbers.size ===
+    TOTAL_MISSING
+  ) {
+
+    finishExercise();
+    return;
+
+  }
+
+
+  const remaining =
+    TOTAL_MISSING -
+    completedNumbers.size;
+
+
+  document.getElementById(
+    "progressText"
+  ).textContent =
+    `${remaining} left to complete`;
+
+
+  if (
+    newCorrect
+  ) {
+
+    feedback.className =
+      "feedback feedback-good";
+
+    feedback.textContent =
+      `✨ Great job! ${remaining} left.`;
+
+  }
+
+  else {
+
+    feedback.className =
+      "feedback feedback-try";
+
+    feedback.textContent =
+      "Have another look at the pink boxes and try again 💛";
+
+  }
+
+}
+
+
+/* ======================================
+   RECORD EVERY ATTEMPT
+   ====================================== */
+
+function recordAttempt() {
+
+  const historyKey =
+    "charlotte-learning-history";
+
+
+  let history = [];
+
+
+  try {
+
+    history =
+      JSON.parse(
+        localStorage.getItem(
+          historyKey
+        )
+      ) || [];
+
+  }
+
+  catch (error) {
+
+    history = [];
+
+  }
+
+
+  const attempt = {
+
+    child:
+      "Charlotte",
+
+    subject:
+      "Maths",
+
+    topic:
+      "Numbers 1–100",
+
+    exercise:
+      "Number Board • Exercise 1",
+
+    exerciseId:
+      "charlotte-maths-numbers-1-100-exercise-01",
+
+    score:
+      score,
+
+    total:
+      TOTAL_MISSING,
+
+    percentage:
+      Math.round(
+        (
+          score /
+          TOTAL_MISSING
+        ) *
+        100
+      ),
+
+    timestamp:
+      new Date().toISOString()
+
+  };
+
+
+  history.push(
+    attempt
+  );
+
+
+  localStorage.setItem(
+    historyKey,
+    JSON.stringify(
+      history
+    )
+  );
+
+}
+
+
+/* ======================================
+   SAVE BEST SCORE
+   ====================================== */
+
+function saveProgress() {
+
+  const key =
+    "charlotte-maths-numbers-1-100-exercise-01";
+
+
+  let previous =
+    null;
+
+
+  try {
+
+    previous =
+      JSON.parse(
+        localStorage.getItem(
+          key
+        )
+      );
+
+  }
+
+  catch (error) {
+
+    previous =
+      null;
+
+  }
+
+
+  if (
+    !previous ||
+    score >
+    Number(
+      previous.score || 0
+    )
+  ) {
+
+    localStorage.setItem(
+
+      key,
+
+      JSON.stringify({
+
+        score:
+          score,
+
+        total:
+          TOTAL_MISSING,
+
+        passed:
+          score >= 16
+
+      })
+
+    );
+
+  }
+
+}
+
+
+/* ======================================
+   FINISH
+   ====================================== */
+
+function finishExercise() {
+
+  recordAttempt();
+
+  saveProgress();
+
+
+  document.getElementById(
+    "exerciseScreen"
+  ).style.display =
+    "none";
+
+
+  document.getElementById(
+    "resultScreen"
+  ).style.display =
+    "block";
+
+
+  document.getElementById(
+    "finalScore"
+  ).textContent =
+    `${score} / ${TOTAL_MISSING}`;
+
+
+  if (
+    score === TOTAL_MISSING
+  ) {
+
+    document.getElementById(
+      "resultIcon"
+    ).textContent =
+      "🏆";
+
+
+    document.getElementById(
+      "resultTitle"
+    ).textContent =
+      "PERFECT SCORE! 🎉";
+
+
+    document.getElementById(
+      "starsResult"
+    ).textContent =
+      "⭐⭐⭐";
+
+
+    document.getElementById(
+      "resultMessage"
+    ).textContent =
+      "Amazing, Charlotte! You knew every missing number on your first try!";
+
+
+    makeConfetti();
+
+  }
+
+  else if (
+    score >= 16
+  ) {
+
+    document.getElementById(
+      "resultIcon"
+    ).textContent =
+      "🌟";
+
+
+    document.getElementById(
+      "resultTitle"
+    ).textContent =
+      "You passed! 🎉";
+
+
+    document.getElementById(
+      "starsResult"
+    ).textContent =
+      "⭐⭐";
+
+
+    document.getElementById(
+      "resultMessage"
+    ).textContent =
+      `Brilliant work, Charlotte! You got ${score} out of ${TOTAL_MISSING} correct on your first try.`;
+
+
+    makeConfetti();
+
+  }
+
+  else {
+
+    document.getElementById(
+      "resultIcon"
+    ).textContent =
+      "💛";
+
+
+    document.getElementById(
+      "resultTitle"
+    ).textContent =
+      "Great practice!";
+
+
+    document.getElementById(
+      "starsResult"
+    ).textContent =
+      "⭐";
+
+
+    document.getElementById(
+      "resultMessage"
+    ).textContent =
+      `You got ${score} out of ${TOTAL_MISSING} correct on your first try. Let's practise the number board and try again!`;
+
+  }
+
+}
+
+
+/* ======================================
+   RESTART
+   ====================================== */
+
+function restartExercise() {
+
+  missingNumbers = [];
+
+  firstAttemptCorrect =
+    new Set();
+
+  alreadyAttempted =
+    new Set();
+
+  completedNumbers =
+    new Set();
+
+  score = 0;
+
+
+  document.getElementById(
+    "score"
+  ).textContent =
+    "0";
+
+
+  document.getElementById(
+    "progressText"
+  ).textContent =
+    `${TOTAL_MISSING} missing numbers`;
+
+
+  document.getElementById(
+    "feedback"
+  ).textContent =
+    "";
+
+
+  document.getElementById(
+    "resultScreen"
+  ).style.display =
+    "none";
+
+
+  document.getElementById(
+    "exerciseScreen"
+  ).style.display =
+    "block";
+
+
+  chooseMissingNumbers();
+
+  buildBoard();
+
+}
+
+
+/* ======================================
+   CONFETTI
+   ====================================== */
+
+function makeConfetti() {
+
+  const pieces = [
+    "⭐",
+    "✨",
+    "🌈",
+    "💖",
+    "🎉",
+    "🦄"
+  ];
+
+
+  for (
+    let i = 0;
+    i < 40;
+    i++
+  ) {
+
+    const confetti =
+      document.createElement(
+        "div"
+      );
+
+
+    confetti.className =
+      "confetti";
+
+
+    confetti.textContent =
+      pieces[
+        Math.floor(
+          Math.random() *
+          pieces.length
+        )
+      ];
+
+
+    confetti.style.left =
+      Math.random() *
+      100 +
+      "vw";
+
+
+    confetti.style.fontSize =
+      (
+        14 +
+        Math.random() *
+        18
+      ) +
+      "px";
+
+
+    confetti.style.animationDuration =
+      (
+        2.5 +
+        Math.random() *
+        2
+      ) +
+      "s";
+
+
+    confetti.style.animationDelay =
+      (
+        Math.random() *
+        .7
+      ) +
+      "s";
+
+
+    document.body.appendChild(
+      confetti
+    );
+
+
+    setTimeout(
+      function() {
+
+        confetti.remove();
+
+      },
+      5000
+    );
+
+  }
+
+}
+
+
+/* ======================================
+   START EXERCISE
+   ====================================== */
+
+chooseMissingNumbers();
+
+buildBoard();
+
+</script>
+
+</body>
+</html>
