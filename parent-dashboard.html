@@ -1,338 +1,6245 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>Mum's Control Panel • Girls Learning Hub</title>
 
-<style>
-*{box-sizing:border-box}
-body{margin:0;font-family:Arial,Helvetica,sans-serif;background:radial-gradient(circle at 8% 8%,#fff0f7 0,transparent 24%),radial-gradient(circle at 92% 10%,#eaf5ff 0,transparent 26%),radial-gradient(circle at 50% 100%,#fff7d9 0,transparent 30%),#f8f9fd;color:#172033;min-height:100vh}
-button,select{font-family:inherit}
-.topbar{max-width:1080px;margin:auto;padding:24px 20px 0}.back-link{text-decoration:none;color:#6f788c;font-size:13px;font-weight:900}
-.wrapper{max-width:1080px;margin:auto;padding:15px 20px 70px}
-.header{text-align:center;margin:20px auto 22px}.header-icon{font-size:46px}.eyebrow{color:#8b77b7;font-size:11px;font-weight:900;text-transform:uppercase;letter-spacing:1.2px}.header h1{font-size:38px;margin:6px 0 7px}.header p{margin:0 auto;max-width:650px;color:#7d879b;font-size:14px;line-height:1.5;font-weight:700}
-.tabs{max-width:650px;margin:24px auto 30px;background:white;border-radius:18px;padding:6px;display:grid;grid-template-columns:repeat(3,1fr);gap:5px;box-shadow:0 10px 30px rgba(42,55,90,.08)}
-.tab{border:0;background:transparent;padding:13px 10px;border-radius:13px;color:#7c8597;font-weight:900;cursor:pointer}.tab.active{background:linear-gradient(135deg,#716fe8,#a35bd7);color:white;box-shadow:0 6px 18px rgba(110,90,210,.22)}
-.view{display:none}.view.active{display:block}
-.today-date{text-align:center;margin:-8px 0 25px;color:#7e8799;font-size:14px;font-weight:800}
-.today-overview{display:grid;grid-template-columns:1fr 1fr;gap:22px}
-.child-panel{background:rgba(255,255,255,.97);border-radius:28px;padding:25px;box-shadow:0 14px 40px rgba(42,55,90,.09)}
-.child-top{display:flex;align-items:center;gap:13px;margin-bottom:18px}.avatar{width:55px;height:55px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:29px;flex-shrink:0}.ivy-avatar{background:#ffe5f0}.charlotte-avatar{background:#e5f2ff}.child-name{font-size:22px;font-weight:900}.child-grade{font-size:11px;color:#929aaa;font-weight:800;margin-top:3px}
-.mini-progress{margin-left:auto;text-align:right}.mini-progress strong{font-size:20px;display:block}.mini-progress span{font-size:10px;color:#8d96a8;font-weight:900;text-transform:uppercase}
-.assignment-list{display:grid;gap:9px}.assignment-row{border:1px solid #e8ecf3;border-radius:15px;padding:13px;background:#fafbfc;display:flex;justify-content:space-between;gap:12px;align-items:center}.assignment-row.done{background:#f2fbf6;border-color:#ccebdc}.assignment-row.partial{background:#fffaf0;border-color:#f1dfad}.assignment-title{font-size:13px;font-weight:900}.assignment-meta{font-size:10px;color:#929aaa;font-weight:700;margin-top:4px}.badge{font-size:9px;font-weight:900;border-radius:999px;padding:6px 8px;white-space:nowrap}.done-badge{background:#daf5e6;color:#157b50}.partial-badge{background:#fff0bd;color:#946d00}.waiting-badge{background:#eef1f5;color:#788293}
-.empty{border:2px dashed #e4e8ef;border-radius:16px;padding:18px;text-align:center;color:#9aa2b1;font-size:12px;font-weight:800}
-.assign-button{width:100%;margin-top:14px;border:0;border-radius:14px;padding:12px;background:#f3effd;color:#7050b6;font-size:12px;font-weight:900;cursor:pointer}.assign-button:hover{background:#ece5fb}
-.attempt-toggle{width:100%;margin-top:9px;border:0;background:transparent;color:#7c8597;font-size:11px;font-weight:900;cursor:pointer;padding:8px}.attempts-box{display:none;margin-top:6px}.attempts-box.open{display:block}.attempt{padding:10px 2px;border-bottom:1px solid #edf0f4}.attempt:last-child{border:0}.attempt-name{font-size:12px;font-weight:900}.attempt-meta{font-size:10px;color:#929aaa;margin-top:3px;font-weight:700}.attempt-score{font-size:13px;font-weight:900;color:#168653;margin-top:4px}
-.save-bar{position:sticky;bottom:12px;z-index:20;max-width:600px;margin:24px auto 0;background:rgba(255,255,255,.94);backdrop-filter:blur(12px);padding:10px;border-radius:20px;box-shadow:0 12px 35px rgba(42,55,90,.15);display:none;gap:10px;align-items:center}.save-bar.visible{display:flex}.save-summary{flex:1;padding-left:8px;font-size:11px;color:#7c8597;font-weight:900}.save-button{border:0;background:linear-gradient(135deg,#6e72e8,#a257d5);color:white;padding:13px 20px;border-radius:13px;font-size:12px;font-weight:900;cursor:pointer}.save-button:disabled{opacity:.5}
-.assign-modal{display:none;position:fixed;inset:0;background:rgba(29,34,50,.42);z-index:100;padding:25px;overflow:auto}.assign-modal.open{display:flex;align-items:flex-start;justify-content:center}.modal-card{width:min(650px,100%);margin:35px auto;background:white;border-radius:27px;padding:25px;box-shadow:0 30px 80px rgba(20,25,40,.25)}.modal-head{display:flex;justify-content:space-between;align-items:flex-start;gap:15px;margin-bottom:20px}.modal-head h2{margin:0;font-size:24px}.modal-head p{margin:4px 0 0;color:#8a93a5;font-size:12px;font-weight:700}.close{border:0;background:#f1f3f7;width:35px;height:35px;border-radius:50%;font-size:18px;cursor:pointer}
-.subject-button,.topic-button{width:100%;border:1px solid #e7ebf2;background:white;border-radius:15px;padding:14px;margin-top:8px;display:flex;justify-content:space-between;align-items:center;text-align:left;font-weight:900;cursor:pointer}.subject-button:hover,.topic-button:hover{background:#faf9fd}.subject-content,.topic-content{display:none;padding:5px 8px}.subject-content.open,.topic-content.open{display:block}.topic-button{background:#f8f9fc}
-.exercise-option{border:1px solid #e8ecf3;border-radius:14px;padding:12px;margin-top:8px}.exercise-option.selected{border-color:#8d67d5;background:#faf6ff}.exercise-main{display:flex;align-items:center;gap:10px}.exercise-main input{width:19px;height:19px;accent-color:#7c5ac7}.exercise-info{flex:1}.exercise-name{font-size:13px;font-weight:900}.exercise-sub{font-size:10px;color:#929aaa;font-weight:700;margin-top:3px}.repeat{display:none;margin-top:10px;padding-top:10px;border-top:1px solid #eceff4;align-items:center;gap:8px}.exercise-option.selected .repeat{display:flex}.repeat select{border:1px solid #ded7ed;border-radius:9px;padding:6px;color:#6847ad;font-weight:900}
-.modal-done{width:100%;margin-top:20px;border:0;background:#172033;color:white;padding:13px;border-radius:14px;font-weight:900;cursor:pointer}
-.calendar-wrap{background:white;border-radius:28px;padding:25px;box-shadow:0 14px 40px rgba(42,55,90,.09)}.calendar-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:20px}.calendar-head h2{margin:0;font-size:24px}.month-btn{border:1px solid #e4e8ef;background:white;border-radius:11px;padding:9px 12px;font-weight:900;cursor:pointer;color:#657087}.calendar-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:7px}.weekday{text-align:center;font-size:10px;color:#929aaa;font-weight:900;text-transform:uppercase;padding:5px}.day{min-height:92px;border:1px solid #e8ecf3;border-radius:13px;padding:9px;background:#fbfcfd;cursor:pointer}.day:hover{border-color:#b8a8df}.day.other{opacity:.28}.day.today{border:2px solid #8d67d5}.day-number{font-size:12px;font-weight:900}.day-child{font-size:9px;font-weight:900;margin-top:7px;border-radius:7px;padding:5px}.day-child.ivy{background:#fff0f6}.day-child.charlotte{background:#eef6ff}.status-dot{display:inline-block;width:7px;height:7px;border-radius:50%;margin-right:4px}.green{background:#2ab673}.yellow{background:#efb83e}.red{background:#e76174}.grey{background:#c5cad3}
-.legend{display:flex;flex-wrap:wrap;gap:13px;margin:17px 0 0;font-size:10px;color:#7e8799;font-weight:800}.detail-card{margin-top:20px;background:white;border-radius:25px;padding:23px;box-shadow:0 12px 35px rgba(42,55,90,.07)}.detail-card h3{margin:0 0 15px}.detail-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}.detail-child h4{margin:0 0 9px}.detail-item{border-bottom:1px solid #edf0f4;padding:9px 0}.detail-item:last-child{border:0}.detail-name{font-size:12px;font-weight:900}.detail-meta{font-size:10px;color:#929aaa;font-weight:700;margin-top:3px}
-.progress-month{display:flex;justify-content:center;align-items:center;gap:15px;margin-bottom:20px}.progress-month h2{margin:0;font-size:24px}.stats-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px}.stats-card{background:white;border-radius:27px;padding:25px;box-shadow:0 14px 40px rgba(42,55,90,.09)}.stats-top{display:flex;align-items:center;gap:12px;margin-bottom:18px}.stats-name{font-size:21px;font-weight:900}.stat-boxes{display:grid;grid-template-columns:1fr 1fr;gap:9px}.stat{border-radius:15px;padding:15px;text-align:center;background:#f7f8fb}.stat strong{font-size:23px;display:block}.stat span{font-size:9px;color:#858fa1;font-weight:900;text-transform:uppercase}.subject-stats{margin-top:18px}.subject-stat{display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px solid #edf0f4;font-size:12px;font-weight:900}.status-message{text-align:center;min-height:25px;font-size:12px;font-weight:900;margin-top:10px;color:#168653}
-@media(max-width:760px){.today-overview,.stats-grid,.detail-grid{grid-template-columns:1fr}.header h1{font-size:31px}.wrapper{padding-left:12px;padding-right:12px}.tabs{margin-left:0;margin-right:0}.calendar-wrap{padding:13px}.calendar-grid{gap:3px}.day{min-height:75px;padding:6px}.day-child{font-size:8px;padding:4px}.weekday{font-size:8px}.modal-card{padding:18px}.assign-modal{padding:10px}}
-</style>
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>
+    Mum's Control Panel • Girls Learning Hub
+  </title>
+
+
+  <style>
+
+    * {
+      box-sizing: border-box;
+    }
+
+
+    body {
+
+      margin: 0;
+
+      font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+      background:
+        radial-gradient(
+          circle at 8% 8%,
+          #fff0f7 0,
+          transparent 24%
+        ),
+        radial-gradient(
+          circle at 92% 10%,
+          #eaf5ff 0,
+          transparent 26%
+        ),
+        radial-gradient(
+          circle at 50% 100%,
+          #fff7d9 0,
+          transparent 30%
+        ),
+        #f8f9fd;
+
+      color: #172033;
+
+      min-height: 100vh;
+
+    }
+
+
+    button,
+    select {
+      font-family: inherit;
+    }
+
+
+    button {
+      cursor: pointer;
+    }
+
+
+    /* =========================================
+       TOP
+       ========================================= */
+
+
+    .topbar {
+
+      max-width: 1080px;
+
+      margin: auto;
+
+      padding:
+        24px
+        20px
+        0;
+
+    }
+
+
+    .back-link {
+
+      text-decoration: none;
+
+      color: #6f788c;
+
+      font-size: 13px;
+
+      font-weight: 900;
+
+    }
+
+
+    .wrapper {
+
+      max-width: 1080px;
+
+      margin: auto;
+
+      padding:
+        15px
+        20px
+        70px;
+
+    }
+
+
+    .header {
+
+      text-align: center;
+
+      margin:
+        20px
+        auto
+        22px;
+
+    }
+
+
+    .header-icon {
+      font-size: 46px;
+    }
+
+
+    .eyebrow {
+
+      color: #8b77b7;
+
+      font-size: 11px;
+
+      font-weight: 900;
+
+      text-transform: uppercase;
+
+      letter-spacing: 1.2px;
+
+    }
+
+
+    .header h1 {
+
+      font-size: 38px;
+
+      margin:
+        6px
+        0
+        7px;
+
+    }
+
+
+    .header p {
+
+      margin:
+        0
+        auto;
+
+      max-width: 650px;
+
+      color: #7d879b;
+
+      font-size: 14px;
+
+      line-height: 1.5;
+
+      font-weight: 700;
+
+    }
+
+
+    /* =========================================
+       MAIN NAVIGATION
+       ========================================= */
+
+
+    .tabs {
+
+      max-width: 650px;
+
+      margin:
+        24px
+        auto
+        30px;
+
+      background: white;
+
+      border-radius: 18px;
+
+      padding: 6px;
+
+      display: grid;
+
+      grid-template-columns:
+        repeat(3, 1fr);
+
+      gap: 5px;
+
+      box-shadow:
+        0 10px 30px
+        rgba(42, 55, 90, .08);
+
+    }
+
+
+    .tab {
+
+      border: 0;
+
+      background: transparent;
+
+      padding:
+        13px
+        10px;
+
+      border-radius: 13px;
+
+      color: #7c8597;
+
+      font-weight: 900;
+
+    }
+
+
+    .tab.active {
+
+      background:
+        linear-gradient(
+          135deg,
+          #716fe8,
+          #a35bd7
+        );
+
+      color: white;
+
+      box-shadow:
+        0 6px 18px
+        rgba(110, 90, 210, .22);
+
+    }
+
+
+    .view {
+      display: none;
+    }
+
+
+    .view.active {
+      display: block;
+    }
+
+
+    /* =========================================
+       TODAY
+       ========================================= */
+
+
+    .today-date {
+
+      text-align: center;
+
+      margin:
+        -8px
+        0
+        25px;
+
+      color: #7e8799;
+
+      font-size: 14px;
+
+      font-weight: 800;
+
+    }
+
+
+    .today-overview {
+
+      display: grid;
+
+      grid-template-columns:
+        1fr 1fr;
+
+      gap: 22px;
+
+    }
+
+
+    .child-panel {
+
+      background:
+        rgba(255, 255, 255, .97);
+
+      border-radius: 28px;
+
+      padding: 25px;
+
+      box-shadow:
+        0 14px 40px
+        rgba(42, 55, 90, .09);
+
+    }
+
+
+    .child-top {
+
+      display: flex;
+
+      align-items: center;
+
+      gap: 13px;
+
+      margin-bottom: 18px;
+
+    }
+
+
+    .avatar {
+
+      width: 55px;
+
+      height: 55px;
+
+      border-radius: 50%;
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      font-size: 29px;
+
+      flex-shrink: 0;
+
+    }
+
+
+    .ivy-avatar {
+      background: #ffe5f0;
+    }
+
+
+    .charlotte-avatar {
+      background: #e5f2ff;
+    }
+
+
+    .child-name {
+
+      font-size: 22px;
+
+      font-weight: 900;
+
+    }
+
+
+    .child-grade {
+
+      font-size: 11px;
+
+      color: #929aaa;
+
+      font-weight: 800;
+
+      margin-top: 3px;
+
+    }
+
+
+    .mini-progress {
+
+      margin-left: auto;
+
+      text-align: right;
+
+    }
+
+
+    .mini-progress strong {
+
+      font-size: 20px;
+
+      display: block;
+
+    }
+
+
+    .mini-progress span {
+
+      font-size: 10px;
+
+      color: #8d96a8;
+
+      font-weight: 900;
+
+      text-transform: uppercase;
+
+    }
+
+
+    /* =========================================
+       TODAY ASSIGNMENTS
+       ========================================= */
+
+
+    .assignment-list {
+
+      display: grid;
+
+      gap: 9px;
+
+    }
+
+
+    .assignment-row {
+
+      border:
+        1px solid
+        #e8ecf3;
+
+      border-radius: 15px;
+
+      padding: 13px;
+
+      background: #fafbfc;
+
+      display: flex;
+
+      justify-content: space-between;
+
+      gap: 12px;
+
+      align-items: center;
+
+    }
+
+
+    .assignment-row.done {
+
+      background: #f2fbf6;
+
+      border-color: #ccebdc;
+
+    }
+
+
+    .assignment-row.partial {
+
+      background: #fffaf0;
+
+      border-color: #f1dfad;
+
+    }
+
+
+    .assignment-title {
+
+      font-size: 13px;
+
+      font-weight: 900;
+
+    }
+
+
+    .assignment-meta {
+
+      font-size: 10px;
+
+      color: #929aaa;
+
+      font-weight: 700;
+
+      margin-top: 4px;
+
+    }
+
+
+    .badge {
+
+      font-size: 9px;
+
+      font-weight: 900;
+
+      border-radius: 999px;
+
+      padding:
+        6px
+        8px;
+
+      white-space: nowrap;
+
+    }
+
+
+    .done-badge {
+
+      background: #daf5e6;
+
+      color: #157b50;
+
+    }
+
+
+    .partial-badge {
+
+      background: #fff0bd;
+
+      color: #946d00;
+
+    }
+
+
+    .waiting-badge {
+
+      background: #eef1f5;
+
+      color: #788293;
+
+    }
+
+
+    .empty {
+
+      border:
+        2px dashed
+        #e4e8ef;
+
+      border-radius: 16px;
+
+      padding: 18px;
+
+      text-align: center;
+
+      color: #9aa2b1;
+
+      font-size: 12px;
+
+      font-weight: 800;
+
+    }
+
+
+    /* =========================================
+       ASSIGN BUTTON
+       ========================================= */
+
+
+    .assign-button {
+
+      width: 100%;
+
+      margin-top: 14px;
+
+      border: 0;
+
+      border-radius: 14px;
+
+      padding: 12px;
+
+      background: #f3effd;
+
+      color: #7050b6;
+
+      font-size: 12px;
+
+      font-weight: 900;
+
+    }
+
+
+    .assign-button:hover {
+      background: #ece5fb;
+    }
+
+
+    /* =========================================
+       ATTEMPTS
+       ========================================= */
+
+
+    .attempt-toggle {
+
+      width: 100%;
+
+      margin-top: 9px;
+
+      border: 0;
+
+      background: transparent;
+
+      color: #7c8597;
+
+      font-size: 11px;
+
+      font-weight: 900;
+
+      padding: 8px;
+
+    }
+
+
+    .attempts-box {
+
+      display: none;
+
+      margin-top: 6px;
+
+    }
+
+
+    .attempts-box.open {
+      display: block;
+    }
+
+
+    .attempt {
+
+      padding:
+        10px
+        2px;
+
+      border-bottom:
+        1px solid
+        #edf0f4;
+
+    }
+
+
+    .attempt:last-child {
+      border: 0;
+    }
+
+
+    .attempt-name {
+
+      font-size: 12px;
+
+      font-weight: 900;
+
+    }
+
+
+    .attempt-meta {
+
+      font-size: 10px;
+
+      color: #929aaa;
+
+      margin-top: 3px;
+
+      font-weight: 700;
+
+    }
+
+
+    .attempt-score {
+
+      font-size: 13px;
+
+      font-weight: 900;
+
+      color: #168653;
+
+      margin-top: 4px;
+
+    }
+
+
+    /* =========================================
+       SAVE BAR
+       ========================================= */
+
+
+    .save-bar {
+
+      position: sticky;
+
+      bottom: 12px;
+
+      z-index: 20;
+
+      max-width: 600px;
+
+      margin:
+        24px
+        auto
+        0;
+
+      background:
+        rgba(255, 255, 255, .94);
+
+      backdrop-filter:
+        blur(12px);
+
+      padding: 10px;
+
+      border-radius: 20px;
+
+      box-shadow:
+        0 12px 35px
+        rgba(42, 55, 90, .15);
+
+      display: none;
+
+      gap: 10px;
+
+      align-items: center;
+
+    }
+
+
+    .save-bar.visible {
+      display: flex;
+    }
+
+
+    .save-summary {
+
+      flex: 1;
+
+      padding-left: 8px;
+
+      font-size: 11px;
+
+      color: #7c8597;
+
+      font-weight: 900;
+
+    }
+
+
+    .save-button {
+
+      border: 0;
+
+      background:
+        linear-gradient(
+          135deg,
+          #6e72e8,
+          #a257d5
+        );
+
+      color: white;
+
+      padding:
+        13px
+        20px;
+
+      border-radius: 13px;
+
+      font-size: 12px;
+
+      font-weight: 900;
+
+    }
+
+
+    .save-button:disabled {
+      opacity: .5;
+    }
+
+
+    .status-message {
+
+      text-align: center;
+
+      min-height: 25px;
+
+      font-size: 12px;
+
+      font-weight: 900;
+
+      margin-top: 10px;
+
+      color: #168653;
+
+    }
+
+
+    /* =========================================
+       ASSIGNMENT MODAL
+       ========================================= */
+
+
+    .assign-modal {
+
+      display: none;
+
+      position: fixed;
+
+      inset: 0;
+
+      background:
+        rgba(29, 34, 50, .42);
+
+      z-index: 100;
+
+      padding: 25px;
+
+      overflow: auto;
+
+    }
+
+
+    .assign-modal.open {
+
+      display: flex;
+
+      align-items: flex-start;
+
+      justify-content: center;
+
+    }
+
+
+    .modal-card {
+
+      width:
+        min(
+          650px,
+          100%
+        );
+
+      margin:
+        35px
+        auto;
+
+      background: white;
+
+      border-radius: 27px;
+
+      padding: 25px;
+
+      box-shadow:
+        0 30px 80px
+        rgba(20, 25, 40, .25);
+
+    }
+
+
+    .modal-head {
+
+      display: flex;
+
+      justify-content: space-between;
+
+      align-items: flex-start;
+
+      gap: 15px;
+
+      margin-bottom: 20px;
+
+    }
+
+
+    .modal-head h2 {
+
+      margin: 0;
+
+      font-size: 24px;
+
+    }
+
+
+    .modal-head p {
+
+      margin:
+        4px
+        0
+        0;
+
+      color: #8a93a5;
+
+      font-size: 12px;
+
+      font-weight: 700;
+
+    }
+
+
+    .close {
+
+      border: 0;
+
+      background: #f1f3f7;
+
+      width: 35px;
+
+      height: 35px;
+
+      border-radius: 50%;
+
+      font-size: 18px;
+
+    }
+
+
+    /* =========================================
+       SUBJECT / TOPIC SELECTOR
+       ========================================= */
+
+
+    .subject-button,
+    .topic-button {
+
+      width: 100%;
+
+      border:
+        1px solid
+        #e7ebf2;
+
+      background: white;
+
+      border-radius: 15px;
+
+      padding: 14px;
+
+      margin-top: 8px;
+
+      display: flex;
+
+      justify-content: space-between;
+
+      align-items: center;
+
+      text-align: left;
+
+      font-weight: 900;
+
+    }
+
+
+    .subject-button:hover,
+    .topic-button:hover {
+      background: #faf9fd;
+    }
+
+
+    .subject-content,
+    .topic-content {
+
+      display: none;
+
+      padding:
+        5px
+        8px;
+
+    }
+
+
+    .subject-content.open,
+    .topic-content.open {
+      display: block;
+    }
+
+
+    .topic-button {
+      background: #f8f9fc;
+    }
+
+
+    .exercise-option {
+
+      border:
+        1px solid
+        #e8ecf3;
+
+      border-radius: 14px;
+
+      padding: 12px;
+
+      margin-top: 8px;
+
+    }
+
+
+    .exercise-option.selected {
+
+      border-color: #8d67d5;
+
+      background: #faf6ff;
+
+    }
+
+
+    .exercise-main {
+
+      display: flex;
+
+      align-items: center;
+
+      gap: 10px;
+
+    }
+
+
+    .exercise-main input {
+
+      width: 19px;
+
+      height: 19px;
+
+      accent-color: #7c5ac7;
+
+    }
+
+
+    .exercise-info {
+      flex: 1;
+    }
+
+
+    .exercise-name {
+
+      font-size: 13px;
+
+      font-weight: 900;
+
+    }
+
+
+    .exercise-sub {
+
+      font-size: 10px;
+
+      color: #929aaa;
+
+      font-weight: 700;
+
+      margin-top: 3px;
+
+    }
+
+
+    .repeat {
+
+      display: none;
+
+      margin-top: 10px;
+
+      padding-top: 10px;
+
+      border-top:
+        1px solid
+        #eceff4;
+
+      align-items: center;
+
+      gap: 8px;
+
+    }
+
+
+    .exercise-option.selected .repeat {
+      display: flex;
+    }
+
+
+    .repeat select {
+
+      border:
+        1px solid
+        #ded7ed;
+
+      border-radius: 9px;
+
+      padding: 6px;
+
+      color: #6847ad;
+
+      font-weight: 900;
+
+    }
+
+
+    .modal-done {
+
+      width: 100%;
+
+      margin-top: 20px;
+
+      border: 0;
+
+      background: #172033;
+
+      color: white;
+
+      padding: 13px;
+
+      border-radius: 14px;
+
+      font-weight: 900;
+
+    }
+
+
+    /* =========================================
+       CALENDAR
+       ========================================= */
+
+
+    .calendar-wrap {
+
+      background: white;
+
+      border-radius: 28px;
+
+      padding: 25px;
+
+      box-shadow:
+        0 14px 40px
+        rgba(42, 55, 90, .09);
+
+    }
+
+
+    .calendar-head {
+
+      display: flex;
+
+      justify-content: space-between;
+
+      align-items: center;
+
+      margin-bottom: 20px;
+
+    }
+
+
+    .calendar-head h2 {
+
+      margin: 0;
+
+      font-size: 24px;
+
+    }
+
+
+    .month-btn {
+
+      border:
+        1px solid
+        #e4e8ef;
+
+      background: white;
+
+      border-radius: 11px;
+
+      padding:
+        9px
+        12px;
+
+      font-weight: 900;
+
+      color: #657087;
+
+    }
+
+
+    .calendar-grid {
+
+      display: grid;
+
+      grid-template-columns:
+        repeat(7, 1fr);
+
+      gap: 7px;
+
+    }
+
+
+    .weekday {
+
+      text-align: center;
+
+      font-size: 10px;
+
+      color: #929aaa;
+
+      font-weight: 900;
+
+      text-transform: uppercase;
+
+      padding: 5px;
+
+    }
+
+
+    .day {
+
+      min-height: 92px;
+
+      border:
+        1px solid
+        #e8ecf3;
+
+      border-radius: 13px;
+
+      padding: 9px;
+
+      background: #fbfcfd;
+
+      cursor: pointer;
+
+    }
+
+
+    .day:hover {
+      border-color: #b8a8df;
+    }
+
+
+    .day.today {
+
+      border:
+        2px solid
+        #8d67d5;
+
+    }
+
+
+    .day-number {
+
+      font-size: 12px;
+
+      font-weight: 900;
+
+    }
+
+
+    .day-child {
+
+      font-size: 9px;
+
+      font-weight: 900;
+
+      margin-top: 7px;
+
+      border-radius: 7px;
+
+      padding: 5px;
+
+    }
+
+
+    .day-child.ivy {
+      background: #fff0f6;
+    }
+
+
+    .day-child.charlotte {
+      background: #eef6ff;
+    }
+
+
+    .status-dot {
+
+      display: inline-block;
+
+      width: 7px;
+
+      height: 7px;
+
+      border-radius: 50%;
+
+      margin-right: 4px;
+
+    }
+
+
+    .green {
+      background: #2ab673;
+    }
+
+
+    .yellow {
+      background: #efb83e;
+    }
+
+
+    .red {
+      background: #e76174;
+    }
+
+
+    .grey {
+      background: #c5cad3;
+    }
+
+
+    .legend {
+
+      display: flex;
+
+      flex-wrap: wrap;
+
+      gap: 13px;
+
+      margin:
+        17px
+        0
+        0;
+
+      font-size: 10px;
+
+      color: #7e8799;
+
+      font-weight: 800;
+
+    }
+
+
+    /* =========================================
+       CALENDAR DAY DETAILS
+       ========================================= */
+
+
+    .detail-card {
+
+      margin-top: 20px;
+
+      background: white;
+
+      border-radius: 25px;
+
+      padding: 23px;
+
+      box-shadow:
+        0 12px 35px
+        rgba(42, 55, 90, .07);
+
+    }
+
+
+    .detail-card h3 {
+
+      margin:
+        0
+        0
+        15px;
+
+    }
+
+
+    .detail-grid {
+
+      display: grid;
+
+      grid-template-columns:
+        1fr 1fr;
+
+      gap: 18px;
+
+    }
+
+
+    .detail-child h4 {
+
+      margin:
+        0
+        0
+        9px;
+
+    }
+
+
+    .detail-item {
+
+      border-bottom:
+        1px solid
+        #edf0f4;
+
+      padding:
+        9px
+        0;
+
+    }
+
+
+    .detail-item:last-child {
+      border: 0;
+    }
+
+
+    .detail-name {
+
+      font-size: 12px;
+
+      font-weight: 900;
+
+    }
+
+
+    .detail-meta {
+
+      font-size: 10px;
+
+      color: #929aaa;
+
+      font-weight: 700;
+
+      margin-top: 3px;
+
+    }
+
+
+    /* =========================================
+       PROGRESS
+       ========================================= */
+
+
+    .progress-month {
+
+      display: flex;
+
+      justify-content: center;
+
+      align-items: center;
+
+      gap: 15px;
+
+      margin-bottom: 20px;
+
+    }
+
+
+    .progress-month h2 {
+
+      margin: 0;
+
+      font-size: 24px;
+
+    }
+
+
+    .stats-grid {
+
+      display: grid;
+
+      grid-template-columns:
+        1fr 1fr;
+
+      gap: 22px;
+
+    }
+
+
+    .stats-card {
+
+      background: white;
+
+      border-radius: 27px;
+
+      padding: 25px;
+
+      box-shadow:
+        0 14px 40px
+        rgba(42, 55, 90, .09);
+
+    }
+
+
+    .stats-top {
+
+      display: flex;
+
+      align-items: center;
+
+      gap: 12px;
+
+      margin-bottom: 18px;
+
+    }
+
+
+    .stats-name {
+
+      font-size: 21px;
+
+      font-weight: 900;
+
+    }
+
+
+    .stat-boxes {
+
+      display: grid;
+
+      grid-template-columns:
+        1fr 1fr;
+
+      gap: 9px;
+
+    }
+
+
+    .stat {
+
+      border-radius: 15px;
+
+      padding: 15px;
+
+      text-align: center;
+
+      background: #f7f8fb;
+
+    }
+
+
+    .stat strong {
+
+      font-size: 23px;
+
+      display: block;
+
+    }
+
+
+    .stat span {
+
+      font-size: 9px;
+
+      color: #858fa1;
+
+      font-weight: 900;
+
+      text-transform: uppercase;
+
+    }
+
+
+    .subject-stats {
+      margin-top: 18px;
+    }
+
+
+    .subject-stat {
+
+      display: flex;
+
+      justify-content: space-between;
+
+      padding:
+        10px
+        0;
+
+      border-bottom:
+        1px solid
+        #edf0f4;
+
+      font-size: 12px;
+
+      font-weight: 900;
+
+    }
+
+
+    /* =========================================
+       MOBILE / IPAD
+       ========================================= */
+
+
+    @media (max-width: 760px) {
+
+      .today-overview,
+      .stats-grid,
+      .detail-grid {
+
+        grid-template-columns:
+          1fr;
+
+      }
+
+
+      .header h1 {
+        font-size: 31px;
+      }
+
+
+      .wrapper {
+
+        padding-left: 12px;
+
+        padding-right: 12px;
+
+      }
+
+
+      .calendar-wrap {
+        padding: 13px;
+      }
+
+
+      .calendar-grid {
+        gap: 3px;
+      }
+
+
+      .day {
+
+        min-height: 75px;
+
+        padding: 6px;
+
+      }
+
+
+      .day-child {
+
+        font-size: 8px;
+
+        padding: 4px;
+
+      }
+
+
+      .weekday {
+        font-size: 8px;
+      }
+
+
+      .modal-card {
+        padding: 18px;
+      }
+
+
+      .assign-modal {
+        padding: 10px;
+      }
+
+    }
+
+  </style>
+
 </head>
 
+
+
 <body>
-<div class="topbar"><a class="back-link" href="index.html">← BACK TO LEARNING HUB</a></div>
-<div class="wrapper">
 
-<div class="header">
-  <div class="header-icon">👩🏼‍🏫</div>
-  <div class="eyebrow">Parent Area</div>
-  <h1>Mum's Control Panel</h1>
-  <p>Plan today's learning, see what's completed and keep a simple record of their progress.</p>
-</div>
 
-<div class="tabs">
-  <button class="tab active" data-view="today">☀️ TODAY</button>
-  <button class="tab" data-view="calendar">📅 CALENDAR</button>
-  <button class="tab" data-view="progress">📊 PROGRESS</button>
-</div>
+  <div class="topbar">
 
-<section id="todayView" class="view active">
-  <div id="todayDate" class="today-date"></div>
-  <div class="today-overview">
+    <a
+      class="back-link"
+      href="index.html"
+    >
+      ← BACK TO LEARNING HUB
+    </a>
 
-    <div class="child-panel">
-      <div class="child-top">
-        <div class="avatar ivy-avatar">🌸</div>
-        <div><div class="child-name">Ivy-Rose</div><div class="child-grade">Grade 2</div></div>
-        <div class="mini-progress"><strong id="ivyMini">0/0</strong><span>completed</span></div>
+  </div>
+
+
+
+  <div class="wrapper">
+
+
+    <!-- =====================================
+         HEADER
+         ===================================== -->
+
+
+    <div class="header">
+
+      <div class="header-icon">
+        👩🏼‍🏫
       </div>
-      <div id="ivyAssignments" class="assignment-list"><div class="empty">Loading today's work...</div></div>
-      <button class="assign-button" onclick="openAssign('ivy')">＋ ASSIGN / EDIT WORK</button>
-      <button class="attempt-toggle" onclick="toggleAttempts('ivy')">View Today's Test Attempts ▾</button>
-      <div id="ivyAttempts" class="attempts-box"></div>
-    </div>
 
-    <div class="child-panel">
-      <div class="child-top">
-        <div class="avatar charlotte-avatar">🌈</div>
-        <div><div class="child-name">Charlotte</div><div class="child-grade">Grade 1</div></div>
-        <div class="mini-progress"><strong id="charlotteMini">0/0</strong><span>completed</span></div>
+      <div class="eyebrow">
+        Parent Area
       </div>
-      <div id="charlotteAssignments" class="assignment-list"><div class="empty">Loading today's work...</div></div>
-      <button class="assign-button" onclick="openAssign('charlotte')">＋ ASSIGN / EDIT WORK</button>
-      <button class="attempt-toggle" onclick="toggleAttempts('charlotte')">View Today's Test Attempts ▾</button>
-      <div id="charlotteAttempts" class="attempts-box"></div>
+
+      <h1>
+        Mum's Control Panel
+      </h1>
+
+      <p>
+        Plan today's learning, see what's completed and keep a simple
+        record of their progress.
+      </p>
+
     </div>
 
-  </div>
-  <div id="saveBar" class="save-bar">
-    <div id="saveSummary" class="save-summary">Changes ready to save</div>
-    <button id="saveButton" class="save-button" onclick="saveAssignments()">SAVE TODAY ✓</button>
-  </div>
-  <div id="status" class="status-message"></div>
-</section>
 
-<section id="calendarView" class="view">
-  <div class="calendar-wrap">
-    <div class="calendar-head">
-      <button class="month-btn" onclick="changeCalendarMonth(-1)">←</button>
-      <h2 id="calendarMonth"></h2>
-      <button class="month-btn" onclick="changeCalendarMonth(1)">→</button>
+
+    <!-- =====================================
+         TABS
+         ===================================== -->
+
+
+    <div class="tabs">
+
+      <button
+        class="tab active"
+        data-view="today"
+      >
+        ☀️ TODAY
+      </button>
+
+      <button
+        class="tab"
+        data-view="calendar"
+      >
+        📅 CALENDAR
+      </button>
+
+      <button
+        class="tab"
+        data-view="progress"
+      >
+        📊 PROGRESS
+      </button>
+
     </div>
-    <div id="calendarGrid" class="calendar-grid"></div>
-    <div class="legend">
-      <span><i class="status-dot green"></i> All done</span>
-      <span><i class="status-dot yellow"></i> Partly done</span>
-      <span><i class="status-dot red"></i> Not done</span>
-      <span><i class="status-dot grey"></i> No assignments</span>
+
+
+
+    <!-- =====================================
+         TODAY
+         ===================================== -->
+
+
+    <section
+      id="todayView"
+      class="view active"
+    >
+
+
+      <div
+        id="todayDate"
+        class="today-date"
+      ></div>
+
+
+
+      <div class="today-overview">
+
+
+        <!-- IVY -->
+
+
+        <div class="child-panel">
+
+
+          <div class="child-top">
+
+            <div class="avatar ivy-avatar">
+              🌸
+            </div>
+
+
+            <div>
+
+              <div class="child-name">
+                Ivy-Rose
+              </div>
+
+              <div class="child-grade">
+                Grade 2
+              </div>
+
+            </div>
+
+
+            <div class="mini-progress">
+
+              <strong id="ivyMini">
+                0/0
+              </strong>
+
+              <span>
+                completed
+              </span>
+
+            </div>
+
+          </div>
+
+
+
+          <div
+            id="ivyAssignments"
+            class="assignment-list"
+          >
+
+            <div class="empty">
+              Loading today's work...
+            </div>
+
+          </div>
+
+
+
+          <button
+            class="assign-button"
+            onclick="openAssign('ivy')"
+          >
+            ＋ ASSIGN / EDIT WORK
+          </button>
+
+
+
+          <button
+            class="attempt-toggle"
+            onclick="toggleAttempts('ivy')"
+          >
+            View Today's Test Attempts ▾
+          </button>
+
+
+
+          <div
+            id="ivyAttempts"
+            class="attempts-box"
+          ></div>
+
+
+        </div>
+
+
+
+        <!-- CHARLOTTE -->
+
+
+        <div class="child-panel">
+
+
+          <div class="child-top">
+
+            <div class="avatar charlotte-avatar">
+              🌈
+            </div>
+
+
+            <div>
+
+              <div class="child-name">
+                Charlotte
+              </div>
+
+              <div class="child-grade">
+                Grade 1
+              </div>
+
+            </div>
+
+
+            <div class="mini-progress">
+
+              <strong id="charlotteMini">
+                0/0
+              </strong>
+
+              <span>
+                completed
+              </span>
+
+            </div>
+
+          </div>
+
+
+
+          <div
+            id="charlotteAssignments"
+            class="assignment-list"
+          >
+
+            <div class="empty">
+              Loading today's work...
+            </div>
+
+          </div>
+
+
+
+          <button
+            class="assign-button"
+            onclick="openAssign('charlotte')"
+          >
+            ＋ ASSIGN / EDIT WORK
+          </button>
+
+
+
+          <button
+            class="attempt-toggle"
+            onclick="toggleAttempts('charlotte')"
+          >
+            View Today's Test Attempts ▾
+          </button>
+
+
+
+          <div
+            id="charlotteAttempts"
+            class="attempts-box"
+          ></div>
+
+
+        </div>
+
+
+      </div>
+
+
+
+      <!-- SAVE BAR -->
+
+
+      <div
+        id="saveBar"
+        class="save-bar"
+      >
+
+        <div
+          id="saveSummary"
+          class="save-summary"
+        >
+          Changes ready to save
+        </div>
+
+
+        <button
+          id="saveButton"
+          class="save-button"
+          onclick="saveAssignments()"
+        >
+          SAVE TODAY ✓
+        </button>
+
+      </div>
+
+
+      <div
+        id="status"
+        class="status-message"
+      ></div>
+
+
+    </section>
+
+
+
+    <!-- =====================================
+         CALENDAR
+         ===================================== -->
+
+
+    <section
+      id="calendarView"
+      class="view"
+    >
+
+
+      <div class="calendar-wrap">
+
+
+        <div class="calendar-head">
+
+          <button
+            class="month-btn"
+            onclick="changeCalendarMonth(-1)"
+          >
+            ←
+          </button>
+
+
+          <h2 id="calendarMonth"></h2>
+
+
+          <button
+            class="month-btn"
+            onclick="changeCalendarMonth(1)"
+          >
+            →
+          </button>
+
+        </div>
+
+
+
+        <div
+          id="calendarGrid"
+          class="calendar-grid"
+        ></div>
+
+
+
+        <div class="legend">
+
+          <span>
+            <i class="status-dot green"></i>
+            All done
+          </span>
+
+          <span>
+            <i class="status-dot yellow"></i>
+            Partly done
+          </span>
+
+          <span>
+            <i class="status-dot red"></i>
+            Not done
+          </span>
+
+          <span>
+            <i class="status-dot grey"></i>
+            No assignments
+          </span>
+
+        </div>
+
+
+      </div>
+
+
+
+      <div
+        id="dayDetail"
+        class="detail-card"
+      ></div>
+
+
+    </section>
+
+
+
+    <!-- =====================================
+         PROGRESS
+         ===================================== -->
+
+
+    <section
+      id="progressView"
+      class="view"
+    >
+
+
+      <div class="progress-month">
+
+
+        <button
+          class="month-btn"
+          onclick="changeProgressMonth(-1)"
+        >
+          ←
+        </button>
+
+
+        <h2 id="progressMonth"></h2>
+
+
+        <button
+          class="month-btn"
+          onclick="changeProgressMonth(1)"
+        >
+          →
+        </button>
+
+
+      </div>
+
+
+
+      <div class="stats-grid">
+
+
+        <div
+          id="ivyStats"
+          class="stats-card"
+        ></div>
+
+
+        <div
+          id="charlotteStats"
+          class="stats-card"
+        ></div>
+
+
+      </div>
+
+
+    </section>
+
+
+  </div>
+
+
+
+  <!-- =======================================
+       ASSIGNMENT MODAL
+       ======================================= -->
+
+
+  <div
+    id="assignModal"
+    class="assign-modal"
+  >
+
+
+    <div class="modal-card">
+
+
+      <div class="modal-head">
+
+
+        <div>
+
+          <h2 id="modalTitle">
+            Assign Work
+          </h2>
+
+          <p>
+            Subject → topic → exercise. Tick what you want for today.
+          </p>
+
+        </div>
+
+
+        <button
+          class="close"
+          onclick="closeAssign()"
+        >
+          ×
+        </button>
+
+
+      </div>
+
+
+
+      <div id="modalContent"></div>
+
+
+
+      <button
+        class="modal-done"
+        onclick="finishAssign()"
+      >
+        DONE ✓
+      </button>
+
+
     </div>
+
+
   </div>
-  <div id="dayDetail" class="detail-card"></div>
-</section>
 
-<section id="progressView" class="view">
-  <div class="progress-month">
-    <button class="month-btn" onclick="changeProgressMonth(-1)">←</button>
-    <h2 id="progressMonth"></h2>
-    <button class="month-btn" onclick="changeProgressMonth(1)">→</button>
-  </div>
-  <div class="stats-grid">
-    <div id="ivyStats" class="stats-card"></div>
-    <div id="charlotteStats" class="stats-card"></div>
-  </div>
-</section>
 
-</div>
 
-<div id="assignModal" class="assign-modal">
-<div class="modal-card">
-  <div class="modal-head">
-    <div><h2 id="modalTitle">Assign Work</h2><p>Subject → topic → exercise. Tick what you want for today.</p></div>
-    <button class="close" onclick="closeAssign()">×</button>
-  </div>
-  <div id="modalContent"></div>
-  <button class="modal-done" onclick="finishAssign()">DONE ✓</button>
-</div>
-</div>
+  <!-- =======================================
+       FIREBASE + APP
+       ======================================= -->
 
-<script type="module">
-import{initializeApp}from"https://www.gstatic.com/firebasejs/12.5.0/firebase-app.js";
-import{getFirestore,doc,getDoc,setDoc,collection,getDocs}from"https://www.gstatic.com/firebasejs/12.5.0/firebase-firestore.js";
 
-const firebaseConfig={
-apiKey:"AIzaSyBri62MSDCTXF9meH_5Jnm8kbZFytoHwXU",
-authDomain:"girls-learning-hub.firebaseapp.com",
-projectId:"girls-learning-hub",
-storageBucket:"girls-learning-hub.firebasestorage.app",
-messagingSenderId:"578155016403",
-appId:"1:578155016403:web:ffe763fe308574d31fe426"
-};
-const app=initializeApp(firebaseConfig),db=getFirestore(app);
+  <script type="module">
 
-const catalog={
-ivy:{
-name:"Ivy-Rose",grade:"Grade 2",avatar:"🌸",
-subjects:[
-{name:"English",icon:"📖",topics:[
-{name:"Spelling",icon:"🔤",exercises:[
-{id:"ivy-english-spelling-exercise-01",name:"Words 1–10",full:"Spelling • Words 1–10",url:"ivy/english/spelling/exercise-01.html"},
-{id:"ivy-english-spelling-exercise-02",name:"Words 11–20",full:"Spelling • Words 11–20",url:"ivy/english/spelling/exercise-02.html"}
-]},
-{name:"Reading",icon:"📚",exercises:[]}
-]},
-{name:"Maths",icon:"🔢",topics:[]},
-{name:"Science",icon:"🔬",topics:[]},
-{name:"Geography",icon:"🌍",topics:[]},
-{name:"French",icon:"🇫🇷",topics:[]}
-]},
-charlotte:{
-name:"Charlotte",grade:"Grade 1",avatar:"🌈",
-subjects:[
-{name:"English",icon:"📖",topics:[]},
-{name:"Maths",icon:"🔢",topics:[
-{name:"Numbers 1–100",icon:"🔢",exercises:[
-{id:"charlotte-maths-numbers-1-100-exercise-01",name:"Number Board • 1–100",full:"Number Board • Exercise 1",url:"charlotte/maths/numbers-1-100/exercise-01.html"}
-]}
-]},
-{name:"Science",icon:"🔬",topics:[]},
-{name:"Geography",icon:"🌍",topics:[]},
-{name:"French",icon:"🇫🇷",topics:[]}
-]}
-};
 
-function dateKey(d=new Date()){return`${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,"0")}-${String(d.getDate()).padStart(2,"0")}`}
-function prettyDate(key){const[y,m,d]=key.split("-").map(Number);return new Intl.DateTimeFormat("en-GB",{weekday:"long",day:"numeric",month:"long",year:"numeric"}).format(new Date(y,m-1,d))}
-function monthTitle(d){return new Intl.DateTimeFormat("en-GB",{month:"long",year:"numeric"}).format(d)}
-function esc(v){return String(v??"").replaceAll("&","&amp;").replaceAll("<","&lt;").replaceAll(">","&gt;").replaceAll('"',"&quot;").replaceAll("'","&#039;")}
-const todayKey=dateKey();
-document.getElementById("todayDate").textContent=prettyDate(todayKey);
+    import {
+      initializeApp
+    } from "https://www.gstatic.com/firebasejs/12.5.0/firebase-app.js";
 
-let allAssignments={},allResults=[],draft={ivy:[],charlotte:[]},activeChild="ivy",dirty=false;
-let calendarDate=new Date(),progressDate=new Date();
 
-function resultChild(r){if(r.childId)return String(r.childId).toLowerCase();const c=String(r.child||"").toLowerCase();return c.includes("ivy")?"ivy":c.includes("charlotte")?"charlotte":""}
-function resultDate(r){if(r.date)return r.date;if(!r.timestamp)return"";const d=new Date(r.timestamp);return Number.isNaN(d.getTime())?"":dateKey(d)}
-function resultsFor(child,key,id=null){return allResults.filter(r=>resultChild(r)===child&&resultDate(r)===key&&(!id||r.exerciseId===id))}
-function assignmentKey(child,key){return`${key}-${child}`}
-function assignmentsFor(child,key){return allAssignments[assignmentKey(child,key)]?.exercises||[]}
-function required(a){return Math.max(1,Number(a.repeat||1))}
-function bestResult(results){if(!results.length)return null;return[...results].sort((a,b)=>Number(b.percentage||0)-Number(a.percentage||0)||new Date(b.timestamp||0)-new Date(a.timestamp||0))[0]}
+    import {
 
-document.querySelectorAll(".tab").forEach(b=>b.addEventListener("click",()=>{
-document.querySelectorAll(".tab").forEach(x=>x.classList.remove("active"));b.classList.add("active");
-document.querySelectorAll(".view").forEach(x=>x.classList.remove("active"));
-document.getElementById(b.dataset.view+"View").classList.add("active");
-if(b.dataset.view==="calendar"){renderCalendar();renderDayDetail(todayKey)}
-if(b.dataset.view==="progress")renderMonthlyProgress();
-}));
+      getFirestore,
 
-window.toggleAttempts=child=>document.getElementById(child+"Attempts").classList.toggle("open");
+      doc,
 
-function renderTodayChild(child){
-const a=assignmentsFor(child,todayKey),container=document.getElementById(child+"Assignments");
-let total=0,done=0;
-if(!a.length)container.innerHTML=`<div class="empty">No work assigned yet.<br>Tap <b>+ Assign Work</b> below.</div>`;
-else container.innerHTML=a.map(x=>{
-const req=required(x),rs=resultsFor(child,todayKey,x.id),complete=Math.min(req,rs.length);total+=req;done+=complete;
-const best=bestResult(rs),cls=complete>=req?"done":complete?"partial":"",badge=complete>=req?`<span class="badge done-badge">✓ ${complete}/${req} DONE</span>`:complete?`<span class="badge partial-badge">${complete}/${req} DONE</span>`:`<span class="badge waiting-badge">○ 0/${req}</span>`;
-return`<div class="assignment-row ${cls}"><div><div class="assignment-title">${esc(x.exercise)}</div><div class="assignment-meta">${esc(x.subject)} › ${esc(x.topic)}${best?` • Best ${Number(best.score||0)}/${Number(best.total||0)} (${Number(best.percentage||0)}%)`:""}</div></div>${badge}</div>`
-}).join("");
-document.getElementById(child+"Mini").textContent=`${done}/${total}`;
+      setDoc,
 
-const rs=resultsFor(child,todayKey),attemptBox=document.getElementById(child+"Attempts");
-attemptBox.innerHTML=rs.length?rs.sort((a,b)=>new Date(b.timestamp||0)-new Date(a.timestamp||0)).map(r=>`<div class="attempt"><div class="attempt-name">${esc(r.exercise||"Exercise")}</div><div class="attempt-meta">${esc(r.subject||"")} • ${esc(r.topic||"")} • ${r.timestamp?new Date(r.timestamp).toLocaleTimeString([],{hour:"2-digit",minute:"2-digit"}):""}</div><div class="attempt-score">${Number(r.score||0)} / ${Number(r.total||0)} • ${Number(r.percentage||0)}% ${r.passed===false?"• PRACTISE":"• ✓ PASSED"}</div></div>`).join(""):`<div class="empty">No completed tests recorded today.</div>`;
-}
+      collection,
 
-function renderToday(){renderTodayChild("ivy");renderTodayChild("charlotte")}
+      getDocs
 
-window.openAssign=child=>{
-activeChild=child;draft[child]=JSON.parse(JSON.stringify(assignmentsFor(child,todayKey)));
-document.getElementById("modalTitle").textContent=`Assign ${catalog[child].name}'s Work`;
-renderModal();document.getElementById("assignModal").classList.add("open");
-};
-window.closeAssign=()=>document.getElementById("assignModal").classList.remove("open");
-window.finishAssign=()=>{dirty=true;document.getElementById("assignModal").classList.remove("open");renderDraftToday();updateSaveBar()};
+    } from "https://www.gstatic.com/firebasejs/12.5.0/firebase-firestore.js";
 
-function draftFind(id){return draft[activeChild].find(x=>x.id===id)}
-function renderModal(){
-const c=catalog[activeChild];
-document.getElementById("modalContent").innerHTML=c.subjects.map((s,si)=>`<div>
-<button class="subject-button" onclick="toggleBlock('sub-${activeChild}-${si}',this)"><span>${s.icon} ${s.name}</span><span>›</span></button>
-<div id="sub-${activeChild}-${si}" class="subject-content">${s.topics.length?s.topics.map((t,ti)=>`<div>
-<button class="topic-button" onclick="toggleBlock('topic-${activeChild}-${si}-${ti}',this)"><span>${t.icon} ${t.name}</span><span>›</span></button>
-<div id="topic-${activeChild}-${si}-${ti}" class="topic-content">${t.exercises.length?t.exercises.map(e=>{
-const found=draftFind(e.id),rep=found?required(found):1;
-return`<div id="opt-${e.id}" class="exercise-option ${found?"selected":""}"><div class="exercise-main"><input type="checkbox" ${found?"checked":""} onchange="toggleExercise('${e.id}','${esc(s.name)}','${esc(t.name)}','${esc(e.full)}','${esc(e.url)}',this)"><div class="exercise-info"><div class="exercise-name">${esc(e.name)}</div><div class="exercise-sub">${esc(s.name)} • ${esc(t.name)}</div></div></div><div class="repeat"><span style="font-size:11px;font-weight:900;color:#7c8597">Assign</span><select onchange="changeRepeat('${e.id}',this.value)">${[1,2,3,4,5].map(n=>`<option value="${n}" ${rep===n?"selected":""}>${n}× today</option>`).join("")}</select></div></div>`
-}).join(""):`<div class="empty" style="margin-top:8px">Exercises coming soon ✨</div>`}</div></div>`).join(""):`<div class="empty" style="margin-top:8px">Exercises coming soon ✨</div>`}</div></div>`).join("");
-}
-window.toggleBlock=id=>document.getElementById(id).classList.toggle("open");
-window.toggleExercise=(id,subject,topic,exercise,url,box)=>{
-if(box.checked){if(!draftFind(id))draft[activeChild].push({id,child:activeChild,childName:catalog[activeChild].name,subject,topic,exercise,url,repeat:1})}
-else draft[activeChild]=draft[activeChild].filter(x=>x.id!==id);
-document.getElementById("opt-"+id).classList.toggle("selected",box.checked);
-};
-window.changeRepeat=(id,v)=>{const x=draftFind(id);if(x)x.repeat=Math.max(1,Number(v||1))};
 
-function renderDraftToday(){
-["ivy","charlotte"].forEach(child=>{
-const original=allAssignments[assignmentKey(child,todayKey)]||{};
-allAssignments[assignmentKey(child,todayKey)]={...original,child,childName:catalog[child].name,date:todayKey,exercises:draft[child]};
-});
-renderToday();
-}
-function updateSaveBar(){
-const bar=document.getElementById("saveBar");bar.classList.toggle("visible",dirty);
-const i=draft.ivy.reduce((n,x)=>n+required(x),0),c=draft.charlotte.reduce((n,x)=>n+required(x),0);
-document.getElementById("saveSummary").textContent=`Ivy-Rose ${i} completion${i===1?"":"s"} • Charlotte ${c} completion${c===1?"":"s"}`;
-}
 
-window.saveAssignments=async()=>{
-const btn=document.getElementById("saveButton"),status=document.getElementById("status");btn.disabled=true;status.textContent="Saving...";
-try{
-for(const child of["ivy","charlotte"]){
-const data={child,childName:catalog[child].name,date:todayKey,exercises:draft[child],updatedAt:new Date().toISOString()};
-await setDoc(doc(db,"assignments",assignmentKey(child,todayKey)),data);allAssignments[assignmentKey(child,todayKey)]=data;
-}
-dirty=false;updateSaveBar();status.textContent="✓ Today's assignments saved!";renderToday();renderCalendar();renderMonthlyProgress();setTimeout(()=>status.textContent="",2500)
-}catch(e){console.error(e);status.textContent="⚠️ Could not save. Please try again."}
-btn.disabled=false;
-};
+    /* =========================================
+       FIREBASE
+       ========================================= */
 
-function dayStatus(child,key){
-const a=assignmentsFor(child,key);if(!a.length)return{state:"grey",text:"—"};
-let total=0,done=0;a.forEach(x=>{const req=required(x);total+=req;done+=Math.min(req,resultsFor(child,key,x.id).length)});
-return{state:done>=total?"green":done>0?"yellow":"red",text:`${done}/${total}`};
-}
-window.changeCalendarMonth=n=>{calendarDate=new Date(calendarDate.getFullYear(),calendarDate.getMonth()+n,1);renderCalendar()};
-function renderCalendar(){
-document.getElementById("calendarMonth").textContent=monthTitle(calendarDate);
-const grid=document.getElementById("calendarGrid"),y=calendarDate.getFullYear(),m=calendarDate.getMonth(),first=new Date(y,m,1),start=(first.getDay()+6)%7,days=new Date(y,m+1,0).getDate();
-let html=["MON","TUE","WED","THU","FRI","SAT","SUN"].map(x=>`<div class="weekday">${x}</div>`).join("");
-for(let i=0;i<start;i++)html+=`<div></div>`;
-for(let d=1;d<=days;d++){
-const key=dateKey(new Date(y,m,d)),ivy=dayStatus("ivy",key),ch=dayStatus("charlotte",key);
-html+=`<div class="day ${key===todayKey?"today":""}" onclick="renderDayDetail('${key}')"><div class="day-number">${d}</div><div class="day-child ivy"><i class="status-dot ${ivy.state}"></i>🌸 ${ivy.text}</div><div class="day-child charlotte"><i class="status-dot ${ch.state}"></i>🌈 ${ch.text}</div></div>`;
-}
-grid.innerHTML=html;
-}
 
-window.renderDayDetail=key=>{
-const box=document.getElementById("dayDetail");
-let html=`<h3>📅 ${prettyDate(key)}</h3><div class="detail-grid">`;
-["ivy","charlotte"].forEach(child=>{
-const a=assignmentsFor(child,key),rs=resultsFor(child,key);
-html+=`<div class="detail-child"><h4>${catalog[child].avatar} ${catalog[child].name}</h4>`;
-if(!a.length&&!rs.length)html+=`<div class="empty">No school records for this day.</div>`;
-else{
-if(a.length){html+=a.map(x=>{const req=required(x),xr=resultsFor(child,key,x.id),done=Math.min(req,xr.length),best=bestResult(xr);return`<div class="detail-item"><div class="detail-name">${esc(x.exercise)} — ${done}/${req}</div><div class="detail-meta">${esc(x.subject)} › ${esc(x.topic)}${best?` • Best ${Number(best.score||0)}/${Number(best.total||0)} • ${Number(best.percentage||0)}%`:" • Not completed"}</div></div>`}).join("")}
-if(rs.length){html+=`<div style="font-size:10px;font-weight:900;color:#7d8798;margin-top:14px">ALL TEST ATTEMPTS</div>`+rs.sort((a,b)=>new Date(a.timestamp||0)-new Date(b.timestamp||0)).map(r=>`<div class="detail-item"><div class="detail-name">${esc(r.exercise||"Exercise")} — ${Number(r.score||0)}/${Number(r.total||0)} (${Number(r.percentage||0)}%)</div><div class="detail-meta">${r.timestamp?new Date(r.timestamp).toLocaleTimeString([],{hour:"2-digit",minute:"2-digit"}):""}</div></div>`).join("")}
-}
-html+=`</div>`;
-});
-box.innerHTML=html+`</div>`;
-};
+    const firebaseConfig = {
 
-window.changeProgressMonth=n=>{progressDate=new Date(progressDate.getFullYear(),progressDate.getMonth()+n,1);renderMonthlyProgress()};
-function monthPrefix(d){return`${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,"0")}`}
-function renderMonthlyProgress(){
-document.getElementById("progressMonth").textContent=monthTitle(progressDate);const prefix=monthPrefix(progressDate);
-["ivy","charlotte"].forEach(child=>{
-const rs=allResults.filter(r=>resultChild(r)===child&&resultDate(r).startsWith(prefix));
-const assignmentDocs=Object.values(allAssignments).filter(a=>a.child===child&&String(a.date||"").startsWith(prefix));
-let requiredTotal=0,completedTotal=0;
-assignmentDocs.forEach(a=>(a.exercises||[]).forEach(x=>{const req=required(x);requiredTotal+=req;completedTotal+=Math.min(req,resultsFor(child,a.date,x.id).length)}));
-const avg=rs.length?Math.round(rs.reduce((n,r)=>n+Number(r.percentage||0),0)/rs.length):0,perfect=rs.filter(r=>Number(r.percentage||0)===100).length;
-const subjects={};rs.forEach(r=>{const s=r.subject||"Learning";subjects[s]??=[];subjects[s].push(Number(r.percentage||0))});
-document.getElementById(child+"Stats").innerHTML=`<div class="stats-top"><div class="avatar ${child==="ivy"?"ivy-avatar":"charlotte-avatar"}">${catalog[child].avatar}</div><div><div class="stats-name">${catalog[child].name}</div><div class="child-grade">${catalog[child].grade}</div></div></div><div class="stat-boxes"><div class="stat"><strong>${rs.length}</strong><span>Test attempts</span></div><div class="stat"><strong>${avg}%</strong><span>Average score</span></div><div class="stat"><strong>${completedTotal}/${requiredTotal}</strong><span>Required work</span></div><div class="stat"><strong>${perfect}</strong><span>Perfect scores</span></div></div><div class="subject-stats">${Object.keys(subjects).length?Object.entries(subjects).map(([s,v])=>`<div class="subject-stat"><span>${esc(s)}</span><span>${Math.round(v.reduce((a,b)=>a+b,0)/v.length)}%</span></div>`).join(""):`<div class="empty">No completed tests recorded this month yet.</div>`}</div>`;
-});
-}
+      apiKey:
+        "AIzaSyBri62MSDCTXF9meH_5Jnm8kbZFytoHwXU",
 
-async function loadAll(){
-const [aSnap,rSnap]=await Promise.all([getDocs(collection(db,"assignments")),getDocs(collection(db,"results"))]);
-allAssignments={};aSnap.forEach(s=>{const d=s.data();allAssignments[s.id]=d});
-allResults=[];rSnap.forEach(s=>allResults.push(s.data()));
-draft.ivy=JSON.parse(JSON.stringify(assignmentsFor("ivy",todayKey)));draft.charlotte=JSON.parse(JSON.stringify(assignmentsFor("charlotte",todayKey)));
-}
+      authDomain:
+        "girls-learning-hub.firebaseapp.com",
 
-async function start(){try{await loadAll();renderToday();renderCalendar();renderDayDetail(todayKey);renderMonthlyProgress()}catch(e){console.error(e);document.getElementById("ivyAssignments").innerHTML=`<div class="empty">Could not load Firebase data. Please refresh.</div>`;document.getElementById("charlotteAssignments").innerHTML=`<div class="empty">Could not load Firebase data. Please refresh.</div>`}}
-start();
-</script>
+      projectId:
+        "girls-learning-hub",
+
+      storageBucket:
+        "girls-learning-hub.firebasestorage.app",
+
+      messagingSenderId:
+        "578155016403",
+
+      appId:
+        "1:578155016403:web:ffe763fe308574d31fe426"
+
+    };
+
+
+
+    const app =
+      initializeApp(
+        firebaseConfig
+      );
+
+
+    const db =
+      getFirestore(
+        app
+      );
+
+
+
+    /* =========================================
+       EXERCISE LIBRARY
+       ========================================= */
+
+
+    const catalog = {
+
+
+      ivy: {
+
+        name:
+          "Ivy-Rose",
+
+        grade:
+          "Grade 2",
+
+        avatar:
+          "🌸",
+
+
+        subjects: [
+
+
+          {
+
+            name:
+              "English",
+
+            icon:
+              "📖",
+
+            topics: [
+
+
+              {
+
+                name:
+                  "Spelling",
+
+                icon:
+                  "🔤",
+
+                exercises: [
+
+
+                  {
+
+                    id:
+                      "ivy-english-spelling-exercise-01",
+
+                    name:
+                      "Words 1–10",
+
+                    full:
+                      "Spelling • Words 1–10",
+
+                    url:
+                      "ivy/english/spelling/exercise-01.html"
+
+                  },
+
+
+                  {
+
+                    id:
+                      "ivy-english-spelling-exercise-02",
+
+                    name:
+                      "Words 11–20",
+
+                    full:
+                      "Spelling • Words 11–20",
+
+                    url:
+                      "ivy/english/spelling/exercise-02.html"
+
+                  }
+
+
+                ]
+
+              },
+
+
+              {
+
+                name:
+                  "Reading",
+
+                icon:
+                  "📚",
+
+                exercises: []
+
+              }
+
+
+            ]
+
+          },
+
+
+          {
+
+            name:
+              "Maths",
+
+            icon:
+              "🔢",
+
+            topics: []
+
+          },
+
+
+          {
+
+            name:
+              "Science",
+
+            icon:
+              "🔬",
+
+            topics: []
+
+          },
+
+
+          {
+
+            name:
+              "Geography",
+
+            icon:
+              "🌍",
+
+            topics: []
+
+          },
+
+
+          {
+
+            name:
+              "French",
+
+            icon:
+              "🇫🇷",
+
+            topics: []
+
+          }
+
+
+        ]
+
+      },
+
+
+
+      charlotte: {
+
+        name:
+          "Charlotte",
+
+        grade:
+          "Grade 1",
+
+        avatar:
+          "🌈",
+
+
+        subjects: [
+
+
+          {
+
+            name:
+              "English",
+
+            icon:
+              "📖",
+
+            topics: []
+
+          },
+
+
+          {
+
+            name:
+              "Maths",
+
+            icon:
+              "🔢",
+
+            topics: [
+
+
+              {
+
+                name:
+                  "Numbers 1–100",
+
+                icon:
+                  "🔢",
+
+                exercises: [
+
+
+                  {
+
+                    id:
+                      "charlotte-maths-numbers-1-100-exercise-01",
+
+                    name:
+                      "Number Board • 1–100",
+
+                    full:
+                      "Number Board • Exercise 1",
+
+                    url:
+                      "charlotte/maths/numbers-1-100/exercise-01.html"
+
+                  }
+
+
+                ]
+
+              }
+
+
+            ]
+
+          },
+
+
+          {
+
+            name:
+              "Science",
+
+            icon:
+              "🔬",
+
+            topics: []
+
+          },
+
+
+          {
+
+            name:
+              "Geography",
+
+            icon:
+              "🌍",
+
+            topics: []
+
+          },
+
+
+          {
+
+            name:
+              "French",
+
+            icon:
+              "🇫🇷",
+
+            topics: []
+
+          }
+
+
+        ]
+
+      }
+
+
+    };
+
+
+
+    /* =========================================
+       DATE HELPERS
+       ========================================= */
+
+
+    function dateKey(
+      date = new Date()
+    ) {
+
+
+      const year =
+        date.getFullYear();
+
+
+      const month =
+        String(
+          date.getMonth() + 1
+        ).padStart(
+          2,
+          "0"
+        );
+
+
+      const day =
+        String(
+          date.getDate()
+        ).padStart(
+          2,
+          "0"
+        );
+
+
+      return (
+        `${year}-${month}-${day}`
+      );
+
+    }
+
+
+
+    function prettyDate(
+      key
+    ) {
+
+
+      const [
+        year,
+        month,
+        day
+      ] =
+        key
+          .split("-")
+          .map(Number);
+
+
+      return new Intl.DateTimeFormat(
+
+        "en-GB",
+
+        {
+
+          weekday:
+            "long",
+
+          day:
+            "numeric",
+
+          month:
+            "long",
+
+          year:
+            "numeric"
+
+        }
+
+      ).format(
+
+        new Date(
+          year,
+          month - 1,
+          day
+        )
+
+      );
+
+    }
+
+
+
+    function monthTitle(
+      date
+    ) {
+
+
+      return new Intl.DateTimeFormat(
+
+        "en-GB",
+
+        {
+
+          month:
+            "long",
+
+          year:
+            "numeric"
+
+        }
+
+      ).format(
+        date
+      );
+
+    }
+
+
+
+    function monthPrefix(
+      date
+    ) {
+
+
+      return (
+
+        `${date.getFullYear()}-` +
+
+        `${String(
+          date.getMonth() + 1
+        ).padStart(
+          2,
+          "0"
+        )}`
+
+      );
+
+    }
+
+
+
+    const todayKey =
+      dateKey();
+
+
+
+    document.getElementById(
+      "todayDate"
+    ).textContent =
+      prettyDate(
+        todayKey
+      );
+
+
+
+    /* =========================================
+       HTML ESCAPE
+       ========================================= */
+
+
+    function escapeHTML(
+      value
+    ) {
+
+
+      return String(
+        value ?? ""
+      )
+
+        .replaceAll(
+          "&",
+          "&amp;"
+        )
+
+        .replaceAll(
+          "<",
+          "&lt;"
+        )
+
+        .replaceAll(
+          ">",
+          "&gt;"
+        )
+
+        .replaceAll(
+          '"',
+          "&quot;"
+        )
+
+        .replaceAll(
+          "'",
+          "&#039;"
+        );
+
+    }
+
+
+
+    /* =========================================
+       STATE
+       ========================================= */
+
+
+    let allAssignments =
+      {};
+
+
+    let allResults =
+      [];
+
+
+    let draft = {
+
+      ivy:
+        [],
+
+      charlotte:
+        []
+
+    };
+
+
+    let activeChild =
+      "ivy";
+
+
+    let dirty =
+      false;
+
+
+    let calendarDate =
+      new Date();
+
+
+    let progressDate =
+      new Date();
+
+
+
+    /* =========================================
+       RESULT HELPERS
+       ========================================= */
+
+
+    function resultChild(
+      result
+    ) {
+
+
+      if (
+        result.childId
+      ) {
+
+
+        return String(
+          result.childId
+        ).toLowerCase();
+
+      }
+
+
+      const child =
+        String(
+          result.child ||
+          ""
+        ).toLowerCase();
+
+
+      if (
+        child.includes(
+          "ivy"
+        )
+      ) {
+
+
+        return "ivy";
+
+      }
+
+
+      if (
+        child.includes(
+          "charlotte"
+        )
+      ) {
+
+
+        return "charlotte";
+
+      }
+
+
+      return "";
+
+    }
+
+
+
+    function resultDate(
+      result
+    ) {
+
+
+      if (
+        result.date
+      ) {
+
+
+        return result.date;
+
+      }
+
+
+      if (
+        !result.timestamp
+      ) {
+
+
+        return "";
+
+      }
+
+
+      const date =
+        new Date(
+          result.timestamp
+        );
+
+
+      if (
+        Number.isNaN(
+          date.getTime()
+        )
+      ) {
+
+
+        return "";
+
+      }
+
+
+      return dateKey(
+        date
+      );
+
+    }
+
+
+
+    function resultsFor(
+
+      child,
+
+      key,
+
+      exerciseId = null
+
+    ) {
+
+
+      return allResults.filter(
+
+        function(
+          result
+        ) {
+
+
+          return (
+
+            resultChild(
+              result
+            ) === child
+
+            &&
+
+            resultDate(
+              result
+            ) === key
+
+            &&
+
+            (
+              !exerciseId
+
+              ||
+
+              result.exerciseId ===
+              exerciseId
+            )
+
+          );
+
+        }
+
+      );
+
+    }
+
+
+
+    function assignmentKey(
+
+      child,
+
+      key
+
+    ) {
+
+
+      return (
+        `${key}-${child}`
+      );
+
+    }
+
+
+
+    function assignmentsFor(
+
+      child,
+
+      key
+
+    ) {
+
+
+      return (
+
+        allAssignments[
+          assignmentKey(
+            child,
+            key
+          )
+        ]?.exercises
+
+        ||
+
+        []
+
+      );
+
+    }
+
+
+
+    function required(
+      assignment
+    ) {
+
+
+      return Math.max(
+
+        1,
+
+        Number(
+          assignment.repeat ||
+          1
+        )
+
+      );
+
+    }
+
+
+
+    function bestResult(
+      results
+    ) {
+
+
+      if (
+        !results.length
+      ) {
+
+
+        return null;
+
+      }
+
+
+      return [
+
+        ...results
+
+      ].sort(
+
+        function(
+          a,
+          b
+        ) {
+
+
+          const percentageDifference =
+
+            Number(
+              b.percentage ||
+              0
+            )
+
+            -
+
+            Number(
+              a.percentage ||
+              0
+            );
+
+
+          if (
+            percentageDifference !==
+            0
+          ) {
+
+
+            return percentageDifference;
+
+          }
+
+
+          return (
+
+            new Date(
+              b.timestamp ||
+              0
+            ).getTime()
+
+            -
+
+            new Date(
+              a.timestamp ||
+              0
+            ).getTime()
+
+          );
+
+        }
+
+      )[0];
+
+    }
+
+
+
+    /* =========================================
+       TABS
+       ========================================= */
+
+
+    document
+      .querySelectorAll(
+        ".tab"
+      )
+      .forEach(
+
+        function(
+          button
+        ) {
+
+
+          button.addEventListener(
+
+            "click",
+
+            function() {
+
+
+              document
+                .querySelectorAll(
+                  ".tab"
+                )
+                .forEach(
+
+                  function(
+                    tab
+                  ) {
+
+                    tab.classList.remove(
+                      "active"
+                    );
+
+                  }
+
+                );
+
+
+              button.classList.add(
+                "active"
+              );
+
+
+
+              document
+                .querySelectorAll(
+                  ".view"
+                )
+                .forEach(
+
+                  function(
+                    view
+                  ) {
+
+                    view.classList.remove(
+                      "active"
+                    );
+
+                  }
+
+                );
+
+
+
+              document.getElementById(
+
+                `${button.dataset.view}View`
+
+              ).classList.add(
+                "active"
+              );
+
+
+
+              if (
+                button.dataset.view ===
+                "calendar"
+              ) {
+
+
+                renderCalendar();
+
+
+                renderDayDetail(
+                  todayKey
+                );
+
+              }
+
+
+
+              if (
+                button.dataset.view ===
+                "progress"
+              ) {
+
+
+                renderMonthlyProgress();
+
+              }
+
+            }
+
+          );
+
+        }
+
+      );
+
+
+
+    /* =========================================
+       TODAY ATTEMPTS
+       ========================================= */
+
+
+    window.toggleAttempts =
+      function(
+        child
+      ) {
+
+
+        document.getElementById(
+
+          `${child}Attempts`
+
+        ).classList.toggle(
+          "open"
+        );
+
+      };
+
+
+
+    /* =========================================
+       TODAY CHILD CARD
+       ========================================= */
+
+
+    function renderTodayChild(
+      child
+    ) {
+
+
+      const assignments =
+        assignmentsFor(
+          child,
+          todayKey
+        );
+
+
+      const container =
+        document.getElementById(
+
+          `${child}Assignments`
+
+        );
+
+
+      let totalRequired =
+        0;
+
+
+      let totalCompleted =
+        0;
+
+
+
+      if (
+        assignments.length ===
+        0
+      ) {
+
+
+        container.innerHTML = `
+
+          <div class="empty">
+
+            No work assigned yet.
+
+            <br>
+
+            Tap <b>+ Assign Work</b> below.
+
+          </div>
+
+        `;
+
+
+      } else {
+
+
+        container.innerHTML =
+
+          assignments
+            .map(
+
+              function(
+                assignment
+              ) {
+
+
+                const needed =
+                  required(
+                    assignment
+                  );
+
+
+                const results =
+                  resultsFor(
+
+                    child,
+
+                    todayKey,
+
+                    assignment.id
+
+                  );
+
+
+                const completed =
+                  Math.min(
+
+                    needed,
+
+                    results.length
+
+                  );
+
+
+                totalRequired +=
+                  needed;
+
+
+                totalCompleted +=
+                  completed;
+
+
+                const best =
+                  bestResult(
+                    results
+                  );
+
+
+                let rowClass =
+                  "";
+
+
+                let badgeHTML =
+                  "";
+
+
+                if (
+                  completed >=
+                  needed
+                ) {
+
+
+                  rowClass =
+                    "done";
+
+
+                  badgeHTML = `
+
+                    <span class="badge done-badge">
+
+                      ✓ ${completed}/${needed} DONE
+
+                    </span>
+
+                  `;
+
+
+                } else if (
+                  completed >
+                  0
+                ) {
+
+
+                  rowClass =
+                    "partial";
+
+
+                  badgeHTML = `
+
+                    <span class="badge partial-badge">
+
+                      ${completed}/${needed} DONE
+
+                    </span>
+
+                  `;
+
+
+                } else {
+
+
+                  badgeHTML = `
+
+                    <span class="badge waiting-badge">
+
+                      ○ 0/${needed}
+
+                    </span>
+
+                  `;
+
+                }
+
+
+
+                let bestText =
+                  "";
+
+
+                if (
+                  best
+                ) {
+
+
+                  bestText =
+
+                    ` • Best ` +
+
+                    `${Number(
+                      best.score ||
+                      0
+                    )}/` +
+
+                    `${Number(
+                      best.total ||
+                      0
+                    )}` +
+
+                    ` (${Number(
+                      best.percentage ||
+                      0
+                    )}%)`;
+
+                }
+
+
+
+                return `
+
+                  <div class="assignment-row ${rowClass}">
+
+
+                    <div>
+
+
+                      <div class="assignment-title">
+
+                        ${escapeHTML(
+                          assignment.exercise
+                        )}
+
+                      </div>
+
+
+                      <div class="assignment-meta">
+
+                        ${escapeHTML(
+                          assignment.subject
+                        )}
+
+                        ›
+
+                        ${escapeHTML(
+                          assignment.topic
+                        )}
+
+                        ${bestText}
+
+                      </div>
+
+
+                    </div>
+
+
+                    ${badgeHTML}
+
+
+                  </div>
+
+                `;
+
+              }
+
+            )
+            .join("");
+
+      }
+
+
+
+      document.getElementById(
+
+        `${child}Mini`
+
+      ).textContent =
+
+        `${totalCompleted}/${totalRequired}`;
+
+
+
+      /* TODAY'S TEST ATTEMPTS */
+
+
+      const todayResults =
+        resultsFor(
+          child,
+          todayKey
+        );
+
+
+      const attemptBox =
+        document.getElementById(
+
+          `${child}Attempts`
+
+        );
+
+
+
+      if (
+        todayResults.length ===
+        0
+      ) {
+
+
+        attemptBox.innerHTML = `
+
+          <div class="empty">
+
+            No completed tests recorded today.
+
+          </div>
+
+        `;
+
+
+      } else {
+
+
+        attemptBox.innerHTML =
+
+          [
+
+            ...todayResults
+
+          ]
+
+            .sort(
+
+              function(
+                a,
+                b
+              ) {
+
+
+                return (
+
+                  new Date(
+                    b.timestamp ||
+                    0
+                  ).getTime()
+
+                  -
+
+                  new Date(
+                    a.timestamp ||
+                    0
+                  ).getTime()
+
+                );
+
+              }
+
+            )
+
+            .map(
+
+              function(
+                result
+              ) {
+
+
+                let time =
+                  "";
+
+
+                if (
+                  result.timestamp
+                ) {
+
+
+                  time =
+                    new Date(
+                      result.timestamp
+                    ).toLocaleTimeString(
+
+                      [],
+
+                      {
+
+                        hour:
+                          "2-digit",
+
+                        minute:
+                          "2-digit"
+
+                      }
+
+                    );
+
+                }
+
+
+
+                return `
+
+                  <div class="attempt">
+
+
+                    <div class="attempt-name">
+
+                      ${escapeHTML(
+                        result.exercise ||
+                        "Exercise"
+                      )}
+
+                    </div>
+
+
+                    <div class="attempt-meta">
+
+                      ${escapeHTML(
+                        result.subject ||
+                        ""
+                      )}
+
+                      •
+
+                      ${escapeHTML(
+                        result.topic ||
+                        ""
+                      )}
+
+                      •
+
+                      ${time}
+
+                    </div>
+
+
+                    <div class="attempt-score">
+
+                      ${Number(
+                        result.score ||
+                        0
+                      )}
+
+                      /
+
+                      ${Number(
+                        result.total ||
+                        0
+                      )}
+
+                      •
+
+                      ${Number(
+                        result.percentage ||
+                        0
+                      )}%
+
+                      ${
+
+                        result.passed ===
+                        false
+
+                          ? " • PRACTISE"
+
+                          : " • ✓ PASSED"
+
+                      }
+
+                    </div>
+
+
+                  </div>
+
+                `;
+
+              }
+
+            )
+            .join("");
+
+      }
+
+    }
+
+
+
+    function renderToday() {
+
+
+      renderTodayChild(
+        "ivy"
+      );
+
+
+      renderTodayChild(
+        "charlotte"
+      );
+
+    }
+
+
+
+    /* =========================================
+       OPEN ASSIGNMENT MODAL
+       ========================================= */
+
+
+    window.openAssign =
+      function(
+        child
+      ) {
+
+
+        activeChild =
+          child;
+
+
+        draft[
+          child
+        ] =
+          JSON.parse(
+
+            JSON.stringify(
+
+              assignmentsFor(
+                child,
+                todayKey
+              )
+
+            )
+
+          );
+
+
+        document.getElementById(
+          "modalTitle"
+        ).textContent =
+
+          `Assign ${catalog[child].name}'s Work`;
+
+
+        renderModal();
+
+
+        document.getElementById(
+          "assignModal"
+        ).classList.add(
+          "open"
+        );
+
+      };
+
+
+
+    window.closeAssign =
+      function() {
+
+
+        document.getElementById(
+          "assignModal"
+        ).classList.remove(
+          "open"
+        );
+
+      };
+
+
+
+    window.finishAssign =
+      function() {
+
+
+        dirty =
+          true;
+
+
+        document.getElementById(
+          "assignModal"
+        ).classList.remove(
+          "open"
+        );
+
+
+        renderDraftToday();
+
+
+        updateSaveBar();
+
+      };
+
+
+
+    function draftFind(
+      exerciseId
+    ) {
+
+
+      return draft[
+        activeChild
+      ].find(
+
+        function(
+          exercise
+        ) {
+
+
+          return (
+            exercise.id ===
+            exerciseId
+          );
+
+        }
+
+      );
+
+    }
+
+
+
+    /* =========================================
+       ASSIGNMENT MODAL CONTENT
+       ========================================= */
+
+
+    function renderModal() {
+
+
+      const child =
+        catalog[
+          activeChild
+        ];
+
+
+      let html =
+        "";
+
+
+
+      child.subjects.forEach(
+
+        function(
+          subject,
+          subjectIndex
+        ) {
+
+
+          const subjectId =
+
+            `subject-${activeChild}-${subjectIndex}`;
+
+
+
+          html += `
+
+            <div>
+
+
+              <button
+
+                class="subject-button"
+
+                onclick="toggleBlock('${subjectId}')"
+
+              >
+
+                <span>
+
+                  ${subject.icon}
+                  ${escapeHTML(subject.name)}
+
+                </span>
+
+                <span>
+                  ›
+                </span>
+
+              </button>
+
+
+              <div
+                id="${subjectId}"
+                class="subject-content"
+              >
+
+          `;
+
+
+
+          if (
+            subject.topics.length ===
+            0
+          ) {
+
+
+            html += `
+
+              <div
+                class="empty"
+                style="margin-top:8px"
+              >
+
+                Exercises coming soon ✨
+
+              </div>
+
+            `;
+
+
+          } else {
+
+
+            subject.topics.forEach(
+
+              function(
+                topic,
+                topicIndex
+              ) {
+
+
+                const topicId =
+
+                  `topic-${activeChild}-${subjectIndex}-${topicIndex}`;
+
+
+
+                html += `
+
+                  <div>
+
+
+                    <button
+
+                      class="topic-button"
+
+                      onclick="toggleBlock('${topicId}')"
+
+                    >
+
+                      <span>
+
+                        ${topic.icon}
+                        ${escapeHTML(topic.name)}
+
+                      </span>
+
+                      <span>
+                        ›
+                      </span>
+
+                    </button>
+
+
+                    <div
+                      id="${topicId}"
+                      class="topic-content"
+                    >
+
+                `;
+
+
+
+                if (
+                  topic.exercises.length ===
+                  0
+                ) {
+
+
+                  html += `
+
+                    <div
+                      class="empty"
+                      style="margin-top:8px"
+                    >
+
+                      Exercises coming soon ✨
+
+                    </div>
+
+                  `;
+
+
+                } else {
+
+
+                  topic.exercises.forEach(
+
+                    function(
+                      exercise
+                    ) {
+
+
+                      const selected =
+                        draftFind(
+                          exercise.id
+                        );
+
+
+                      const repeat =
+                        selected
+
+                          ? required(
+                              selected
+                            )
+
+                          : 1;
+
+
+
+                      html += `
+
+                        <div
+
+                          id="option-${exercise.id}"
+
+                          class="exercise-option ${
+                            selected
+                              ? "selected"
+                              : ""
+                          }"
+
+                        >
+
+
+                          <div class="exercise-main">
+
+
+                            <input
+
+                              type="checkbox"
+
+                              ${
+                                selected
+                                  ? "checked"
+                                  : ""
+                              }
+
+                              onchange="
+                                toggleExercise(
+                                  '${exercise.id}',
+                                  '${escapeHTML(subject.name)}',
+                                  '${escapeHTML(topic.name)}',
+                                  '${escapeHTML(exercise.full)}',
+                                  '${escapeHTML(exercise.url)}',
+                                  this
+                                )
+                              "
+
+                            >
+
+
+                            <div class="exercise-info">
+
+
+                              <div class="exercise-name">
+
+                                ${escapeHTML(
+                                  exercise.name
+                                )}
+
+                              </div>
+
+
+                              <div class="exercise-sub">
+
+                                ${escapeHTML(
+                                  subject.name
+                                )}
+
+                                •
+
+                                ${escapeHTML(
+                                  topic.name
+                                )}
+
+                              </div>
+
+
+                            </div>
+
+
+                          </div>
+
+
+                          <div class="repeat">
+
+
+                            <span
+                              style="
+                                font-size:11px;
+                                font-weight:900;
+                                color:#7c8597;
+                              "
+                            >
+
+                              Assign
+
+                            </span>
+
+
+                            <select
+
+                              onchange="
+                                changeRepeat(
+                                  '${exercise.id}',
+                                  this.value
+                                )
+                              "
+
+                            >
+
+
+                              ${
+
+                                [1, 2, 3, 4, 5]
+
+                                  .map(
+
+                                    function(
+                                      number
+                                    ) {
+
+
+                                      return `
+
+                                        <option
+
+                                          value="${number}"
+
+                                          ${
+                                            repeat ===
+                                            number
+
+                                              ? "selected"
+
+                                              : ""
+                                          }
+
+                                        >
+
+                                          ${number}× today
+
+                                        </option>
+
+                                      `;
+
+                                    }
+
+                                  )
+
+                                  .join("")
+
+                              }
+
+
+                            </select>
+
+
+                          </div>
+
+
+                        </div>
+
+                      `;
+
+                    }
+
+                  );
+
+                }
+
+
+
+                html += `
+
+                    </div>
+
+                  </div>
+
+                `;
+
+              }
+
+            );
+
+          }
+
+
+
+          html += `
+
+              </div>
+
+            </div>
+
+          `;
+
+        }
+
+      );
+
+
+
+      document.getElementById(
+        "modalContent"
+      ).innerHTML =
+        html;
+
+    }
+
+
+
+    window.toggleBlock =
+      function(
+        id
+      ) {
+
+
+        document.getElementById(
+          id
+        ).classList.toggle(
+          "open"
+        );
+
+      };
+
+
+
+    window.toggleExercise =
+      function(
+
+        id,
+
+        subject,
+
+        topic,
+
+        exercise,
+
+        url,
+
+        checkbox
+
+      ) {
+
+
+        if (
+          checkbox.checked
+        ) {
+
+
+          if (
+            !draftFind(
+              id
+            )
+          ) {
+
+
+            draft[
+              activeChild
+            ].push(
+
+              {
+
+                id:
+                  id,
+
+                child:
+                  activeChild,
+
+                childName:
+                  catalog[
+                    activeChild
+                  ].name,
+
+                subject:
+                  subject,
+
+                topic:
+                  topic,
+
+                exercise:
+                  exercise,
+
+                url:
+                  url,
+
+                repeat:
+                  1
+
+              }
+
+            );
+
+          }
+
+
+        } else {
+
+
+          draft[
+            activeChild
+          ] =
+            draft[
+              activeChild
+            ].filter(
+
+              function(
+                item
+              ) {
+
+
+                return (
+                  item.id !==
+                  id
+                );
+
+              }
+
+            );
+
+        }
+
+
+
+        document.getElementById(
+
+          `option-${id}`
+
+        ).classList.toggle(
+
+          "selected",
+
+          checkbox.checked
+
+        );
+
+      };
+
+
+
+    window.changeRepeat =
+      function(
+
+        id,
+
+        value
+
+      ) {
+
+
+        const assignment =
+          draftFind(
+            id
+          );
+
+
+        if (
+          assignment
+        ) {
+
+
+          assignment.repeat =
+            Math.max(
+
+              1,
+
+              Number(
+                value ||
+                1
+              )
+
+            );
+
+        }
+
+      };
+
+
+
+    /* =========================================
+       PREVIEW DRAFT ON TODAY
+       ========================================= */
+
+
+    function renderDraftToday() {
+
+
+      [
+
+        "ivy",
+
+        "charlotte"
+
+      ].forEach(
+
+        function(
+          child
+        ) {
+
+
+          const key =
+            assignmentKey(
+              child,
+              todayKey
+            );
+
+
+          const original =
+            allAssignments[
+              key
+            ] ||
+            {};
+
+
+          allAssignments[
+            key
+          ] = {
+
+            ...original,
+
+            child:
+              child,
+
+            childName:
+              catalog[
+                child
+              ].name,
+
+            date:
+              todayKey,
+
+            exercises:
+              draft[
+                child
+              ]
+
+          };
+
+        }
+
+      );
+
+
+      renderToday();
+
+    }
+
+
+
+    function updateSaveBar() {
+
+
+      const bar =
+        document.getElementById(
+          "saveBar"
+        );
+
+
+      bar.classList.toggle(
+
+        "visible",
+
+        dirty
+
+      );
+
+
+
+      const ivyCount =
+        draft.ivy.reduce(
+
+          function(
+            total,
+            assignment
+          ) {
+
+
+            return (
+
+              total +
+              required(
+                assignment
+              )
+
+            );
+
+          },
+
+          0
+
+        );
+
+
+
+      const charlotteCount =
+        draft.charlotte.reduce(
+
+          function(
+            total,
+            assignment
+          ) {
+
+
+            return (
+
+              total +
+              required(
+                assignment
+              )
+
+            );
+
+          },
+
+          0
+
+        );
+
+
+
+      document.getElementById(
+        "saveSummary"
+      ).textContent =
+
+        `Ivy-Rose ${ivyCount} completion${
+          ivyCount === 1
+            ? ""
+            : "s"
+        } • Charlotte ${charlotteCount} completion${
+          charlotteCount === 1
+            ? ""
+            : "s"
+        }`;
+
+    }
+
+
+
+    /* =========================================
+       SAVE ASSIGNMENTS
+       ========================================= */
+
+
+    window.saveAssignments =
+      async function() {
+
+
+        const button =
+          document.getElementById(
+            "saveButton"
+          );
+
+
+        const status =
+          document.getElementById(
+            "status"
+          );
+
+
+        button.disabled =
+          true;
+
+
+        status.textContent =
+          "Saving...";
+
+
+
+        try {
+
+
+          for (
+            const child of
+            [
+              "ivy",
+              "charlotte"
+            ]
+          ) {
+
+
+            const data = {
+
+              child:
+                child,
+
+              childName:
+                catalog[
+                  child
+                ].name,
+
+              date:
+                todayKey,
+
+              exercises:
+                draft[
+                  child
+                ],
+
+              updatedAt:
+                new Date()
+                  .toISOString()
+
+            };
+
+
+
+            await setDoc(
+
+              doc(
+
+                db,
+
+                "assignments",
+
+                assignmentKey(
+                  child,
+                  todayKey
+                )
+
+              ),
+
+              data
+
+            );
+
+
+
+            allAssignments[
+
+              assignmentKey(
+                child,
+                todayKey
+              )
+
+            ] =
+              data;
+
+          }
+
+
+
+          dirty =
+            false;
+
+
+          updateSaveBar();
+
+
+          status.textContent =
+            "✓ Today's assignments saved!";
+
+
+          renderToday();
+
+
+          renderCalendar();
+
+
+          renderMonthlyProgress();
+
+
+
+          setTimeout(
+
+            function() {
+
+
+              status.textContent =
+                "";
+
+            },
+
+            2500
+
+          );
+
+
+        } catch (
+          error
+        ) {
+
+
+          console.error(
+            error
+          );
+
+
+          status.textContent =
+            "⚠️ Could not save. Please try again.";
+
+        }
+
+
+
+        button.disabled =
+          false;
+
+      };
+
+
+
+    /* =========================================
+       DAY STATUS FOR CALENDAR
+       ========================================= */
+
+
+    function dayStatus(
+
+      child,
+
+      key
+
+    ) {
+
+
+      const assignments =
+        assignmentsFor(
+          child,
+          key
+        );
+
+
+      if (
+        assignments.length ===
+        0
+      ) {
+
+
+        return {
+
+          state:
+            "grey",
+
+          text:
+            "—"
+
+        };
+
+      }
+
+
+
+      let total =
+        0;
+
+
+      let completed =
+        0;
+
+
+
+      assignments.forEach(
+
+        function(
+          assignment
+        ) {
+
+
+          const needed =
+            required(
+              assignment
+            );
+
+
+          total +=
+            needed;
+
+
+          completed +=
+            Math.min(
+
+              needed,
+
+              resultsFor(
+
+                child,
+
+                key,
+
+                assignment.id
+
+              ).length
+
+            );
+
+        }
+
+      );
+
+
+
+      if (
+        completed >=
+        total
+      ) {
+
+
+        return {
+
+          state:
+            "green",
+
+          text:
+            `${completed}/${total}`
+
+        };
+
+      }
+
+
+
+      if (
+        completed >
+        0
+      ) {
+
+
+        return {
+
+          state:
+            "yellow",
+
+          text:
+            `${completed}/${total}`
+
+        };
+
+      }
+
+
+
+      return {
+
+        state:
+          "red",
+
+        text:
+          `0/${total}`
+
+      };
+
+    }
+
+
+
+    /* =========================================
+       CALENDAR MONTH NAVIGATION
+       ========================================= */
+
+
+    window.changeCalendarMonth =
+      function(
+        amount
+      ) {
+
+
+        calendarDate =
+          new Date(
+
+            calendarDate.getFullYear(),
+
+            calendarDate.getMonth() +
+            amount,
+
+            1
+
+          );
+
+
+        renderCalendar();
+
+      };
+
+
+
+    /* =========================================
+       CALENDAR
+       ========================================= */
+
+
+    function renderCalendar() {
+
+
+      document.getElementById(
+        "calendarMonth"
+      ).textContent =
+        monthTitle(
+          calendarDate
+        );
+
+
+
+      const grid =
+        document.getElementById(
+          "calendarGrid"
+        );
+
+
+      const year =
+        calendarDate.getFullYear();
+
+
+      const month =
+        calendarDate.getMonth();
+
+
+      const firstDay =
+        new Date(
+          year,
+          month,
+          1
+        );
+
+
+      const start =
+        (
+          firstDay.getDay() +
+          6
+        ) % 7;
+
+
+      const numberOfDays =
+        new Date(
+
+          year,
+
+          month + 1,
+
+          0
+
+        ).getDate();
+
+
+
+      let html =
+
+        [
+
+          "MON",
+
+          "TUE",
+
+          "WED",
+
+          "THU",
+
+          "FRI",
+
+          "SAT",
+
+          "SUN"
+
+        ]
+
+          .map(
+
+            function(
+              day
+            ) {
+
+
+              return `
+
+                <div class="weekday">
+
+                  ${day}
+
+                </div>
+
+              `;
+
+            }
+
+          )
+
+          .join("");
+
+
+
+      for (
+        let index = 0;
+        index < start;
+        index++
+      ) {
+
+
+        html +=
+          "<div></div>";
+
+      }
+
+
+
+      for (
+        let day = 1;
+        day <= numberOfDays;
+        day++
+      ) {
+
+
+        const key =
+          dateKey(
+
+            new Date(
+              year,
+              month,
+              day
+            )
+
+          );
+
+
+        const ivy =
+          dayStatus(
+            "ivy",
+            key
+          );
+
+
+        const charlotte =
+          dayStatus(
+            "charlotte",
+            key
+          );
+
+
+
+        html += `
+
+          <div
+
+            class="
+              day
+              ${
+                key === todayKey
+                  ? "today"
+                  : ""
+              }
+            "
+
+            onclick="
+              renderDayDetail(
+                '${key}'
+              )
+            "
+
+          >
+
+
+            <div class="day-number">
+
+              ${day}
+
+            </div>
+
+
+            <div class="day-child ivy">
+
+              <i
+                class="
+                  status-dot
+                  ${ivy.state}
+                "
+              ></i>
+
+              🌸 ${ivy.text}
+
+            </div>
+
+
+            <div class="day-child charlotte">
+
+              <i
+                class="
+                  status-dot
+                  ${charlotte.state}
+                "
+              ></i>
+
+              🌈 ${charlotte.text}
+
+            </div>
+
+
+          </div>
+
+        `;
+
+      }
+
+
+
+      grid.innerHTML =
+        html;
+
+    }
+
+
+
+    /* =========================================
+       CLICK CALENDAR DAY
+       ========================================= */
+
+
+    window.renderDayDetail =
+      function(
+        key
+      ) {
+
+
+        const box =
+          document.getElementById(
+            "dayDetail"
+          );
+
+
+        let html = `
+
+          <h3>
+
+            📅 ${prettyDate(key)}
+
+          </h3>
+
+
+          <div class="detail-grid">
+
+        `;
+
+
+
+        [
+
+          "ivy",
+
+          "charlotte"
+
+        ].forEach(
+
+          function(
+            child
+          ) {
+
+
+            const assignments =
+              assignmentsFor(
+                child,
+                key
+              );
+
+
+            const results =
+              resultsFor(
+                child,
+                key
+              );
+
+
+
+            html += `
+
+              <div class="detail-child">
+
+
+                <h4>
+
+                  ${catalog[child].avatar}
+
+                  ${catalog[child].name}
+
+                </h4>
+
+            `;
+
+
+
+            if (
+
+              assignments.length ===
+              0
+
+              &&
+
+              results.length ===
+              0
+
+            ) {
+
+
+              html += `
+
+                <div class="empty">
+
+                  No school records for this day.
+
+                </div>
+
+              `;
+
+
+            } else {
+
+
+              if (
+                assignments.length >
+                0
+              ) {
+
+
+                assignments.forEach(
+
+                  function(
+                    assignment
+                  ) {
+
+
+                    const needed =
+                      required(
+                        assignment
+                      );
+
+
+                    const exerciseResults =
+                      resultsFor(
+
+                        child,
+
+                        key,
+
+                        assignment.id
+
+                      );
+
+
+                    const completed =
+                      Math.min(
+
+                        needed,
+
+                        exerciseResults.length
+
+                      );
+
+
+                    const best =
+                      bestResult(
+                        exerciseResults
+                      );
+
+
+                    let resultText =
+                      " • Not completed";
+
+
+                    if (
+                      best
+                    ) {
+
+
+                      resultText =
+
+                        ` • Best ` +
+
+                        `${Number(
+                          best.score ||
+                          0
+                        )}/` +
+
+                        `${Number(
+                          best.total ||
+                          0
+                        )}` +
+
+                        ` • ${Number(
+                          best.percentage ||
+                          0
+                        )}%`;
+
+                    }
+
+
+
+                    html += `
+
+                      <div class="detail-item">
+
+
+                        <div class="detail-name">
+
+                          ${escapeHTML(
+                            assignment.exercise
+                          )}
+
+                          —
+
+                          ${completed}/${needed}
+
+                        </div>
+
+
+                        <div class="detail-meta">
+
+                          ${escapeHTML(
+                            assignment.subject
+                          )}
+
+                          ›
+
+                          ${escapeHTML(
+                            assignment.topic
+                          )}
+
+                          ${resultText}
+
+                        </div>
+
+
+                      </div>
+
+                    `;
+
+                  }
+
+                );
+
+              }
+
+
+
+              if (
+                results.length >
+                0
+              ) {
+
+
+                html += `
+
+                  <div
+                    style="
+                      font-size:10px;
+                      font-weight:900;
+                      color:#7d8798;
+                      margin-top:14px;
+                    "
+                  >
+
+                    ALL TEST ATTEMPTS
+
+                  </div>
+
+                `;
+
+
+
+                [
+
+                  ...results
+
+                ]
+
+                  .sort(
+
+                    function(
+                      a,
+                      b
+                    ) {
+
+
+                      return (
+
+                        new Date(
+                          a.timestamp ||
+                          0
+                        ).getTime()
+
+                        -
+
+                        new Date(
+                          b.timestamp ||
+                          0
+                        ).getTime()
+
+                      );
+
+                    }
+
+                  )
+
+                  .forEach(
+
+                    function(
+                      result
+                    ) {
+
+
+                      let time =
+                        "";
+
+
+                      if (
+                        result.timestamp
+                      ) {
+
+
+                        time =
+                          new Date(
+                            result.timestamp
+                          ).toLocaleTimeString(
+
+                            [],
+
+                            {
+
+                              hour:
+                                "2-digit",
+
+                              minute:
+                                "2-digit"
+
+                            }
+
+                          );
+
+                      }
+
+
+
+                      html += `
+
+                        <div class="detail-item">
+
+
+                          <div class="detail-name">
+
+                            ${escapeHTML(
+                              result.exercise ||
+                              "Exercise"
+                            )}
+
+                            —
+
+                            ${Number(
+                              result.score ||
+                              0
+                            )}
+
+                            /
+
+                            ${Number(
+                              result.total ||
+                              0
+                            )}
+
+                            (${Number(
+                              result.percentage ||
+                              0
+                            )}%)
+
+                          </div>
+
+
+                          <div class="detail-meta">
+
+                            ${time}
+
+                          </div>
+
+
+                        </div>
+
+                      `;
+
+                    }
+
+                  );
+
+              }
+
+            }
+
+
+
+            html +=
+              "</div>";
+
+          }
+
+        );
+
+
+
+        html +=
+          "</div>";
+
+
+
+        box.innerHTML =
+          html;
+
+      };
+
+
+
+    /* =========================================
+       PROGRESS MONTH NAVIGATION
+       ========================================= */
+
+
+    window.changeProgressMonth =
+      function(
+        amount
+      ) {
+
+
+        progressDate =
+          new Date(
+
+            progressDate.getFullYear(),
+
+            progressDate.getMonth() +
+            amount,
+
+            1
+
+          );
+
+
+        renderMonthlyProgress();
+
+      };
+
+
+
+    /* =========================================
+       MONTHLY PROGRESS
+       ========================================= */
+
+
+    function renderMonthlyProgress() {
+
+
+      document.getElementById(
+        "progressMonth"
+      ).textContent =
+        monthTitle(
+          progressDate
+        );
+
+
+      const prefix =
+        monthPrefix(
+          progressDate
+        );
+
+
+
+      [
+
+        "ivy",
+
+        "charlotte"
+
+      ].forEach(
+
+        function(
+          child
+        ) {
+
+
+          const results =
+            allResults.filter(
+
+              function(
+                result
+              ) {
+
+
+                return (
+
+                  resultChild(
+                    result
+                  ) ===
+                  child
+
+                  &&
+
+                  resultDate(
+                    result
+                  ).startsWith(
+                    prefix
+                  )
+
+                );
+
+              }
+
+            );
+
+
+
+          const assignmentDocuments =
+            Object.values(
+              allAssignments
+            ).filter(
+
+              function(
+                assignment
+              ) {
+
+
+                return (
+
+                  assignment.child ===
+                  child
+
+                  &&
+
+                  String(
+                    assignment.date ||
+                    ""
+                  ).startsWith(
+                    prefix
+                  )
+
+                );
+
+              }
+
+            );
+
+
+
+          let requiredTotal =
+            0;
+
+
+          let completedTotal =
+            0;
+
+
+
+          assignmentDocuments.forEach(
+
+            function(
+              assignmentDocument
+            ) {
+
+
+              (
+                assignmentDocument.exercises ||
+                []
+              ).forEach(
+
+                function(
+                  assignment
+                ) {
+
+
+                  const needed =
+                    required(
+                      assignment
+                    );
+
+
+                  requiredTotal +=
+                    needed;
+
+
+                  completedTotal +=
+                    Math.min(
+
+                      needed,
+
+                      resultsFor(
+
+                        child,
+
+                        assignmentDocument.date,
+
+                        assignment.id
+
+                      ).length
+
+                    );
+
+                }
+
+              );
+
+            }
+
+          );
+
+
+
+          let average =
+            0;
+
+
+          if (
+            results.length >
+            0
+          ) {
+
+
+            average =
+              Math.round(
+
+                results.reduce(
+
+                  function(
+                    total,
+                    result
+                  ) {
+
+
+                    return (
+
+                      total +
+
+                      Number(
+                        result.percentage ||
+                        0
+                      )
+
+                    );
+
+                  },
+
+                  0
+
+                )
+
+                /
+
+                results.length
+
+              );
+
+          }
+
+
+
+          const perfect =
+            results.filter(
+
+              function(
+                result
+              ) {
+
+
+                return (
+
+                  Number(
+                    result.percentage ||
+                    0
+                  ) ===
+                  100
+
+                );
+
+              }
+
+            ).length;
+
+
+
+          const subjects =
+            {};
+
+
+
+          results.forEach(
+
+            function(
+              result
+            ) {
+
+
+              const subject =
+                result.subject ||
+                "Learning";
+
+
+              if (
+                !subjects[
+                  subject
+                ]
+              ) {
+
+
+                subjects[
+                  subject
+                ] =
+                  [];
+
+              }
+
+
+              subjects[
+                subject
+              ].push(
+
+                Number(
+                  result.percentage ||
+                  0
+                )
+
+              );
+
+            }
+
+          );
+
+
+
+          let subjectHTML =
+            "";
+
+
+          const subjectNames =
+            Object.keys(
+              subjects
+            );
+
+
+
+          if (
+            subjectNames.length ===
+            0
+          ) {
+
+
+            subjectHTML = `
+
+              <div class="empty">
+
+                No completed tests recorded this month yet.
+
+              </div>
+
+            `;
+
+
+          } else {
+
+
+            subjectHTML =
+              Object.entries(
+                subjects
+              )
+
+                .map(
+
+                  function(
+                    entry
+                  ) {
+
+
+                    const subject =
+                      entry[0];
+
+
+                    const percentages =
+                      entry[1];
+
+
+                    const subjectAverage =
+                      Math.round(
+
+                        percentages.reduce(
+
+                          function(
+                            total,
+                            value
+                          ) {
+
+
+                            return (
+                              total +
+                              value
+                            );
+
+                          },
+
+                          0
+
+                        )
+
+                        /
+
+                        percentages.length
+
+                      );
+
+
+
+                    return `
+
+                      <div class="subject-stat">
+
+                        <span>
+
+                          ${escapeHTML(
+                            subject
+                          )}
+
+                        </span>
+
+                        <span>
+
+                          ${subjectAverage}%
+
+                        </span>
+
+                      </div>
+
+                    `;
+
+                  }
+
+                )
+
+                .join("");
+
+          }
+
+
+
+          document.getElementById(
+
+            `${child}Stats`
+
+          ).innerHTML = `
+
+
+            <div class="stats-top">
+
+
+              <div
+                class="
+                  avatar
+                  ${
+                    child ===
+                    "ivy"
+
+                      ? "ivy-avatar"
+
+                      : "charlotte-avatar"
+                  }
+                "
+              >
+
+                ${catalog[child].avatar}
+
+              </div>
+
+
+              <div>
+
+                <div class="stats-name">
+
+                  ${catalog[child].name}
+
+                </div>
+
+                <div class="child-grade">
+
+                  ${catalog[child].grade}
+
+                </div>
+
+              </div>
+
+
+            </div>
+
+
+
+            <div class="stat-boxes">
+
+
+              <div class="stat">
+
+                <strong>
+
+                  ${results.length}
+
+                </strong>
+
+                <span>
+                  Test attempts
+                </span>
+
+              </div>
+
+
+              <div class="stat">
+
+                <strong>
+
+                  ${average}%
+
+                </strong>
+
+                <span>
+                  Average score
+                </span>
+
+              </div>
+
+
+              <div class="stat">
+
+                <strong>
+
+                  ${completedTotal}/${requiredTotal}
+
+                </strong>
+
+                <span>
+                  Required work
+                </span>
+
+              </div>
+
+
+              <div class="stat">
+
+                <strong>
+
+                  ${perfect}
+
+                </strong>
+
+                <span>
+                  Perfect scores
+                </span>
+
+              </div>
+
+
+            </div>
+
+
+
+            <div class="subject-stats">
+
+              ${subjectHTML}
+
+            </div>
+
+          `;
+
+        }
+
+      );
+
+    }
+
+
+
+    /* =========================================
+       LOAD FIREBASE DATA
+       ========================================= */
+
+
+    async function loadAll() {
+
+
+      const [
+
+        assignmentSnapshot,
+
+        resultSnapshot
+
+      ] =
+        await Promise.all([
+
+
+          getDocs(
+
+            collection(
+              db,
+              "assignments"
+            )
+
+          ),
+
+
+          getDocs(
+
+            collection(
+              db,
+              "results"
+            )
+
+          )
+
+
+        ]);
+
+
+
+      allAssignments =
+        {};
+
+
+      assignmentSnapshot.forEach(
+
+        function(
+          snapshot
+        ) {
+
+
+          allAssignments[
+            snapshot.id
+          ] =
+            snapshot.data();
+
+        }
+
+      );
+
+
+
+      allResults =
+        [];
+
+
+      resultSnapshot.forEach(
+
+        function(
+          snapshot
+        ) {
+
+
+          allResults.push(
+            snapshot.data()
+          );
+
+        }
+
+      );
+
+
+
+      draft.ivy =
+        JSON.parse(
+
+          JSON.stringify(
+
+            assignmentsFor(
+              "ivy",
+              todayKey
+            )
+
+          )
+
+        );
+
+
+
+      draft.charlotte =
+        JSON.parse(
+
+          JSON.stringify(
+
+            assignmentsFor(
+              "charlotte",
+              todayKey
+            )
+
+          )
+
+        );
+
+    }
+
+
+
+    /* =========================================
+       START
+       ========================================= */
+
+
+    async function start() {
+
+
+      try {
+
+
+        await loadAll();
+
+
+        renderToday();
+
+
+        renderCalendar();
+
+
+        renderDayDetail(
+          todayKey
+        );
+
+
+        renderMonthlyProgress();
+
+
+      } catch (
+        error
+      ) {
+
+
+        console.error(
+          error
+        );
+
+
+        document.getElementById(
+          "ivyAssignments"
+        ).innerHTML = `
+
+          <div class="empty">
+
+            Could not load Firebase data.
+
+            <br>
+
+            Please refresh the page.
+
+          </div>
+
+        `;
+
+
+
+        document.getElementById(
+          "charlotteAssignments"
+        ).innerHTML = `
+
+          <div class="empty">
+
+            Could not load Firebase data.
+
+            <br>
+
+            Please refresh the page.
+
+          </div>
+
+        `;
+
+      }
+
+    }
+
+
+
+    start();
+
+
+  </script>
+
+
 </body>
+
 </html>
