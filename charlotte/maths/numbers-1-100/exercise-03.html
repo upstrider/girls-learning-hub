@@ -1,0 +1,1220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>What Number Comes After? • Charlotte</title>
+
+<style>
+*{
+box-sizing:border-box;
+}
+
+body{
+margin:0;
+min-height:100vh;
+font-family:Arial,Helvetica,sans-serif;
+color:#303044;
+background:
+linear-gradient(
+135deg,
+#fff8fc 0%,
+#f6fbff 48%,
+#fffdf5 100%
+);
+}
+
+button,
+input{
+font:inherit;
+}
+
+button{
+cursor:pointer;
+}
+
+.topbar{
+width:min(900px,calc(100% - 28px));
+margin:20px auto 0;
+display:flex;
+justify-content:space-between;
+align-items:center;
+gap:14px;
+}
+
+.back{
+text-decoration:none;
+font-size:12px;
+font-weight:900;
+color:#6f6f82;
+background:white;
+border:1px solid #ececf3;
+padding:10px 14px;
+border-radius:14px;
+box-shadow:0 6px 18px rgba(50,50,80,.05);
+}
+
+.cloud-status{
+font-size:11px;
+font-weight:900;
+color:#8c8c9c;
+}
+
+.page{
+width:min(760px,calc(100% - 28px));
+margin:22px auto 60px;
+}
+
+.hero{
+text-align:center;
+margin-bottom:22px;
+}
+
+.character{
+width:76px;
+height:76px;
+margin:0 auto 13px;
+border-radius:26px;
+display:grid;
+place-items:center;
+font-size:42px;
+background:
+linear-gradient(
+135deg,
+#dff7ff,
+#f0e4ff
+);
+box-shadow:
+0 12px 30px
+rgba(90,100,150,.12);
+}
+
+.hero h1{
+margin:0;
+font-size:clamp(28px,6vw,42px);
+letter-spacing:-1.3px;
+}
+
+.hero p{
+margin:9px auto 0;
+max-width:540px;
+color:#858597;
+font-size:14px;
+line-height:1.6;
+}
+
+.progress-card{
+background:white;
+border:1px solid #ececf3;
+border-radius:20px;
+padding:15px 17px;
+margin-bottom:16px;
+box-shadow:
+0 12px 32px
+rgba(50,50,80,.06);
+}
+
+.progress-top{
+display:flex;
+justify-content:space-between;
+align-items:center;
+gap:12px;
+font-size:12px;
+font-weight:900;
+margin-bottom:10px;
+}
+
+.progress-track{
+height:10px;
+border-radius:999px;
+background:#f0f0f5;
+overflow:hidden;
+}
+
+.progress-fill{
+height:100%;
+width:0%;
+border-radius:999px;
+background:
+linear-gradient(
+90deg,
+#f7a8cf,
+#bfa9ef,
+#8ddce9
+);
+transition:width .3s ease;
+}
+
+.game-card{
+background:white;
+border:1px solid #ececf3;
+border-radius:28px;
+padding:30px;
+box-shadow:
+0 18px 55px
+rgba(50,50,80,.08);
+text-align:center;
+}
+
+.question-label{
+font-size:12px;
+font-weight:900;
+color:#9999aa;
+letter-spacing:.6px;
+text-transform:uppercase;
+margin-bottom:10px;
+}
+
+.instruction{
+font-size:17px;
+font-weight:900;
+margin-bottom:28px;
+}
+
+.number-question{
+display:flex;
+align-items:center;
+justify-content:center;
+gap:18px;
+margin:20px 0 30px;
+}
+
+.number-card{
+width:120px;
+height:105px;
+border-radius:24px;
+display:grid;
+place-items:center;
+font-size:44px;
+font-weight:900;
+background:
+linear-gradient(
+135deg,
+#dff6ff,
+#e9f8f2
+);
+border:3px solid #b9e4e8;
+box-shadow:
+0 9px 22px
+rgba(70,130,150,.08);
+}
+
+.arrow{
+font-size:28px;
+color:#b1b1c0;
+font-weight:900;
+}
+
+.answer-input{
+width:120px;
+height:105px;
+border:3px solid #c9b4ec;
+border-radius:24px;
+background:#fbf9ff;
+text-align:center;
+font-size:44px;
+font-weight:900;
+color:#34344b;
+outline:none;
+transition:
+border .2s ease,
+transform .2s ease,
+background .2s ease;
+}
+
+.answer-input:focus{
+border-color:#9d82d2;
+transform:scale(1.03);
+}
+
+.answer-input.correct{
+border-color:#7fc99a;
+background:#effbf3;
+}
+
+.answer-input.wrong{
+border-color:#ef8fa9;
+background:#fff1f5;
+animation:shake .25s ease;
+}
+
+@keyframes shake{
+0%{transform:translateX(0)}
+25%{transform:translateX(-6px)}
+50%{transform:translateX(6px)}
+75%{transform:translateX(-4px)}
+100%{transform:translateX(0)}
+}
+
+.check-button{
+width:min(330px,100%);
+border:0;
+border-radius:17px;
+padding:15px 20px;
+font-weight:900;
+font-size:14px;
+color:#40364d;
+background:
+linear-gradient(
+135deg,
+#ffd8ea,
+#e7dcff
+);
+box-shadow:
+0 10px 24px
+rgba(160,110,170,.13);
+}
+
+.check-button:hover{
+transform:translateY(-1px);
+}
+
+.feedback{
+min-height:52px;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:15px;
+font-weight:900;
+margin-top:14px;
+}
+
+.feedback.correct{
+color:#318151;
+}
+
+.feedback.wrong{
+color:#b84b6a;
+}
+
+.score-row{
+display:flex;
+justify-content:center;
+gap:10px;
+flex-wrap:wrap;
+margin-top:20px;
+}
+
+.score-pill{
+padding:9px 13px;
+border-radius:999px;
+font-size:11px;
+font-weight:900;
+background:#f7f7fb;
+color:#707083;
+}
+
+.finish-card{
+display:none;
+background:white;
+border:1px solid #ececf3;
+border-radius:28px;
+padding:35px 26px;
+box-shadow:
+0 18px 55px
+rgba(50,50,80,.08);
+text-align:center;
+}
+
+.finish-card.show{
+display:block;
+}
+
+.finish-icon{
+font-size:58px;
+margin-bottom:10px;
+}
+
+.finish-card h2{
+margin:0;
+font-size:30px;
+}
+
+.finish-card p{
+color:#818193;
+line-height:1.6;
+}
+
+.final-score{
+font-size:52px;
+font-weight:900;
+margin:22px 0 5px;
+}
+
+.final-percent{
+font-size:15px;
+font-weight:900;
+color:#858597;
+margin-bottom:24px;
+}
+
+.finish-buttons{
+display:flex;
+justify-content:center;
+gap:10px;
+flex-wrap:wrap;
+}
+
+.retry-button,
+.finish-button{
+border:0;
+border-radius:15px;
+padding:13px 18px;
+font-weight:900;
+}
+
+.retry-button{
+background:
+linear-gradient(
+135deg,
+#dff7ff,
+#e6e0ff
+);
+color:#3f4054;
+}
+
+.finish-button{
+text-decoration:none;
+background:
+linear-gradient(
+135deg,
+#ffdbe9,
+#f6e2bd
+);
+color:#4d3d45;
+border-radius:15px;
+padding:13px 18px;
+font-size:13px;
+font-weight:900;
+}
+
+.tip{
+margin-top:18px;
+font-size:11px;
+color:#a0a0ad;
+line-height:1.5;
+}
+
+@media(max-width:520px){
+
+.game-card{
+padding:25px 16px;
+}
+
+.number-question{
+gap:10px;
+}
+
+.answer-input,
+.number-card{
+width:105px;
+height:95px;
+font-size:39px;
+}
+
+.arrow{
+font-size:22px;
+}
+
+}
+</style>
+</head>
+
+<body>
+
+<div class="topbar">
+
+<a
+class="back"
+href="../../../index.html#charlotte"
+>
+← BACK TO TODAY
+</a>
+
+<div
+id="cloudStatus"
+class="cloud-status"
+>
+☁️ Ready
+</div>
+
+</div>
+
+<main class="page">
+
+<section id="gameSection">
+
+<div class="hero">
+
+<div class="character">
+🌈
+</div>
+
+<h1>
+What Number Comes After?
+</h1>
+
+<p>
+Look at the number and type the number that comes
+<strong>just after it</strong>.
+</p>
+
+</div>
+
+<div class="progress-card">
+
+<div class="progress-top">
+
+<span id="questionProgress">
+Question 1 of 10
+</span>
+
+<span id="starCount">
+⭐ 0
+</span>
+
+</div>
+
+<div class="progress-track">
+
+<div
+id="progressFill"
+class="progress-fill"
+></div>
+
+</div>
+
+</div>
+
+<div class="game-card">
+
+<div class="question-label">
+What comes after?
+</div>
+
+<div class="instruction">
+Type the missing number.
+</div>
+
+<div class="number-question">
+
+<div
+id="targetNumber"
+class="number-card"
+>
+54
+</div>
+
+<div class="arrow">
+→
+</div>
+
+<input
+id="answerInput"
+class="answer-input"
+type="number"
+inputmode="numeric"
+min="2"
+max="100"
+autocomplete="off"
+aria-label="Missing number"
+>
+
+</div>
+
+<button
+id="checkButton"
+class="check-button"
+onclick="checkAnswer()"
+>
+CHECK ✓
+</button>
+
+<div
+id="feedback"
+class="feedback"
+></div>
+
+<div class="score-row">
+
+<div class="score-pill">
+🎯 10 questions
+</div>
+
+<div class="score-pill">
+⭐ First try = point
+</div>
+
+<div class="score-pill">
+🏆 Pass = 8/10
+</div>
+
+</div>
+
+<div class="tip">
+Example: the number after 54 is 55.
+</div>
+
+</div>
+
+</section>
+
+<section
+id="finishCard"
+class="finish-card"
+>
+
+<div
+id="finishIcon"
+class="finish-icon"
+>
+🏆
+</div>
+
+<h2 id="finishTitle">
+Amazing!
+</h2>
+
+<p id="finishMessage">
+You finished the exercise.
+</p>
+
+<div
+id="finalScore"
+class="final-score"
+>
+10/10
+</div>
+
+<div
+id="finalPercent"
+class="final-percent"
+>
+100%
+</div>
+
+<div class="finish-buttons">
+
+<button
+class="retry-button"
+onclick="startNewGame()"
+>
+TRY AGAIN 🔄
+</button>
+
+<a
+class="finish-button"
+href="../../../index.html#charlotte"
+>
+FINISH ✓
+</a>
+
+</div>
+
+</section>
+
+</main>
+
+<script type="module">
+
+import{
+initializeApp
+}
+from
+"https://www.gstatic.com/firebasejs/12.5.0/firebase-app.js";
+
+import{
+getFirestore,
+collection,
+addDoc
+}
+from
+"https://www.gstatic.com/firebasejs/12.5.0/firebase-firestore.js";
+
+const firebaseConfig={
+
+apiKey:
+"AIzaSyBri62MSDCTXF9meH_5Jnm8kbZFytoHwXU",
+
+authDomain:
+"girls-learning-hub.firebaseapp.com",
+
+projectId:
+"girls-learning-hub",
+
+storageBucket:
+"girls-learning-hub.firebasestorage.app",
+
+messagingSenderId:
+"578155016403",
+
+appId:
+"1:578155016403:web:ffe763fe308574d31fe426"
+
+};
+
+const app=
+initializeApp(
+firebaseConfig
+);
+
+const db=
+getFirestore(
+app
+);
+
+const TOTAL_QUESTIONS=10;
+
+let questions=[];
+let currentQuestion=0;
+let score=0;
+let firstAttempt=true;
+let waitingForNext=false;
+
+const answerInput=
+document.getElementById(
+"answerInput"
+);
+
+const targetNumber=
+document.getElementById(
+"targetNumber"
+);
+
+const feedback=
+document.getElementById(
+"feedback"
+);
+
+const checkButton=
+document.getElementById(
+"checkButton"
+);
+
+const questionProgress=
+document.getElementById(
+"questionProgress"
+);
+
+const progressFill=
+document.getElementById(
+"progressFill"
+);
+
+const starCount=
+document.getElementById(
+"starCount"
+);
+
+const cloudStatus=
+document.getElementById(
+"cloudStatus"
+);
+
+function makeQuestions(){
+
+const pool=[];
+
+/*
+Numbers 1–99 only because
+100 is the maximum answer.
+*/
+
+for(
+let number=1;
+number<=99;
+number++
+){
+
+pool.push(
+number
+);
+
+}
+
+for(
+let i=pool.length-1;
+i>0;
+i--
+){
+
+const randomIndex=
+Math.floor(
+Math.random()*
+(i+1)
+);
+
+[
+pool[i],
+pool[randomIndex]
+]=[
+pool[randomIndex],
+pool[i]
+];
+
+}
+
+return pool.slice(
+0,
+TOTAL_QUESTIONS
+);
+
+}
+
+function showQuestion(){
+
+waitingForNext=false;
+firstAttempt=true;
+
+const number=
+questions[
+currentQuestion
+];
+
+targetNumber.textContent=
+number;
+
+answerInput.value="";
+
+answerInput.classList.remove(
+"correct",
+"wrong"
+);
+
+feedback.textContent="";
+feedback.className="feedback";
+
+checkButton.textContent=
+"CHECK ✓";
+
+questionProgress.textContent=
+`Question ${currentQuestion+1} of ${TOTAL_QUESTIONS}`;
+
+starCount.textContent=
+`⭐ ${score}`;
+
+progressFill.style.width=
+`${(
+currentQuestion/
+TOTAL_QUESTIONS
+)*100}%`;
+
+setTimeout(
+()=>{
+answerInput.focus();
+},
+100
+);
+
+}
+
+window.checkAnswer=
+function(){
+
+if(waitingForNext){
+
+nextQuestion();
+return;
+
+}
+
+const raw=
+answerInput.value.trim();
+
+if(raw===""){
+
+feedback.textContent=
+"Type your answer first 😊";
+
+feedback.className=
+"feedback wrong";
+
+answerInput.focus();
+
+return;
+
+}
+
+const answer=
+Number(
+raw
+);
+
+const correctAnswer=
+questions[currentQuestion]+1;
+
+if(
+answer===
+correctAnswer
+){
+
+answerInput.classList.remove(
+"wrong"
+);
+
+answerInput.classList.add(
+"correct"
+);
+
+if(firstAttempt){
+
+score++;
+
+feedback.textContent=
+"⭐ Perfect! First try!";
+
+}else{
+
+feedback.textContent=
+"✓ Yes! That's the number after.";
+
+}
+
+feedback.className=
+"feedback correct";
+
+starCount.textContent=
+`⭐ ${score}`;
+
+waitingForNext=true;
+
+checkButton.textContent=
+currentQuestion===
+TOTAL_QUESTIONS-1
+?"FINISH 🏆"
+:"NEXT →";
+
+}else{
+
+answerInput.classList.remove(
+"correct"
+);
+
+answerInput.classList.add(
+"wrong"
+);
+
+firstAttempt=false;
+
+feedback.textContent=
+"Not quite — try again! 💪";
+
+feedback.className=
+"feedback wrong";
+
+setTimeout(
+()=>{
+
+answerInput.classList.remove(
+"wrong"
+);
+
+answerInput.select();
+
+},
+300
+);
+
+}
+
+};
+
+function nextQuestion(){
+
+currentQuestion++;
+
+if(
+currentQuestion>=
+TOTAL_QUESTIONS
+){
+
+finishGame();
+return;
+
+}
+
+showQuestion();
+
+}
+
+answerInput.addEventListener(
+"keydown",
+function(event){
+
+if(
+event.key===
+"Enter"
+){
+
+event.preventDefault();
+
+window.checkAnswer();
+
+}
+
+}
+);
+
+async function finishGame(){
+
+progressFill.style.width=
+"100%";
+
+document.getElementById(
+"gameSection"
+).style.display=
+"none";
+
+const finishCard=
+document.getElementById(
+"finishCard"
+);
+
+finishCard.classList.add(
+"show"
+);
+
+const percentage=
+Math.round(
+(
+score/
+TOTAL_QUESTIONS
+)*100
+);
+
+const passed=
+score>=8;
+
+document.getElementById(
+"finalScore"
+).textContent=
+`${score}/${TOTAL_QUESTIONS}`;
+
+document.getElementById(
+"finalPercent"
+).textContent=
+`${percentage}%`;
+
+if(
+score===
+TOTAL_QUESTIONS
+){
+
+document.getElementById(
+"finishIcon"
+).textContent=
+"🏆";
+
+document.getElementById(
+"finishTitle"
+).textContent=
+"PERFECT SCORE!";
+
+document.getElementById(
+"finishMessage"
+).textContent=
+"You knew every number on your first try!";
+
+}else if(
+passed
+){
+
+document.getElementById(
+"finishIcon"
+).textContent=
+"🌟";
+
+document.getElementById(
+"finishTitle"
+).textContent=
+"Brilliant work!";
+
+document.getElementById(
+"finishMessage"
+).textContent=
+"You passed the exercise!";
+
+}else{
+
+document.getElementById(
+"finishIcon"
+).textContent=
+"💪";
+
+document.getElementById(
+"finishTitle"
+).textContent=
+"Good practice!";
+
+document.getElementById(
+"finishMessage"
+).textContent=
+"Try another round and see if you can reach 8 stars!";
+
+}
+
+const attempt={
+
+child:
+"Charlotte",
+
+childId:
+"charlotte",
+
+grade:
+"Grade 1",
+
+subject:
+"Maths",
+
+topic:
+"Numbers 1–100",
+
+exercise:
+"What Number Comes After?",
+
+exerciseId:
+"charlotte-maths-numbers-1-100-exercise-03",
+
+score:
+score,
+
+total:
+TOTAL_QUESTIONS,
+
+percentage:
+percentage,
+
+passed:
+passed,
+
+completed:
+true,
+
+timestamp:
+new Date().toISOString()
+
+};
+
+saveLocalHistory(
+attempt
+);
+
+await saveToFirebase(
+attempt
+);
+
+}
+
+function saveLocalHistory(
+attempt
+){
+
+try{
+
+const key=
+"charlotte-learning-history";
+
+const history=
+JSON.parse(
+localStorage.getItem(
+key
+)||
+"[]"
+);
+
+history.push(
+attempt
+);
+
+localStorage.setItem(
+key,
+JSON.stringify(
+history
+)
+);
+
+}catch(error){
+
+console.error(
+"Could not save local history:",
+error
+);
+
+}
+
+}
+
+async function saveToFirebase(
+attempt
+){
+
+cloudStatus.textContent=
+"☁️ Saving...";
+
+try{
+
+await addDoc(
+collection(
+db,
+"results"
+),
+attempt
+);
+
+cloudStatus.textContent=
+"☁️ Saved ✓";
+
+}catch(error){
+
+console.error(
+"Firebase save error:",
+error
+);
+
+cloudStatus.textContent=
+"⚠️ Not synced";
+
+}
+
+}
+
+window.startNewGame=
+function(){
+
+questions=
+makeQuestions();
+
+currentQuestion=0;
+score=0;
+firstAttempt=true;
+waitingForNext=false;
+
+document.getElementById(
+"finishCard"
+).classList.remove(
+"show"
+);
+
+document.getElementById(
+"gameSection"
+).style.display=
+"block";
+
+cloudStatus.textContent=
+"☁️ Ready";
+
+showQuestion();
+
+};
+
+questions=
+makeQuestions();
+
+showQuestion();
+
+</script>
+
+</body>
+</html>
