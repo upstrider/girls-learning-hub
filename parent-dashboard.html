@@ -526,6 +526,35 @@
     }
 
 
+    .assignment-actions {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .reset-button {
+      border: 1px solid #f0c7d0;
+      background: #fff3f6;
+      color: #c34462;
+      border-radius: 999px;
+      padding: 6px 9px;
+      font-size: 9px;
+      font-weight: 900;
+      white-space: nowrap;
+    }
+
+    .reset-button:hover {
+      background: #ffe7ed;
+    }
+
+    .reset-button:disabled {
+      opacity: .5;
+      cursor: default;
+    }
+
+
     .empty {
 
       border:
@@ -2179,7 +2208,9 @@
 
       collection,
 
-      getDocs
+      getDocs,
+
+      deleteDoc
 
     } from "https://www.gstatic.com/firebasejs/12.5.0/firebase-firestore.js";
 
@@ -3435,7 +3466,25 @@
                     </div>
 
 
-                    ${badgeHTML}
+                    <div class="assignment-actions">
+
+                      ${badgeHTML}
+
+                      ${
+                        results.length > 0
+                          ? `
+                            <button
+                              class="reset-button"
+                              onclick="resetTodayResult('${child}', '${assignment.id}', '${escapeHTML(assignment.exercise)}')"
+                              title="Remove today's saved result for this exercise"
+                            >
+                              ↻ RESET
+                            </button>
+                          `
+                          : ""
+                      }
+
+                    </div>
 
 
                   </div>
@@ -4671,6 +4720,163 @@
 
         button.disabled =
           false;
+
+      };
+
+
+
+    /* =========================================
+       RESET TODAY'S RESULT
+       ========================================= */
+
+
+    window.resetTodayResult =
+      async function(
+        child,
+        exerciseId,
+        exerciseName
+      ) {
+
+
+        const matchingResults =
+          resultsFor(
+            child,
+            todayKey,
+            exerciseId
+          );
+
+
+        if (
+          matchingResults.length ===
+          0
+        ) {
+
+          return;
+
+        }
+
+
+        const childName =
+          catalog[child]?.name ||
+          child;
+
+
+        const confirmed =
+          window.confirm(
+            `Reset ${childName}'s ${exerciseName}?\n\nThis will delete ${matchingResults.length} saved attempt${matchingResults.length === 1 ? "" : "s"} from today and make the exercise available to do again.`
+          );
+
+
+        if (
+          !confirmed
+        ) {
+
+          return;
+
+        }
+
+
+        const status =
+          document.getElementById(
+            "status"
+          );
+
+
+        status.textContent =
+          "Resetting today's result...";
+
+
+        try {
+
+
+          for (
+            const result of
+            matchingResults
+          ) {
+
+
+            if (
+              !result.__docId
+            ) {
+
+              throw new Error(
+                "This result has no Firebase document ID."
+              );
+
+            }
+
+
+            await deleteDoc(
+
+              doc(
+                db,
+                "results",
+                result.__docId
+              )
+
+            );
+
+          }
+
+
+          allResults =
+            allResults.filter(
+
+              function(
+                result
+              ) {
+
+                return !(
+                  resultChild(result) === child
+                  &&
+                  resultDate(result) === todayKey
+                  &&
+                  result.exerciseId === exerciseId
+                );
+
+              }
+
+            );
+
+
+          renderToday();
+          renderCalendar();
+          renderDayDetail(
+            todayKey
+          );
+          renderMonthlyProgress();
+
+
+          status.textContent =
+            `✓ ${childName}'s ${exerciseName} has been reset. Refresh her iPad and it will be ready again.`;
+
+
+          setTimeout(
+
+            function() {
+              status.textContent =
+                "";
+            },
+
+            5000
+
+          );
+
+
+        } catch (
+          error
+        ) {
+
+
+          console.error(
+            error
+          );
+
+
+          status.textContent =
+            "⚠️ Could not reset the result. Check the Firestore rules below and try again.";
+
+        }
 
       };
 
@@ -6112,9 +6318,10 @@
         ) {
 
 
-          allResults.push(
-            snapshot.data()
-          );
+          allResults.push({
+            ...snapshot.data(),
+            __docId: snapshot.id
+          });
 
         }
 
