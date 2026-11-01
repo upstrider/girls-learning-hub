@@ -1,1 +1,1344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
 
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Mum's Control Panel • Girls Learning Hub</title>
+
+<style>
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background:
+    radial-gradient(circle at 8% 8%, #fff0f7 0, transparent 24%),
+    radial-gradient(circle at 92% 10%, #eaf5ff 0, transparent 26%),
+    radial-gradient(circle at 50% 100%, #fff7d9 0, transparent 30%),
+    #f8f9fd;
+  color: #172033;
+  min-height: 100vh;
+}
+
+.topbar {
+  max-width: 1050px;
+  margin: auto;
+  padding: 25px 20px 5px;
+}
+
+.back-link {
+  text-decoration: none;
+  color: #6f788c;
+  font-size: 14px;
+  font-weight: 900;
+}
+
+.wrapper {
+  max-width: 1050px;
+  margin: auto;
+  padding: 15px 20px 70px;
+}
+
+
+/* HEADER */
+
+.header {
+  text-align: center;
+  margin: 25px auto 35px;
+}
+
+.header-icon {
+  font-size: 58px;
+  margin-bottom: 5px;
+}
+
+.eyebrow {
+  color: #8b77b7;
+  font-size: 13px;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+}
+
+.header h1 {
+  font-size: 40px;
+  margin: 8px 0 8px;
+}
+
+.header p {
+  margin: 0 auto;
+  max-width: 620px;
+  color: #7d879b;
+  font-size: 17px;
+  line-height: 1.5;
+  font-weight: 700;
+}
+
+
+/* DATE CARD */
+
+.date-card {
+  max-width: 700px;
+  margin: 0 auto 28px;
+  background: white;
+  border-radius: 24px;
+  padding: 20px 25px;
+  box-shadow: 0 12px 35px rgba(42,55,90,.08);
+  text-align: center;
+}
+
+.date-label {
+  color: #8b94a6;
+  font-size: 12px;
+  font-weight: 900;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.date-value {
+  margin-top: 6px;
+  font-size: 22px;
+  font-weight: 900;
+}
+
+
+/* CHILD GRID */
+
+.children-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 25px;
+}
+
+.child-card {
+  background: rgba(255,255,255,.97);
+  border-radius: 30px;
+  padding: 28px;
+  box-shadow: 0 16px 45px rgba(42,55,90,.10);
+}
+
+.child-header {
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+.child-avatar {
+  width: 72px;
+  height: 72px;
+  margin: auto;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 38px;
+}
+
+.ivy-avatar {
+  background: #ffe5f0;
+}
+
+.charlotte-avatar {
+  background: #e5f2ff;
+}
+
+.child-header h2 {
+  margin: 10px 0 3px;
+  font-size: 27px;
+}
+
+.grade {
+  color: #8b94a6;
+  font-weight: 800;
+  font-size: 14px;
+}
+
+
+/* SUBJECT */
+
+.subject {
+  margin-top: 22px;
+}
+
+.subject-title {
+  font-size: 13px;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #8b77b7;
+  margin-bottom: 10px;
+}
+
+
+/* EXERCISE OPTION */
+
+.exercise-option {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  border: 2px solid #edf0f6;
+  border-radius: 18px;
+  padding: 15px;
+  margin-bottom: 10px;
+  cursor: pointer;
+  transition: .2s ease;
+  background: #fff;
+}
+
+.exercise-option:hover {
+  border-color: #c9b7ea;
+  transform: translateY(-1px);
+}
+
+.exercise-option.selected {
+  border-color: #8d67d5;
+  background: #f8f3ff;
+}
+
+.exercise-option input {
+  width: 21px;
+  height: 21px;
+  accent-color: #7c5ac7;
+  flex-shrink: 0;
+}
+
+.exercise-icon {
+  font-size: 27px;
+  flex-shrink: 0;
+}
+
+.exercise-info {
+  flex: 1;
+}
+
+.exercise-name {
+  font-weight: 900;
+  font-size: 15px;
+  line-height: 1.3;
+}
+
+.exercise-topic {
+  margin-top: 3px;
+  color: #9098a8;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+
+/* EMPTY FUTURE AREA */
+
+.future-note {
+  border: 2px dashed #e3e7ef;
+  border-radius: 17px;
+  padding: 14px;
+  color: #a0a7b4;
+  text-align: center;
+  font-size: 12px;
+  font-weight: 800;
+  margin-top: 12px;
+}
+
+
+/* SUMMARY */
+
+.summary-card {
+  max-width: 700px;
+  margin: 30px auto 0;
+  background: white;
+  border-radius: 25px;
+  padding: 24px;
+  box-shadow: 0 12px 35px rgba(42,55,90,.08);
+}
+
+.summary-title {
+  text-align: center;
+  font-weight: 900;
+  font-size: 18px;
+  margin-bottom: 16px;
+}
+
+.summary-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.summary-box {
+  border-radius: 18px;
+  padding: 15px;
+  text-align: center;
+}
+
+.ivy-summary {
+  background: #fff1f6;
+}
+
+.charlotte-summary {
+  background: #eef6ff;
+}
+
+.summary-number {
+  font-size: 30px;
+  font-weight: 900;
+}
+
+.summary-name {
+  font-size: 12px;
+  color: #7c8598;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+
+/* SAVE */
+
+.save-area {
+  text-align: center;
+  margin-top: 28px;
+}
+
+.save-button {
+  border: none;
+  background: linear-gradient(135deg, #6e72e8, #a257d5);
+  color: white;
+  padding: 17px 35px;
+  border-radius: 18px;
+  font-size: 16px;
+  font-weight: 900;
+  cursor: pointer;
+  box-shadow: 0 10px 25px rgba(100,80,200,.24);
+}
+
+.save-button:hover {
+  transform: translateY(-1px);
+}
+
+.save-button:disabled {
+  opacity: .55;
+  cursor: default;
+  transform: none;
+}
+
+.status {
+  min-height: 30px;
+  margin-top: 15px;
+  font-weight: 900;
+  font-size: 14px;
+}
+
+.status-saving {
+  color: #7a6a9d;
+}
+
+.status-success {
+  color: #168653;
+}
+
+.status-error {
+  color: #d84c67;
+}
+
+
+/* MOBILE */
+
+@media (max-width: 760px) {
+
+  .children-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .header h1 {
+    font-size: 31px;
+  }
+
+  .child-card {
+    padding: 22px;
+  }
+
+  .wrapper {
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<div class="topbar">
+
+  <a
+    class="back-link"
+    href="index.html"
+  >
+    ← BACK TO LEARNING HUB
+  </a>
+
+</div>
+
+
+<div class="wrapper">
+
+
+  <div class="header">
+
+    <div class="header-icon">
+      👩🏼‍🏫
+    </div>
+
+    <div class="eyebrow">
+      Parent Area
+    </div>
+
+    <h1>
+      Mum's Control Panel
+    </h1>
+
+    <p>
+      Choose what Ivy-Rose and Charlotte need to complete today.
+      Their assignments will appear on their learning hub on any device.
+    </p>
+
+  </div>
+
+
+
+  <div class="date-card">
+
+    <div class="date-label">
+      Assignments for
+    </div>
+
+    <div
+      id="todayDate"
+      class="date-value"
+    >
+      Today
+    </div>
+
+  </div>
+
+
+
+  <div class="children-grid">
+
+
+    <!-- =========================================
+         IVY-ROSE
+         ========================================= -->
+
+    <div class="child-card">
+
+      <div class="child-header">
+
+        <div class="child-avatar ivy-avatar">
+          🌸
+        </div>
+
+        <h2>
+          Ivy-Rose
+        </h2>
+
+        <div class="grade">
+          Grade 2
+        </div>
+
+      </div>
+
+
+      <div class="subject">
+
+        <div class="subject-title">
+          📚 English • Spelling
+        </div>
+
+
+        <label
+          class="exercise-option"
+          data-option="ivy-spelling-01"
+        >
+
+          <input
+            type="checkbox"
+            class="assignment-checkbox"
+            data-child="ivy"
+            data-id="ivy-english-spelling-exercise-01"
+            data-child-name="Ivy-Rose"
+            data-subject="English"
+            data-topic="Spelling"
+            data-exercise="Spelling • Words 1–10"
+            data-url="ivy/english/spelling/exercise-01.html"
+          >
+
+          <div class="exercise-icon">
+            ✏️
+          </div>
+
+          <div class="exercise-info">
+
+            <div class="exercise-name">
+              Spelling • Words 1–10
+            </div>
+
+            <div class="exercise-topic">
+              English • Spelling • Exercise 1
+            </div>
+
+          </div>
+
+        </label>
+
+
+
+        <label
+          class="exercise-option"
+          data-option="ivy-spelling-02"
+        >
+
+          <input
+            type="checkbox"
+            class="assignment-checkbox"
+            data-child="ivy"
+            data-id="ivy-english-spelling-exercise-02"
+            data-child-name="Ivy-Rose"
+            data-subject="English"
+            data-topic="Spelling"
+            data-exercise="Spelling • Words 11–20"
+            data-url="ivy/english/spelling/exercise-02.html"
+          >
+
+          <div class="exercise-icon">
+            🔤
+          </div>
+
+          <div class="exercise-info">
+
+            <div class="exercise-name">
+              Spelling • Words 11–20
+            </div>
+
+            <div class="exercise-topic">
+              English • Spelling • Exercise 2
+            </div>
+
+          </div>
+
+        </label>
+
+
+        <div class="future-note">
+          More Ivy-Rose exercises will appear here as we create them ✨
+        </div>
+
+      </div>
+
+    </div>
+
+
+
+    <!-- =========================================
+         CHARLOTTE
+         ========================================= -->
+
+    <div class="child-card">
+
+      <div class="child-header">
+
+        <div class="child-avatar charlotte-avatar">
+          🌈
+        </div>
+
+        <h2>
+          Charlotte
+        </h2>
+
+        <div class="grade">
+          Grade 1
+        </div>
+
+      </div>
+
+
+      <div class="subject">
+
+        <div class="subject-title">
+          🔢 Maths • Numbers 1–100
+        </div>
+
+
+        <label
+          class="exercise-option"
+          data-option="charlotte-number-board-01"
+        >
+
+          <input
+            type="checkbox"
+            class="assignment-checkbox"
+            data-child="charlotte"
+            data-id="charlotte-maths-numbers-1-100-exercise-01"
+            data-child-name="Charlotte"
+            data-subject="Maths"
+            data-topic="Numbers 1–100"
+            data-exercise="Number Board • Exercise 1"
+            data-url="charlotte/maths/numbers-1-100/exercise-01.html"
+          >
+
+          <div class="exercise-icon">
+            🌈
+          </div>
+
+          <div class="exercise-info">
+
+            <div class="exercise-name">
+              Number Board • 1–100
+            </div>
+
+            <div class="exercise-topic">
+              Maths • Numbers 1–100 • Exercise 1
+            </div>
+
+          </div>
+
+        </label>
+
+
+        <div class="future-note">
+          More Charlotte exercises will appear here as we create them ✨
+        </div>
+
+      </div>
+
+    </div>
+
+
+  </div>
+
+
+
+  <!-- =========================================
+       SUMMARY
+       ========================================= -->
+
+  <div class="summary-card">
+
+    <div class="summary-title">
+      ☀️ Today's Work
+    </div>
+
+    <div class="summary-grid">
+
+      <div class="summary-box ivy-summary">
+
+        <div
+          id="ivyCount"
+          class="summary-number"
+        >
+          0
+        </div>
+
+        <div class="summary-name">
+          Ivy-Rose assignments
+        </div>
+
+      </div>
+
+
+      <div class="summary-box charlotte-summary">
+
+        <div
+          id="charlotteCount"
+          class="summary-number"
+        >
+          0
+        </div>
+
+        <div class="summary-name">
+          Charlotte assignments
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+
+  <div class="save-area">
+
+    <button
+      id="saveButton"
+      class="save-button"
+      onclick="saveAssignments()"
+    >
+      SAVE TODAY'S ASSIGNMENTS ✓
+    </button>
+
+    <div
+      id="status"
+      class="status"
+    ></div>
+
+  </div>
+
+
+</div>
+
+
+
+<script type="module">
+
+
+/* =========================================
+   FIREBASE
+   ========================================= */
+
+import {
+  initializeApp
+} from "https://www.gstatic.com/firebasejs/12.5.0/firebase-app.js";
+
+
+import {
+  getFirestore,
+  doc,
+  getDoc,
+  setDoc
+} from "https://www.gstatic.com/firebasejs/12.5.0/firebase-firestore.js";
+
+
+
+const firebaseConfig = {
+
+  apiKey:
+    "AIzaSyBri62MSDCTXF9meH_5Jnm8kbZFytoHwXU",
+
+  authDomain:
+    "girls-learning-hub.firebaseapp.com",
+
+  projectId:
+    "girls-learning-hub",
+
+  storageBucket:
+    "girls-learning-hub.firebasestorage.app",
+
+  messagingSenderId:
+    "578155016403",
+
+  appId:
+    "1:578155016403:web:ffe763fe308574d31fe426"
+
+};
+
+
+const app =
+  initializeApp(
+    firebaseConfig
+  );
+
+
+const db =
+  getFirestore(
+    app
+  );
+
+
+
+/* =========================================
+   DATE
+   ========================================= */
+
+function getLocalDateKey() {
+
+  const now =
+    new Date();
+
+
+  const year =
+    now.getFullYear();
+
+
+  const month =
+    String(
+      now.getMonth() + 1
+    ).padStart(
+      2,
+      "0"
+    );
+
+
+  const day =
+    String(
+      now.getDate()
+    ).padStart(
+      2,
+      "0"
+    );
+
+
+  return `${year}-${month}-${day}`;
+
+}
+
+
+const todayKey =
+  getLocalDateKey();
+
+
+const todayPretty =
+  new Intl.DateTimeFormat(
+    "en-GB",
+    {
+      weekday: "long",
+      day: "numeric",
+      month: "long",
+      year: "numeric"
+    }
+  ).format(
+    new Date()
+  );
+
+
+document.getElementById(
+  "todayDate"
+).textContent =
+  todayPretty;
+
+
+
+/* =========================================
+   CHECKBOX DESIGN
+   ========================================= */
+
+const checkboxes =
+  document.querySelectorAll(
+    ".assignment-checkbox"
+  );
+
+
+checkboxes.forEach(
+  function(checkbox) {
+
+    checkbox.addEventListener(
+      "change",
+      function() {
+
+        updateSelectedDesign();
+
+        updateCounts();
+
+      }
+    );
+
+  }
+);
+
+
+
+function updateSelectedDesign() {
+
+  document.querySelectorAll(
+    ".exercise-option"
+  ).forEach(
+    function(option) {
+
+      const checkbox =
+        option.querySelector(
+          ".assignment-checkbox"
+        );
+
+
+      if (
+        checkbox &&
+        checkbox.checked
+      ) {
+
+        option.classList.add(
+          "selected"
+        );
+
+      }
+
+      else {
+
+        option.classList.remove(
+          "selected"
+        );
+
+      }
+
+    }
+  );
+
+}
+
+
+
+function updateCounts() {
+
+  let ivyCount = 0;
+
+  let charlotteCount = 0;
+
+
+  checkboxes.forEach(
+    function(checkbox) {
+
+      if (
+        checkbox.checked
+      ) {
+
+        if (
+          checkbox.dataset.child ===
+          "ivy"
+        ) {
+
+          ivyCount++;
+
+        }
+
+
+        if (
+          checkbox.dataset.child ===
+          "charlotte"
+        ) {
+
+          charlotteCount++;
+
+        }
+
+      }
+
+    }
+  );
+
+
+  document.getElementById(
+    "ivyCount"
+  ).textContent =
+    ivyCount;
+
+
+  document.getElementById(
+    "charlotteCount"
+  ).textContent =
+    charlotteCount;
+
+}
+
+
+
+/* =========================================
+   CREATE ASSIGNMENT OBJECT
+   ========================================= */
+
+function checkboxToAssignment(
+  checkbox
+) {
+
+  return {
+
+    id:
+      checkbox.dataset.id,
+
+    child:
+      checkbox.dataset.child,
+
+    childName:
+      checkbox.dataset.childName,
+
+    subject:
+      checkbox.dataset.subject,
+
+    topic:
+      checkbox.dataset.topic,
+
+    exercise:
+      checkbox.dataset.exercise,
+
+    url:
+      checkbox.dataset.url
+
+  };
+
+}
+
+
+
+/* =========================================
+   LOAD TODAY'S EXISTING ASSIGNMENTS
+   ========================================= */
+
+async function loadAssignments() {
+
+  const status =
+    document.getElementById(
+      "status"
+    );
+
+
+  status.className =
+    "status status-saving";
+
+
+  status.textContent =
+    "Loading today's assignments...";
+
+
+  try {
+
+
+    const ivyReference =
+      doc(
+        db,
+        "assignments",
+        `${todayKey}-ivy`
+      );
+
+
+    const charlotteReference =
+      doc(
+        db,
+        "assignments",
+        `${todayKey}-charlotte`
+      );
+
+
+    const [
+      ivySnapshot,
+      charlotteSnapshot
+    ] =
+      await Promise.all([
+        getDoc(
+          ivyReference
+        ),
+        getDoc(
+          charlotteReference
+        )
+      ]);
+
+
+    let selectedIds =
+      [];
+
+
+    if (
+      ivySnapshot.exists()
+    ) {
+
+      const ivyData =
+        ivySnapshot.data();
+
+
+      if (
+        Array.isArray(
+          ivyData.exercises
+        )
+      ) {
+
+        selectedIds.push(
+          ...ivyData.exercises.map(
+            function(exercise) {
+
+              return exercise.id;
+
+            }
+          )
+        );
+
+      }
+
+    }
+
+
+    if (
+      charlotteSnapshot.exists()
+    ) {
+
+      const charlotteData =
+        charlotteSnapshot.data();
+
+
+      if (
+        Array.isArray(
+          charlotteData.exercises
+        )
+      ) {
+
+        selectedIds.push(
+          ...charlotteData.exercises.map(
+            function(exercise) {
+
+              return exercise.id;
+
+            }
+          )
+        );
+
+      }
+
+    }
+
+
+    checkboxes.forEach(
+      function(checkbox) {
+
+        checkbox.checked =
+          selectedIds.includes(
+            checkbox.dataset.id
+          );
+
+      }
+    );
+
+
+    updateSelectedDesign();
+
+    updateCounts();
+
+
+    status.textContent =
+      "";
+
+  }
+
+  catch (error) {
+
+    console.error(
+      error
+    );
+
+
+    status.className =
+      "status status-error";
+
+
+    status.textContent =
+      "Could not load assignments. Check the Firebase connection.";
+
+  }
+
+}
+
+
+
+/* =========================================
+   SAVE TODAY'S ASSIGNMENTS
+   ========================================= */
+
+window.saveAssignments =
+async function() {
+
+  const saveButton =
+    document.getElementById(
+      "saveButton"
+    );
+
+
+  const status =
+    document.getElementById(
+      "status"
+    );
+
+
+  saveButton.disabled =
+    true;
+
+
+  status.className =
+    "status status-saving";
+
+
+  status.textContent =
+    "Saving today's assignments...";
+
+
+  try {
+
+
+    const ivyExercises =
+      [];
+
+
+    const charlotteExercises =
+      [];
+
+
+    checkboxes.forEach(
+      function(checkbox) {
+
+        if (
+          !checkbox.checked
+        ) {
+
+          return;
+
+        }
+
+
+        const assignment =
+          checkboxToAssignment(
+            checkbox
+          );
+
+
+        if (
+          checkbox.dataset.child ===
+          "ivy"
+        ) {
+
+          ivyExercises.push(
+            assignment
+          );
+
+        }
+
+
+        if (
+          checkbox.dataset.child ===
+          "charlotte"
+        ) {
+
+          charlotteExercises.push(
+            assignment
+          );
+
+        }
+
+      }
+    );
+
+
+
+    await Promise.all([
+
+
+      setDoc(
+        doc(
+          db,
+          "assignments",
+          `${todayKey}-ivy`
+        ),
+        {
+
+          child:
+            "ivy",
+
+          childName:
+            "Ivy-Rose",
+
+          date:
+            todayKey,
+
+          exercises:
+            ivyExercises,
+
+          updatedAt:
+            new Date().toISOString()
+
+        }
+      ),
+
+
+      setDoc(
+        doc(
+          db,
+          "assignments",
+          `${todayKey}-charlotte`
+        ),
+        {
+
+          child:
+            "charlotte",
+
+          childName:
+            "Charlotte",
+
+          date:
+            todayKey,
+
+          exercises:
+            charlotteExercises,
+
+          updatedAt:
+            new Date().toISOString()
+
+        }
+      )
+
+
+    ]);
+
+
+    status.className =
+      "status status-success";
+
+
+    status.textContent =
+      "✓ Today's assignments have been saved!";
+
+
+    setTimeout(
+      function() {
+
+        status.textContent =
+          "";
+
+      },
+      4000
+    );
+
+
+  }
+
+  catch (error) {
+
+
+    console.error(
+      error
+    );
+
+
+    status.className =
+      "status status-error";
+
+
+    status.textContent =
+      "Something went wrong. The assignments were not saved.";
+
+
+  }
+
+  finally {
+
+
+    saveButton.disabled =
+      false;
+
+
+  }
+
+};
+
+
+
+/* =========================================
+   START
+   ========================================= */
+
+loadAssignments();
+
+
+</script>
+
+
+</body>
+</html>
