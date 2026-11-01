@@ -392,9 +392,9 @@ body {
 
   <a
     class="back"
-    href="../../../index.html#charlotte"
+    href="../../../index.html#charlotte-maths-numbers"
   >
-    ← BACK TO CHARLOTTE
+    ← BACK TO NUMBERS 1–100
   </a>
 
 </div>
@@ -537,7 +537,7 @@ body {
 
     <a
       class="result-button finish"
-      href="../../../index.html#charlotte"
+      href="../../../index.html#charlotte-maths-numbers"
     >
       FINISH ✓
     </a>
@@ -765,9 +765,6 @@ function checkBoard() {
     );
 
 
-  let allComplete =
-    true;
-
   let newCorrect =
     false;
 
@@ -804,9 +801,6 @@ function checkBoard() {
       if (
         typed === ""
       ) {
-
-        allComplete =
-          false;
 
         return;
 
@@ -883,10 +877,6 @@ function checkBoard() {
           "wrong"
         );
 
-
-        allComplete =
-          false;
-
       }
 
     }
@@ -910,6 +900,7 @@ function checkBoard() {
   ) {
 
     finishExercise();
+
     return;
 
   }
