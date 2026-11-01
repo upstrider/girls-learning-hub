@@ -7,7 +7,9 @@
 <title>Ivy-Rose • Spelling Exercise 2</title>
 
 <style>
-* { box-sizing: border-box; }
+* {
+  box-sizing: border-box;
+}
 
 body {
   margin: 0;
@@ -24,14 +26,14 @@ body {
 .topbar {
   max-width: 850px;
   margin: auto;
-  padding: 24px 22px 5px;
+  padding: 25px 22px 5px;
 }
 
 .back {
   color: #66718a;
   text-decoration: none;
-  font-weight: 800;
-  font-size: 14px;
+  font-weight: 900;
+  font-size: 15px;
 }
 
 .wrapper {
@@ -45,22 +47,23 @@ body {
   margin-bottom: 22px;
 }
 
-.heading .eyebrow {
+.eyebrow {
   color: #7a85a0;
   font-size: 14px;
-  font-weight: 800;
+  font-weight: 900;
   text-transform: uppercase;
   letter-spacing: 1px;
 }
 
 .heading h1 {
-  margin: 7px 0 5px;
-  font-size: 34px;
+  margin: 8px 0 5px;
+  font-size: 35px;
 }
 
 .heading p {
   color: #7c869c;
   margin: 0;
+  font-size: 17px;
 }
 
 .progress-area {
@@ -70,7 +73,7 @@ body {
 .progress-info {
   display: flex;
   justify-content: space-between;
-  font-weight: 800;
+  font-weight: 900;
   font-size: 14px;
   margin-bottom: 9px;
 }
@@ -91,7 +94,7 @@ body {
 }
 
 .card {
-  background: rgba(255,255,255,.96);
+  background: rgba(255,255,255,.97);
   border-radius: 30px;
   padding: 32px;
   box-shadow: 0 16px 45px rgba(42,55,90,.10);
@@ -100,42 +103,51 @@ body {
   overflow: hidden;
 }
 
-.stars {
+.corner {
   position: absolute;
-  font-size: 22px;
-  opacity: .75;
+  font-size: 24px;
 }
 
-.star1 { top: 20px; left: 25px; }
-.star2 { top: 28px; right: 27px; }
+.corner-left {
+  top: 22px;
+  left: 27px;
+}
+
+.corner-right {
+  top: 22px;
+  right: 27px;
+}
 
 .picture {
-  width: 190px;
-  height: 150px;
-  margin: 5px auto 18px;
-  border-radius: 25px;
-  background: linear-gradient(145deg, #f1f7ff, #fff0f6);
+  width: 210px;
+  height: 160px;
+  margin: 8px auto 18px;
+  border-radius: 28px;
+  background: linear-gradient(145deg, #edf5ff, #fff0f7);
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 82px;
+  font-size: 65px;
+  letter-spacing: 3px;
+  border: 1px solid #edf0f7;
+  box-shadow: 0 8px 25px rgba(61,82,130,.07);
 }
 
 .word-number {
   display: inline-block;
-  padding: 7px 13px;
+  padding: 7px 14px;
   background: #eef4ff;
   color: #3975d9;
   border-radius: 999px;
   font-size: 12px;
   font-weight: 900;
   letter-spacing: .5px;
-  margin-bottom: 12px;
+  margin-bottom: 14px;
 }
 
 .instruction {
-  font-size: 19px;
-  font-weight: 800;
+  font-size: 20px;
+  font-weight: 900;
   margin: 4px 0 18px;
 }
 
@@ -144,7 +156,7 @@ body {
   background: linear-gradient(135deg, #407fe5, #716ee8);
   color: white;
   border-radius: 18px;
-  padding: 16px 26px;
+  padding: 16px 27px;
   font-size: 17px;
   font-weight: 900;
   cursor: pointer;
@@ -154,7 +166,7 @@ body {
 .hint {
   color: #9099aa;
   font-size: 13px;
-  margin: 13px 0 20px;
+  margin: 13px 0 21px;
 }
 
 .answer {
@@ -169,6 +181,8 @@ body {
   font-size: 22px;
   font-weight: 800;
   outline: none;
+  color: #182033;
+  background: white;
 }
 
 .answer:focus {
@@ -181,7 +195,7 @@ body {
   border: none;
   background: #182033;
   color: white;
-  padding: 15px 30px;
+  padding: 15px 31px;
   border-radius: 15px;
   font-size: 16px;
   font-weight: 900;
@@ -189,7 +203,7 @@ body {
 }
 
 .feedback {
-  min-height: 54px;
+  min-height: 55px;
   margin-top: 17px;
   font-size: 18px;
   font-weight: 900;
@@ -198,8 +212,13 @@ body {
   justify-content: center;
 }
 
-.correct { color: #15915c; }
-.wrong { color: #e0526e; }
+.correct {
+  color: #15915c;
+}
+
+.wrong {
+  color: #e0526e;
+}
 
 .next-button {
   display: none;
@@ -207,7 +226,7 @@ body {
   border: none;
   background: #19a66a;
   color: white;
-  padding: 15px 28px;
+  padding: 15px 29px;
   border-radius: 15px;
   font-size: 16px;
   font-weight: 900;
@@ -216,15 +235,15 @@ body {
 
 .result {
   display: none;
-  text-align: center;
 }
 
 .trophy {
-  font-size: 100px;
+  font-size: 95px;
 }
 
 .result h1 {
   font-size: 36px;
+  margin: 10px 0;
 }
 
 .big-score {
@@ -236,7 +255,9 @@ body {
 .result-message {
   color: #6f7990;
   font-size: 18px;
-  margin-bottom: 25px;
+  line-height: 1.5;
+  margin: 12px auto 25px;
+  max-width: 500px;
 }
 
 .result-buttons {
@@ -268,7 +289,7 @@ body {
 
 .confetti {
   position: fixed;
-  top: -20px;
+  top: -30px;
   pointer-events: none;
   z-index: 9999;
   animation: fall linear forwards;
@@ -282,13 +303,22 @@ body {
 }
 
 @media (max-width: 600px) {
-  .card { padding: 25px 18px; }
-  .heading h1 { font-size: 29px; }
+  .card {
+    padding: 26px 18px;
+  }
+
+  .heading h1 {
+    font-size: 29px;
+  }
 
   .picture {
-    width: 160px;
-    height: 130px;
-    font-size: 70px;
+    width: 175px;
+    height: 140px;
+    font-size: 54px;
+  }
+
+  .instruction {
+    font-size: 18px;
   }
 }
 </style>
@@ -297,7 +327,10 @@ body {
 <body>
 
 <div class="topbar">
-  <a class="back" href="../../../../index.html">
+  <a
+    class="back"
+    href="../../../index.html#ivy-english-spelling"
+  >
     ← BACK TO SPELLING
   </a>
 </div>
@@ -307,32 +340,61 @@ body {
 <div id="exerciseScreen">
 
   <div class="heading">
-    <div class="eyebrow">Ivy-Rose • Grade 2</div>
-    <h1>✨ Spelling Challenge ✨</h1>
-    <p>Exercise 2 • Words 11–20</p>
+    <div class="eyebrow">
+      Ivy-Rose • Grade 2
+    </div>
+
+    <h1>
+      ✨ Spelling Challenge ✨
+    </h1>
+
+    <p>
+      Exercise 2 • Words 11–20
+    </p>
   </div>
 
   <div class="progress-area">
 
     <div class="progress-info">
-      <span id="progressText">Word 1 of 10</span>
-      <span>⭐ <span id="score">0</span></span>
+      <span id="progressText">
+        Word 1 of 10
+      </span>
+
+      <span>
+        ⭐ <span id="score">0</span>
+      </span>
     </div>
 
     <div class="progress-track">
-      <div id="progressBar" class="progress-bar"></div>
+      <div
+        id="progressBar"
+        class="progress-bar"
+      ></div>
     </div>
 
   </div>
 
   <div class="card">
 
-    <span class="stars star1">✨</span>
-    <span class="stars star2">⭐</span>
+    <span class="corner corner-left">
+      ✨
+    </span>
 
-    <div id="picture" class="picture">🎧</div>
+    <span class="corner corner-right">
+      ⭐
+    </span>
 
-    <div id="wordNumber" class="word-number">
+    <div
+      id="picture"
+      class="picture"
+    >
+      💬➡️💡
+    </div>
+
+    <div
+      id="wordNumber"
+      class="word-number"
+    >
       WORD 1
     </div>
 
@@ -340,7 +402,10 @@ body {
       Listen carefully. What word do you hear?
     </div>
 
-    <button class="listen-button" onclick="speakWord()">
+    <button
+      class="listen-button"
+      onclick="speakWord()"
+    >
       🔊 HEAR THE WORD
     </button>
 
@@ -358,17 +423,24 @@ body {
       placeholder="Type the word..."
     >
 
-    <button id="checkButton"
-            class="check-button"
-            onclick="checkAnswer()">
+    <button
+      id="checkButton"
+      class="check-button"
+      onclick="checkAnswer()"
+    >
       CHECK ✓
     </button>
 
-    <div id="feedback" class="feedback"></div>
+    <div
+      id="feedback"
+      class="feedback"
+    ></div>
 
-    <button id="nextButton"
-            class="next-button"
-            onclick="nextWord()">
+    <button
+      id="nextButton"
+      class="next-button"
+      onclick="nextWord()"
+    >
       NEXT WORD →
     </button>
 
@@ -377,33 +449,54 @@ body {
 </div>
 
 
-<div id="resultScreen" class="card result">
+<div
+  id="resultScreen"
+  class="card result"
+>
 
-  <div id="trophy" class="trophy">🏆</div>
+  <div
+    id="trophy"
+    class="trophy"
+  >
+    🏆
+  </div>
 
   <h1 id="resultTitle">
-    Brilliant work!
+    Amazing work!
   </h1>
 
-  <div id="starsResult" style="font-size:34px;">
+  <div
+    id="starsResult"
+    style="font-size:34px;"
+  >
     ⭐⭐⭐
   </div>
 
-  <div id="finalScore" class="big-score">
+  <div
+    id="finalScore"
+    class="big-score"
+  >
     10 / 10
   </div>
 
-  <div id="resultMessage" class="result-message"></div>
+  <div
+    id="resultMessage"
+    class="result-message"
+  ></div>
 
   <div class="result-buttons">
 
-    <button class="result-button retry"
-            onclick="restartExercise()">
+    <button
+      class="result-button retry"
+      onclick="restartExercise()"
+    >
       ↻ TRY AGAIN
     </button>
 
-    <a class="result-button finish"
-       href="../../../../index.html">
+    <a
+      class="result-button finish"
+      href="../../../index.html#ivy-english-spelling"
+    >
       FINISH ✓
     </a>
 
@@ -416,98 +509,138 @@ body {
 
 <script>
 
-/* EXERCISE 2 — WORDS 11–20 */
+/* ======================================
+   EXERCISE 2 — WORDS 11–20
+   ====================================== */
 
 const words = [
+
   {
     word: "because",
-    reveal: "💬"
+    picture: "💬➡️💡"
   },
+
   {
     word: "children",
-    reveal: "👧🧒"
+    picture: "👧🧒"
   },
+
   {
     word: "library",
-    reveal: "📚"
+    picture: "📚🏛️"
   },
+
   {
     word: "apple",
-    reveal: "🍎"
+    picture: "🍎"
   },
+
   {
     word: "neighbour",
-    reveal: "🏡"
+    picture: "🏡🏡"
   },
+
   {
     word: "jumping",
-    reveal: "🤸"
+    picture: "🤸⬆️"
   },
+
   {
     word: "butterfly",
-    reveal: "🦋"
+    picture: "🦋"
   },
+
   {
     word: "kitchen",
-    reveal: "🍳"
+    picture: "🍳👩‍🍳"
   },
+
   {
     word: "friend",
-    reveal: "👭"
+    picture: "👭💛"
   },
+
   {
     word: "strawberry",
-    reveal: "🍓"
+    picture: "🍓"
   }
+
 ];
+
 
 let current = 0;
 let score = 0;
-let answeredCorrectly = false;
+let attemptsThisWord = 0;
+let wordCompleted = false;
 
 
-/* BRITISH FEMALE VOICE */
+/* ======================================
+   BRITISH ENGLISH VOICE
+   ====================================== */
 
 function getBritishVoice() {
 
-  const voices = speechSynthesis.getVoices();
+  const voices =
+    window.speechSynthesis.getVoices();
 
-  const britishVoices = voices.filter(v =>
-    v.lang &&
-    v.lang.toLowerCase().startsWith("en-gb")
-  );
+  const britishVoices =
+    voices.filter(function(voice) {
+
+      return (
+        voice.lang &&
+        voice.lang
+          .toLowerCase()
+          .startsWith("en-gb")
+      );
+
+    });
 
   const preferredNames = [
     "Serena",
     "Kate",
-    "Stephanie",
-    "Samantha",
     "Martha",
+    "Stephanie",
     "Hazel",
     "Google UK English Female"
   ];
 
-  for (const name of preferredNames) {
+  for (const preferred of preferredNames) {
 
-    const voice = britishVoices.find(v =>
-      v.name.toLowerCase().includes(name.toLowerCase())
-    );
+    const found =
+      britishVoices.find(function(voice) {
 
-    if (voice) return voice;
+        return voice.name
+          .toLowerCase()
+          .includes(
+            preferred.toLowerCase()
+          );
+
+      });
+
+    if (found) {
+      return found;
+    }
   }
 
-  return britishVoices[0] || voices[0];
+  return (
+    britishVoices[0] ||
+    voices[0] ||
+    null
+  );
 }
 
 
 function speakWord() {
 
-  speechSynthesis.cancel();
+  window.speechSynthesis.cancel();
 
   const utterance =
-    new SpeechSynthesisUtterance(words[current].word);
+    new SpeechSynthesisUtterance(
+      words[current].word
+    );
 
-  const voice = getBritishVoice();
+  const voice =
+    getBritishVoice();
 
   if (voice) {
     utterance.voice = voice;
@@ -518,18 +651,27 @@ function speakWord() {
   utterance.pitch = 1.08;
   utterance.volume = 1;
 
-  speechSynthesis.speak(utterance);
+  window.speechSynthesis.speak(
+    utterance
+  );
 }
 
 
-speechSynthesis.onvoiceschanged = function() {
-  speechSynthesis.getVoices();
+window.speechSynthesis.onvoiceschanged =
+function() {
+  window.speechSynthesis.getVoices();
 };
 
 
-/* CHECK ANSWER */
+/* ======================================
+   CHECK ANSWER
+   ====================================== */
 
 function checkAnswer() {
+
+  if (wordCompleted) {
+    return;
+  }
 
   const input =
     document.getElementById("answer");
@@ -538,49 +680,64 @@ function checkAnswer() {
     document.getElementById("feedback");
 
   const answer =
-    input.value.trim().toLowerCase();
+    input.value
+      .trim()
+      .toLowerCase();
 
   if (!answer) {
 
-    feedback.className = "feedback wrong";
+    feedback.className =
+      "feedback wrong";
+
     feedback.textContent =
       "Type the word first 😊";
 
     return;
   }
 
+  attemptsThisWord++;
 
-  if (answer === words[current].word) {
+  if (
+    answer ===
+    words[current].word
+  ) {
 
-    if (!answeredCorrectly) {
+    wordCompleted = true;
+
+    if (attemptsThisWord === 1) {
+
       score++;
-      answeredCorrectly = true;
+
+      feedback.textContent =
+        "✨ Perfect! First try!";
+
+    } else {
+
+      feedback.textContent =
+        "💛 You got it! Great practising!";
+
     }
+
+    feedback.className =
+      "feedback correct";
 
     document.getElementById("score")
       .textContent = score;
 
-    document.getElementById("picture")
-      .textContent = words[current].reveal;
-
-    feedback.className = "feedback correct";
-
-    feedback.textContent =
-      "✨ Brilliant! That's correct!";
-
     input.disabled = true;
 
-    document.getElementById("checkButton")
-      .style.display = "none";
+    document.getElementById(
+      "checkButton"
+    ).style.display = "none";
 
-    document.getElementById("nextButton")
-      .style.display = "block";
+    document.getElementById(
+      "nextButton"
+    ).style.display = "block";
 
-  }
+  } else {
 
-  else {
-
-    feedback.className = "feedback wrong";
+    feedback.className =
+      "feedback wrong";
 
     feedback.textContent =
       "Almost! Listen again and try once more 💛";
@@ -590,19 +747,24 @@ function checkAnswer() {
 }
 
 
-/* NEXT WORD */
+/* ======================================
+   NEXT WORD
+   ====================================== */
 
 function nextWord() {
 
   current++;
 
-  if (current >= words.length) {
+  if (
+    current >= words.length
+  ) {
 
     finishExercise();
     return;
   }
 
-  answeredCorrectly = false;
+  attemptsThisWord = 0;
+  wordCompleted = false;
 
   const input =
     document.getElementById("answer");
@@ -610,133 +772,301 @@ function nextWord() {
   input.disabled = false;
   input.value = "";
 
-  document.getElementById("picture")
-    .textContent = "🎧";
+  document.getElementById(
+    "feedback"
+  ).textContent = "";
 
-  document.getElementById("feedback")
-    .textContent = "";
+  document.getElementById(
+    "checkButton"
+  ).style.display =
+    "inline-block";
 
-  document.getElementById("checkButton")
-    .style.display = "inline-block";
+  document.getElementById(
+    "nextButton"
+  ).style.display =
+    "none";
 
-  document.getElementById("nextButton")
-    .style.display = "none";
-
-  updateProgress();
+  updateExercise();
 
   input.focus();
 }
 
 
-/* PROGRESS */
+/* ======================================
+   UPDATE SCREEN
+   ====================================== */
 
-function updateProgress() {
+function updateExercise() {
 
-  document.getElementById("progressText")
-    .textContent =
-      `Word ${current + 1} of ${words.length}`;
+  document.getElementById(
+    "progressText"
+  ).textContent =
+    `Word ${current + 1} of ${words.length}`;
 
-  document.getElementById("wordNumber")
-    .textContent =
-      `WORD ${current + 1}`;
+  document.getElementById(
+    "wordNumber"
+  ).textContent =
+    `WORD ${current + 1}`;
 
-  document.getElementById("progressBar")
-    .style.width =
-      `${((current + 1) / words.length) * 100}%`;
+  document.getElementById(
+    "progressBar"
+  ).style.width =
+    `${((current + 1) / words.length) * 100}%`;
+
+  document.getElementById(
+    "picture"
+  ).textContent =
+    words[current].picture;
 }
 
 
-/* FINISH */
+/* ======================================
+   RECORD EVERY TEST ATTEMPT
+   ====================================== */
+
+function recordAttempt() {
+
+  const historyKey =
+    "ivy-learning-history";
+
+  let history = [];
+
+  try {
+
+    history =
+      JSON.parse(
+        localStorage.getItem(historyKey)
+      ) || [];
+
+  } catch (error) {
+
+    history = [];
+  }
+
+  const attempt = {
+
+    child: "Ivy-Rose",
+
+    subject: "English",
+
+    topic: "Spelling",
+
+    exercise: "Exercise 2",
+
+    exerciseId:
+      "ivy-english-spelling-exercise-02",
+
+    score: score,
+
+    total: words.length,
+
+    percentage:
+      Math.round(
+        (score / words.length) * 100
+      ),
+
+    timestamp:
+      new Date().toISOString()
+
+  };
+
+  history.push(attempt);
+
+  localStorage.setItem(
+    historyKey,
+    JSON.stringify(history)
+  );
+}
+
+
+/* ======================================
+   FINISH
+   ====================================== */
 
 function finishExercise() {
 
-  document.getElementById("exerciseScreen")
-    .style.display = "none";
+  /*
+  Save EVERY completed attempt.
+  */
 
-  document.getElementById("resultScreen")
-    .style.display = "block";
+  recordAttempt();
 
-  document.getElementById("finalScore")
-    .textContent =
-      `${score} / ${words.length}`;
+  document.getElementById(
+    "exerciseScreen"
+  ).style.display =
+    "none";
 
-  const passed = score >= 8;
+  document.getElementById(
+    "resultScreen"
+  ).style.display =
+    "block";
 
+  document.getElementById(
+    "finalScore"
+  ).textContent =
+    `${score} / ${words.length}`;
+
+  const passed =
+    score >= 8;
 
   if (passed) {
 
-    document.getElementById("resultTitle")
-      .textContent = "You passed! 🎉";
+    document.getElementById(
+      "resultTitle"
+    ).textContent =
+      "You passed! 🎉";
 
-    document.getElementById("trophy")
-      .textContent = "🏆";
-
-    document.getElementById("resultMessage")
-      .textContent =
-        "Amazing spelling, Ivy-Rose!";
+    document.getElementById(
+      "trophy"
+    ).textContent =
+      "🏆";
 
     if (score === 10) {
 
-      document.getElementById("starsResult")
-        .textContent = "⭐⭐⭐";
+      document.getElementById(
+        "starsResult"
+      ).textContent =
+        "⭐⭐⭐";
+
+      document.getElementById(
+        "resultMessage"
+      ).textContent =
+        "WOW, Ivy-Rose! 10 out of 10 on your first tries! Incredible spelling!";
 
     } else {
 
-      document.getElementById("starsResult")
-        .textContent = "⭐⭐";
+      document.getElementById(
+        "starsResult"
+      ).textContent =
+        "⭐⭐";
+
+      document.getElementById(
+        "resultMessage"
+      ).textContent =
+        "Amazing spelling, Ivy-Rose! You passed the challenge!";
 
     }
 
-
-    /* SAVE EXERCISE #2 PASS */
-
-    localStorage.setItem(
-      "ivy-english-spelling-exercise-02",
-      JSON.stringify({
-        passed: true,
-        score: score,
-        total: words.length
-      })
-    );
-
+    saveProgress(true);
     makeConfetti();
 
-  }
+  } else {
 
-  else {
+    document.getElementById(
+      "resultTitle"
+    ).textContent =
+      "Great practice! 💛";
 
-    document.getElementById("resultTitle")
-      .textContent = "Good practice! 💛";
+    document.getElementById(
+      "trophy"
+    ).textContent =
+      "🌟";
 
-    document.getElementById("trophy")
-      .textContent = "🌟";
+    document.getElementById(
+      "starsResult"
+    ).textContent =
+      "⭐";
 
-    document.getElementById("starsResult")
-      .textContent = "⭐";
+    document.getElementById(
+      "resultMessage"
+    ).textContent =
+      `You got ${score} words correct on your first try. Practise the tricky ones and have another go!`;
 
-    document.getElementById("resultMessage")
-      .textContent =
-        "Let's practise those tricky words and try again!";
+    saveProgress(false);
   }
 }
 
 
-/* RESTART */
+/* ======================================
+   SAVE BEST PROGRESS
+   ====================================== */
+
+function saveProgress(passed) {
+
+  const key =
+    "ivy-english-spelling-exercise-02";
+
+  let previous = null;
+
+  try {
+
+    previous =
+      JSON.parse(
+        localStorage.getItem(key)
+      );
+
+  } catch (error) {
+
+    previous = null;
+  }
+
+  if (
+    !previous ||
+    score > (previous.score || 0)
+  ) {
+
+    localStorage.setItem(
+
+      key,
+
+      JSON.stringify({
+
+        passed: passed,
+        score: score,
+        total: words.length
+
+      })
+
+    );
+
+  }
+
+  else if (
+    previous &&
+    previous.passed
+  ) {
+
+    localStorage.setItem(
+
+      key,
+
+      JSON.stringify({
+
+        passed: true,
+        score: previous.score,
+        total: words.length
+
+      })
+
+    );
+  }
+}
+
+
+/* ======================================
+   RESTART
+   ====================================== */
 
 function restartExercise() {
 
   current = 0;
   score = 0;
-  answeredCorrectly = false;
+  attemptsThisWord = 0;
+  wordCompleted = false;
 
-  document.getElementById("score")
-    .textContent = "0";
+  document.getElementById(
+    "score"
+  ).textContent = "0";
 
-  document.getElementById("resultScreen")
-    .style.display = "none";
+  document.getElementById(
+    "resultScreen"
+  ).style.display =
+    "none";
 
-  document.getElementById("exerciseScreen")
-    .style.display = "block";
+  document.getElementById(
+    "exerciseScreen"
+  ).style.display =
+    "block";
 
   const input =
     document.getElementById("answer");
@@ -744,23 +1074,29 @@ function restartExercise() {
   input.disabled = false;
   input.value = "";
 
-  document.getElementById("picture")
-    .textContent = "🎧";
+  document.getElementById(
+    "feedback"
+  ).textContent = "";
 
-  document.getElementById("feedback")
-    .textContent = "";
+  document.getElementById(
+    "checkButton"
+  ).style.display =
+    "inline-block";
 
-  document.getElementById("checkButton")
-    .style.display = "inline-block";
+  document.getElementById(
+    "nextButton"
+  ).style.display =
+    "none";
 
-  document.getElementById("nextButton")
-    .style.display = "none";
+  updateExercise();
 
-  updateProgress();
+  input.focus();
 }
 
 
-/* CONFETTI */
+/* ======================================
+   CONFETTI
+   ====================================== */
 
 function makeConfetti() {
 
@@ -772,58 +1108,103 @@ function makeConfetti() {
     "🎉"
   ];
 
-  for (let i = 0; i < 35; i++) {
+  for (
+    let i = 0;
+    i < 40;
+    i++
+  ) {
 
     const confetti =
-      document.createElement("div");
+      document.createElement(
+        "div"
+      );
 
-    confetti.className = "confetti";
+    confetti.className =
+      "confetti";
 
     confetti.textContent =
-      pieces[Math.floor(Math.random() * pieces.length)];
+      pieces[
+        Math.floor(
+          Math.random() *
+          pieces.length
+        )
+      ];
 
     confetti.style.left =
-      Math.random() * 100 + "vw";
+      Math.random() * 100 +
+      "vw";
 
     confetti.style.fontSize =
-      (14 + Math.random() * 18) + "px";
+      (
+        14 +
+        Math.random() * 18
+      ) +
+      "px";
 
     confetti.style.animationDuration =
-      (2.5 + Math.random() * 2) + "s";
+      (
+        2.5 +
+        Math.random() * 2
+      ) +
+      "s";
 
     confetti.style.animationDelay =
-      (Math.random() * .7) + "s";
+      (
+        Math.random() * .7
+      ) +
+      "s";
 
-    document.body.appendChild(confetti);
+    document.body.appendChild(
+      confetti
+    );
 
-    setTimeout(() => {
-      confetti.remove();
-    }, 5000);
+    setTimeout(
+      function() {
+        confetti.remove();
+      },
+      5000
+    );
   }
 }
 
 
-/* ENTER KEY */
+/* ======================================
+   ENTER KEY
+   ====================================== */
 
-document.getElementById("answer")
-  .addEventListener("keydown", function(event) {
+document.getElementById(
+  "answer"
+).addEventListener(
+  "keydown",
+  function(event) {
 
-    if (event.key === "Enter") {
+    if (
+      event.key === "Enter"
+    ) {
 
       const nextVisible =
-        document.getElementById("nextButton")
-        .style.display === "block";
+        document.getElementById(
+          "nextButton"
+        ).style.display ===
+        "block";
 
       if (nextVisible) {
+
         nextWord();
+
       } else {
+
         checkAnswer();
+
       }
     }
-  });
+  }
+);
 
 
-updateProgress();
+/* FIRST SCREEN */
+
+updateExercise();
 
 </script>
 
