@@ -14,16 +14,13 @@
   Ivy-Rose • Spelling Exercise 1
 </title>
 
-
 <style>
 
 * {
   box-sizing: border-box;
 }
 
-
 body {
-
   margin: 0;
 
   font-family:
@@ -52,142 +49,88 @@ body {
   color: #172033;
 
   min-height: 100vh;
-
 }
 
-
 .topbar {
-
   max-width: 850px;
-
   margin: auto;
 
   padding:
     25px
     22px
     5px;
-
 }
-
 
 .back {
-
   color: #66718a;
-
   text-decoration: none;
-
   font-weight: 900;
-
   font-size: 15px;
-
 }
 
-
 .wrapper {
-
   max-width: 760px;
-
   margin: 0 auto;
 
   padding:
     20px
     20px
     60px;
-
 }
-
 
 .heading {
-
   text-align: center;
-
   margin-bottom: 22px;
-
 }
-
 
 .eyebrow {
-
   color: #7a85a0;
-
   font-size: 14px;
-
   font-weight: 900;
-
   text-transform: uppercase;
-
   letter-spacing: 1px;
-
 }
 
-
 .heading h1 {
-
   margin:
     8px
     0
     5px;
 
   font-size: 35px;
-
 }
-
 
 .heading p {
-
   color: #7c869c;
-
   margin: 0;
-
   font-size: 17px;
-
 }
 
-
 .progress-area {
-
   margin:
     25px
     0
     18px;
-
 }
-
 
 .progress-info {
-
   display: flex;
-
   justify-content: space-between;
-
   font-weight: 900;
-
   font-size: 14px;
-
   margin-bottom: 9px;
-
 }
-
 
 .progress-track {
-
   height: 12px;
-
   background: #e9edf5;
-
   border-radius: 99px;
-
   overflow: hidden;
-
 }
 
-
 .progress-bar {
-
   height: 100%;
-
   width: 10%;
-
   border-radius: 99px;
 
   background:
@@ -199,12 +142,9 @@ body {
 
   transition:
     width .4s ease;
-
 }
 
-
 .card {
-
   background:
     rgba(
       255,
@@ -214,7 +154,6 @@ body {
     );
 
   border-radius: 30px;
-
   padding: 32px;
 
   box-shadow:
@@ -227,45 +166,27 @@ body {
     );
 
   text-align: center;
-
   position: relative;
-
   overflow: hidden;
-
 }
-
 
 .corner {
-
   position: absolute;
-
   font-size: 24px;
-
 }
-
 
 .corner-left {
-
   top: 22px;
-
   left: 27px;
-
 }
-
 
 .corner-right {
-
   top: 22px;
-
   right: 27px;
-
 }
 
-
 .picture {
-
   width: 210px;
-
   height: 160px;
 
   margin:
@@ -283,14 +204,8 @@ body {
     );
 
   display: flex;
-
   justify-content: center;
-
   align-items: center;
-
-  font-size: 65px;
-
-  letter-spacing: 3px;
 
   border:
     1px solid
@@ -305,11 +220,23 @@ body {
       .07
     );
 
+  overflow: hidden;
 }
 
+.picture-image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+  padding: 10px;
+}
+
+.picture-fallback {
+  font-size: 65px;
+  letter-spacing: 3px;
+}
 
 .word-number {
-
   display: inline-block;
 
   padding:
@@ -317,38 +244,28 @@ body {
     14px;
 
   background: #eef4ff;
-
   color: #3975d9;
 
   border-radius: 999px;
 
   font-size: 12px;
-
   font-weight: 900;
-
   letter-spacing: .5px;
 
   margin-bottom: 14px;
-
 }
 
-
 .instruction {
-
   font-size: 20px;
-
   font-weight: 900;
 
   margin:
     4px
     0
     18px;
-
 }
 
-
 .listen-button {
-
   border: none;
 
   background:
@@ -367,7 +284,6 @@ body {
     27px;
 
   font-size: 17px;
-
   font-weight: 900;
 
   cursor: pointer;
@@ -380,28 +296,20 @@ body {
       220,
       .25
     );
-
 }
 
-
 .hint {
-
   color: #9099aa;
-
   font-size: 13px;
 
   margin:
     13px
     0
     21px;
-
 }
 
-
 .answer {
-
   width: 100%;
-
   max-width: 440px;
 
   display: block;
@@ -423,37 +331,28 @@ body {
   text-align: center;
 
   font-size: 22px;
-
   font-weight: 800;
 
   outline: none;
 
   color: #182033;
-
   background: white;
-
 }
 
-
 .answer:focus {
-
   border-color: #75a5f5;
 
   box-shadow:
     0 0 0 4px
     #edf4ff;
-
 }
 
-
 .check-button {
-
   margin-top: 16px;
 
   border: none;
 
   background: #182033;
-
   color: white;
 
   padding:
@@ -463,45 +362,32 @@ body {
   border-radius: 15px;
 
   font-size: 16px;
-
   font-weight: 900;
 
   cursor: pointer;
-
 }
 
-
 .feedback {
-
   min-height: 55px;
-
   margin-top: 17px;
 
   font-size: 18px;
-
   font-weight: 900;
 
   display: flex;
-
   align-items: center;
-
   justify-content: center;
-
 }
-
 
 .correct {
   color: #15915c;
 }
 
-
 .wrong {
   color: #e0526e;
 }
 
-
 .next-button {
-
   display: none;
 
   margin:
@@ -512,7 +398,6 @@ body {
   border: none;
 
   background: #19a66a;
-
   color: white;
 
   padding:
@@ -522,55 +407,41 @@ body {
   border-radius: 15px;
 
   font-size: 16px;
-
   font-weight: 900;
 
   cursor: pointer;
-
 }
-
 
 .result {
   display: none;
 }
 
-
 .trophy {
   font-size: 95px;
 }
 
-
 .result h1 {
-
   font-size: 36px;
 
   margin:
     10px
     0;
-
 }
 
-
 .big-score {
-
   font-size: 55px;
-
   font-weight: 900;
 
   margin:
     18px
     0
     4px;
-
 }
 
-
 .result-message {
-
   color: #6f7990;
 
   font-size: 18px;
-
   line-height: 1.5;
 
   margin:
@@ -579,12 +450,9 @@ body {
     25px;
 
   max-width: 500px;
-
 }
 
-
 .cloud-status {
-
   display: none;
 
   max-width: 480px;
@@ -601,62 +469,36 @@ body {
   border-radius: 14px;
 
   font-size: 13px;
-
   font-weight: 900;
-
 }
-
 
 .cloud-saving {
-
   display: block;
-
   background: #eef4ff;
-
   color: #3975d9;
-
 }
-
 
 .cloud-saved {
-
   display: block;
-
   background: #eaf9f1;
-
   color: #168357;
-
 }
-
 
 .cloud-error {
-
   display: block;
-
   background: #fff0f3;
-
   color: #d64d69;
-
 }
-
 
 .result-buttons {
-
   display: flex;
-
   justify-content: center;
-
   flex-wrap: wrap;
-
   gap: 10px;
-
 }
 
-
 .result-button {
-
   text-decoration: none;
-
   border: none;
 
   padding:
@@ -666,36 +508,22 @@ body {
   border-radius: 14px;
 
   font-weight: 900;
-
   cursor: pointer;
-
   font-size: 15px;
-
 }
-
 
 .retry {
-
   background: #eef2f8;
-
   color: #27334b;
-
 }
-
 
 .finish {
-
   background: #397be0;
-
   color: white;
-
 }
 
-
 .confetti {
-
   position: fixed;
-
   top: -30px;
 
   pointer-events: none;
@@ -704,24 +532,19 @@ body {
 
   animation:
     fall linear forwards;
-
 }
-
 
 @keyframes fall {
 
   to {
-
     transform:
       translateY(110vh)
       rotate(720deg);
 
     opacity: .9;
-
   }
 
 }
-
 
 @media (max-width: 600px) {
 
@@ -731,22 +554,18 @@ body {
       18px;
   }
 
-
   .heading h1 {
     font-size: 29px;
   }
 
-
   .picture {
-
     width: 175px;
-
     height: 140px;
-
-    font-size: 54px;
-
   }
 
+  .picture-fallback {
+    font-size: 54px;
+  }
 
   .instruction {
     font-size: 18px;
@@ -757,7 +576,6 @@ body {
 </style>
 
 </head>
-
 
 
 <body>
@@ -775,7 +593,6 @@ body {
 </div>
 
 
-
 <div class="wrapper">
 
 
@@ -788,18 +605,15 @@ body {
       Ivy-Rose • Grade 2
     </div>
 
-
     <h1>
       ✨ Spelling Challenge ✨
     </h1>
-
 
     <p>
       Exercise 1 • Words 1–10
     </p>
 
   </div>
-
 
 
   <div class="progress-area">
@@ -810,7 +624,6 @@ body {
       <span id="progressText">
         Word 1 of 10
       </span>
-
 
       <span>
         ⭐ <span id="score">0</span>
@@ -832,7 +645,6 @@ body {
   </div>
 
 
-
   <div class="card">
 
 
@@ -849,9 +661,7 @@ body {
     <div
       id="picture"
       class="picture"
-    >
-      🌸✨🌈
-    </div>
+    ></div>
 
 
     <div
@@ -919,7 +729,6 @@ body {
 
 
 </div>
-
 
 
 <div
@@ -997,7 +806,6 @@ body {
 </div>
 
 
-
 <script>
 
 
@@ -1010,56 +818,65 @@ const words = [
 
   {
     word: "beautiful",
-    picture: "🌸✨🌈"
+    image: "images/exercise-01/beautiful.png",
+    fallback: "🌸✨🌈"
   },
 
   {
     word: "garden",
-    picture: "🌷🌿🌼"
+    image: "images/exercise-01/garden.png",
+    fallback: "🌷🌿🌼"
   },
 
   {
     word: "school",
-    picture: "🏫📚"
+    image: "images/exercise-01/school.png",
+    fallback: "🏫📚"
   },
 
   {
     word: "elephant",
-    picture: "🐘"
+    image: "images/exercise-01/elephant.png",
+    fallback: "🐘"
   },
 
   {
     word: "morning",
-    picture: "🌅☀️"
+    image: "images/exercise-01/morning.png",
+    fallback: "🌅☀️"
   },
 
   {
     word: "pencil",
-    picture: "✏️"
+    image: "images/exercise-01/pencil.png",
+    fallback: "✏️"
   },
 
   {
     word: "rabbit",
-    picture: "🐇"
+    image: "images/exercise-01/rabbit.png",
+    fallback: "🐇"
   },
 
   {
     word: "surprise",
-    picture: "🎁🎉"
+    image: "images/exercise-01/surprise.png",
+    fallback: "🎁🎉"
   },
 
   {
     word: "window",
-    picture: "🪟"
+    image: "images/exercise-01/window.png",
+    fallback: "🪟"
   },
 
   {
     word: "flower",
-    picture: "🌻"
+    image: "images/exercise-01/flower.png",
+    fallback: "🌻"
   }
 
 ];
-
 
 
 let current = 0;
@@ -1069,7 +886,6 @@ let score = 0;
 let attemptsThisWord = 0;
 
 let wordCompleted = false;
-
 
 
 /* ======================================
@@ -1087,6 +903,7 @@ function getBritishVoice() {
 
   const britishVoices =
     voices.filter(
+
       function(voice) {
 
         return (
@@ -1102,6 +919,7 @@ function getBritishVoice() {
         );
 
       }
+
     );
 
 
@@ -1130,6 +948,7 @@ function getBritishVoice() {
 
     const found =
       britishVoices.find(
+
         function(voice) {
 
           return voice.name
@@ -1140,6 +959,7 @@ function getBritishVoice() {
             );
 
         }
+
       );
 
 
@@ -1161,7 +981,6 @@ function getBritishVoice() {
   );
 
 }
-
 
 
 function speakWord() {
@@ -1210,7 +1029,6 @@ function speakWord() {
 }
 
 
-
 window.speechSynthesis
   .onvoiceschanged =
 function() {
@@ -1219,7 +1037,6 @@ function() {
     .getVoices();
 
 };
-
 
 
 /* ======================================
@@ -1278,7 +1095,8 @@ function checkAnswer() {
   ) {
 
 
-    wordCompleted = true;
+    wordCompleted =
+      true;
 
 
     if (
@@ -1346,7 +1164,6 @@ function checkAnswer() {
 }
 
 
-
 /* ======================================
    NEXT WORD
    ====================================== */
@@ -1365,7 +1182,6 @@ function nextWord() {
 
 
     finishExercise();
-
 
     return;
 
@@ -1420,7 +1236,6 @@ function nextWord() {
 }
 
 
-
 /* ======================================
    UPDATE SCREEN
    ====================================== */
@@ -1447,13 +1262,93 @@ function updateExercise() {
     `${((current + 1) / words.length) * 100}%`;
 
 
-  document.getElementById(
-    "picture"
-  ).textContent =
-    words[current].picture;
+  renderPicture();
 
 }
 
+
+/* ======================================
+   ILLUSTRATION
+   ====================================== */
+
+
+function renderPicture() {
+
+
+  const picture =
+    document.getElementById(
+      "picture"
+    );
+
+
+  const item =
+    words[current];
+
+
+  picture.innerHTML =
+    "";
+
+
+  const image =
+    new Image();
+
+
+  image.className =
+    "picture-image";
+
+
+  image.alt =
+    `${item.word} illustration`;
+
+
+  image.onload =
+  function() {
+
+
+    picture.innerHTML =
+      "";
+
+
+    picture.appendChild(
+      image
+    );
+
+  };
+
+
+  image.onerror =
+  function() {
+
+
+    picture.innerHTML =
+      "";
+
+
+    const fallback =
+      document.createElement(
+        "div"
+      );
+
+
+    fallback.className =
+      "picture-fallback";
+
+
+    fallback.textContent =
+      item.fallback;
+
+
+    picture.appendChild(
+      fallback
+    );
+
+  };
+
+
+  image.src =
+    item.image;
+
+}
 
 
 /* ======================================
@@ -1466,11 +1361,14 @@ function createAttempt() {
 
   const percentage =
     Math.round(
+
       (
         score /
         words.length
       ) *
+
       100
+
     );
 
 
@@ -1535,7 +1433,6 @@ function createAttempt() {
 }
 
 
-
 /* ======================================
    SAVE LOCAL HISTORY
    ====================================== */
@@ -1559,9 +1456,11 @@ function recordLocalAttempt(
 
     history =
       JSON.parse(
+
         localStorage.getItem(
           historyKey
         )
+
       ) || [];
 
 
@@ -1592,12 +1491,8 @@ function recordLocalAttempt(
 }
 
 
-
 /* ======================================
    FIREBASE BRIDGE
-
-   Firebase is loaded in the module script
-   below. This normal script calls it here.
    ====================================== */
 
 
@@ -1627,6 +1522,7 @@ async function recordCloudAttempt(
       typeof window.saveResultToFirebase
       !== "function"
     ) {
+
 
       throw new Error(
         "Firebase is not ready."
@@ -1665,11 +1561,9 @@ async function recordCloudAttempt(
     status.textContent =
       "Your score is safe on this iPad, but cloud syncing did not work.";
 
-
   }
 
 }
-
 
 
 /* ======================================
@@ -1684,19 +1578,10 @@ function finishExercise() {
     createAttempt();
 
 
-  /*
-    Keep local history.
-  */
-
   recordLocalAttempt(
     attempt
   );
 
-
-  /*
-    Send the SAME completed attempt
-    to Firebase.
-  */
 
   recordCloudAttempt(
     attempt
@@ -1818,7 +1703,6 @@ function finishExercise() {
 }
 
 
-
 /* ======================================
    SAVE BEST LOCAL PROGRESS
    ====================================== */
@@ -1842,9 +1726,11 @@ function saveProgress(
 
     previous =
       JSON.parse(
+
         localStorage.getItem(
           key
         )
+
       );
 
 
@@ -1921,7 +1807,6 @@ function saveProgress(
   }
 
 }
-
 
 
 /* ======================================
@@ -2018,7 +1903,6 @@ function restartExercise() {
 }
 
 
-
 /* ======================================
    CONFETTI
    ====================================== */
@@ -2061,10 +1945,14 @@ function makeConfetti() {
 
     confetti.textContent =
       pieces[
+
         Math.floor(
+
           Math.random() *
           pieces.length
+
         )
+
       ];
 
 
@@ -2106,18 +1994,20 @@ function makeConfetti() {
 
 
     setTimeout(
+
       function() {
 
         confetti.remove();
 
       },
+
       5000
+
     );
 
   }
 
 }
-
 
 
 /* ======================================
@@ -2167,7 +2057,6 @@ document.getElementById(
 );
 
 
-
 /* ======================================
    FIRST SCREEN
    ====================================== */
@@ -2177,7 +2066,6 @@ updateExercise();
 
 
 </script>
-
 
 
 <!-- ======================================
@@ -2198,7 +2086,6 @@ import {
   collection,
   addDoc
 } from "https://www.gstatic.com/firebasejs/12.5.0/firebase-firestore.js";
-
 
 
 const firebaseConfig = {
@@ -2231,7 +2118,6 @@ const firebaseConfig = {
 };
 
 
-
 const firebaseApp =
   initializeApp(
     firebaseConfig
@@ -2242,7 +2128,6 @@ const db =
   getFirestore(
     firebaseApp
   );
-
 
 
 window.saveResultToFirebase =
