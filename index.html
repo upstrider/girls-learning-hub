@@ -2467,6 +2467,27 @@ function renderAssignments(
 
 
 
+  /*
+    IMPORTANT:
+    An exercise can now be assigned more than once in the same day.
+
+    Example:
+    Words 1–10 with repeat: 2
+
+    This means:
+    - 0 results = 0 / 2 completed
+    - 1 result  = 1 / 2 completed
+    - 2+ results = 2 / 2 completed
+
+    Extra attempts beyond the required number do not increase the
+    day's required completion count.
+  */
+
+
+  let totalRequired =
+    0;
+
+
   let completedCount =
     0;
 
@@ -2478,17 +2499,42 @@ function renderAssignments(
     ) {
 
 
-      if (
-        getBestResultForExercise(
-          exercise.id,
-          results
-        )
-      ) {
+      const required =
+        Math.max(
+          1,
+          Number(
+            exercise.repeat ||
+            1
+          )
+        );
 
 
-        completedCount++;
+      const matchingResults =
+        results.filter(
 
-      }
+          function(
+            result
+          ) {
+
+            return (
+              result.exerciseId ===
+              exercise.id
+            );
+
+          }
+
+        );
+
+
+      totalRequired +=
+        required;
+
+
+      completedCount +=
+        Math.min(
+          required,
+          matchingResults.length
+        );
 
     }
 
@@ -2497,8 +2543,8 @@ function renderAssignments(
 
 
   if (
-    completedCount ===
-    exercises.length
+    completedCount >=
+    totalRequired
   ) {
 
 
@@ -2508,7 +2554,7 @@ function renderAssignments(
 
 
     progress.textContent =
-      `🎉 ${completedCount} of ${exercises.length} completed — ALL DONE FOR TODAY!`;
+      `🎉 ${completedCount} of ${totalRequired} completed — ALL DONE FOR TODAY!`;
 
 
   } else {
@@ -2520,7 +2566,7 @@ function renderAssignments(
 
 
     progress.textContent =
-      `⭐ ${completedCount} of ${exercises.length} completed`;
+      `⭐ ${completedCount} of ${totalRequired} completed`;
 
   }
 
@@ -2673,6 +2719,69 @@ function renderAssignments(
 
 
 
+          const required =
+            Math.max(
+              1,
+              Number(
+                exercise.repeat ||
+                1
+              )
+            );
+
+
+          const matchingResults =
+            results
+
+              .filter(
+
+                function(
+                  result
+                ) {
+
+                  return (
+                    result.exerciseId ===
+                    exercise.id
+                  );
+
+                }
+
+              )
+
+              .sort(
+
+                function(
+                  a,
+                  b
+                ) {
+
+                  return (
+
+                    new Date(
+                      a.timestamp ||
+                      0
+                    ).getTime()
+
+                    -
+
+                    new Date(
+                      b.timestamp ||
+                      0
+                    ).getTime()
+
+                  );
+
+                }
+
+              );
+
+
+          const completedForExercise =
+            Math.min(
+              required,
+              matchingResults.length
+            );
+
+
           const bestResult =
             getBestResultForExercise(
 
@@ -2683,29 +2792,43 @@ function renderAssignments(
             );
 
 
+          const isFullyCompleted =
+            completedForExercise >=
+            required;
+
+
+          const hasStarted =
+            completedForExercise >
+            0;
+
+
+
+          /*
+            FULLY COMPLETED
+          */
 
           if (
-            bestResult
+            isFullyCompleted
           ) {
 
 
             const score =
               Number(
-                bestResult.score ||
+                bestResult?.score ||
                 0
               );
 
 
             const total =
               Number(
-                bestResult.total ||
+                bestResult?.total ||
                 0
               );
 
 
             const percentage =
               Number(
-                bestResult.percentage ||
+                bestResult?.percentage ||
                 0
               );
 
@@ -2732,11 +2855,11 @@ function renderAssignments(
                   <div class="assignment-result">
 
                     <span class="result-pill">
-                      ✓ COMPLETED
+                      ✓ ${completedForExercise}/${required} COMPLETED
                     </span>
 
                     <span class="result-pill score">
-                      ${score}/${total}
+                      Best ${score}/${total}
                     </span>
 
                     <span class="result-pill score">
@@ -2756,6 +2879,92 @@ function renderAssignments(
 
             `;
 
+
+          /*
+            STARTED BUT MORE REPEATS ARE REQUIRED
+          */
+
+          } else if (
+            hasStarted
+          ) {
+
+
+            const score =
+              Number(
+                bestResult?.score ||
+                0
+              );
+
+
+            const total =
+              Number(
+                bestResult?.total ||
+                0
+              );
+
+
+            const percentage =
+              Number(
+                bestResult?.percentage ||
+                0
+              );
+
+
+            html += `
+
+              <div class="assignment-card ${child}-assignment">
+
+                <div class="assignment-left">
+
+                  <div class="assignment-number">
+                    Assignment ${assignmentNumber}
+                  </div>
+
+                  <div class="assignment-topic">
+                    ${escapeHTML(topic)}
+                  </div>
+
+                  <div class="assignment-name">
+                    ${escapeHTML(lessonName)}
+                  </div>
+
+
+                  <div class="assignment-result">
+
+                    <span class="result-pill">
+                      ✓ ${completedForExercise}/${required} completed
+                    </span>
+
+                    <span class="result-pill score">
+                      Best ${score}/${total}
+                    </span>
+
+                    <span class="result-pill score">
+                      ${percentage}%
+                    </span>
+
+                  </div>
+
+                </div>
+
+
+                <a
+                  class="start-assignment"
+                  href="${escapeAttribute(
+                    exercise.url
+                  )}"
+                >
+                  DO AGAIN →
+                </a>
+
+              </div>
+
+            `;
+
+
+          /*
+            NOT STARTED
+          */
 
           } else {
 
@@ -2777,6 +2986,25 @@ function renderAssignments(
                   <div class="assignment-name">
                     ${escapeHTML(lessonName)}
                   </div>
+
+
+                  ${
+                    required > 1
+
+                      ? `
+
+                        <div class="assignment-result">
+
+                          <span class="result-pill score">
+                            0/${required} completed
+                          </span>
+
+                        </div>
+
+                      `
+
+                      : ""
+                  }
 
                 </div>
 
