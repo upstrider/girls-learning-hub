@@ -1,10 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta
+  name="viewport"
+  content="width=device-width, initial-scale=1.0"
+>
 
 <title>Girls Learning Hub</title>
+
 
 <style>
 
@@ -12,46 +19,91 @@
   box-sizing: border-box;
 }
 
+
 body {
+
   margin: 0;
-  font-family: Arial, Helvetica, sans-serif;
+
+  font-family:
+    Arial,
+    Helvetica,
+    sans-serif;
+
   background:
     radial-gradient(circle at 10% 5%, #fff0f7 0, transparent 25%),
     radial-gradient(circle at 90% 8%, #eaf5ff 0, transparent 25%),
     radial-gradient(circle at 50% 100%, #fff7d9 0, transparent 30%),
     #f8f9fd;
+
   color: #182033;
+
   min-height: 100vh;
+
 }
+
 
 button,
 a {
   font-family: inherit;
 }
 
+
 header {
-  background: rgba(255,255,255,.9);
-  padding: 28px 20px;
+
+  background:
+    rgba(255,255,255,.9);
+
+  padding:
+    28px
+    20px;
+
   text-align: center;
-  border-bottom: 1px solid #e7e9ef;
+
+  border-bottom:
+    1px solid
+    #e7e9ef;
+
 }
+
 
 header h1 {
+
   margin: 0;
+
   font-size: 32px;
+
 }
+
 
 header p {
-  margin: 8px 0 0;
+
+  margin:
+    8px
+    0
+    0;
+
   color: #7b8497;
+
   font-weight: 700;
+
 }
 
+
 .container {
+
   max-width: 900px;
-  margin: 35px auto;
-  padding: 0 20px 60px;
+
+  margin:
+    35px
+    auto;
+
+  padding:
+    0
+    20px
+    60px;
+
 }
+
 
 .page {
   display: none;
@@ -63,105 +115,198 @@ header p {
    ========================================= */
 
 .home-intro {
+
   text-align: center;
-  margin: 20px auto 35px;
+
+  margin:
+    20px
+    auto
+    35px;
+
 }
+
 
 .home-icon {
   font-size: 55px;
 }
 
+
 .home-intro h2 {
+
   font-size: 30px;
-  margin: 10px 0 8px;
+
+  margin:
+    10px
+    0
+    8px;
+
 }
+
 
 .home-intro p {
+
   color: #81899a;
+
   font-weight: 700;
+
   margin: 0;
+
 }
+
 
 .children {
+
   display: grid;
-  grid-template-columns: 1fr 1fr;
+
+  grid-template-columns:
+    1fr 1fr;
+
   gap: 22px;
+
 }
+
 
 .card {
+
   background: white;
+
   border-radius: 28px;
+
   padding: 30px;
-  box-shadow: 0 12px 35px rgba(42,55,90,.08);
+
+  box-shadow:
+    0 12px 35px
+    rgba(42,55,90,.08);
+
 }
 
+
 .child {
+
   cursor: pointer;
+
   transition: .2s ease;
+
   text-align: center;
-  border: 3px solid transparent;
+
+  border:
+    3px solid
+    transparent;
+
 }
+
 
 .child:hover {
   transform: translateY(-4px);
 }
 
+
 .ivy-child:hover {
   border-color: #ffc7dc;
 }
+
 
 .charlotte-child:hover {
   border-color: #b9ddff;
 }
 
+
 .avatar-circle {
+
   width: 88px;
+
   height: 88px;
+
   margin: auto;
+
   border-radius: 50%;
+
   display: flex;
+
   align-items: center;
+
   justify-content: center;
+
   font-size: 48px;
+
 }
+
 
 .ivy-avatar {
   background: #ffe6f0;
 }
 
+
 .charlotte-avatar {
   background: #e7f3ff;
 }
 
+
 .child h2 {
-  margin: 15px 0 5px;
+
+  margin:
+    15px
+    0
+    5px;
+
   font-size: 25px;
+
 }
+
 
 .grade {
+
   color: #81899a;
+
   margin-bottom: 20px;
+
   font-weight: 700;
+
 }
+
 
 .blue-button {
+
   display: inline-block;
+
   background: #3679df;
+
   color: white;
+
   border: none;
+
   text-decoration: none;
+
   border-radius: 14px;
-  padding: 13px 19px;
+
+  padding:
+    13px
+    19px;
+
   font-weight: 900;
+
   cursor: pointer;
+
 }
+
 
 .ivy-start {
-  background: linear-gradient(135deg, #ed6fa3, #a76ee8);
+  background:
+    linear-gradient(
+      135deg,
+      #ed6fa3,
+      #a76ee8
+    );
 }
 
+
 .charlotte-start {
-  background: linear-gradient(135deg, #4c9fe8, #6d7ee8);
+  background:
+    linear-gradient(
+      135deg,
+      #4c9fe8,
+      #6d7ee8
+    );
 }
 
 
@@ -170,73 +315,141 @@ header p {
    ========================================= */
 
 .back {
+
   background: none;
+
   border: none;
+
   font-weight: 900;
+
   cursor: pointer;
+
   margin-bottom: 20px;
+
   color: #657087;
+
   font-size: 14px;
+
 }
 
+
 .today-hero {
+
   background: white;
+
   border-radius: 30px;
+
   padding: 30px;
-  box-shadow: 0 14px 40px rgba(42,55,90,.08);
+
+  box-shadow:
+    0 14px 40px
+    rgba(42,55,90,.08);
+
   text-align: center;
+
   margin-bottom: 20px;
+
 }
+
 
 .today-avatar {
   font-size: 48px;
 }
 
+
 .today-hero h1 {
-  margin: 8px 0 5px;
+
+  margin:
+    8px
+    0
+    5px;
+
   font-size: 32px;
+
 }
+
 
 .today-date {
+
   color: #858da0;
+
   font-weight: 800;
+
   font-size: 16px;
+
 }
 
+
 .quote-card {
+
   margin-top: 22px;
+
   border-radius: 20px;
-  padding: 18px 20px;
+
+  padding:
+    18px
+    20px;
+
   line-height: 1.5;
+
 }
+
 
 .ivy-quote {
   background: #fff1f6;
 }
 
+
 .charlotte-quote {
   background: #eef7ff;
 }
 
+
 .quote-label {
+
   font-size: 11px;
+
   font-weight: 900;
+
   letter-spacing: 1px;
+
   color: #8c7aa4;
+
   text-transform: uppercase;
+
   margin-bottom: 6px;
+
 }
+
 
 .quote-text {
+
   font-size: 16px;
+
   font-weight: 900;
+
 }
 
+
 .today-progress {
+
   margin-top: 18px;
+
   font-size: 13px;
+
   font-weight: 900;
+
   color: #7b8497;
+
+}
+
+
+.today-progress.all-done {
+
+  color: #168653;
+
+  font-size: 15px;
+
 }
 
 
@@ -245,105 +458,288 @@ header p {
    ========================================= */
 
 .section-heading {
-  margin: 32px 0 15px;
+
+  margin:
+    32px
+    0
+    15px;
+
 }
+
 
 .section-heading h2 {
-  margin: 0 0 5px;
+
+  margin:
+    0
+    0
+    5px;
+
   font-size: 24px;
+
 }
 
+
 .section-heading p {
+
   margin: 0;
+
   color: #858da0;
+
   font-size: 14px;
+
   font-weight: 700;
+
 }
+
 
 .assignment-loading,
 .assignment-empty,
 .assignment-error {
+
   background: white;
+
   border-radius: 22px;
+
   padding: 28px;
+
   text-align: center;
+
   color: #8a93a5;
+
   font-weight: 800;
-  box-shadow: 0 8px 25px rgba(42,55,90,.05);
+
+  box-shadow:
+    0 8px 25px
+    rgba(42,55,90,.05);
+
 }
 
+
 .assignment-empty-icon {
+
   font-size: 38px;
+
   margin-bottom: 8px;
+
 }
+
 
 .assignment-subject {
   margin-bottom: 22px;
 }
 
+
 .assignment-subject-title {
+
   font-size: 15px;
+
   font-weight: 900;
+
   letter-spacing: .5px;
+
   margin-bottom: 10px;
+
   padding-left: 4px;
+
 }
 
+
 .assignment-card {
+
   background: white;
+
   border-radius: 21px;
-  padding: 18px 20px;
+
+  padding:
+    18px
+    20px;
+
   margin-bottom: 11px;
-  box-shadow: 0 7px 25px rgba(42,55,90,.06);
+
+  box-shadow:
+    0 7px 25px
+    rgba(42,55,90,.06);
+
   display: flex;
+
   align-items: center;
+
   justify-content: space-between;
+
   gap: 18px;
+
+  border:
+    2px solid
+    transparent;
+
 }
+
+
+.assignment-card.completed {
+
+  background: #f4fbf7;
+
+  border-color: #ccebdc;
+
+}
+
 
 .assignment-left {
   min-width: 0;
 }
 
+
 .assignment-number {
+
   font-size: 11px;
+
   font-weight: 900;
+
   color: #9aa2b1;
+
   text-transform: uppercase;
+
   letter-spacing: .8px;
+
   margin-bottom: 5px;
+
 }
+
 
 .assignment-topic {
+
   font-size: 13px;
+
   font-weight: 900;
+
   color: #7c68a2;
+
   margin-bottom: 4px;
+
 }
+
 
 .assignment-name {
+
   font-size: 18px;
+
   font-weight: 900;
+
   line-height: 1.25;
+
 }
+
+
+.assignment-result {
+
+  margin-top: 8px;
+
+  display: flex;
+
+  flex-wrap: wrap;
+
+  gap: 6px;
+
+}
+
+
+.result-pill {
+
+  display: inline-block;
+
+  padding:
+    5px
+    9px;
+
+  border-radius: 999px;
+
+  background: #e7f7ef;
+
+  color: #168653;
+
+  font-size: 11px;
+
+  font-weight: 900;
+
+}
+
+
+.result-pill.score {
+
+  background: #eef4ff;
+
+  color: #3975d9;
+
+}
+
 
 .start-assignment {
+
   flex-shrink: 0;
+
   text-decoration: none;
+
   color: white;
+
   background: #3679df;
-  padding: 12px 16px;
+
+  padding:
+    12px
+    16px;
+
   border-radius: 13px;
+
   font-size: 13px;
+
   font-weight: 900;
+
 }
+
 
 .ivy-assignment .start-assignment {
-  background: linear-gradient(135deg, #ed6fa3, #a76ee8);
+
+  background:
+    linear-gradient(
+      135deg,
+      #ed6fa3,
+      #a76ee8
+    );
+
 }
 
+
 .charlotte-assignment .start-assignment {
-  background: linear-gradient(135deg, #4c9fe8, #6d7ee8);
+
+  background:
+    linear-gradient(
+      135deg,
+      #4c9fe8,
+      #6d7ee8
+    );
+
+}
+
+
+.completed-button {
+
+  flex-shrink: 0;
+
+  padding:
+    12px
+    14px;
+
+  border-radius: 13px;
+
+  background: #daf5e6;
+
+  color: #168653;
+
+  font-size: 12px;
+
+  font-weight: 900;
+
+  text-align: center;
+
 }
 
 
@@ -354,62 +750,112 @@ header p {
 .subject,
 .topic,
 .exercise {
+
   background: white;
+
   border-radius: 20px;
-  padding: 22px 25px;
+
+  padding:
+    22px
+    25px;
+
   margin-bottom: 16px;
-  box-shadow: 0 5px 20px rgba(0,0,0,.04);
+
+  box-shadow:
+    0 5px 20px
+    rgba(0,0,0,.04);
+
 }
+
 
 .subject-row,
 .topic-row,
 .exercise-row {
+
   display: flex;
+
   justify-content: space-between;
+
   align-items: center;
+
   gap: 20px;
+
 }
+
 
 .subject h3,
 .topic h3,
 .exercise h3 {
-  margin: 0 0 6px;
+
+  margin:
+    0
+    0
+    6px;
+
   font-size: 20px;
+
 }
+
 
 .description {
+
   color: #858da0;
+
   font-size: 14px;
+
 }
+
 
 .empty {
+
   color: #9aa1b0;
+
   font-size: 14px;
+
   margin-top: 8px;
+
 }
 
+
 .small-label {
+
   display: inline-block;
+
   background: #eef4ff;
+
   color: #3679df;
+
   border-radius: 20px;
-  padding: 6px 10px;
+
+  padding:
+    6px
+    10px;
+
   font-size: 12px;
+
   font-weight: 900;
+
   margin-bottom: 10px;
+
 }
+
 
 .page-title {
   margin-bottom: 28px;
 }
 
+
 .page-title h1 {
   margin-bottom: 5px;
 }
 
+
 .page-title p {
+
   color: #81899a;
+
   margin-top: 0;
+
 }
 
 
@@ -420,42 +866,67 @@ header p {
 @media (max-width: 650px) {
 
   header {
-    padding: 22px 15px;
+
+    padding:
+      22px
+      15px;
+
   }
+
 
   header h1 {
     font-size: 26px;
   }
 
+
   .container {
+
     margin-top: 22px;
+
     padding-left: 13px;
+
     padding-right: 13px;
+
   }
+
 
   .children {
     grid-template-columns: 1fr;
   }
 
+
   .card {
     padding: 25px;
   }
 
+
   .today-hero {
-    padding: 24px 18px;
+
+    padding:
+      24px
+      18px;
+
   }
+
 
   .today-hero h1 {
     font-size: 27px;
   }
 
+
   .assignment-card {
+
     padding: 17px;
+
+    align-items: center;
+
   }
+
 
   .assignment-name {
     font-size: 16px;
   }
+
 
   .subject-row,
   .topic-row,
@@ -466,7 +937,9 @@ header p {
 }
 
 </style>
+
 </head>
+
 
 
 <body>
@@ -474,11 +947,16 @@ header p {
 
 <header>
 
-  <h1>✨ Girls Learning Hub ✨</h1>
+  <h1>
+    ✨ Girls Learning Hub ✨
+  </h1>
 
-  <p>Learn • Practise • Grow</p>
+  <p>
+    Learn • Practise • Grow
+  </p>
 
 </header>
+
 
 
 <div class="container">
@@ -489,6 +967,7 @@ header p {
      ========================================= -->
 
 <div id="home">
+
 
   <div class="home-intro">
 
@@ -1063,38 +1542,65 @@ header p {
 
 <script>
 
-function showPage(pageId) {
+
+/* =========================================
+   PAGE NAVIGATION
+   ========================================= */
+
+
+function showPage(
+  pageId
+) {
+
 
   const pages = [
 
     "home",
 
     "ivy",
+
     "ivy-english",
+
     "ivy-english-spelling",
+
     "ivy-maths",
 
     "charlotte",
+
     "charlotte-english",
+
     "charlotte-maths",
+
     "charlotte-maths-numbers"
 
   ];
 
 
   pages.forEach(
-    function(page) {
+
+    function(
+      page
+    ) {
+
 
       const element =
         document.getElementById(
           page
         );
 
-      if (element) {
-        element.style.display = "none";
+
+      if (
+        element
+      ) {
+
+
+        element.style.display =
+          "none";
+
       }
 
     }
+
   );
 
 
@@ -1104,16 +1610,50 @@ function showPage(pageId) {
     );
 
 
-  if (requested) {
-    requested.style.display = "block";
+  if (
+    requested
+  ) {
+
+
+    requested.style.display =
+      "block";
+
   }
 
 
   if (
-    pageId === "ivy" ||
-    pageId === "charlotte"
+
+    pageId ===
+    "ivy" ||
+
+    pageId ===
+    "charlotte"
+
   ) {
-    window.location.hash = pageId;
+
+
+    window.location.hash =
+      pageId;
+
+  }
+
+
+  if (
+    pageId ===
+    "home"
+  ) {
+
+
+    history.replaceState(
+
+      null,
+
+      "",
+
+      window.location.pathname
+
+    );
+
   }
 
 
@@ -1134,19 +1674,23 @@ const requestedPage =
 
 
 if (
+
   requestedPage &&
+
   document.getElementById(
     requestedPage
   )
+
 ) {
+
 
   showPage(
     requestedPage
   );
 
-}
 
-else {
+} else {
+
 
   showPage(
     "home"
@@ -1154,11 +1698,18 @@ else {
 
 }
 
+
 </script>
 
 
 
 <script type="module">
+
+
+/* =========================================
+   FIREBASE
+   ========================================= */
+
 
 import {
   initializeApp
@@ -1166,33 +1717,50 @@ import {
 
 
 import {
+
   getFirestore,
+
   doc,
-  getDoc
+
+  getDoc,
+
+  collection,
+
+  getDocs
+
 } from "https://www.gstatic.com/firebasejs/12.5.0/firebase-firestore.js";
+
 
 
 const firebaseConfig = {
 
+
   apiKey:
     "AIzaSyBri62MSDCTXF9meH_5Jnm8kbZFytoHwXU",
+
 
   authDomain:
     "girls-learning-hub.firebaseapp.com",
 
+
   projectId:
     "girls-learning-hub",
+
 
   storageBucket:
     "girls-learning-hub.firebasestorage.app",
 
+
   messagingSenderId:
     "578155016403",
+
 
   appId:
     "1:578155016403:web:ffe763fe308574d31fe426"
 
+
 };
+
 
 
 const app =
@@ -1208,19 +1776,23 @@ const db =
 
 
 
-function getLocalDateKey() {
+/* =========================================
+   DATE
+   ========================================= */
 
-  const now =
-    new Date();
+
+function getLocalDateKey(
+  date = new Date()
+) {
 
 
   const year =
-    now.getFullYear();
+    date.getFullYear();
 
 
   const month =
     String(
-      now.getMonth() + 1
+      date.getMonth() + 1
     ).padStart(
       2,
       "0"
@@ -1229,14 +1801,16 @@ function getLocalDateKey() {
 
   const day =
     String(
-      now.getDate()
+      date.getDate()
     ).padStart(
       2,
       "0"
     );
 
 
-  return `${year}-${month}-${day}`;
+  return (
+    `${year}-${month}-${day}`
+  );
 
 }
 
@@ -1246,18 +1820,32 @@ const todayKey =
   getLocalDateKey();
 
 
+
 const todayPretty =
   new Intl.DateTimeFormat(
+
     "en-GB",
+
     {
-      weekday: "long",
-      day: "numeric",
-      month: "long",
-      year: "numeric"
+
+      weekday:
+        "long",
+
+      day:
+        "numeric",
+
+      month:
+        "long",
+
+      year:
+        "numeric"
+
     }
+
   ).format(
     new Date()
   );
+
 
 
 document.getElementById(
@@ -1271,6 +1859,11 @@ document.getElementById(
 ).textContent =
   todayPretty;
 
+
+
+/* =========================================
+   GROWTH QUOTES
+   ========================================= */
 
 
 const growthQuotes = [
@@ -1341,25 +1934,36 @@ const growthQuotes = [
 
 function getQuoteForToday() {
 
+
   const start =
     new Date(
-      new Date().getFullYear(),
+
+      new Date()
+        .getFullYear(),
+
       0,
+
       0
+
     );
 
 
   const difference =
-    new Date() - start;
+    new Date() -
+    start;
 
 
   const oneDay =
-    1000 * 60 * 60 * 24;
+    1000 *
+    60 *
+    60 *
+    24;
 
 
   const dayOfYear =
     Math.floor(
-      difference / oneDay
+      difference /
+      oneDay
     );
 
 
@@ -1389,38 +1993,76 @@ document.getElementById(
 
 
 
-function getSubjectIcon(subject) {
+/* =========================================
+   SUBJECT ICON
+   ========================================= */
+
+
+function getSubjectIcon(
+  subject
+) {
+
 
   const lower =
-    String(subject || "")
-      .toLowerCase();
+    String(
+      subject ||
+      ""
+    )
+    .toLowerCase();
 
 
-  if (lower === "english") {
+  if (
+    lower ===
+    "english"
+  ) {
+
     return "📖";
+
   }
 
 
   if (
-    lower === "maths" ||
-    lower === "math"
+
+    lower ===
+    "maths" ||
+
+    lower ===
+    "math"
+
   ) {
+
     return "🔢";
+
   }
 
 
-  if (lower === "science") {
+  if (
+    lower ===
+    "science"
+  ) {
+
     return "🔬";
+
   }
 
 
-  if (lower === "geography") {
+  if (
+    lower ===
+    "geography"
+  ) {
+
     return "🌍";
+
   }
 
 
-  if (lower === "french") {
+  if (
+    lower ===
+    "french"
+  ) {
+
     return "🇫🇷";
+
   }
 
 
@@ -1430,10 +2072,347 @@ function getSubjectIcon(subject) {
 
 
 
-function renderAssignments(
-  child,
-  exercises
+/* =========================================
+   ESCAPE
+   ========================================= */
+
+
+function escapeHTML(
+  value
 ) {
+
+
+  return String(
+    value ?? ""
+  )
+
+    .replaceAll(
+      "&",
+      "&amp;"
+    )
+
+    .replaceAll(
+      "<",
+      "&lt;"
+    )
+
+    .replaceAll(
+      ">",
+      "&gt;"
+    )
+
+    .replaceAll(
+      '"',
+      "&quot;"
+    )
+
+    .replaceAll(
+      "'",
+      "&#039;"
+    );
+
+}
+
+
+
+function escapeAttribute(
+  value
+) {
+
+
+  return escapeHTML(
+    value
+  );
+
+}
+
+
+
+/* =========================================
+   RESULT HELPERS
+   ========================================= */
+
+
+function getResultChildId(
+  result
+) {
+
+
+  if (
+    result.childId
+  ) {
+
+
+    return String(
+      result.childId
+    ).toLowerCase();
+
+  }
+
+
+  const child =
+    String(
+      result.child ||
+      ""
+    ).toLowerCase();
+
+
+  if (
+    child.includes(
+      "ivy"
+    )
+  ) {
+
+    return "ivy";
+
+  }
+
+
+  if (
+    child.includes(
+      "charlotte"
+    )
+  ) {
+
+    return "charlotte";
+
+  }
+
+
+  return "";
+
+}
+
+
+
+function getResultDateKey(
+  result
+) {
+
+
+  if (
+    result.date
+  ) {
+
+
+    return result.date;
+
+  }
+
+
+  if (
+    !result.timestamp
+  ) {
+
+
+    return "";
+
+  }
+
+
+  const date =
+    new Date(
+      result.timestamp
+    );
+
+
+  if (
+    Number.isNaN(
+      date.getTime()
+    )
+  ) {
+
+
+    return "";
+
+  }
+
+
+  return getLocalDateKey(
+    date
+  );
+
+}
+
+
+
+/* =========================================
+   LOAD TODAY RESULTS
+   ========================================= */
+
+
+async function loadTodayResults() {
+
+
+  const snapshot =
+    await getDocs(
+      collection(
+        db,
+        "results"
+      )
+    );
+
+
+  const results =
+    [];
+
+
+  snapshot.forEach(
+
+    function(
+      documentSnapshot
+    ) {
+
+
+      const result =
+        documentSnapshot.data();
+
+
+      if (
+        getResultDateKey(
+          result
+        ) ===
+        todayKey
+      ) {
+
+
+        results.push(
+          result
+        );
+
+      }
+
+    }
+
+  );
+
+
+  return results;
+
+}
+
+
+
+/* =========================================
+   BEST RESULT
+   ========================================= */
+
+
+function getBestResultForExercise(
+
+  exerciseId,
+
+  results
+
+) {
+
+
+  const matching =
+    results.filter(
+
+      function(
+        result
+      ) {
+
+
+        return (
+          result.exerciseId ===
+          exerciseId
+        );
+
+      }
+
+    );
+
+
+  if (
+    matching.length === 0
+  ) {
+
+
+    return null;
+
+  }
+
+
+  matching.sort(
+
+    function(
+      a,
+      b
+    ) {
+
+
+      const percentageA =
+        Number(
+          a.percentage ||
+          0
+        );
+
+
+      const percentageB =
+        Number(
+          b.percentage ||
+          0
+        );
+
+
+      if (
+        percentageB !==
+        percentageA
+      ) {
+
+
+        return (
+          percentageB -
+          percentageA
+        );
+
+      }
+
+
+      return (
+
+        new Date(
+          b.timestamp ||
+          0
+        ).getTime()
+
+        -
+
+        new Date(
+          a.timestamp ||
+          0
+        ).getTime()
+
+      );
+
+    }
+
+  );
+
+
+  return matching[0];
+
+}
+
+
+
+/* =========================================
+   RENDER ASSIGNMENTS + RESULTS
+   ========================================= */
+
+
+function renderAssignments(
+
+  child,
+
+  exercises,
+
+  results
+
+) {
+
 
   const container =
     document.getElementById(
@@ -1448,9 +2427,15 @@ function renderAssignments(
 
 
   if (
-    !Array.isArray(exercises) ||
+
+    !Array.isArray(
+      exercises
+    ) ||
+
     exercises.length === 0
+
   ) {
+
 
     container.innerHTML = `
 
@@ -1467,8 +2452,14 @@ function renderAssignments(
     `;
 
 
+    progress.classList.remove(
+      "all-done"
+    );
+
+
     progress.textContent =
       "☀️ No assignments set yet.";
+
 
     return;
 
@@ -1476,8 +2467,62 @@ function renderAssignments(
 
 
 
-  progress.textContent =
-    `☀️ ${exercises.length} assignment${exercises.length === 1 ? "" : "s"} for today`;
+  let completedCount =
+    0;
+
+
+  exercises.forEach(
+
+    function(
+      exercise
+    ) {
+
+
+      if (
+        getBestResultForExercise(
+          exercise.id,
+          results
+        )
+      ) {
+
+
+        completedCount++;
+
+      }
+
+    }
+
+  );
+
+
+
+  if (
+    completedCount ===
+    exercises.length
+  ) {
+
+
+    progress.classList.add(
+      "all-done"
+    );
+
+
+    progress.textContent =
+      `🎉 ${completedCount} of ${exercises.length} completed — ALL DONE FOR TODAY!`;
+
+
+  } else {
+
+
+    progress.classList.remove(
+      "all-done"
+    );
+
+
+    progress.textContent =
+      `⭐ ${completedCount} of ${exercises.length} completed`;
+
+  }
 
 
 
@@ -1486,23 +2531,40 @@ function renderAssignments(
 
 
   exercises.forEach(
-    function(exercise) {
+
+    function(
+      exercise
+    ) {
+
 
       const subject =
         exercise.subject ||
         "Learning";
 
 
-      if (!grouped[subject]) {
-        grouped[subject] = [];
+      if (
+        !grouped[
+          subject
+        ]
+      ) {
+
+
+        grouped[
+          subject
+        ] =
+          [];
+
       }
 
 
-      grouped[subject].push(
+      grouped[
+        subject
+      ].push(
         exercise
       );
 
     }
+
   );
 
 
@@ -1511,13 +2573,24 @@ function renderAssignments(
     "";
 
 
+  let assignmentNumber =
+    0;
+
+
+
   Object.keys(
     grouped
   ).forEach(
-    function(subject) {
+
+    function(
+      subject
+    ) {
+
 
       const subjectExercises =
-        grouped[subject];
+        grouped[
+          subject
+        ];
 
 
       html += `
@@ -1536,7 +2609,14 @@ function renderAssignments(
 
 
       subjectExercises.forEach(
-        function(exercise, index) {
+
+        function(
+          exercise
+        ) {
+
+
+          assignmentNumber++;
+
 
           const topic =
             exercise.topic ||
@@ -1553,65 +2633,171 @@ function renderAssignments(
 
 
           if (
+
             rawName
               .toLowerCase()
               .startsWith(
-                topic.toLowerCase()
+                topic
+                  .toLowerCase()
               )
+
           ) {
+
 
             lessonName =
               rawName
+
                 .substring(
                   topic.length
                 )
+
                 .replace(
                   /^[\s•\-–—:]+/,
                   ""
                 )
+
                 .trim();
 
           }
 
 
-          if (!lessonName) {
-            lessonName = rawName;
+          if (
+            !lessonName
+          ) {
+
+
+            lessonName =
+              rawName;
+
           }
 
 
-          html += `
 
-            <div class="assignment-card ${child}-assignment">
+          const bestResult =
+            getBestResultForExercise(
 
-              <div class="assignment-left">
+              exercise.id,
 
-                <div class="assignment-number">
-                  Assignment ${index + 1}
+              results
+
+            );
+
+
+
+          if (
+            bestResult
+          ) {
+
+
+            const score =
+              Number(
+                bestResult.score ||
+                0
+              );
+
+
+            const total =
+              Number(
+                bestResult.total ||
+                0
+              );
+
+
+            const percentage =
+              Number(
+                bestResult.percentage ||
+                0
+              );
+
+
+            html += `
+
+              <div class="assignment-card completed ${child}-assignment">
+
+                <div class="assignment-left">
+
+                  <div class="assignment-number">
+                    Assignment ${assignmentNumber}
+                  </div>
+
+                  <div class="assignment-topic">
+                    ${escapeHTML(topic)}
+                  </div>
+
+                  <div class="assignment-name">
+                    ${escapeHTML(lessonName)}
+                  </div>
+
+
+                  <div class="assignment-result">
+
+                    <span class="result-pill">
+                      ✓ COMPLETED
+                    </span>
+
+                    <span class="result-pill score">
+                      ${score}/${total}
+                    </span>
+
+                    <span class="result-pill score">
+                      ${percentage}%
+                    </span>
+
+                  </div>
+
                 </div>
 
-                <div class="assignment-topic">
-                  ${escapeHTML(topic)}
-                </div>
 
-                <div class="assignment-name">
-                  ${escapeHTML(lessonName)}
+                <div class="completed-button">
+                  ✓ DONE
                 </div>
 
               </div>
 
+            `;
 
-              <a
-                class="start-assignment"
-                href="${escapeAttribute(exercise.url)}"
-              >
-                START →
-              </a>
 
-            </div>
+          } else {
 
-          `;
+
+            html += `
+
+              <div class="assignment-card ${child}-assignment">
+
+                <div class="assignment-left">
+
+                  <div class="assignment-number">
+                    Assignment ${assignmentNumber}
+                  </div>
+
+                  <div class="assignment-topic">
+                    ${escapeHTML(topic)}
+                  </div>
+
+                  <div class="assignment-name">
+                    ${escapeHTML(lessonName)}
+                  </div>
+
+                </div>
+
+
+                <a
+                  class="start-assignment"
+                  href="${escapeAttribute(
+                    exercise.url
+                  )}"
+                >
+                  START →
+                </a>
+
+              </div>
+
+            `;
+
+          }
 
         }
+
       );
 
 
@@ -1622,6 +2808,7 @@ function renderAssignments(
       `;
 
     }
+
   );
 
 
@@ -1632,102 +2819,176 @@ function renderAssignments(
 
 
 
-function escapeHTML(value) {
-
-  return String(
-    value ?? ""
-  )
-    .replaceAll(
-      "&",
-      "&amp;"
-    )
-    .replaceAll(
-      "<",
-      "&lt;"
-    )
-    .replaceAll(
-      ">",
-      "&gt;"
-    )
-    .replaceAll(
-      '"',
-      "&quot;"
-    )
-    .replaceAll(
-      "'",
-      "&#039;"
-    );
-
-}
+/* =========================================
+   LOAD CHILD ASSIGNMENTS
+   ========================================= */
 
 
-
-function escapeAttribute(value) {
-
-  return escapeHTML(
-    value
-  );
-
-}
-
-
-
-async function loadChildAssignments(
+async function getChildAssignments(
   child
 ) {
 
-  const container =
+
+  const assignmentReference =
+    doc(
+
+      db,
+
+      "assignments",
+
+      `${todayKey}-${child}`
+
+    );
+
+
+  const snapshot =
+    await getDoc(
+      assignmentReference
+    );
+
+
+  if (
+    !snapshot.exists()
+  ) {
+
+
+    return [];
+
+  }
+
+
+  const data =
+    snapshot.data();
+
+
+  return Array.isArray(
+    data.exercises
+  )
+
+    ? data.exercises
+
+    : [];
+
+}
+
+
+
+/* =========================================
+   LOAD EVERYTHING
+   ========================================= */
+
+
+async function loadLearningDay() {
+
+
+  const ivyContainer =
     document.getElementById(
-      `${child}Assignments`
+      "ivyAssignments"
+    );
+
+
+  const charlotteContainer =
+    document.getElementById(
+      "charlotteAssignments"
     );
 
 
   try {
 
 
-    const assignmentReference =
-      doc(
-        db,
-        "assignments",
-        `${todayKey}-${child}`
+    const [
+
+      ivyExercises,
+
+      charlotteExercises,
+
+      todayResults
+
+    ] =
+      await Promise.all([
+
+        getChildAssignments(
+          "ivy"
+        ),
+
+        getChildAssignments(
+          "charlotte"
+        ),
+
+        loadTodayResults()
+
+      ]);
+
+
+
+    const ivyResults =
+      todayResults.filter(
+
+        function(
+          result
+        ) {
+
+
+          return (
+            getResultChildId(
+              result
+            ) ===
+            "ivy"
+          );
+
+        }
+
       );
 
 
-    const snapshot =
-      await getDoc(
-        assignmentReference
+
+    const charlotteResults =
+      todayResults.filter(
+
+        function(
+          result
+        ) {
+
+
+          return (
+            getResultChildId(
+              result
+            ) ===
+            "charlotte"
+          );
+
+        }
+
       );
 
-
-    if (!snapshot.exists()) {
-
-      renderAssignments(
-        child,
-        []
-      );
-
-      return;
-
-    }
-
-
-    const data =
-      snapshot.data();
 
 
     renderAssignments(
-      child,
-      Array.isArray(
-        data.exercises
-      )
-        ? data.exercises
-        : []
+
+      "ivy",
+
+      ivyExercises,
+
+      ivyResults
+
     );
 
 
-  }
 
-  catch (error) {
+    renderAssignments(
+
+      "charlotte",
+
+      charlotteExercises,
+
+      charlotteResults
+
+    );
+
+
+  } catch (
+    error
+  ) {
 
 
     console.error(
@@ -1735,7 +2996,20 @@ async function loadChildAssignments(
     );
 
 
-    container.innerHTML = `
+    ivyContainer.innerHTML = `
+
+      <div class="assignment-error">
+
+        ⚠️ We couldn't load today's assignments.<br><br>
+
+        Please refresh the page and try again.
+
+      </div>
+
+    `;
+
+
+    charlotteContainer.innerHTML = `
 
       <div class="assignment-error">
 
@@ -1749,7 +3023,13 @@ async function loadChildAssignments(
 
 
     document.getElementById(
-      `${child}TodayProgress`
+      "ivyTodayProgress"
+    ).textContent =
+      "Couldn't load today's work.";
+
+
+    document.getElementById(
+      "charlotteTodayProgress"
     ).textContent =
       "Couldn't load today's work.";
 
@@ -1759,18 +3039,17 @@ async function loadChildAssignments(
 
 
 
-loadChildAssignments(
-  "ivy"
-);
+/* =========================================
+   START
+   ========================================= */
 
 
-loadChildAssignments(
-  "charlotte"
-);
+loadLearningDay();
 
 
 </script>
 
 
 </body>
+
 </html>
