@@ -161,15 +161,6 @@ body {
   font-weight: 900;
   cursor: pointer;
   box-shadow: 0 8px 20px rgba(62,111,220,.25);
-  transition: .15s;
-}
-
-.listen-button:hover {
-  transform: translateY(-2px);
-}
-
-.listen-button:active {
-  transform: scale(.97);
 }
 
 .hint {
@@ -312,7 +303,6 @@ body {
 }
 
 @media (max-width: 600px) {
-
   .card {
     padding: 26px 18px;
   }
@@ -334,32 +324,22 @@ body {
 </style>
 </head>
 
-
 <body>
 
 <div class="topbar">
-
-  <!-- Returns directly to the spelling screen -->
-
   <a
     class="back"
     href="../../../index.html#ivy-english-spelling"
   >
     ← BACK TO SPELLING
   </a>
-
 </div>
 
-
 <div class="wrapper">
-
-
-<!-- EXERCISE -->
 
 <div id="exerciseScreen">
 
   <div class="heading">
-
     <div class="eyebrow">
       Ivy-Rose • Grade 2
     </div>
@@ -371,14 +351,11 @@ body {
     <p>
       Exercise 1 • Words 1–10
     </p>
-
   </div>
-
 
   <div class="progress-area">
 
     <div class="progress-info">
-
       <span id="progressText">
         Word 1 of 10
       </span>
@@ -386,21 +363,16 @@ body {
       <span>
         ⭐ <span id="score">0</span>
       </span>
-
     </div>
 
-
     <div class="progress-track">
-
       <div
         id="progressBar"
         class="progress-bar"
       ></div>
-
     </div>
 
   </div>
-
 
   <div class="card">
 
@@ -412,16 +384,12 @@ body {
       ⭐
     </span>
 
-
-    <!-- MATCHING PICTURE -->
-
     <div
       id="picture"
       class="picture"
     >
       🌸✨🌈
     </div>
-
 
     <div
       id="wordNumber"
@@ -430,11 +398,9 @@ body {
       WORD 1
     </div>
 
-
     <div class="instruction">
       Listen carefully. What word do you hear?
     </div>
-
 
     <button
       class="listen-button"
@@ -443,11 +409,9 @@ body {
       🔊 HEAR THE WORD
     </button>
 
-
     <div class="hint">
       You can listen as many times as you need.
     </div>
-
 
     <input
       id="answer"
@@ -459,7 +423,6 @@ body {
       placeholder="Type the word..."
     >
 
-
     <button
       id="checkButton"
       class="check-button"
@@ -468,12 +431,10 @@ body {
       CHECK ✓
     </button>
 
-
     <div
       id="feedback"
       class="feedback"
     ></div>
-
 
     <button
       id="nextButton"
@@ -488,9 +449,6 @@ body {
 </div>
 
 
-
-<!-- RESULTS -->
-
 <div
   id="resultScreen"
   class="card result"
@@ -503,11 +461,9 @@ body {
     🏆
   </div>
 
-
   <h1 id="resultTitle">
     Amazing work!
   </h1>
-
 
   <div
     id="starsResult"
@@ -516,7 +472,6 @@ body {
     ⭐⭐⭐
   </div>
 
-
   <div
     id="finalScore"
     class="big-score"
@@ -524,12 +479,10 @@ body {
     10 / 10
   </div>
 
-
   <div
     id="resultMessage"
     class="result-message"
   ></div>
-
 
   <div class="result-buttons">
 
@@ -539,7 +492,6 @@ body {
     >
       ↻ TRY AGAIN
     </button>
-
 
     <a
       class="result-button finish"
@@ -552,17 +504,13 @@ body {
 
 </div>
 
-
 </div>
-
 
 
 <script>
 
 /* ======================================
    WORDS 1–10
-
-   picture = visual clue matching the word
    ====================================== */
 
 const words = [
@@ -621,18 +569,9 @@ const words = [
 
 
 let current = 0;
-
-/*
-Score now means:
-CORRECT ON FIRST ATTEMPT.
-*/
-
 let score = 0;
-
 let attemptsThisWord = 0;
-
 let wordCompleted = false;
-
 
 
 /* ======================================
@@ -643,7 +582,6 @@ function getBritishVoice() {
 
   const voices =
     window.speechSynthesis.getVoices();
-
 
   const britishVoices =
     voices.filter(function(voice) {
@@ -657,24 +595,14 @@ function getBritishVoice() {
 
     });
 
-
-  /*
-  Try female-sounding British voices
-  commonly available on Apple/Google
-  devices first.
-  */
-
   const preferredNames = [
-
     "Serena",
     "Kate",
     "Martha",
     "Stephanie",
     "Hazel",
     "Google UK English Female"
-
   ];
-
 
   for (const preferred of preferredNames) {
 
@@ -689,78 +617,50 @@ function getBritishVoice() {
 
       });
 
-
     if (found) {
       return found;
     }
-
   }
-
-
-  /*
-  Otherwise use any available
-  British English voice.
-  */
 
   return (
     britishVoices[0] ||
     voices[0] ||
     null
   );
-
 }
-
 
 
 function speakWord() {
 
   window.speechSynthesis.cancel();
 
-
   const utterance =
     new SpeechSynthesisUtterance(
       words[current].word
     );
 
-
   const voice =
     getBritishVoice();
-
 
   if (voice) {
     utterance.voice = voice;
   }
 
-
   utterance.lang = "en-GB";
-
-  /*
-  Clear enough for a child,
-  without sounding unnaturally slow.
-  */
-
   utterance.rate = 0.82;
-
   utterance.pitch = 1.08;
-
   utterance.volume = 1;
-
 
   window.speechSynthesis.speak(
     utterance
   );
-
 }
-
 
 
 window.speechSynthesis.onvoiceschanged =
 function() {
-
   window.speechSynthesis.getVoices();
-
 };
-
 
 
 /* ======================================
@@ -773,20 +673,16 @@ function checkAnswer() {
     return;
   }
 
-
   const input =
     document.getElementById("answer");
 
-
   const feedback =
     document.getElementById("feedback");
-
 
   const answer =
     input.value
       .trim()
       .toLowerCase();
-
 
   if (!answer) {
 
@@ -797,12 +693,9 @@ function checkAnswer() {
       "Type the word first 😊";
 
     return;
-
   }
 
-
   attemptsThisWord++;
-
 
   if (
     answer ===
@@ -811,10 +704,8 @@ function checkAnswer() {
 
     wordCompleted = true;
 
-
     /*
-    Only award the point if Ivy
-    got it correct FIRST TRY.
+    Score only if correct on first attempt.
     */
 
     if (attemptsThisWord === 1) {
@@ -824,54 +715,40 @@ function checkAnswer() {
       feedback.textContent =
         "✨ Perfect! First try!";
 
-    }
-
-    else {
+    } else {
 
       feedback.textContent =
         "💛 You got it! Great practising!";
 
     }
 
-
     feedback.className =
       "feedback correct";
-
 
     document.getElementById("score")
       .textContent = score;
 
-
     input.disabled = true;
-
 
     document.getElementById(
       "checkButton"
     ).style.display = "none";
 
-
     document.getElementById(
       "nextButton"
     ).style.display = "block";
 
-  }
-
-  else {
+  } else {
 
     feedback.className =
       "feedback wrong";
 
-
     feedback.textContent =
       "Almost! Listen again and try once more 💛";
 
-
     input.select();
-
   }
-
 }
-
 
 
 /* ======================================
@@ -882,56 +759,41 @@ function nextWord() {
 
   current++;
 
-
   if (
     current >= words.length
   ) {
 
     finishExercise();
-
     return;
-
   }
 
-
   attemptsThisWord = 0;
-
   wordCompleted = false;
-
 
   const input =
     document.getElementById("answer");
 
-
   input.disabled = false;
-
   input.value = "";
-
 
   document.getElementById(
     "feedback"
   ).textContent = "";
-
 
   document.getElementById(
     "checkButton"
   ).style.display =
     "inline-block";
 
-
   document.getElementById(
     "nextButton"
   ).style.display =
     "none";
 
-
   updateExercise();
 
-
   input.focus();
-
 }
-
 
 
 /* ======================================
@@ -945,29 +807,20 @@ function updateExercise() {
   ).textContent =
     `Word ${current + 1} of ${words.length}`;
 
-
   document.getElementById(
     "wordNumber"
   ).textContent =
     `WORD ${current + 1}`;
-
 
   document.getElementById(
     "progressBar"
   ).style.width =
     `${((current + 1) / words.length) * 100}%`;
 
-
-  /*
-  This is the important picture fix.
-  Every word loads its own matching picture.
-  */
-
   document.getElementById(
     "picture"
   ).textContent =
     words[current].picture;
-
 }
 
 
@@ -977,8 +830,57 @@ function updateExercise() {
 
 function recordAttempt() {
 
-  // all the code you copied...
+  const historyKey =
+    "ivy-learning-history";
 
+  let history = [];
+
+  try {
+
+    history =
+      JSON.parse(
+        localStorage.getItem(historyKey)
+      ) || [];
+
+  } catch (error) {
+
+    history = [];
+
+  }
+
+  const attempt = {
+
+    child: "Ivy-Rose",
+
+    subject: "English",
+
+    topic: "Spelling",
+
+    exercise: "Exercise 1",
+
+    exerciseId:
+      "ivy-english-spelling-exercise-01",
+
+    score: score,
+
+    total: words.length,
+
+    percentage:
+      Math.round(
+        (score / words.length) * 100
+      ),
+
+    timestamp:
+      new Date().toISOString()
+
+  };
+
+  history.push(attempt);
+
+  localStorage.setItem(
+    historyKey,
+    JSON.stringify(history)
+  );
 }
 
 
@@ -987,37 +889,32 @@ function recordAttempt() {
    ====================================== */
 
 function finishExercise() {
-/* ======================================
-   FINISH
-   ====================================== */
 
-function finishExercise() {
+  /*
+  IMPORTANT:
+  Record this completed test as a NEW
+  attempt every single time.
+  */
+
+  recordAttempt();
 
   document.getElementById(
     "exerciseScreen"
   ).style.display =
     "none";
 
-
   document.getElementById(
     "resultScreen"
   ).style.display =
     "block";
-
 
   document.getElementById(
     "finalScore"
   ).textContent =
     `${score} / ${words.length}`;
 
-
-  /*
-  PASS = 8/10 correct on first attempt.
-  */
-
   const passed =
     score >= 8;
-
 
   if (passed) {
 
@@ -1026,12 +923,10 @@ function finishExercise() {
     ).textContent =
       "You passed! 🎉";
 
-
     document.getElementById(
       "trophy"
     ).textContent =
       "🏆";
-
 
     if (score === 10) {
 
@@ -1040,21 +935,17 @@ function finishExercise() {
       ).textContent =
         "⭐⭐⭐";
 
-
       document.getElementById(
         "resultMessage"
       ).textContent =
         "WOW, Ivy-Rose! 10 out of 10 on your first tries! Incredible spelling!";
 
-    }
-
-    else {
+    } else {
 
       document.getElementById(
         "starsResult"
       ).textContent =
         "⭐⭐";
-
 
       document.getElementById(
         "resultMessage"
@@ -1063,54 +954,38 @@ function finishExercise() {
 
     }
 
-
-    /*
-    Save best result on THIS device.
-    */
-
     saveProgress(true);
-
-
     makeConfetti();
 
-  }
-
-  else {
+  } else {
 
     document.getElementById(
       "resultTitle"
     ).textContent =
       "Great practice! 💛";
 
-
     document.getElementById(
       "trophy"
     ).textContent =
       "🌟";
-
 
     document.getElementById(
       "starsResult"
     ).textContent =
       "⭐";
 
-
     document.getElementById(
       "resultMessage"
     ).textContent =
       `You got ${score} words correct on your first try. Practise the tricky ones and have another go!`;
 
-
     saveProgress(false);
-
   }
-
 }
 
 
-
 /* ======================================
-   SAVE PROGRESS
+   SAVE BEST PROGRESS
    ====================================== */
 
 function saveProgress(passed) {
@@ -1118,9 +993,7 @@ function saveProgress(passed) {
   const key =
     "ivy-english-spelling-exercise-01";
 
-
   let previous = null;
-
 
   try {
 
@@ -1129,18 +1002,14 @@ function saveProgress(passed) {
         localStorage.getItem(key)
       );
 
-  }
-
-  catch (error) {
+  } catch (error) {
 
     previous = null;
-
   }
 
-
   /*
-  Don't replace a previous higher score
-  with a lower score.
+  Save the new result if it beats
+  her previous best.
   */
 
   if (
@@ -1155,9 +1024,7 @@ function saveProgress(passed) {
       JSON.stringify({
 
         passed: passed,
-
         score: score,
-
         total: words.length
 
       })
@@ -1166,10 +1033,9 @@ function saveProgress(passed) {
 
   }
 
-
   /*
-  If she already passed previously,
-  keep PASS even after a lower retry.
+  Never lose an existing PASS
+  after a lower retry.
   */
 
   else if (
@@ -1184,19 +1050,14 @@ function saveProgress(passed) {
       JSON.stringify({
 
         passed: true,
-
         score: previous.score,
-
         total: words.length
 
       })
 
     );
-
   }
-
 }
-
 
 
 /* ======================================
@@ -1206,64 +1067,48 @@ function saveProgress(passed) {
 function restartExercise() {
 
   current = 0;
-
   score = 0;
-
   attemptsThisWord = 0;
-
   wordCompleted = false;
-
 
   document.getElementById(
     "score"
   ).textContent = "0";
-
 
   document.getElementById(
     "resultScreen"
   ).style.display =
     "none";
 
-
   document.getElementById(
     "exerciseScreen"
   ).style.display =
     "block";
 
-
   const input =
     document.getElementById("answer");
 
-
   input.disabled = false;
-
   input.value = "";
-
 
   document.getElementById(
     "feedback"
   ).textContent = "";
-
 
   document.getElementById(
     "checkButton"
   ).style.display =
     "inline-block";
 
-
   document.getElementById(
     "nextButton"
   ).style.display =
     "none";
 
-
   updateExercise();
 
-
   input.focus();
-
 }
-
 
 
 /* ======================================
@@ -1273,15 +1118,12 @@ function restartExercise() {
 function makeConfetti() {
 
   const pieces = [
-
     "⭐",
     "✨",
     "🌸",
     "💖",
     "🎉"
-
   ];
-
 
   for (
     let i = 0;
@@ -1294,10 +1136,8 @@ function makeConfetti() {
         "div"
       );
 
-
     confetti.className =
       "confetti";
-
 
     confetti.textContent =
       pieces[
@@ -1307,11 +1147,9 @@ function makeConfetti() {
         )
       ];
 
-
     confetti.style.left =
       Math.random() * 100 +
       "vw";
-
 
     confetti.style.fontSize =
       (
@@ -1320,7 +1158,6 @@ function makeConfetti() {
       ) +
       "px";
 
-
     confetti.style.animationDuration =
       (
         2.5 +
@@ -1328,18 +1165,15 @@ function makeConfetti() {
       ) +
       "s";
 
-
     confetti.style.animationDelay =
       (
         Math.random() * .7
       ) +
       "s";
 
-
     document.body.appendChild(
       confetti
     );
-
 
     setTimeout(
       function() {
@@ -1347,11 +1181,8 @@ function makeConfetti() {
       },
       5000
     );
-
   }
-
 }
-
 
 
 /* ======================================
@@ -1374,24 +1205,18 @@ document.getElementById(
         ).style.display ===
         "block";
 
-
       if (nextVisible) {
 
         nextWord();
 
-      }
-
-      else {
+      } else {
 
         checkAnswer();
 
       }
-
     }
-
   }
 );
-
 
 
 /* FIRST SCREEN */
