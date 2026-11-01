@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -45,16 +44,20 @@ header p {
   gap: 20px;
 }
 
-.child {
+.card {
   background: white;
   border-radius: 24px;
   padding: 28px;
   box-shadow: 0 8px 30px rgba(0,0,0,.06);
+}
+
+.child {
   cursor: pointer;
   transition: .2s;
 }
 
-.child:hover {
+.child:hover,
+.clickable:hover {
   transform: translateY(-3px);
 }
 
@@ -71,17 +74,19 @@ header p {
   margin-bottom: 20px;
 }
 
-.open {
+.blue-button {
+  display: inline-block;
   background: #3679df;
   color: white;
   border: none;
+  text-decoration: none;
   border-radius: 12px;
   padding: 13px 18px;
   font-weight: bold;
   cursor: pointer;
 }
 
-.dashboard {
+.page {
   display: none;
 }
 
@@ -90,64 +95,70 @@ header p {
   border: none;
   font-weight: bold;
   cursor: pointer;
-  margin-bottom: 20px;
-  color: #536079;
-}
-
-.student-title {
   margin-bottom: 25px;
+  color: #536079;
+  font-size: 15px;
 }
 
-.subject {
+.page-title {
+  margin-bottom: 28px;
+}
+
+.page-title h1 {
+  margin-bottom: 5px;
+}
+
+.page-title p {
+  color: #81899a;
+  margin-top: 0;
+}
+
+.subject,
+.topic,
+.exercise {
   background: white;
   border-radius: 20px;
-  padding: 22px;
+  padding: 22px 25px;
   margin-bottom: 16px;
   box-shadow: 0 5px 20px rgba(0,0,0,.04);
 }
 
-.subject h3 {
-  margin: 0 0 15px;
-  font-size: 20px;
-}
-
-.test {
+.subject-row,
+.topic-row,
+.exercise-row {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 15px;
-  border-top: 1px solid #edf0f5;
-  padding: 15px 0;
+  gap: 20px;
 }
 
-.test:first-of-type {
-  border-top: 0;
+.subject h3,
+.topic h3,
+.exercise h3 {
+  margin: 0 0 6px;
+  font-size: 20px;
 }
 
-.test-name {
-  font-weight: bold;
-}
-
-.test-description {
-  font-size: 13px;
+.description {
   color: #858da0;
-  margin-top: 4px;
-}
-
-.start {
-  display: inline-block;
-  text-decoration: none;
-  background: #3679df;
-  color: white;
-  padding: 10px 17px;
-  border-radius: 10px;
-  font-weight: bold;
-  white-space: nowrap;
+  font-size: 14px;
 }
 
 .empty {
   color: #9aa1b0;
   font-size: 14px;
+  margin-top: 8px;
+}
+
+.small-label {
+  display: inline-block;
+  background: #eef4ff;
+  color: #3679df;
+  border-radius: 20px;
+  padding: 6px 10px;
+  font-size: 12px;
+  font-weight: bold;
+  margin-bottom: 10px;
 }
 
 @media (max-width: 650px) {
@@ -159,7 +170,9 @@ header p {
     font-size: 27px;
   }
 
-  .test {
+  .subject-row,
+  .topic-row,
+  .exercise-row {
     align-items: flex-start;
   }
 }
@@ -170,7 +183,7 @@ header p {
 
 <header>
   <h1>✨ Learning Hub ✨</h1>
-  <p>Choose your dashboard</p>
+  <p>Learn • Practise • Master</p>
 </header>
 
 <div class="container">
@@ -180,18 +193,18 @@ header p {
 
     <div class="children">
 
-      <div class="child" onclick="openDashboard('ivy')">
+      <div class="card child" onclick="showPage('ivy')">
         <div class="avatar">👧🏼</div>
         <h2>Ivy-Rose</h2>
         <div class="grade">Grade 2</div>
-        <button class="open">OPEN DASHBOARD →</button>
+        <button class="blue-button">OPEN DASHBOARD →</button>
       </div>
 
-      <div class="child" onclick="openDashboard('charlotte')">
+      <div class="card child" onclick="showPage('charlotte')">
         <div class="avatar">👧🏻</div>
         <h2>Charlotte</h2>
         <div class="grade">Grade 1</div>
-        <button class="open">OPEN DASHBOARD →</button>
+        <button class="blue-button">OPEN DASHBOARD →</button>
       </div>
 
     </div>
@@ -199,132 +212,336 @@ header p {
   </div>
 
 
-  <!-- IVY DASHBOARD -->
-  <div id="ivy" class="dashboard">
+  <!-- ====================== -->
+  <!-- IVY DASHBOARD          -->
+  <!-- ====================== -->
 
-    <button class="back" onclick="goHome()">← BACK</button>
+  <div id="ivy" class="page">
 
-    <div class="student-title">
+    <button class="back" onclick="showPage('home')">← BACK</button>
+
+    <div class="page-title">
       <h1>👧🏼 Ivy-Rose</h1>
-      <p>Grade 2</p>
+      <p>Grade 2 • Choose a subject</p>
     </div>
 
 
     <div class="subject">
-      <h3>📖 English</h3>
-
-      <div class="test">
+      <div class="subject-row">
         <div>
-          <div class="test-name">Spelling Test #1</div>
-          <div class="test-description">
-            Words 1–10 • Listen & spell
+          <h3>📖 English</h3>
+          <div class="description">Spelling, grammar, reading & more</div>
+        </div>
+
+        <button class="blue-button" onclick="showPage('ivy-english')">
+          OPEN →
+        </button>
+      </div>
+    </div>
+
+
+    <div class="subject">
+      <div class="subject-row">
+        <div>
+          <h3>🔢 Maths</h3>
+          <div class="description">Numbers, calculations, shapes & more</div>
+        </div>
+
+        <button class="blue-button" onclick="showPage('ivy-maths')">
+          OPEN →
+        </button>
+      </div>
+    </div>
+
+
+    <div class="subject">
+      <h3>🔬 Science</h3>
+      <div class="empty">Topics coming soon.</div>
+    </div>
+
+
+    <div class="subject">
+      <h3>🌍 Geography</h3>
+      <div class="empty">Topics coming soon.</div>
+    </div>
+
+
+    <div class="subject">
+      <h3>🇫🇷 French</h3>
+      <div class="empty">Topics coming soon.</div>
+    </div>
+
+  </div>
+
+
+  <!-- IVY ENGLISH TOPICS -->
+
+  <div id="ivy-english" class="page">
+
+    <button class="back" onclick="showPage('ivy')">
+      ← IVY-ROSE
+    </button>
+
+    <div class="page-title">
+      <h1>📖 English</h1>
+      <p>Ivy-Rose • Choose a topic</p>
+    </div>
+
+
+    <div class="topic">
+      <div class="topic-row">
+
+        <div>
+          <div class="small-label">TOPIC</div>
+          <h3>🔤 Spelling</h3>
+          <div class="description">
+            Listen, spell and practise new words
           </div>
         </div>
 
-        <a class="start" href="ivy/english/spelling/exercise-01.html">
-          START
+        <button class="blue-button"
+                onclick="showPage('ivy-english-spelling')">
+          OPEN →
+        </button>
+
+      </div>
+    </div>
+
+
+    <div class="topic">
+      <h3>🎵 Rhyming Words</h3>
+      <div class="empty">Exercises coming soon.</div>
+    </div>
+
+
+    <div class="topic">
+      <h3>🔗 Conjunctions</h3>
+      <div class="empty">Exercises coming soon.</div>
+    </div>
+
+
+    <div class="topic">
+      <h3>📍 Prepositions</h3>
+      <div class="empty">Exercises coming soon.</div>
+    </div>
+
+  </div>
+
+
+  <!-- IVY SPELLING EXERCISES -->
+
+  <div id="ivy-english-spelling" class="page">
+
+    <button class="back" onclick="showPage('ivy-english')">
+      ← ENGLISH
+    </button>
+
+    <div class="page-title">
+      <h1>🔤 Spelling</h1>
+      <p>Ivy-Rose • Choose an exercise</p>
+    </div>
+
+
+    <div class="exercise">
+
+      <div class="exercise-row">
+
+        <div>
+          <div class="small-label">EXERCISE 1</div>
+          <h3>Words 1–10</h3>
+
+          <div class="description">
+            🔊 Listen to each word and spell it correctly.
+          </div>
+        </div>
+
+        <a class="blue-button"
+           href="ivy/english/spelling/exercise-01.html">
+          START →
         </a>
+
       </div>
 
     </div>
 
 
-    <div class="subject">
-      <h3>🔢 Maths</h3>
-      <div class="empty">No tests yet.</div>
+    <div class="exercise">
+      <div>
+        <div class="small-label">EXERCISE 2</div>
+        <h3>Words 11–20</h3>
+        <div class="empty">Coming soon.</div>
+      </div>
     </div>
 
 
-    <div class="subject">
-      <h3>🔬 Science</h3>
-      <div class="empty">No tests yet.</div>
+    <div class="exercise">
+      <div>
+        <div class="small-label">EXERCISE 3</div>
+        <h3>Words 21–30</h3>
+        <div class="empty">Coming soon.</div>
+      </div>
+    </div>
+
+  </div>
+
+
+  <!-- IVY MATHS TOPICS -->
+
+  <div id="ivy-maths" class="page">
+
+    <button class="back" onclick="showPage('ivy')">
+      ← IVY-ROSE
+    </button>
+
+    <div class="page-title">
+      <h1>🔢 Maths</h1>
+      <p>Ivy-Rose • Choose a topic</p>
     </div>
 
 
-    <div class="subject">
-      <h3>🌍 Geography</h3>
-      <div class="empty">No tests yet.</div>
+    <div class="topic">
+      <h3>🔢 Numbers to 100</h3>
+      <div class="empty">Exercises coming soon.</div>
     </div>
 
 
-    <div class="subject">
-      <h3>🇫🇷 French</h3>
-      <div class="empty">No tests yet.</div>
+    <div class="topic">
+      <h3>➕ Addition</h3>
+      <div class="empty">Exercises coming soon.</div>
+    </div>
+
+
+    <div class="topic">
+      <h3>🧊 3D Shapes</h3>
+      <div class="empty">Exercises coming soon.</div>
     </div>
 
   </div>
 
 
 
-  <!-- CHARLOTTE DASHBOARD -->
-  <div id="charlotte" class="dashboard">
+  <!-- ====================== -->
+  <!-- CHARLOTTE DASHBOARD    -->
+  <!-- ====================== -->
 
-    <button class="back" onclick="goHome()">← BACK</button>
+  <div id="charlotte" class="page">
 
-    <div class="student-title">
+    <button class="back" onclick="showPage('home')">← BACK</button>
+
+    <div class="page-title">
       <h1>👧🏻 Charlotte</h1>
-      <p>Grade 1</p>
+      <p>Grade 1 • Choose a subject</p>
     </div>
 
 
     <div class="subject">
-      <h3>📖 English</h3>
-      <div class="empty">No tests yet.</div>
+      <div class="subject-row">
+
+        <div>
+          <h3>📖 English</h3>
+          <div class="description">
+            Phonics, spelling, reading & more
+          </div>
+        </div>
+
+        <button class="blue-button"
+                onclick="showPage('charlotte-english')">
+          OPEN →
+        </button>
+
+      </div>
     </div>
 
 
     <div class="subject">
       <h3>🔢 Maths</h3>
-      <div class="empty">No tests yet.</div>
+      <div class="empty">Topics coming soon.</div>
     </div>
 
 
     <div class="subject">
       <h3>🔬 Science</h3>
-      <div class="empty">No tests yet.</div>
+      <div class="empty">Topics coming soon.</div>
     </div>
 
 
     <div class="subject">
       <h3>🌍 Geography</h3>
-      <div class="empty">No tests yet.</div>
+      <div class="empty">Topics coming soon.</div>
     </div>
 
 
     <div class="subject">
       <h3>🇫🇷 French</h3>
-      <div class="empty">No tests yet.</div>
+      <div class="empty">Topics coming soon.</div>
     </div>
 
   </div>
+
+
+  <!-- CHARLOTTE ENGLISH -->
+
+  <div id="charlotte-english" class="page">
+
+    <button class="back" onclick="showPage('charlotte')">
+      ← CHARLOTTE
+    </button>
+
+    <div class="page-title">
+      <h1>📖 English</h1>
+      <p>Charlotte • Choose a topic</p>
+    </div>
+
+
+    <div class="topic">
+      <h3>🔤 Phonics</h3>
+      <div class="empty">Exercises coming soon.</div>
+    </div>
+
+
+    <div class="topic">
+      <h3>🎵 Rhyming Words</h3>
+      <div class="empty">Exercises coming soon.</div>
+    </div>
+
+
+    <div class="topic">
+      <h3>✏️ Writing</h3>
+      <div class="empty">Exercises coming soon.</div>
+    </div>
+
+  </div>
+
 
 </div>
 
 
 <script>
 
-function openDashboard(child) {
+function showPage(pageId) {
 
-  document.getElementById("home").style.display = "none";
+  const pages = [
+    "home",
+    "ivy",
+    "ivy-english",
+    "ivy-english-spelling",
+    "ivy-maths",
+    "charlotte",
+    "charlotte-english"
+  ];
 
-  document.getElementById("ivy").style.display = "none";
-  document.getElementById("charlotte").style.display = "none";
+  pages.forEach(function(page) {
+    document.getElementById(page).style.display = "none";
+  });
 
-  document.getElementById(child).style.display = "block";
-
-  window.scrollTo(0,0);
-}
-
-
-function goHome() {
-
-  document.getElementById("ivy").style.display = "none";
-  document.getElementById("charlotte").style.display = "none";
-
-  document.getElementById("home").style.display = "block";
+  document.getElementById(pageId).style.display = "block";
 
   window.scrollTo(0,0);
 }
+
+
+/* Show home when site first opens */
+showPage("home");
 
 </script>
 
