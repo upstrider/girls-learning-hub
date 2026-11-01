@@ -554,8 +554,19 @@ function showPage(pageId) {
 }
 
 
-/* Show home when site first opens */
-showPage("home");
+/* Open the requested page when returning from an exercise */
+
+const requestedPage =
+  window.location.hash.replace("#", "");
+
+if (
+  requestedPage &&
+  document.getElementById(requestedPage)
+) {
+  showPage(requestedPage);
+} else {
+  showPage("home");
+}
 
 </script>
 
