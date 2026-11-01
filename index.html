@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Learning Hub</title>
+<title>Girls Learning Hub</title>
 
 <style>
 
@@ -15,13 +15,23 @@
 body {
   margin: 0;
   font-family: Arial, Helvetica, sans-serif;
-  background: #f7f8fc;
+  background:
+    radial-gradient(circle at 10% 5%, #fff0f7 0, transparent 25%),
+    radial-gradient(circle at 90% 8%, #eaf5ff 0, transparent 25%),
+    radial-gradient(circle at 50% 100%, #fff7d9 0, transparent 30%),
+    #f8f9fd;
   color: #182033;
+  min-height: 100vh;
+}
+
+button,
+a {
+  font-family: inherit;
 }
 
 header {
-  background: white;
-  padding: 32px 20px;
+  background: rgba(255,255,255,.9);
+  padding: 28px 20px;
   text-align: center;
   border-bottom: 1px solid #e7e9ef;
 }
@@ -34,48 +44,104 @@ header h1 {
 header p {
   margin: 8px 0 0;
   color: #7b8497;
+  font-weight: 700;
 }
 
 .container {
   max-width: 900px;
   margin: 35px auto;
-  padding: 0 20px 50px;
+  padding: 0 20px 60px;
+}
+
+.page {
+  display: none;
+}
+
+
+/* =========================================
+   HOME
+   ========================================= */
+
+.home-intro {
+  text-align: center;
+  margin: 20px auto 35px;
+}
+
+.home-icon {
+  font-size: 55px;
+}
+
+.home-intro h2 {
+  font-size: 30px;
+  margin: 10px 0 8px;
+}
+
+.home-intro p {
+  color: #81899a;
+  font-weight: 700;
+  margin: 0;
 }
 
 .children {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 20px;
+  gap: 22px;
 }
 
 .card {
   background: white;
-  border-radius: 24px;
-  padding: 28px;
-  box-shadow: 0 8px 30px rgba(0,0,0,.06);
+  border-radius: 28px;
+  padding: 30px;
+  box-shadow: 0 12px 35px rgba(42,55,90,.08);
 }
 
 .child {
   cursor: pointer;
-  transition: .2s;
+  transition: .2s ease;
+  text-align: center;
+  border: 3px solid transparent;
 }
 
-.child:hover,
-.clickable:hover {
-  transform: translateY(-3px);
+.child:hover {
+  transform: translateY(-4px);
 }
 
-.avatar {
-  font-size: 50px;
+.ivy-child:hover {
+  border-color: #ffc7dc;
+}
+
+.charlotte-child:hover {
+  border-color: #b9ddff;
+}
+
+.avatar-circle {
+  width: 88px;
+  height: 88px;
+  margin: auto;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 48px;
+}
+
+.ivy-avatar {
+  background: #ffe6f0;
+}
+
+.charlotte-avatar {
+  background: #e7f3ff;
 }
 
 .child h2 {
-  margin: 12px 0 5px;
+  margin: 15px 0 5px;
+  font-size: 25px;
 }
 
 .grade {
   color: #81899a;
   margin-bottom: 20px;
+  font-weight: 700;
 }
 
 .blue-button {
@@ -84,10 +150,227 @@ header p {
   color: white;
   border: none;
   text-decoration: none;
-  border-radius: 12px;
-  padding: 13px 18px;
-  font-weight: bold;
+  border-radius: 14px;
+  padding: 13px 19px;
+  font-weight: 900;
   cursor: pointer;
+}
+
+.ivy-start {
+  background: linear-gradient(135deg, #ed6fa3, #a76ee8);
+}
+
+.charlotte-start {
+  background: linear-gradient(135deg, #4c9fe8, #6d7ee8);
+}
+
+
+/* =========================================
+   CHILD TODAY PAGE
+   ========================================= */
+
+.back {
+  background: none;
+  border: none;
+  font-weight: 900;
+  cursor: pointer;
+  margin-bottom: 20px;
+  color: #657087;
+  font-size: 14px;
+}
+
+.today-hero {
+  background: white;
+  border-radius: 30px;
+  padding: 30px;
+  box-shadow: 0 14px 40px rgba(42,55,90,.08);
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.today-avatar {
+  font-size: 48px;
+}
+
+.today-hero h1 {
+  margin: 8px 0 5px;
+  font-size: 32px;
+}
+
+.today-date {
+  color: #858da0;
+  font-weight: 800;
+  font-size: 16px;
+}
+
+.quote-card {
+  margin-top: 22px;
+  border-radius: 20px;
+  padding: 18px 20px;
+  line-height: 1.5;
+}
+
+.ivy-quote {
+  background: #fff1f6;
+}
+
+.charlotte-quote {
+  background: #eef7ff;
+}
+
+.quote-label {
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: 1px;
+  color: #8c7aa4;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+
+.quote-text {
+  font-size: 16px;
+  font-weight: 900;
+}
+
+.today-progress {
+  margin-top: 18px;
+  font-size: 13px;
+  font-weight: 900;
+  color: #7b8497;
+}
+
+
+/* =========================================
+   TODAY'S WORK
+   ========================================= */
+
+.section-heading {
+  margin: 32px 0 15px;
+}
+
+.section-heading h2 {
+  margin: 0 0 5px;
+  font-size: 24px;
+}
+
+.section-heading p {
+  margin: 0;
+  color: #858da0;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.assignment-loading,
+.assignment-empty,
+.assignment-error {
+  background: white;
+  border-radius: 22px;
+  padding: 28px;
+  text-align: center;
+  color: #8a93a5;
+  font-weight: 800;
+  box-shadow: 0 8px 25px rgba(42,55,90,.05);
+}
+
+.assignment-empty-icon {
+  font-size: 38px;
+  margin-bottom: 8px;
+}
+
+.assignment-subject {
+  margin-bottom: 22px;
+}
+
+.assignment-subject-title {
+  font-size: 15px;
+  font-weight: 900;
+  letter-spacing: .5px;
+  margin-bottom: 10px;
+  padding-left: 4px;
+}
+
+.assignment-card {
+  background: white;
+  border-radius: 21px;
+  padding: 18px 20px;
+  margin-bottom: 11px;
+  box-shadow: 0 7px 25px rgba(42,55,90,.06);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+}
+
+.assignment-left {
+  min-width: 0;
+}
+
+.assignment-number {
+  font-size: 11px;
+  font-weight: 900;
+  color: #9aa2b1;
+  text-transform: uppercase;
+  letter-spacing: .8px;
+  margin-bottom: 5px;
+}
+
+.assignment-topic {
+  font-size: 13px;
+  font-weight: 900;
+  color: #7c68a2;
+  margin-bottom: 4px;
+}
+
+.assignment-name {
+  font-size: 18px;
+  font-weight: 900;
+  line-height: 1.25;
+}
+
+.start-assignment {
+  flex-shrink: 0;
+  text-decoration: none;
+  color: white;
+  background: #3679df;
+  padding: 12px 16px;
+  border-radius: 13px;
+  font-size: 13px;
+  font-weight: 900;
+}
+
+.ivy-assignment .start-assignment {
+  background: linear-gradient(135deg, #ed6fa3, #a76ee8);
+}
+
+.charlotte-assignment .start-assignment {
+  background: linear-gradient(135deg, #4c9fe8, #6d7ee8);
+}
+
+
+/* =========================================
+   LIBRARY
+   ========================================= */
+
+.library-divider {
+  height: 1px;
+  background: #e4e7ee;
+  margin: 38px 0 28px;
+}
+
+.library-intro {
+  margin-bottom: 18px;
+}
+
+.library-intro h2 {
+  margin: 0 0 5px;
+  font-size: 22px;
+}
+
+.library-intro p {
+  margin: 0;
+  color: #8a92a3;
+  font-size: 14px;
+  font-weight: 700;
 }
 
 .dashboard-button {
@@ -98,36 +381,9 @@ header p {
   text-decoration: none;
   border-radius: 12px;
   padding: 11px 16px;
-  font-weight: bold;
+  font-weight: 900;
   cursor: pointer;
-  margin-bottom: 22px;
-}
-
-.page {
-  display: none;
-}
-
-.back {
-  background: none;
-  border: none;
-  font-weight: bold;
-  cursor: pointer;
-  margin-bottom: 25px;
-  color: #536079;
-  font-size: 15px;
-}
-
-.page-title {
-  margin-bottom: 28px;
-}
-
-.page-title h1 {
-  margin-bottom: 5px;
-}
-
-.page-title p {
-  color: #81899a;
-  margin-top: 0;
+  margin: 0 0 20px;
 }
 
 .subject,
@@ -174,18 +430,66 @@ header p {
   border-radius: 20px;
   padding: 6px 10px;
   font-size: 12px;
-  font-weight: bold;
+  font-weight: 900;
   margin-bottom: 10px;
 }
 
+.page-title {
+  margin-bottom: 28px;
+}
+
+.page-title h1 {
+  margin-bottom: 5px;
+}
+
+.page-title p {
+  color: #81899a;
+  margin-top: 0;
+}
+
+
+/* =========================================
+   MOBILE / IPAD
+   ========================================= */
+
 @media (max-width: 650px) {
+
+  header {
+    padding: 22px 15px;
+  }
+
+  header h1 {
+    font-size: 26px;
+  }
+
+  .container {
+    margin-top: 22px;
+    padding-left: 13px;
+    padding-right: 13px;
+  }
 
   .children {
     grid-template-columns: 1fr;
   }
 
-  header h1 {
+  .card {
+    padding: 25px;
+  }
+
+  .today-hero {
+    padding: 24px 18px;
+  }
+
+  .today-hero h1 {
     font-size: 27px;
+  }
+
+  .assignment-card {
+    padding: 17px;
+  }
+
+  .assignment-name {
+    font-size: 16px;
   }
 
   .subject-row,
@@ -205,13 +509,9 @@ header p {
 
 <header>
 
-  <h1>
-    ✨ Learning Hub ✨
-  </h1>
+  <h1>✨ Girls Learning Hub ✨</h1>
 
-  <p>
-    Learn • Practise • Master
-  </p>
+  <p>Learn • Practise • Grow</p>
 
 </header>
 
@@ -219,21 +519,38 @@ header p {
 <div class="container">
 
 
-<!-- ======================================
-     HOME
-     ====================================== -->
+<!-- =========================================
+     HOME — CHOOSE NAME
+     ========================================= -->
 
 <div id="home">
+
+  <div class="home-intro">
+
+    <div class="home-icon">
+      🌈
+    </div>
+
+    <h2>
+      Who's learning today?
+    </h2>
+
+    <p>
+      Choose your name to start your day!
+    </p>
+
+  </div>
+
 
   <div class="children">
 
 
     <div
-      class="card child"
+      class="card child ivy-child"
       onclick="showPage('ivy')"
     >
 
-      <div class="avatar">
+      <div class="avatar-circle ivy-avatar">
         👧🏼
       </div>
 
@@ -245,19 +562,20 @@ header p {
         Grade 2
       </div>
 
-      <button class="blue-button">
-        OPEN LEARNING →
+      <button class="blue-button ivy-start">
+        START MY DAY →
       </button>
 
     </div>
 
 
+
     <div
-      class="card child"
+      class="card child charlotte-child"
       onclick="showPage('charlotte')"
     >
 
-      <div class="avatar">
+      <div class="avatar-circle charlotte-avatar">
         👧🏻
       </div>
 
@@ -269,8 +587,8 @@ header p {
         Grade 1
       </div>
 
-      <button class="blue-button">
-        OPEN LEARNING →
+      <button class="blue-button charlotte-start">
+        START MY DAY →
       </button>
 
     </div>
@@ -282,9 +600,9 @@ header p {
 
 
 
-<!-- ======================================
-     IVY-ROSE
-     ====================================== -->
+<!-- =========================================
+     IVY-ROSE — TODAY
+     ========================================= -->
 
 <div
   id="ivy"
@@ -295,18 +613,87 @@ header p {
     class="back"
     onclick="showPage('home')"
   >
-    ← BACK
+    ← CHOOSE MY NAME
   </button>
 
 
-  <div class="page-title">
+  <div class="today-hero">
+
+    <div class="today-avatar">
+      🌸
+    </div>
 
     <h1>
-      👧🏼 Ivy-Rose
+      Good morning, Ivy-Rose!
     </h1>
 
+    <div
+      id="ivyDate"
+      class="today-date"
+    >
+      Today
+    </div>
+
+
+    <div class="quote-card ivy-quote">
+
+      <div class="quote-label">
+        🌱 Today's Growth Thought
+      </div>
+
+      <div
+        id="ivyQuote"
+        class="quote-text"
+      ></div>
+
+    </div>
+
+
+    <div
+      id="ivyTodayProgress"
+      class="today-progress"
+    >
+      ☀️ Let's see what Mum has planned for today!
+    </div>
+
+  </div>
+
+
+
+  <div class="section-heading">
+
+    <h2>
+      ☀️ Today's Assignments
+    </h2>
+
     <p>
-      Grade 2 • Choose a subject
+      One at a time. You've got this!
+    </p>
+
+  </div>
+
+
+  <div id="ivyAssignments">
+
+    <div class="assignment-loading">
+      Loading today's work... ✨
+    </div>
+
+  </div>
+
+
+
+  <div class="library-divider"></div>
+
+
+  <div class="library-intro">
+
+    <h2>
+      📚 My Learning Library
+    </h2>
+
+    <p>
+      Want to practise something else? Everything you've learned is still here.
     </p>
 
   </div>
@@ -316,11 +703,12 @@ header p {
     class="dashboard-button"
     href="ivy-dashboard.html"
   >
-    📊 VIEW IVY-ROSE'S PROGRESS
+    ⭐ MY PROGRESS
   </a>
 
 
-  <!-- ENGLISH -->
+
+  <!-- IVY ENGLISH -->
 
   <div class="subject">
 
@@ -338,7 +726,6 @@ header p {
 
       </div>
 
-
       <button
         class="blue-button"
         onclick="showPage('ivy-english')"
@@ -351,7 +738,8 @@ header p {
   </div>
 
 
-  <!-- MATHS -->
+
+  <!-- IVY MATHS -->
 
   <div class="subject">
 
@@ -369,7 +757,6 @@ header p {
 
       </div>
 
-
       <button
         class="blue-button"
         onclick="showPage('ivy-maths')"
@@ -380,6 +767,7 @@ header p {
     </div>
 
   </div>
+
 
 
   <div class="subject">
@@ -395,6 +783,7 @@ header p {
   </div>
 
 
+
   <div class="subject">
 
     <h3>
@@ -406,6 +795,7 @@ header p {
     </div>
 
   </div>
+
 
 
   <div class="subject">
@@ -420,14 +810,13 @@ header p {
 
   </div>
 
-
 </div>
 
 
 
-<!-- ======================================
+<!-- =========================================
      IVY ENGLISH
-     ====================================== -->
+     ========================================= -->
 
 <div
   id="ivy-english"
@@ -453,6 +842,7 @@ header p {
     </p>
 
   </div>
+
 
 
   <div class="topic">
@@ -488,6 +878,7 @@ header p {
   </div>
 
 
+
   <div class="topic">
 
     <h3>
@@ -499,6 +890,7 @@ header p {
     </div>
 
   </div>
+
 
 
   <div class="topic">
@@ -514,6 +906,7 @@ header p {
   </div>
 
 
+
   <div class="topic">
 
     <h3>
@@ -526,14 +919,13 @@ header p {
 
   </div>
 
-
 </div>
 
 
 
-<!-- ======================================
+<!-- =========================================
      IVY SPELLING
-     ====================================== -->
+     ========================================= -->
 
 <div
   id="ivy-english-spelling"
@@ -561,7 +953,6 @@ header p {
   </div>
 
 
-  <!-- EXERCISE 1 -->
 
   <div class="exercise">
 
@@ -596,7 +987,6 @@ header p {
   </div>
 
 
-  <!-- EXERCISE 2 -->
 
   <div class="exercise">
 
@@ -631,7 +1021,6 @@ header p {
   </div>
 
 
-  <!-- EXERCISE 3 -->
 
   <div class="exercise">
 
@@ -653,14 +1042,13 @@ header p {
 
   </div>
 
-
 </div>
 
 
 
-<!-- ======================================
+<!-- =========================================
      IVY MATHS
-     ====================================== -->
+     ========================================= -->
 
 <div
   id="ivy-maths"
@@ -688,6 +1076,7 @@ header p {
   </div>
 
 
+
   <div class="topic">
 
     <h3>
@@ -699,6 +1088,7 @@ header p {
     </div>
 
   </div>
+
 
 
   <div class="topic">
@@ -714,6 +1104,7 @@ header p {
   </div>
 
 
+
   <div class="topic">
 
     <h3>
@@ -726,14 +1117,13 @@ header p {
 
   </div>
 
-
 </div>
 
 
 
-<!-- ======================================
-     CHARLOTTE
-     ====================================== -->
+<!-- =========================================
+     CHARLOTTE — TODAY
+     ========================================= -->
 
 <div
   id="charlotte"
@@ -744,18 +1134,87 @@ header p {
     class="back"
     onclick="showPage('home')"
   >
-    ← BACK
+    ← CHOOSE MY NAME
   </button>
 
 
-  <div class="page-title">
+  <div class="today-hero">
+
+    <div class="today-avatar">
+      🌈
+    </div>
 
     <h1>
-      👧🏻 Charlotte
+      Good morning, Charlotte!
     </h1>
 
+    <div
+      id="charlotteDate"
+      class="today-date"
+    >
+      Today
+    </div>
+
+
+    <div class="quote-card charlotte-quote">
+
+      <div class="quote-label">
+        🌱 Today's Growth Thought
+      </div>
+
+      <div
+        id="charlotteQuote"
+        class="quote-text"
+      ></div>
+
+    </div>
+
+
+    <div
+      id="charlotteTodayProgress"
+      class="today-progress"
+    >
+      ☀️ Let's see what Mum has planned for today!
+    </div>
+
+  </div>
+
+
+
+  <div class="section-heading">
+
+    <h2>
+      ☀️ Today's Assignments
+    </h2>
+
     <p>
-      Grade 1 • Choose a subject
+      One at a time. You've got this!
+    </p>
+
+  </div>
+
+
+  <div id="charlotteAssignments">
+
+    <div class="assignment-loading">
+      Loading today's work... ✨
+    </div>
+
+  </div>
+
+
+
+  <div class="library-divider"></div>
+
+
+  <div class="library-intro">
+
+    <h2>
+      📚 My Learning Library
+    </h2>
+
+    <p>
+      Want to practise something else? Everything you've learned is still here.
     </p>
 
   </div>
@@ -765,11 +1224,12 @@ header p {
     class="dashboard-button"
     href="charlotte-dashboard.html"
   >
-    📊 VIEW CHARLOTTE'S PROGRESS
+    ⭐ MY PROGRESS
   </a>
 
 
-  <!-- ENGLISH -->
+
+  <!-- CHARLOTTE ENGLISH -->
 
   <div class="subject">
 
@@ -800,7 +1260,8 @@ header p {
   </div>
 
 
-  <!-- MATHS -->
+
+  <!-- CHARLOTTE MATHS -->
 
   <div class="subject">
 
@@ -831,6 +1292,7 @@ header p {
   </div>
 
 
+
   <div class="subject">
 
     <h3>
@@ -842,6 +1304,7 @@ header p {
     </div>
 
   </div>
+
 
 
   <div class="subject">
@@ -857,6 +1320,7 @@ header p {
   </div>
 
 
+
   <div class="subject">
 
     <h3>
@@ -869,14 +1333,13 @@ header p {
 
   </div>
 
-
 </div>
 
 
 
-<!-- ======================================
+<!-- =========================================
      CHARLOTTE ENGLISH
-     ====================================== -->
+     ========================================= -->
 
 <div
   id="charlotte-english"
@@ -904,6 +1367,7 @@ header p {
   </div>
 
 
+
   <div class="topic">
 
     <h3>
@@ -915,6 +1379,7 @@ header p {
     </div>
 
   </div>
+
 
 
   <div class="topic">
@@ -930,6 +1395,7 @@ header p {
   </div>
 
 
+
   <div class="topic">
 
     <h3>
@@ -942,14 +1408,13 @@ header p {
 
   </div>
 
-
 </div>
 
 
 
-<!-- ======================================
+<!-- =========================================
      CHARLOTTE MATHS
-     ====================================== -->
+     ========================================= -->
 
 <div
   id="charlotte-maths"
@@ -977,7 +1442,6 @@ header p {
   </div>
 
 
-  <!-- NUMBERS 1–100 -->
 
   <div class="topic">
 
@@ -1012,6 +1476,7 @@ header p {
   </div>
 
 
+
   <div class="topic">
 
     <h3>
@@ -1023,6 +1488,7 @@ header p {
     </div>
 
   </div>
+
 
 
   <div class="topic">
@@ -1037,14 +1503,13 @@ header p {
 
   </div>
 
-
 </div>
 
 
 
-<!-- ======================================
+<!-- =========================================
      CHARLOTTE NUMBERS 1–100
-     ====================================== -->
+     ========================================= -->
 
 <div
   id="charlotte-maths-numbers"
@@ -1072,7 +1537,6 @@ header p {
   </div>
 
 
-  <!-- NUMBER BOARD -->
 
   <div class="exercise">
 
@@ -1106,20 +1570,18 @@ header p {
 
   </div>
 
-
 </div>
 
 
 </div>
 
 
+
+<!-- =========================================
+     NORMAL PAGE NAVIGATION
+     ========================================= -->
 
 <script>
-
-
-/* ======================================
-   PAGE NAVIGATION
-   ====================================== */
 
 function showPage(pageId) {
 
@@ -1173,6 +1635,17 @@ function showPage(pageId) {
   }
 
 
+  if (
+    pageId === "ivy" ||
+    pageId === "charlotte"
+  ) {
+
+    window.location.hash =
+      pageId;
+
+  }
+
+
   window.scrollTo(
     0,
     0
@@ -1181,10 +1654,11 @@ function showPage(pageId) {
 }
 
 
-/* ======================================
+
+/* =========================================
    OPEN REQUESTED PAGE WHEN RETURNING
    FROM AN EXERCISE
-   ====================================== */
+   ========================================= */
 
 const requestedPage =
   window.location.hash.replace(
@@ -1213,6 +1687,673 @@ else {
   );
 
 }
+
+</script>
+
+
+
+<!-- =========================================
+     FIREBASE + TODAY'S ASSIGNMENTS
+     ========================================= -->
+
+<script type="module">
+
+
+import {
+  initializeApp
+} from "https://www.gstatic.com/firebasejs/12.5.0/firebase-app.js";
+
+
+import {
+  getFirestore,
+  doc,
+  getDoc
+} from "https://www.gstatic.com/firebasejs/12.5.0/firebase-firestore.js";
+
+
+
+const firebaseConfig = {
+
+  apiKey:
+    "AIzaSyBri62MSDCTXF9meH_5Jnm8kbZFytoHwXU",
+
+  authDomain:
+    "girls-learning-hub.firebaseapp.com",
+
+  projectId:
+    "girls-learning-hub",
+
+  storageBucket:
+    "girls-learning-hub.firebasestorage.app",
+
+  messagingSenderId:
+    "578155016403",
+
+  appId:
+    "1:578155016403:web:ffe763fe308574d31fe426"
+
+};
+
+
+
+const app =
+  initializeApp(
+    firebaseConfig
+  );
+
+
+const db =
+  getFirestore(
+    app
+  );
+
+
+
+/* =========================================
+   TODAY'S DATE
+   ========================================= */
+
+function getLocalDateKey() {
+
+  const now =
+    new Date();
+
+
+  const year =
+    now.getFullYear();
+
+
+  const month =
+    String(
+      now.getMonth() + 1
+    ).padStart(
+      2,
+      "0"
+    );
+
+
+  const day =
+    String(
+      now.getDate()
+    ).padStart(
+      2,
+      "0"
+    );
+
+
+  return `${year}-${month}-${day}`;
+
+}
+
+
+
+const todayKey =
+  getLocalDateKey();
+
+
+const todayPretty =
+  new Intl.DateTimeFormat(
+    "en-GB",
+    {
+      weekday: "long",
+      day: "numeric",
+      month: "long",
+      year: "numeric"
+    }
+  ).format(
+    new Date()
+  );
+
+
+document.getElementById(
+  "ivyDate"
+).textContent =
+  todayPretty;
+
+
+document.getElementById(
+  "charlotteDate"
+).textContent =
+  todayPretty;
+
+
+
+/* =========================================
+   DAILY GROWTH QUOTES
+   ========================================= */
+
+const growthQuotes = [
+
+  "Every expert was once a beginner. Keep going! 🌱",
+
+  "Mistakes mean your brain is learning something new. 🧠✨",
+
+  "You don't have to be perfect. You just have to keep trying. 💪",
+
+  "The more you practise, the stronger your skills become. ⭐",
+
+  "You can learn anything when you give yourself time to practise. 🌈",
+
+  "Hard things become easier every time you try them. 🚀",
+
+  "Today is another chance to become better at something. ☀️",
+
+  "Be proud of yourself for trying, even before you get it right. 💛",
+
+  "Your brain grows when you challenge it. 🧠🌱",
+
+  "Small steps every day create amazing results. 👣✨",
+
+  "Don't say 'I can't do it.' Say 'I can't do it yet.' 🌟",
+
+  "Practice is how ordinary skills become extraordinary skills. 🏆",
+
+  "Learning something new is a superpower. ⚡",
+
+  "The only person you need to beat is the person you were yesterday. 🌸",
+
+  "A challenge is just your brain getting stronger. 💪🧠",
+
+  "You become good at things by doing them again and again. ⭐",
+
+  "Believe you can improve, then prove it to yourself. 🌈",
+
+  "One difficult question can teach you more than ten easy ones. 💡",
+
+  "Keep trying until the thing that felt hard starts to feel easy. 🚀",
+
+  "Your effort today is building the person you'll become tomorrow. 🌱",
+
+  "Great learners ask questions, make mistakes and keep going. ✨",
+
+  "You don't need to know everything today. You just need to learn something. 📚",
+
+  "Every time you practise, you're making future-you stronger. 💪",
+
+  "Choose progress over perfection. Always. 🌟",
+
+  "You are capable of learning much more than you think. 🌈",
+
+  "The secret to getting better is simple: practise. 🏆",
+
+  "If it feels difficult, that means you're learning. 🧠",
+
+  "Try. Learn. Try again. Grow. 🌱",
+
+  "Your skills are built one practice at a time. ⭐",
+
+  "Finish today knowing something you didn't know yesterday. ☀️"
+
+];
+
+
+
+function getQuoteForToday() {
+
+  const start =
+    new Date(
+      new Date().getFullYear(),
+      0,
+      0
+    );
+
+
+  const difference =
+    new Date() - start;
+
+
+  const oneDay =
+    1000 * 60 * 60 * 24;
+
+
+  const dayOfYear =
+    Math.floor(
+      difference / oneDay
+    );
+
+
+  return growthQuotes[
+    dayOfYear %
+    growthQuotes.length
+  ];
+
+}
+
+
+
+const todaysQuote =
+  getQuoteForToday();
+
+
+document.getElementById(
+  "ivyQuote"
+).textContent =
+  todaysQuote;
+
+
+document.getElementById(
+  "charlotteQuote"
+).textContent =
+  todaysQuote;
+
+
+
+/* =========================================
+   SUBJECT ICON
+   ========================================= */
+
+function getSubjectIcon(subject) {
+
+  const lower =
+    String(subject || "")
+      .toLowerCase();
+
+
+  if (
+    lower === "english"
+  ) {
+    return "📖";
+  }
+
+
+  if (
+    lower === "maths" ||
+    lower === "math"
+  ) {
+    return "🔢";
+  }
+
+
+  if (
+    lower === "science"
+  ) {
+    return "🔬";
+  }
+
+
+  if (
+    lower === "geography"
+  ) {
+    return "🌍";
+  }
+
+
+  if (
+    lower === "french"
+  ) {
+    return "🇫🇷";
+  }
+
+
+  return "⭐";
+
+}
+
+
+
+/* =========================================
+   RENDER ASSIGNMENTS
+   ========================================= */
+
+function renderAssignments(
+  child,
+  exercises
+) {
+
+  const container =
+    document.getElementById(
+      `${child}Assignments`
+    );
+
+
+  const progress =
+    document.getElementById(
+      `${child}TodayProgress`
+    );
+
+
+  if (
+    !Array.isArray(exercises) ||
+    exercises.length === 0
+  ) {
+
+    container.innerHTML = `
+
+      <div class="assignment-empty">
+
+        <div class="assignment-empty-icon">
+          🌤️
+        </div>
+
+        No assignments have been set for today yet.
+
+      </div>
+
+    `;
+
+
+    progress.textContent =
+      "☀️ No assignments set yet.";
+
+    return;
+
+  }
+
+
+
+  progress.textContent =
+    `☀️ ${exercises.length} assignment${exercises.length === 1 ? "" : "s"} for today`;
+
+
+
+  const grouped =
+    {};
+
+
+  exercises.forEach(
+    function(exercise) {
+
+      const subject =
+        exercise.subject ||
+        "Learning";
+
+
+      if (
+        !grouped[subject]
+      ) {
+
+        grouped[subject] =
+          [];
+
+      }
+
+
+      grouped[subject].push(
+        exercise
+      );
+
+    }
+  );
+
+
+
+  let html =
+    "";
+
+
+  Object.keys(
+    grouped
+  ).forEach(
+    function(subject) {
+
+      const subjectExercises =
+        grouped[subject];
+
+
+      html += `
+
+        <div class="assignment-subject">
+
+          <div class="assignment-subject-title">
+
+            ${getSubjectIcon(subject)}
+            ${escapeHTML(subject).toUpperCase()}
+
+          </div>
+
+      `;
+
+
+
+      subjectExercises.forEach(
+        function(exercise, index) {
+
+          const topic =
+            exercise.topic ||
+            "Practice";
+
+
+          const rawName =
+            exercise.exercise ||
+            "Exercise";
+
+
+          let lessonName =
+            rawName;
+
+
+          if (
+            rawName.toLowerCase().startsWith(
+              topic.toLowerCase()
+            )
+          ) {
+
+            lessonName =
+              rawName
+                .substring(
+                  topic.length
+                )
+                .replace(
+                  /^[\s•\-–—:]+/,
+                  ""
+                )
+                .trim();
+
+          }
+
+
+          if (
+            !lessonName
+          ) {
+
+            lessonName =
+              rawName;
+
+          }
+
+
+          html += `
+
+            <div class="assignment-card ${child}-assignment">
+
+              <div class="assignment-left">
+
+                <div class="assignment-number">
+                  Assignment ${index + 1}
+                </div>
+
+                <div class="assignment-topic">
+                  ${escapeHTML(topic)}
+                </div>
+
+                <div class="assignment-name">
+                  ${escapeHTML(lessonName)}
+                </div>
+
+              </div>
+
+
+              <a
+                class="start-assignment"
+                href="${escapeAttribute(exercise.url)}"
+              >
+                START →
+              </a>
+
+            </div>
+
+          `;
+
+        }
+      );
+
+
+      html += `
+
+        </div>
+
+      `;
+
+    }
+  );
+
+
+  container.innerHTML =
+    html;
+
+}
+
+
+
+/* =========================================
+   BASIC SAFETY FOR FIREBASE TEXT
+   ========================================= */
+
+function escapeHTML(value) {
+
+  return String(
+    value ?? ""
+  )
+    .replaceAll(
+      "&",
+      "&amp;"
+    )
+    .replaceAll(
+      "<",
+      "&lt;"
+    )
+    .replaceAll(
+      ">",
+      "&gt;"
+    )
+    .replaceAll(
+      '"',
+      "&quot;"
+    )
+    .replaceAll(
+      "'",
+      "&#039;"
+    );
+
+}
+
+
+
+function escapeAttribute(value) {
+
+  return escapeHTML(
+    value
+  );
+
+}
+
+
+
+/* =========================================
+   LOAD TODAY FROM FIREBASE
+   ========================================= */
+
+async function loadChildAssignments(
+  child
+) {
+
+  const container =
+    document.getElementById(
+      `${child}Assignments`
+    );
+
+
+  try {
+
+
+    const assignmentReference =
+      doc(
+        db,
+        "assignments",
+        `${todayKey}-${child}`
+      );
+
+
+    const snapshot =
+      await getDoc(
+        assignmentReference
+      );
+
+
+    if (
+      !snapshot.exists()
+    ) {
+
+      renderAssignments(
+        child,
+        []
+      );
+
+      return;
+
+    }
+
+
+    const data =
+      snapshot.data();
+
+
+    renderAssignments(
+      child,
+      Array.isArray(
+        data.exercises
+      )
+        ? data.exercises
+        : []
+    );
+
+
+  }
+
+  catch (error) {
+
+
+    console.error(
+      error
+    );
+
+
+    container.innerHTML = `
+
+      <div class="assignment-error">
+
+        ⚠️ We couldn't load today's assignments.<br><br>
+
+        Please refresh the page and try again.
+
+      </div>
+
+    `;
+
+
+    document.getElementById(
+      `${child}TodayProgress`
+    ).textContent =
+      "Couldn't load today's work.";
+
+  }
+
+}
+
+
+
+/* =========================================
+   START
+   ========================================= */
+
+loadChildAssignments(
+  "ivy"
+);
+
+
+loadChildAssignments(
+  "charlotte"
+);
 
 
 </script>
