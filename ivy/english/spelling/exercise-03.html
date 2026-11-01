@@ -1,1 +1,1934 @@
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+
+<meta charset="UTF-8">
+
+<meta
+  name="viewport"
+  content="width=device-width, initial-scale=1.0"
+>
+
+<title>
+  Ivy-Rose • Spelling Exercise 3
+</title>
+
+<style>
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+
+  font-family:
+    Arial,
+    Helvetica,
+    sans-serif;
+
+  background:
+    radial-gradient(
+      circle at 10% 10%,
+      #fff1f7 0,
+      transparent 28%
+    ),
+    radial-gradient(
+      circle at 90% 20%,
+      #eaf4ff 0,
+      transparent 28%
+    ),
+    radial-gradient(
+      circle at 50% 95%,
+      #fff7d9 0,
+      transparent 30%
+    ),
+    #f8f9fd;
+
+  color: #172033;
+  min-height: 100vh;
+}
+
+.topbar {
+  max-width: 850px;
+  margin: auto;
+  padding: 25px 22px 5px;
+}
+
+.back {
+  color: #66718a;
+  text-decoration: none;
+  font-weight: 900;
+  font-size: 15px;
+}
+
+.wrapper {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 20px 20px 60px;
+}
+
+.heading {
+  text-align: center;
+  margin-bottom: 22px;
+}
+
+.eyebrow {
+  color: #7a85a0;
+  font-size: 14px;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.heading h1 {
+  margin: 8px 0 5px;
+  font-size: 35px;
+}
+
+.heading p {
+  color: #7c869c;
+  margin: 0;
+  font-size: 17px;
+}
+
+.progress-area {
+  margin: 25px 0 18px;
+}
+
+.progress-info {
+  display: flex;
+  justify-content: space-between;
+  font-weight: 900;
+  font-size: 14px;
+  margin-bottom: 9px;
+}
+
+.progress-track {
+  height: 12px;
+  background: #e9edf5;
+  border-radius: 99px;
+  overflow: hidden;
+}
+
+.progress-bar {
+  height: 100%;
+  width: 10%;
+  border-radius: 99px;
+
+  background:
+    linear-gradient(
+      90deg,
+      #6fa8ff,
+      #8c7cff
+    );
+
+  transition: width .4s ease;
+}
+
+.card {
+  background: rgba(255,255,255,.97);
+
+  border-radius: 30px;
+
+  padding: 32px;
+
+  box-shadow:
+    0 16px 45px
+    rgba(42,55,90,.10);
+
+  text-align: center;
+
+  position: relative;
+
+  overflow: hidden;
+}
+
+.corner {
+  position: absolute;
+  font-size: 24px;
+}
+
+.corner-left {
+  top: 22px;
+  left: 27px;
+}
+
+.corner-right {
+  top: 22px;
+  right: 27px;
+}
+
+.picture {
+  width: 210px;
+  height: 160px;
+
+  margin: 8px auto 18px;
+
+  border-radius: 28px;
+
+  background:
+    linear-gradient(
+      145deg,
+      #edf5ff,
+      #fff0f7
+    );
+
+  display: flex;
+
+  justify-content: center;
+
+  align-items: center;
+
+  border: 1px solid #edf0f7;
+
+  box-shadow:
+    0 8px 25px
+    rgba(61,82,130,.07);
+}
+
+.picture-emoji {
+  font-size: 65px;
+  line-height: 1;
+}
+
+.word-number {
+  display: inline-block;
+
+  padding: 7px 14px;
+
+  background: #eef4ff;
+
+  color: #3975d9;
+
+  border-radius: 999px;
+
+  font-size: 12px;
+
+  font-weight: 900;
+
+  letter-spacing: .5px;
+
+  margin-bottom: 14px;
+}
+
+.instruction {
+  font-size: 20px;
+
+  font-weight: 900;
+
+  margin: 4px 0 18px;
+}
+
+.listen-button {
+  border: none;
+
+  background:
+    linear-gradient(
+      135deg,
+      #407fe5,
+      #716ee8
+    );
+
+  color: white;
+
+  border-radius: 18px;
+
+  padding: 16px 27px;
+
+  font-size: 17px;
+
+  font-weight: 900;
+
+  cursor: pointer;
+
+  box-shadow:
+    0 8px 20px
+    rgba(62,111,220,.25);
+}
+
+.hint {
+  color: #9099aa;
+
+  font-size: 13px;
+
+  margin: 13px 0 21px;
+}
+
+.answer {
+  width: 100%;
+
+  max-width: 440px;
+
+  display: block;
+
+  margin: 0 auto;
+
+  padding: 17px 18px;
+
+  border: 2px solid #e2e7f0;
+
+  border-radius: 16px;
+
+  text-align: center;
+
+  font-size: 22px;
+
+  font-weight: 800;
+
+  outline: none;
+
+  color: #182033;
+
+  background: white;
+}
+
+.answer:focus {
+  border-color: #75a5f5;
+
+  box-shadow:
+    0 0 0 4px
+    #edf4ff;
+}
+
+.check-button {
+  margin-top: 16px;
+
+  border: none;
+
+  background: #182033;
+
+  color: white;
+
+  padding: 15px 31px;
+
+  border-radius: 15px;
+
+  font-size: 16px;
+
+  font-weight: 900;
+
+  cursor: pointer;
+}
+
+.feedback {
+  min-height: 55px;
+
+  margin-top: 17px;
+
+  font-size: 18px;
+
+  font-weight: 900;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+}
+
+.correct {
+  color: #15915c;
+}
+
+.wrong {
+  color: #e0526e;
+}
+
+.next-button {
+  display: none;
+
+  margin: 3px auto 0;
+
+  border: none;
+
+  background: #19a66a;
+
+  color: white;
+
+  padding: 15px 29px;
+
+  border-radius: 15px;
+
+  font-size: 16px;
+
+  font-weight: 900;
+
+  cursor: pointer;
+}
+
+.result {
+  display: none;
+}
+
+.trophy {
+  font-size: 95px;
+}
+
+.result h1 {
+  font-size: 36px;
+  margin: 10px 0;
+}
+
+.big-score {
+  font-size: 55px;
+  font-weight: 900;
+  margin: 18px 0 4px;
+}
+
+.result-message {
+  color: #6f7990;
+
+  font-size: 18px;
+
+  line-height: 1.5;
+
+  margin: 12px auto 25px;
+
+  max-width: 500px;
+}
+
+.cloud-status {
+  display: none;
+
+  max-width: 480px;
+
+  margin: -10px auto 22px;
+
+  padding: 12px 16px;
+
+  border-radius: 14px;
+
+  font-size: 13px;
+
+  font-weight: 900;
+}
+
+.cloud-saving {
+  display: block;
+  background: #eef4ff;
+  color: #3975d9;
+}
+
+.cloud-saved {
+  display: block;
+  background: #eaf9f1;
+  color: #168357;
+}
+
+.cloud-error {
+  display: block;
+  background: #fff0f3;
+  color: #d64d69;
+}
+
+.result-buttons {
+  display: flex;
+
+  justify-content: center;
+
+  flex-wrap: wrap;
+
+  gap: 10px;
+}
+
+.result-button {
+  text-decoration: none;
+
+  border: none;
+
+  padding: 14px 20px;
+
+  border-radius: 14px;
+
+  font-weight: 900;
+
+  cursor: pointer;
+
+  font-size: 15px;
+}
+
+.retry {
+  background: #eef2f8;
+  color: #27334b;
+}
+
+.finish {
+  background: #397be0;
+  color: white;
+}
+
+.confetti {
+  position: fixed;
+
+  top: -30px;
+
+  pointer-events: none;
+
+  z-index: 9999;
+
+  animation: fall linear forwards;
+}
+
+@keyframes fall {
+
+  to {
+    transform:
+      translateY(110vh)
+      rotate(720deg);
+
+    opacity: .9;
+  }
+
+}
+
+@media (max-width: 600px) {
+
+  .card {
+    padding: 26px 18px;
+  }
+
+  .heading h1 {
+    font-size: 29px;
+  }
+
+  .picture {
+    width: 175px;
+    height: 140px;
+  }
+
+  .picture-emoji {
+    font-size: 54px;
+  }
+
+  .instruction {
+    font-size: 18px;
+  }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<div class="topbar">
+
+  <a
+    class="back"
+    href="../../../index.html#ivy"
+  >
+    ← BACK TO TODAY
+  </a>
+
+</div>
+
+
+<div class="wrapper">
+
+
+<div id="exerciseScreen">
+
+
+  <div class="heading">
+
+    <div class="eyebrow">
+      Ivy-Rose • Grade 2
+    </div>
+
+    <h1>
+      ✨ Spelling Challenge ✨
+    </h1>
+
+    <p>
+      Exercise 3 • Words 21–30
+    </p>
+
+  </div>
+
+
+  <div class="progress-area">
+
+    <div class="progress-info">
+
+      <span id="progressText">
+        Word 1 of 10
+      </span>
+
+      <span>
+        ⭐ <span id="score">0</span>
+      </span>
+
+    </div>
+
+
+    <div class="progress-track">
+
+      <div
+        id="progressBar"
+        class="progress-bar"
+      ></div>
+
+    </div>
+
+  </div>
+
+
+  <div class="card">
+
+    <span class="corner corner-left">
+      ✨
+    </span>
+
+    <span class="corner corner-right">
+      ⭐
+    </span>
+
+
+    <div
+      id="picture"
+      class="picture"
+    ></div>
+
+
+    <div
+      id="wordNumber"
+      class="word-number"
+    >
+      WORD 1
+    </div>
+
+
+    <div class="instruction">
+      Listen carefully. What word do you hear?
+    </div>
+
+
+    <button
+      class="listen-button"
+      onclick="speakWord()"
+    >
+      🔊 HEAR THE WORD
+    </button>
+
+
+    <div class="hint">
+      You can listen as many times as you need.
+    </div>
+
+
+    <input
+      id="answer"
+      class="answer"
+      type="text"
+      autocomplete="off"
+      autocapitalize="none"
+      spellcheck="false"
+      placeholder="Type the word..."
+    >
+
+
+    <button
+      id="checkButton"
+      class="check-button"
+      onclick="checkAnswer()"
+    >
+      CHECK ✓
+    </button>
+
+
+    <div
+      id="feedback"
+      class="feedback"
+    ></div>
+
+
+    <button
+      id="nextButton"
+      class="next-button"
+      onclick="nextWord()"
+    >
+      NEXT WORD →
+    </button>
+
+  </div>
+
+
+</div>
+
+
+<div
+  id="resultScreen"
+  class="card result"
+>
+
+  <div
+    id="trophy"
+    class="trophy"
+  >
+    🏆
+  </div>
+
+
+  <h1 id="resultTitle">
+    Amazing work!
+  </h1>
+
+
+  <div
+    id="starsResult"
+    style="font-size:34px;"
+  >
+    ⭐⭐⭐
+  </div>
+
+
+  <div
+    id="finalScore"
+    class="big-score"
+  >
+    10 / 10
+  </div>
+
+
+  <div
+    id="resultMessage"
+    class="result-message"
+  ></div>
+
+
+  <div
+    id="cloudStatus"
+    class="cloud-status"
+  ></div>
+
+
+  <div class="result-buttons">
+
+    <button
+      class="result-button retry"
+      onclick="restartExercise()"
+    >
+      ↻ TRY AGAIN
+    </button>
+
+
+    <a
+      class="result-button finish"
+      href="../../../index.html#ivy"
+    >
+      FINISH ✓
+    </a>
+
+  </div>
+
+</div>
+
+
+</div>
+
+
+<script>
+
+
+/* ======================================
+   WORDS 21–30
+   ====================================== */
+
+
+const words = [
+
+  {
+    word: "banana",
+    picture: "🍌"
+  },
+
+  {
+    word: "teacher",
+    picture: "👩‍🏫"
+  },
+
+  {
+    word: "birthday",
+    picture: "🎂🎈"
+  },
+
+  {
+    word: "picture",
+    picture: "🖼️"
+  },
+
+  {
+    word: "family",
+    picture: "👨‍👩‍👧‍👧"
+  },
+
+  {
+    word: "country",
+    picture: "🌍"
+  },
+
+  {
+    word: "animal",
+    picture: "🐾🐘"
+  },
+
+  {
+    word: "holiday",
+    picture: "🏖️☀️"
+  },
+
+  {
+    word: "rainbow",
+    picture: "🌈"
+  },
+
+  {
+    word: "sunshine",
+    picture: "☀️✨"
+  }
+
+];
+
+
+let current = 0;
+
+let score = 0;
+
+let attemptsThisWord = 0;
+
+let wordCompleted = false;
+
+
+/* ======================================
+   BRITISH ENGLISH VOICE
+   ====================================== */
+
+
+function getBritishVoice() {
+
+  const voices =
+    window.speechSynthesis
+      .getVoices();
+
+
+  const britishVoices =
+    voices.filter(
+
+      function(voice) {
+
+        return (
+          voice.lang &&
+          voice.lang
+            .toLowerCase()
+            .startsWith("en-gb")
+        );
+
+      }
+
+    );
+
+
+  const preferredNames = [
+
+    "Serena",
+    "Kate",
+    "Martha",
+    "Stephanie",
+    "Hazel",
+    "Google UK English Female"
+
+  ];
+
+
+  for (
+    const preferred
+    of preferredNames
+  ) {
+
+    const found =
+      britishVoices.find(
+
+        function(voice) {
+
+          return voice.name
+            .toLowerCase()
+            .includes(
+              preferred.toLowerCase()
+            );
+
+        }
+
+      );
+
+
+    if (found) {
+      return found;
+    }
+
+  }
+
+
+  return (
+    britishVoices[0] ||
+    voices[0] ||
+    null
+  );
+
+}
+
+
+/* ======================================
+   SPEAK WORD
+   ====================================== */
+
+
+function speakWord() {
+
+  window.speechSynthesis.cancel();
+
+
+  const utterance =
+    new SpeechSynthesisUtterance(
+      words[current].word
+    );
+
+
+  const voice =
+    getBritishVoice();
+
+
+  if (voice) {
+    utterance.voice = voice;
+  }
+
+
+  utterance.lang =
+    "en-GB";
+
+
+  utterance.rate =
+    0.82;
+
+
+  utterance.pitch =
+    1.08;
+
+
+  utterance.volume =
+    1;
+
+
+  window.speechSynthesis
+    .speak(
+      utterance
+    );
+
+}
+
+
+window.speechSynthesis
+  .onvoiceschanged =
+function() {
+
+  window.speechSynthesis
+    .getVoices();
+
+};
+
+
+/* ======================================
+   PICTURE
+   ====================================== */
+
+
+function renderPicture() {
+
+  const picture =
+    document.getElementById(
+      "picture"
+    );
+
+
+  picture.innerHTML =
+    "";
+
+
+  const emoji =
+    document.createElement(
+      "div"
+    );
+
+
+  emoji.className =
+    "picture-emoji";
+
+
+  emoji.textContent =
+    words[current].picture;
+
+
+  picture.appendChild(
+    emoji
+  );
+
+}
+
+
+/* ======================================
+   CHECK ANSWER
+   ====================================== */
+
+
+function checkAnswer() {
+
+  if (wordCompleted) {
+    return;
+  }
+
+
+  const input =
+    document.getElementById(
+      "answer"
+    );
+
+
+  const feedback =
+    document.getElementById(
+      "feedback"
+    );
+
+
+  const answer =
+    input.value
+      .trim()
+      .toLowerCase();
+
+
+  if (!answer) {
+
+    feedback.className =
+      "feedback wrong";
+
+
+    feedback.textContent =
+      "Type the word first 😊";
+
+
+    return;
+
+  }
+
+
+  attemptsThisWord++;
+
+
+  if (
+    answer ===
+    words[current].word
+  ) {
+
+    wordCompleted =
+      true;
+
+
+    if (
+      attemptsThisWord === 1
+    ) {
+
+      score++;
+
+
+      feedback.textContent =
+        "✨ Perfect! First try!";
+
+    } else {
+
+      feedback.textContent =
+        "💛 You got it! Great practising!";
+
+    }
+
+
+    feedback.className =
+      "feedback correct";
+
+
+    document.getElementById(
+      "score"
+    ).textContent =
+      score;
+
+
+    input.disabled =
+      true;
+
+
+    document.getElementById(
+      "checkButton"
+    ).style.display =
+      "none";
+
+
+    document.getElementById(
+      "nextButton"
+    ).style.display =
+      "block";
+
+  } else {
+
+    feedback.className =
+      "feedback wrong";
+
+
+    feedback.textContent =
+      "Almost! Listen again and try once more 💛";
+
+
+    input.select();
+
+  }
+
+}
+
+
+/* ======================================
+   NEXT WORD
+   ====================================== */
+
+
+function nextWord() {
+
+  current++;
+
+
+  if (
+    current >=
+    words.length
+  ) {
+
+    finishExercise();
+
+    return;
+
+  }
+
+
+  attemptsThisWord =
+    0;
+
+
+  wordCompleted =
+    false;
+
+
+  const input =
+    document.getElementById(
+      "answer"
+    );
+
+
+  input.disabled =
+    false;
+
+
+  input.value =
+    "";
+
+
+  document.getElementById(
+    "feedback"
+  ).textContent =
+    "";
+
+
+  document.getElementById(
+    "checkButton"
+  ).style.display =
+    "inline-block";
+
+
+  document.getElementById(
+    "nextButton"
+  ).style.display =
+    "none";
+
+
+  updateExercise();
+
+
+  input.focus();
+
+}
+
+
+/* ======================================
+   UPDATE SCREEN
+   ====================================== */
+
+
+function updateExercise() {
+
+  document.getElementById(
+    "progressText"
+  ).textContent =
+    `Word ${current + 1} of ${words.length}`;
+
+
+  document.getElementById(
+    "wordNumber"
+  ).textContent =
+    `WORD ${current + 1}`;
+
+
+  document.getElementById(
+    "progressBar"
+  ).style.width =
+    `${((current + 1) / words.length) * 100}%`;
+
+
+  renderPicture();
+
+}
+
+
+/* ======================================
+   CREATE RESULT
+   ====================================== */
+
+
+function createAttempt() {
+
+  const percentage =
+    Math.round(
+      (
+        score /
+        words.length
+      ) * 100
+    );
+
+
+  return {
+
+    child:
+      "Ivy-Rose",
+
+    childId:
+      "ivy",
+
+    grade:
+      "Grade 2",
+
+    subject:
+      "English",
+
+    topic:
+      "Spelling",
+
+    exercise:
+      "Words 21–30",
+
+    exerciseId:
+      "ivy-english-spelling-exercise-03",
+
+    score:
+      score,
+
+    total:
+      words.length,
+
+    percentage:
+      percentage,
+
+    passed:
+      score >= 8,
+
+    completed:
+      true,
+
+    timestamp:
+      new Date()
+        .toISOString()
+
+  };
+
+}
+
+
+/* ======================================
+   SAVE LOCAL HISTORY
+   ====================================== */
+
+
+function recordLocalAttempt(
+  attempt
+) {
+
+  const historyKey =
+    "ivy-learning-history";
+
+
+  let history =
+    [];
+
+
+  try {
+
+    history =
+      JSON.parse(
+
+        localStorage.getItem(
+          historyKey
+        )
+
+      ) || [];
+
+  } catch (error) {
+
+    history = [];
+
+  }
+
+
+  history.push(
+    attempt
+  );
+
+
+  localStorage.setItem(
+
+    historyKey,
+
+    JSON.stringify(
+      history
+    )
+
+  );
+
+}
+
+
+/* ======================================
+   FIREBASE
+   ====================================== */
+
+
+async function recordCloudAttempt(
+  attempt
+) {
+
+  const status =
+    document.getElementById(
+      "cloudStatus"
+    );
+
+
+  status.className =
+    "cloud-status cloud-saving";
+
+
+  status.textContent =
+    "☁️ Saving your result...";
+
+
+  try {
+
+    if (
+      typeof window.saveResultToFirebase
+      !== "function"
+    ) {
+
+      throw new Error(
+        "Firebase is not ready."
+      );
+
+    }
+
+
+    await window
+      .saveResultToFirebase(
+        attempt
+      );
+
+
+    status.className =
+      "cloud-status cloud-saved";
+
+
+    status.textContent =
+      "✓ Result saved!";
+
+  } catch (error) {
+
+    console.error(
+      "Firebase result save failed:",
+      error
+    );
+
+
+    status.className =
+      "cloud-status cloud-error";
+
+
+    status.textContent =
+      "Your score is safe on this iPad, but cloud syncing did not work.";
+
+  }
+
+}
+
+
+/* ======================================
+   FINISH
+   ====================================== */
+
+
+function finishExercise() {
+
+  const attempt =
+    createAttempt();
+
+
+  recordLocalAttempt(
+    attempt
+  );
+
+
+  recordCloudAttempt(
+    attempt
+  );
+
+
+  document.getElementById(
+    "exerciseScreen"
+  ).style.display =
+    "none";
+
+
+  document.getElementById(
+    "resultScreen"
+  ).style.display =
+    "block";
+
+
+  document.getElementById(
+    "finalScore"
+  ).textContent =
+    `${score} / ${words.length}`;
+
+
+  const passed =
+    score >= 8;
+
+
+  if (passed) {
+
+    document.getElementById(
+      "resultTitle"
+    ).textContent =
+      "You passed! 🎉";
+
+
+    document.getElementById(
+      "trophy"
+    ).textContent =
+      "🏆";
+
+
+    if (
+      score === 10
+    ) {
+
+      document.getElementById(
+        "starsResult"
+      ).textContent =
+        "⭐⭐⭐";
+
+
+      document.getElementById(
+        "resultMessage"
+      ).textContent =
+        "WOW, Ivy-Rose! 10 out of 10 on your first tries! Incredible spelling!";
+
+    } else {
+
+      document.getElementById(
+        "starsResult"
+      ).textContent =
+        "⭐⭐";
+
+
+      document.getElementById(
+        "resultMessage"
+      ).textContent =
+        "Amazing spelling, Ivy-Rose! You passed the challenge!";
+
+    }
+
+
+    saveProgress(
+      true
+    );
+
+
+    makeConfetti();
+
+  } else {
+
+    document.getElementById(
+      "resultTitle"
+    ).textContent =
+      "Great practice! 💛";
+
+
+    document.getElementById(
+      "trophy"
+    ).textContent =
+      "🌟";
+
+
+    document.getElementById(
+      "starsResult"
+    ).textContent =
+      "⭐";
+
+
+    document.getElementById(
+      "resultMessage"
+    ).textContent =
+      `You got ${score} words correct on your first try. Practise the tricky ones and have another go!`;
+
+
+    saveProgress(
+      false
+    );
+
+  }
+
+}
+
+
+/* ======================================
+   SAVE BEST LOCAL PROGRESS
+   ====================================== */
+
+
+function saveProgress(
+  passed
+) {
+
+  const key =
+    "ivy-english-spelling-exercise-03";
+
+
+  let previous =
+    null;
+
+
+  try {
+
+    previous =
+      JSON.parse(
+
+        localStorage.getItem(
+          key
+        )
+
+      );
+
+  } catch (error) {
+
+    previous =
+      null;
+
+  }
+
+
+  if (
+    !previous ||
+    score >
+    (
+      previous.score ||
+      0
+    )
+  ) {
+
+    localStorage.setItem(
+
+      key,
+
+      JSON.stringify({
+
+        passed:
+          passed,
+
+        score:
+          score,
+
+        total:
+          words.length
+
+      })
+
+    );
+
+  } else if (
+    previous &&
+    previous.passed
+  ) {
+
+    localStorage.setItem(
+
+      key,
+
+      JSON.stringify({
+
+        passed:
+          true,
+
+        score:
+          previous.score,
+
+        total:
+          words.length
+
+      })
+
+    );
+
+  }
+
+}
+
+
+/* ======================================
+   RESTART
+   ====================================== */
+
+
+function restartExercise() {
+
+  current =
+    0;
+
+
+  score =
+    0;
+
+
+  attemptsThisWord =
+    0;
+
+
+  wordCompleted =
+    false;
+
+
+  document.getElementById(
+    "score"
+  ).textContent =
+    "0";
+
+
+  document.getElementById(
+    "resultScreen"
+  ).style.display =
+    "none";
+
+
+  document.getElementById(
+    "exerciseScreen"
+  ).style.display =
+    "block";
+
+
+  document.getElementById(
+    "cloudStatus"
+  ).className =
+    "cloud-status";
+
+
+  document.getElementById(
+    "cloudStatus"
+  ).textContent =
+    "";
+
+
+  const input =
+    document.getElementById(
+      "answer"
+    );
+
+
+  input.disabled =
+    false;
+
+
+  input.value =
+    "";
+
+
+  document.getElementById(
+    "feedback"
+  ).textContent =
+    "";
+
+
+  document.getElementById(
+    "checkButton"
+  ).style.display =
+    "inline-block";
+
+
+  document.getElementById(
+    "nextButton"
+  ).style.display =
+    "none";
+
+
+  updateExercise();
+
+
+  input.focus();
+
+}
+
+
+/* ======================================
+   CONFETTI
+   ====================================== */
+
+
+function makeConfetti() {
+
+  const pieces = [
+
+    "⭐",
+    "✨",
+    "🌸",
+    "💖",
+    "🎉"
+
+  ];
+
+
+  for (
+    let i = 0;
+    i < 40;
+    i++
+  ) {
+
+    const confetti =
+      document.createElement(
+        "div"
+      );
+
+
+    confetti.className =
+      "confetti";
+
+
+    confetti.textContent =
+      pieces[
+
+        Math.floor(
+
+          Math.random() *
+          pieces.length
+
+        )
+
+      ];
+
+
+    confetti.style.left =
+      Math.random() *
+      100 +
+      "vw";
+
+
+    confetti.style.fontSize =
+      (
+        14 +
+        Math.random() *
+        18
+      ) +
+      "px";
+
+
+    confetti.style.animationDuration =
+      (
+        2.5 +
+        Math.random() *
+        2
+      ) +
+      "s";
+
+
+    confetti.style.animationDelay =
+      (
+        Math.random() *
+        .7
+      ) +
+      "s";
+
+
+    document.body.appendChild(
+      confetti
+    );
+
+
+    setTimeout(
+
+      function() {
+
+        confetti.remove();
+
+      },
+
+      5000
+
+    );
+
+  }
+
+}
+
+
+/* ======================================
+   ENTER KEY
+   ====================================== */
+
+
+document.getElementById(
+  "answer"
+).addEventListener(
+
+  "keydown",
+
+  function(event) {
+
+    if (
+      event.key ===
+      "Enter"
+    ) {
+
+      const nextVisible =
+        document.getElementById(
+          "nextButton"
+        ).style.display ===
+        "block";
+
+
+      if (nextVisible) {
+
+        nextWord();
+
+      } else {
+
+        checkAnswer();
+
+      }
+
+    }
+
+  }
+
+);
+
+
+/* ======================================
+   START
+   ====================================== */
+
+
+updateExercise();
+
+
+</script>
+
+
+<!-- ======================================
+     FIREBASE CLOUD RESULT TRACKING
+     ====================================== -->
+
+
+<script type="module">
+
+
+import {
+  initializeApp
+} from "https://www.gstatic.com/firebasejs/12.5.0/firebase-app.js";
+
+
+import {
+  getFirestore,
+  collection,
+  addDoc
+} from "https://www.gstatic.com/firebasejs/12.5.0/firebase-firestore.js";
+
+
+const firebaseConfig = {
+
+  apiKey:
+    "AIzaSyBri62MSDCTXF9meH_5Jnm8kbZFytoHwXU",
+
+  authDomain:
+    "girls-learning-hub.firebaseapp.com",
+
+  projectId:
+    "girls-learning-hub",
+
+  storageBucket:
+    "girls-learning-hub.firebasestorage.app",
+
+  messagingSenderId:
+    "578155016403",
+
+  appId:
+    "1:578155016403:web:ffe763fe308574d31fe426"
+
+};
+
+
+const firebaseApp =
+  initializeApp(
+    firebaseConfig
+  );
+
+
+const db =
+  getFirestore(
+    firebaseApp
+  );
+
+
+window.saveResultToFirebase =
+async function(
+  attempt
+) {
+
+  await addDoc(
+
+    collection(
+      db,
+      "results"
+    ),
+
+    attempt
+
+  );
+
+};
+
+
+</script>
+
+
+</body>
+
+</html>
