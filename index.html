@@ -3,10 +3,14 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Learning Hub</title>
 
 <style>
-* { box-sizing: border-box; }
+
+* {
+  box-sizing: border-box;
+}
 
 body {
   margin: 0;
@@ -86,6 +90,19 @@ header p {
   cursor: pointer;
 }
 
+.dashboard-button {
+  display: inline-block;
+  background: #f0f4fb;
+  color: #3679df;
+  border: none;
+  text-decoration: none;
+  border-radius: 12px;
+  padding: 11px 16px;
+  font-weight: bold;
+  cursor: pointer;
+  margin-bottom: 22px;
+}
+
 .page {
   display: none;
 }
@@ -162,6 +179,7 @@ header p {
 }
 
 @media (max-width: 650px) {
+
   .children {
     grid-template-columns: 1fr;
   }
@@ -175,400 +193,1030 @@ header p {
   .exercise-row {
     align-items: flex-start;
   }
+
 }
+
 </style>
 </head>
 
+
 <body>
 
+
 <header>
-  <h1>✨ Learning Hub ✨</h1>
-  <p>Learn • Practise • Master</p>
+
+  <h1>
+    ✨ Learning Hub ✨
+  </h1>
+
+  <p>
+    Learn • Practise • Master
+  </p>
+
 </header>
+
 
 <div class="container">
 
-  <!-- HOME -->
-  <div id="home">
 
-    <div class="children">
+<!-- ======================================
+     HOME
+     ====================================== -->
 
-      <div class="card child" onclick="showPage('ivy')">
-        <div class="avatar">👧🏼</div>
-        <h2>Ivy-Rose</h2>
-        <div class="grade">Grade 2</div>
-        <button class="blue-button">OPEN DASHBOARD →</button>
+<div id="home">
+
+  <div class="children">
+
+
+    <div
+      class="card child"
+      onclick="showPage('ivy')"
+    >
+
+      <div class="avatar">
+        👧🏼
       </div>
 
-      <div class="card child" onclick="showPage('charlotte')">
-        <div class="avatar">👧🏻</div>
-        <h2>Charlotte</h2>
-        <div class="grade">Grade 1</div>
-        <button class="blue-button">OPEN DASHBOARD →</button>
+      <h2>
+        Ivy-Rose
+      </h2>
+
+      <div class="grade">
+        Grade 2
       </div>
+
+      <button class="blue-button">
+        OPEN LEARNING →
+      </button>
+
+    </div>
+
+
+    <div
+      class="card child"
+      onclick="showPage('charlotte')"
+    >
+
+      <div class="avatar">
+        👧🏻
+      </div>
+
+      <h2>
+        Charlotte
+      </h2>
+
+      <div class="grade">
+        Grade 1
+      </div>
+
+      <button class="blue-button">
+        OPEN LEARNING →
+      </button>
+
+    </div>
+
+
+  </div>
+
+</div>
+
+
+
+<!-- ======================================
+     IVY-ROSE
+     ====================================== -->
+
+<div
+  id="ivy"
+  class="page"
+>
+
+  <button
+    class="back"
+    onclick="showPage('home')"
+  >
+    ← BACK
+  </button>
+
+
+  <div class="page-title">
+
+    <h1>
+      👧🏼 Ivy-Rose
+    </h1>
+
+    <p>
+      Grade 2 • Choose a subject
+    </p>
+
+  </div>
+
+
+  <a
+    class="dashboard-button"
+    href="ivy-dashboard.html"
+  >
+    📊 VIEW IVY-ROSE'S PROGRESS
+  </a>
+
+
+  <!-- ENGLISH -->
+
+  <div class="subject">
+
+    <div class="subject-row">
+
+      <div>
+
+        <h3>
+          📖 English
+        </h3>
+
+        <div class="description">
+          Spelling, grammar, reading & more
+        </div>
+
+      </div>
+
+
+      <button
+        class="blue-button"
+        onclick="showPage('ivy-english')"
+      >
+        OPEN →
+      </button>
 
     </div>
 
   </div>
 
 
-  <!-- ====================== -->
-  <!-- IVY DASHBOARD          -->
-  <!-- ====================== -->
+  <!-- MATHS -->
 
-  <div id="ivy" class="page">
+  <div class="subject">
 
-    <button class="back" onclick="showPage('home')">← BACK</button>
+    <div class="subject-row">
 
-    <div class="page-title">
-      <h1>👧🏼 Ivy-Rose</h1>
-      <p>Grade 2 • Choose a subject</p>
-    </div>
+      <div>
 
+        <h3>
+          🔢 Maths
+        </h3>
 
-    <div class="subject">
-      <div class="subject-row">
-        <div>
-          <h3>📖 English</h3>
-          <div class="description">Spelling, grammar, reading & more</div>
+        <div class="description">
+          Numbers, calculations, shapes & more
         </div>
 
-        <button class="blue-button" onclick="showPage('ivy-english')">
-          OPEN →
-        </button>
       </div>
-    </div>
 
 
-    <div class="subject">
-      <div class="subject-row">
-        <div>
-          <h3>🔢 Maths</h3>
-          <div class="description">Numbers, calculations, shapes & more</div>
-        </div>
+      <button
+        class="blue-button"
+        onclick="showPage('ivy-maths')"
+      >
+        OPEN →
+      </button>
 
-        <button class="blue-button" onclick="showPage('ivy-maths')">
-          OPEN →
-        </button>
-      </div>
-    </div>
-
-
-    <div class="subject">
-      <h3>🔬 Science</h3>
-      <div class="empty">Topics coming soon.</div>
-    </div>
-
-
-    <div class="subject">
-      <h3>🌍 Geography</h3>
-      <div class="empty">Topics coming soon.</div>
-    </div>
-
-
-    <div class="subject">
-      <h3>🇫🇷 French</h3>
-      <div class="empty">Topics coming soon.</div>
     </div>
 
   </div>
 
 
-  <!-- IVY ENGLISH TOPICS -->
+  <div class="subject">
 
-  <div id="ivy-english" class="page">
+    <h3>
+      🔬 Science
+    </h3>
 
-    <button class="back" onclick="showPage('ivy')">
-      ← IVY-ROSE
-    </button>
-
-    <div class="page-title">
-      <h1>📖 English</h1>
-      <p>Ivy-Rose • Choose a topic</p>
-    </div>
-
-
-    <div class="topic">
-      <div class="topic-row">
-
-        <div>
-          <div class="small-label">TOPIC</div>
-          <h3>🔤 Spelling</h3>
-          <div class="description">
-            Listen, spell and practise new words
-          </div>
-        </div>
-
-        <button class="blue-button"
-                onclick="showPage('ivy-english-spelling')">
-          OPEN →
-        </button>
-
-      </div>
-    </div>
-
-
-    <div class="topic">
-      <h3>🎵 Rhyming Words</h3>
-      <div class="empty">Exercises coming soon.</div>
-    </div>
-
-
-    <div class="topic">
-      <h3>🔗 Conjunctions</h3>
-      <div class="empty">Exercises coming soon.</div>
-    </div>
-
-
-    <div class="topic">
-      <h3>📍 Prepositions</h3>
-      <div class="empty">Exercises coming soon.</div>
+    <div class="empty">
+      Topics coming soon.
     </div>
 
   </div>
 
 
-  <!-- IVY SPELLING EXERCISES -->
+  <div class="subject">
 
-  <div id="ivy-english-spelling" class="page">
+    <h3>
+      🌍 Geography
+    </h3>
 
-    <button class="back" onclick="showPage('ivy-english')">
-      ← ENGLISH
-    </button>
-
-    <div class="page-title">
-      <h1>🔤 Spelling</h1>
-      <p>Ivy-Rose • Choose an exercise</p>
+    <div class="empty">
+      Topics coming soon.
     </div>
 
+  </div>
 
-    <div class="exercise">
 
-      <div class="exercise-row">
+  <div class="subject">
 
-        <div>
-          <div class="small-label">EXERCISE 1</div>
-          <h3>Words 1–10</h3>
+    <h3>
+      🇫🇷 French
+    </h3>
 
-          <div class="description">
-            🔊 Listen to each word and spell it correctly.
-          </div>
+    <div class="empty">
+      Topics coming soon.
+    </div>
+
+  </div>
+
+
+</div>
+
+
+
+<!-- ======================================
+     IVY ENGLISH
+     ====================================== -->
+
+<div
+  id="ivy-english"
+  class="page"
+>
+
+  <button
+    class="back"
+    onclick="showPage('ivy')"
+  >
+    ← IVY-ROSE
+  </button>
+
+
+  <div class="page-title">
+
+    <h1>
+      📖 English
+    </h1>
+
+    <p>
+      Ivy-Rose • Choose a topic
+    </p>
+
+  </div>
+
+
+  <div class="topic">
+
+    <div class="topic-row">
+
+      <div>
+
+        <div class="small-label">
+          TOPIC
         </div>
 
-        <a class="blue-button"
-           href="ivy/english/spelling/exercise-01.html">
-          START →
-        </a>
+        <h3>
+          🔤 Spelling
+        </h3>
+
+        <div class="description">
+          Listen, spell and practise new words
+        </div>
 
       </div>
 
+
+      <button
+        class="blue-button"
+        onclick="showPage('ivy-english-spelling')"
+      >
+        OPEN →
+      </button>
+
     </div>
 
+  </div>
+
+
+  <div class="topic">
+
+    <h3>
+      🎵 Rhyming Words
+    </h3>
+
+    <div class="empty">
+      Exercises coming soon.
+    </div>
+
+  </div>
+
+
+  <div class="topic">
+
+    <h3>
+      🔗 Conjunctions
+    </h3>
+
+    <div class="empty">
+      Exercises coming soon.
+    </div>
+
+  </div>
+
+
+  <div class="topic">
+
+    <h3>
+      📍 Prepositions
+    </h3>
+
+    <div class="empty">
+      Exercises coming soon.
+    </div>
+
+  </div>
+
+
+</div>
+
+
+
+<!-- ======================================
+     IVY SPELLING
+     ====================================== -->
+
+<div
+  id="ivy-english-spelling"
+  class="page"
+>
+
+  <button
+    class="back"
+    onclick="showPage('ivy-english')"
+  >
+    ← ENGLISH
+  </button>
+
+
+  <div class="page-title">
+
+    <h1>
+      🔤 Spelling
+    </h1>
+
+    <p>
+      Ivy-Rose • Choose an exercise
+    </p>
+
+  </div>
+
+
+  <!-- EXERCISE 1 -->
 
   <div class="exercise">
 
-  <div class="exercise-row">
+    <div class="exercise-row">
 
-    <div>
-      <div class="small-label">EXERCISE 2</div>
-      <h3>Words 11–20</h3>
-
-      <div class="description">
-        🔊 Listen to each word and spell it correctly.
-      </div>
-    </div>
-
-    <a class="blue-button"
-       href="ivy/english/spelling/exercise-02.html">
-      START →
-    </a>
-
-  </div>
-
-</div>
-
-
-    <div class="exercise">
       <div>
-        <div class="small-label">EXERCISE 3</div>
-        <h3>Words 21–30</h3>
-        <div class="empty">Coming soon.</div>
-      </div>
-    </div>
 
-  </div>
-
-
-  <!-- IVY MATHS TOPICS -->
-
-  <div id="ivy-maths" class="page">
-
-    <button class="back" onclick="showPage('ivy')">
-      ← IVY-ROSE
-    </button>
-
-    <div class="page-title">
-      <h1>🔢 Maths</h1>
-      <p>Ivy-Rose • Choose a topic</p>
-    </div>
-
-
-    <div class="topic">
-      <h3>🔢 Numbers to 100</h3>
-      <div class="empty">Exercises coming soon.</div>
-    </div>
-
-
-    <div class="topic">
-      <h3>➕ Addition</h3>
-      <div class="empty">Exercises coming soon.</div>
-    </div>
-
-
-    <div class="topic">
-      <h3>🧊 3D Shapes</h3>
-      <div class="empty">Exercises coming soon.</div>
-    </div>
-
-  </div>
-
-
-
-  <!-- ====================== -->
-  <!-- CHARLOTTE DASHBOARD    -->
-  <!-- ====================== -->
-
-  <div id="charlotte" class="page">
-
-    <button class="back" onclick="showPage('home')">← BACK</button>
-
-    <div class="page-title">
-      <h1>👧🏻 Charlotte</h1>
-      <p>Grade 1 • Choose a subject</p>
-    </div>
-
-
-    <div class="subject">
-      <div class="subject-row">
-
-        <div>
-          <h3>📖 English</h3>
-          <div class="description">
-            Phonics, spelling, reading & more
-          </div>
+        <div class="small-label">
+          EXERCISE 1
         </div>
 
-        <button class="blue-button"
-                onclick="showPage('charlotte-english')">
-          OPEN →
-        </button>
+        <h3>
+          Words 1–10
+        </h3>
+
+        <div class="description">
+          🔊 Listen to each word and spell it correctly.
+        </div>
 
       </div>
-    </div>
 
 
-    <div class="subject">
-      <h3>🔢 Maths</h3>
-      <div class="empty">Topics coming soon.</div>
-    </div>
+      <a
+        class="blue-button"
+        href="ivy/english/spelling/exercise-01.html"
+      >
+        START →
+      </a>
 
-
-    <div class="subject">
-      <h3>🔬 Science</h3>
-      <div class="empty">Topics coming soon.</div>
-    </div>
-
-
-    <div class="subject">
-      <h3>🌍 Geography</h3>
-      <div class="empty">Topics coming soon.</div>
-    </div>
-
-
-    <div class="subject">
-      <h3>🇫🇷 French</h3>
-      <div class="empty">Topics coming soon.</div>
     </div>
 
   </div>
 
 
-  <!-- CHARLOTTE ENGLISH -->
+  <!-- EXERCISE 2 -->
 
-  <div id="charlotte-english" class="page">
+  <div class="exercise">
 
-    <button class="back" onclick="showPage('charlotte')">
-      ← CHARLOTTE
-    </button>
+    <div class="exercise-row">
 
-    <div class="page-title">
-      <h1>📖 English</h1>
-      <p>Charlotte • Choose a topic</p>
+      <div>
+
+        <div class="small-label">
+          EXERCISE 2
+        </div>
+
+        <h3>
+          Words 11–20
+        </h3>
+
+        <div class="description">
+          🔊 Listen to each word and spell it correctly.
+        </div>
+
+      </div>
+
+
+      <a
+        class="blue-button"
+        href="ivy/english/spelling/exercise-02.html"
+      >
+        START →
+      </a>
+
     </div>
 
-
-    <div class="topic">
-      <h3>🔤 Phonics</h3>
-      <div class="empty">Exercises coming soon.</div>
-    </div>
+  </div>
 
 
-    <div class="topic">
-      <h3>🎵 Rhyming Words</h3>
-      <div class="empty">Exercises coming soon.</div>
-    </div>
+  <!-- EXERCISE 3 -->
 
+  <div class="exercise">
 
-    <div class="topic">
-      <h3>✏️ Writing</h3>
-      <div class="empty">Exercises coming soon.</div>
+    <div>
+
+      <div class="small-label">
+        EXERCISE 3
+      </div>
+
+      <h3>
+        Words 21–30
+      </h3>
+
+      <div class="empty">
+        Coming soon.
+      </div>
+
     </div>
 
   </div>
 
 
 </div>
+
+
+
+<!-- ======================================
+     IVY MATHS
+     ====================================== -->
+
+<div
+  id="ivy-maths"
+  class="page"
+>
+
+  <button
+    class="back"
+    onclick="showPage('ivy')"
+  >
+    ← IVY-ROSE
+  </button>
+
+
+  <div class="page-title">
+
+    <h1>
+      🔢 Maths
+    </h1>
+
+    <p>
+      Ivy-Rose • Choose a topic
+    </p>
+
+  </div>
+
+
+  <div class="topic">
+
+    <h3>
+      🔢 Numbers to 100
+    </h3>
+
+    <div class="empty">
+      Exercises coming soon.
+    </div>
+
+  </div>
+
+
+  <div class="topic">
+
+    <h3>
+      ➕ Addition
+    </h3>
+
+    <div class="empty">
+      Exercises coming soon.
+    </div>
+
+  </div>
+
+
+  <div class="topic">
+
+    <h3>
+      🧊 3D Shapes
+    </h3>
+
+    <div class="empty">
+      Exercises coming soon.
+    </div>
+
+  </div>
+
+
+</div>
+
+
+
+<!-- ======================================
+     CHARLOTTE
+     ====================================== -->
+
+<div
+  id="charlotte"
+  class="page"
+>
+
+  <button
+    class="back"
+    onclick="showPage('home')"
+  >
+    ← BACK
+  </button>
+
+
+  <div class="page-title">
+
+    <h1>
+      👧🏻 Charlotte
+    </h1>
+
+    <p>
+      Grade 1 • Choose a subject
+    </p>
+
+  </div>
+
+
+  <a
+    class="dashboard-button"
+    href="charlotte-dashboard.html"
+  >
+    📊 VIEW CHARLOTTE'S PROGRESS
+  </a>
+
+
+  <!-- ENGLISH -->
+
+  <div class="subject">
+
+    <div class="subject-row">
+
+      <div>
+
+        <h3>
+          📖 English
+        </h3>
+
+        <div class="description">
+          Phonics, spelling, reading & more
+        </div>
+
+      </div>
+
+
+      <button
+        class="blue-button"
+        onclick="showPage('charlotte-english')"
+      >
+        OPEN →
+      </button>
+
+    </div>
+
+  </div>
+
+
+  <!-- MATHS -->
+
+  <div class="subject">
+
+    <div class="subject-row">
+
+      <div>
+
+        <h3>
+          🔢 Maths
+        </h3>
+
+        <div class="description">
+          Numbers, counting, shapes & more
+        </div>
+
+      </div>
+
+
+      <button
+        class="blue-button"
+        onclick="showPage('charlotte-maths')"
+      >
+        OPEN →
+      </button>
+
+    </div>
+
+  </div>
+
+
+  <div class="subject">
+
+    <h3>
+      🔬 Science
+    </h3>
+
+    <div class="empty">
+      Topics coming soon.
+    </div>
+
+  </div>
+
+
+  <div class="subject">
+
+    <h3>
+      🌍 Geography
+    </h3>
+
+    <div class="empty">
+      Topics coming soon.
+    </div>
+
+  </div>
+
+
+  <div class="subject">
+
+    <h3>
+      🇫🇷 French
+    </h3>
+
+    <div class="empty">
+      Topics coming soon.
+    </div>
+
+  </div>
+
+
+</div>
+
+
+
+<!-- ======================================
+     CHARLOTTE ENGLISH
+     ====================================== -->
+
+<div
+  id="charlotte-english"
+  class="page"
+>
+
+  <button
+    class="back"
+    onclick="showPage('charlotte')"
+  >
+    ← CHARLOTTE
+  </button>
+
+
+  <div class="page-title">
+
+    <h1>
+      📖 English
+    </h1>
+
+    <p>
+      Charlotte • Choose a topic
+    </p>
+
+  </div>
+
+
+  <div class="topic">
+
+    <h3>
+      🔤 Phonics
+    </h3>
+
+    <div class="empty">
+      Exercises coming soon.
+    </div>
+
+  </div>
+
+
+  <div class="topic">
+
+    <h3>
+      🎵 Rhyming Words
+    </h3>
+
+    <div class="empty">
+      Exercises coming soon.
+    </div>
+
+  </div>
+
+
+  <div class="topic">
+
+    <h3>
+      ✏️ Writing
+    </h3>
+
+    <div class="empty">
+      Exercises coming soon.
+    </div>
+
+  </div>
+
+
+</div>
+
+
+
+<!-- ======================================
+     CHARLOTTE MATHS
+     ====================================== -->
+
+<div
+  id="charlotte-maths"
+  class="page"
+>
+
+  <button
+    class="back"
+    onclick="showPage('charlotte')"
+  >
+    ← CHARLOTTE
+  </button>
+
+
+  <div class="page-title">
+
+    <h1>
+      🔢 Maths
+    </h1>
+
+    <p>
+      Charlotte • Choose a topic
+    </p>
+
+  </div>
+
+
+  <!-- NUMBERS 1–100 -->
+
+  <div class="topic">
+
+    <div class="topic-row">
+
+      <div>
+
+        <div class="small-label">
+          TOPIC
+        </div>
+
+        <h3>
+          🔢 Numbers 1–100
+        </h3>
+
+        <div class="description">
+          Learn the number sequence from 1 to 100.
+        </div>
+
+      </div>
+
+
+      <button
+        class="blue-button"
+        onclick="showPage('charlotte-maths-numbers')"
+      >
+        OPEN →
+      </button>
+
+    </div>
+
+  </div>
+
+
+  <div class="topic">
+
+    <h3>
+      ➕ Addition
+    </h3>
+
+    <div class="empty">
+      Exercises coming soon.
+    </div>
+
+  </div>
+
+
+  <div class="topic">
+
+    <h3>
+      🔷 Shapes
+    </h3>
+
+    <div class="empty">
+      Exercises coming soon.
+    </div>
+
+  </div>
+
+
+</div>
+
+
+
+<!-- ======================================
+     CHARLOTTE NUMBERS 1–100
+     ====================================== -->
+
+<div
+  id="charlotte-maths-numbers"
+  class="page"
+>
+
+  <button
+    class="back"
+    onclick="showPage('charlotte-maths')"
+  >
+    ← MATHS
+  </button>
+
+
+  <div class="page-title">
+
+    <h1>
+      🔢 Numbers 1–100
+    </h1>
+
+    <p>
+      Charlotte • Choose an exercise
+    </p>
+
+  </div>
+
+
+  <!-- NUMBER BOARD -->
+
+  <div class="exercise">
+
+    <div class="exercise-row">
+
+      <div>
+
+        <div class="small-label">
+          EXERCISE 1
+        </div>
+
+        <h3>
+          🌈 Number Board 1–100
+        </h3>
+
+        <div class="description">
+          Fill in 20 missing numbers on the number board.
+        </div>
+
+      </div>
+
+
+      <a
+        class="blue-button"
+        href="charlotte/maths/numbers-1-100/exercise-01.html"
+      >
+        START →
+      </a>
+
+    </div>
+
+  </div>
+
+
+</div>
+
+
+</div>
+
 
 
 <script>
 
+
+/* ======================================
+   PAGE NAVIGATION
+   ====================================== */
+
 function showPage(pageId) {
 
   const pages = [
+
     "home",
+
     "ivy",
     "ivy-english",
     "ivy-english-spelling",
     "ivy-maths",
+
     "charlotte",
-    "charlotte-english"
+    "charlotte-english",
+    "charlotte-maths",
+    "charlotte-maths-numbers"
+
   ];
 
-  pages.forEach(function(page) {
-    document.getElementById(page).style.display = "none";
-  });
 
-  document.getElementById(pageId).style.display = "block";
+  pages.forEach(
+    function(page) {
 
-  window.scrollTo(0,0);
+      const element =
+        document.getElementById(
+          page
+        );
+
+      if (element) {
+
+        element.style.display =
+          "none";
+
+      }
+
+    }
+  );
+
+
+  const requested =
+    document.getElementById(
+      pageId
+    );
+
+
+  if (requested) {
+
+    requested.style.display =
+      "block";
+
+  }
+
+
+  window.scrollTo(
+    0,
+    0
+  );
+
 }
 
 
-/* Open the requested page when returning from an exercise */
+/* ======================================
+   OPEN REQUESTED PAGE WHEN RETURNING
+   FROM AN EXERCISE
+   ====================================== */
 
 const requestedPage =
-  window.location.hash.replace("#", "");
+  window.location.hash.replace(
+    "#",
+    ""
+  );
+
 
 if (
   requestedPage &&
-  document.getElementById(requestedPage)
+  document.getElementById(
+    requestedPage
+  )
 ) {
-  showPage(requestedPage);
-} else {
-  showPage("home");
+
+  showPage(
+    requestedPage
+  );
+
 }
 
+else {
+
+  showPage(
+    "home"
+  );
+
+}
+
+
 </script>
+
 
 </body>
 </html>
